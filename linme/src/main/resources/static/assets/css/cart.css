@@ -1,3 +1,76 @@
-* {
+/* pretendard 웹폰트 css에서 사용하기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+*{
     color: #333;
+}
+body, html {
+    background: #fff;
+    background-color: #fff;
+    color: #333;
+    font-family: Pretendard, sans-serif;
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    letter-spacing: -.7px;
+    line-height: 1.07;
+    margin: initial;
+    max-width: 100%;
+    padding: initial;
+    width: 100%
+}
+
+body div,html div {
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.cartContainer {
+    width: 100%;
+}
+
+.cartContainer, .progressContent, .selectContent, .mainContent {
+    height: fit-content;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.progressContent {
+    padding: 40px;
+    height: 169px;
+}
+
+.progressStageCart {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.progressStep.step1.on {
+    align-items: flex-start;
+}
+
+.progressStageCart .progressStep {
+    color: #b6b6b6;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    font-weight: 700;
+    gap: 10px;
+    height: 100%;
+    letter-spacing: -.5px;
+    line-height: .8;
+    margin: initial;
+    text-align: center;
+    width: 33%
 }
