@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../static/assets/css/cart.css" />
+    <title>린미 - 장바구니</title>
+  </head>
+  <body>
+    <!-- Header 영역 -->
+    <header th:fragment="my-header">
+      <link rel="stylesheet" th:href=@{/assets/css/header.css} />
+    </header>
+
+    <!-- Main 영역 -->
+    <main>
+      <!-- 장바구니 전체 영역 cart Container -->
+      <div class="cartContainer">
+        <!-- 상단에 장바구니  /  주문/결제  /  주문완료 -->
+        <div class="progressContent">
+          <div class="progressStageCart">
+            <div class="progressStep step1 on">
+              <div class="progressNumberCover">
+                <div class="progressNumber">1</div>
+              </div>
+              <div class="progressName">장바구니</div>
+            </div>
+            <div class="progressStep step2">
+              <div class="progressNumberCover">
+                <div class="progressNumber">2</div>
+              </div>
+              <div class="progressName">주문/결제</div>
+            </div>
+            <div class="progressStep step3">
+              <div class="progressNumberCover">
+                <div class="progressNumber">3</div>
+              </div>
+              <div class="progressName">주문완료</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 전체 선택 | 선택 삭제 -->
+        <div class="selectContent">
+          <input
+            class="selectAll"
+            name="selectAll"
+            id="selectAll"
+            type="checkbox"
+          />
+          <label for="selectAll"
+            >전체 선택
+            <div class="selectedProductCount">(<span>0</span>)</div>
+          </label>
+          <div class="button deleteSelectedProduct">선택 삭제</div>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+
+        <!-- 장바구니 상품 / 전체 합계-->
+        <div class="mainContainer">
+          <div class="cartContent">
+            <!-- 장바구니에 담은 상품 목록-->
+            <div class="cartList">
+              <!-- 장바구니에 담은 상품 상세 -->
+              <div class="cartProductContainer">
+                <!-- 상품 / 상품금액 / 배송비 -->
+                <div class="cartTop">
+                  <div class="label check">
+                    <input
+                      class="itemSelection"
+                      id="itemSelection"
+                      type="checkbox"
+                    />
+                    <label for="itemSelection"></label>
+                  </div>
+                  <div class="label product">상품</div>
+                  <div class="label productPrice">상품금액</div>
+                  <div class="label deliveryPrice">배송비</div>
+                </div>
+
+                <!-- 상품 / 상품금액 / 배송비 에 대한 세부 내용-->
+                <div class="cartCenter">
+                  <div class="cartProductList">
+                    <div class="cartProductItem productNo952">
+                      <div class="productData pc">
+                        <div class="dataEach select">
+                          <input
+                            class="itemSelection"
+                            name="itemSelection"
+                            id="itemSelection952"
+                            type="checkbox"
+                            data-index="0"
+                            value="952"
+                          /><label for="itemSelection"></label>
+                        </div>
+                        <div class="dataEach product">
+                          <a href="/productDetail/ingredients/952"
+                            ><div class="productImageCover">
+                              <img
+                                src="https://image.linme.kr/PRODUCT/LM_F_0e4b530b0d3e43aea25dc7337f8e0e30.jpg?w=1000&amp;q=90"
+                                alt="네추럴메이드 멀티비타민 앤 미네랄 선물세트 (6개월분)"
+                              /></div
+                          ></a>
+                          <div class="productInfo">
+                            <div class="productBrand">
+                              <a href="/productDetail/ingredients/952"
+                                >주식회사 에프디랩</a
+                              >
+                            </div>
+                            <div class="productName">
+                              <a href="/productDetail/ingredients/952"
+                                >네추럴메이드 멀티비타민 앤 미네랄 선물세트
+                                (6개월분)</a
+                              >
+                            </div>
+                            <div class="productNoOption">
+                              <div class="customNumberStepperContainer">
+                                <div class="customNumberStepperButton">
+                                  <div class="minus"></div>
+                                </div>
+                                <input
+                                  class="customNumberStepperInput"
+                                  type="number"
+                                  min="1"
+                                  max="9999"
+                                  value="1"
+                                />
+                                <div class="customNumberStepperButton">
+                                  <div class="plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dataEach priceInfo">
+                          <div class="salePrice">
+                            <span>36,000</span><span>원</span>
+                          </div>
+                          <div class="price on">
+                            <span>72,000</span><span>원</span>
+                          </div>
+                          <div class="button clickable orderProduct">
+                            주문하기
+                          </div>
+                        </div>
+                        <div class="dataEach deliveryPriceInfo">
+                          <div class="deliveryPrice">
+                            <span>0</span><span>원</span>
+                          </div>
+                        </div>
+                        <div class="dataEach delete">
+                          <div class="button clickable deleteFromCart"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 배송비 -->
+                <div class="cartDeliveryPrice">
+                  <div class="cartDeliveryPriceItem">배송비</div>
+                  <div class="cartDeliveryPriceItem bold">0원</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 선택한 장바구니 상품에 대한 전체 합계 -->
+            <div class="cartTotalContainer">
+              <div class="title">전체 합계</div>
+              <ul class="cartTotalDataList">
+                <!-- 총 선택상품금액 -->
+                <li class="cartTotalDataItem productPrice">
+                  <div class="label">총 선택상품금액</div>
+                  <div class="price selectedProductPrice">
+                    <span>0</span><span class="currencyUnit">원</span>
+                  </div>
+                </li>
+
+                <!-- 총 배송비 -->
+                <li class="cartTotalDataItem deliveryPrice">
+                  <div class="label">총 배송비</div>
+                  <div class="price selectedDeliveryPrice">
+                    <span>0</span><span class="currencyUnit">원</span>
+                  </div>
+                </li>
+
+                <!-- 총 할인금액 -->
+                <li class="cartTotalDataItem discountPrice">
+                  <div class="label">총 할인금액</div>
+                  <div class="price selectedDiscountPrice">
+                    <span>0</span><span class="currencyUnit">원</span>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- 전체 주문금액 -->
+              <div class="orderTotal">
+                <div class="label">전체 주문금액</div>
+                <div class="price orderPriceTotal">
+                  <span>0</span><span class="currencyUnit">원</span>
+                </div>
+              </div>
+
+              <!-- 주문하기-->
+              <div class="button clickable buy cover">
+                <div class="buttonInner"><div class="label">주문하기</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer 영역 -->
+    <footer th:fragment="my-header">
+      <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
+    </footer>
+  </body>
+</html>
