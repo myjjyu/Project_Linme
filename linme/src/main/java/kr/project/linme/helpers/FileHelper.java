@@ -1,4 +1,4 @@
-package kr.jinju.restfulapi.helpers;
+package kr.project.linme.helpers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
