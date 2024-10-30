@@ -4,10 +4,131 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>린미 - 세상에 없던 H-커머스</title>
+    <link
+      rel="stylesheet"
+      href="../../static/assets/css/common.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/assets/css/footer.css"
+    />
   </head>
   <body>
-    <header th:fragment="my-header">
-      <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
+    <header th:fragment="my-footer">
+      <!-- <link rel="stylesheet" th:href=@{/assets/css/footer.css} /> -->
     </header>
+
+    <footer>
+      <!---------------------------------------------->
+      <!--footer header 영역 -->
+      <!---------------------------------------------->
+      <!--회사소개, 이용약관, 개인정보처리방침, 입점.제휴 문의 -->
+      <div>
+        <ul class="footerInfo">
+          <li><a href="https://inroes.co.kr/">회사소개</a><span>|</span></li>
+          <li><a href="#">이용약관</a><span>|</span></li>
+          <li><a href="#">개인정보처리방침</a><span>|</span></li>
+          <li><a href="https://admin.linme.kr/login">입점·제휴 문의</a></li>
+        </ul>
+      </div>
+
+      <!---------------------------------------------->
+      <!--footer main 영역 -->
+      <!---------------------------------------------->
+      <!--footer main firstbox -->
+      <div class="footerSecoend">
+        <div class="footerLogo">
+          <img src="../../static/assets/img/footer/logo_footer.png" width="80" height="38" />
+          <p>매일매일, 전문가의 건강한 관리 린미</p>
+        </div>
+        <div class="footerMain">
+          <div class="footer-1">
+            <ul>
+              <li class="name">주식회사 이노즈</li>
+              <li class="footerInfo-menu">
+                대표자: 김보람 <span> | </span>주소 : 서울특별시 강남구 역삼동
+                696-21
+              </li>
+              <li class="footerInfo-menu">
+                통신판매업신고 : 2022-서울서초-2744 |
+                <span>사업자번호 : 123-88-02051</span>
+              </li>
+              <li class="snslogo">
+                <a href="https://blog.naver.com/linme_kr"
+                  ><img
+                    src="../../static/assets/img/footer/sns_naver_blog.png"
+                    width="23"
+                    height="23"
+                    alt="Blog"
+                /></a>
+              </li>
+              <li class="snslogo">
+                <a href="https://www.instagram.com/linme.official/"
+                  ><img
+                  src="../../static/assets/img/footer/sns_instagram.png"
+                  width="23"
+                    height="23"
+                    alt="Instagram"
+                /></a>
+              </li>
+              <li class="snslogo">
+                <a
+                  href="https://www.facebook.com/people/%EB%A6%B0%EB%AF%B8/61554968541751/"
+                  ><img
+                  src="../../static/assets/img/footer/sns_facebook.png"
+                  width="23"
+                    height="23"
+                    alt="Facebook"
+                /></a>
+              </li>
+            </ul>
+          </div>
+
+         <!--footer main secondbox -->
+          <div class="footer-2">
+            <ul>
+              <li class="name2">고객센터<span>02-508-2161</span></li>
+              <li class="footerInfo-menu">평일 AM 10:00 - PM 17:00</li>
+              <li class="footerInfo-menu">(점심시간 : 13:00 - 14:00)</li>
+              <li class="footerInfo-menu">
+                <a href="#">E-mail : help@inroes.co.kr</a>
+              </li>
+              <li class="footerInfo-menu">Fax : 02-547-2161</li>
+            </ul>
+          </div>
+
+          <!--footer main endbox -->
+          <div class="footer-3">
+            <a
+              href="https://play.google.com/store/apps/details?id=kr.inroes.linme"
+            >
+              <img
+                src="../../static/assets/img/footer/download.png"
+                width="169"
+                height="52"
+                alt="Google Play"
+              />
+            </a>
+            <a
+              href="https://apps.apple.com/kr/app/linme-%EB%A6%B0%EB%AF%B8/id6473827278"
+            >
+              <img
+                src="../../static/assets/img/footer/appDownload.png"
+                width="169"
+                height="52"
+                alt="App Store"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!---------------------------------------------->
+      <!--footer end -->
+      <!---------------------------------------------->
+      <div class="footerEnd">
+        Copyright 2024. Linme Inc. All Rights Reserved.
+      </div>
+    </footer>
   </body>
 </html>
