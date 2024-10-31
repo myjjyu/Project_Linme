@@ -6,10 +6,12 @@
   margin-bottom: 15px;
 } */
 
-footer {
-  position: fixed; 
+.container {
+  position: fixed;
   bottom: 0; /* 화면 하단에 위치 */
   width: 100%; /* 전체 너비 차지 */
+  height: 310px;
+  /* border: 5px solid red */
 }
 
 /******************************************/
@@ -23,16 +25,32 @@ footer {
   justify-content: center;
   align-items: center;
   /* margin-top: 100px; */
+
+  li {
+    position: relative;
+    padding-right: 15px; 
+}
+}
+.footerInfo li::after {
+  background-color: #6b6b6b99;
+  content: "";
+  display: block;
+  height: 90%;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  width: 2px;
 }
 
-.footerInfo li {
-  margin: 0 5px;
+/* 마지막 항목에서 구분선 숨김 */
+.footerInfo li:last-child::after {
+  display: none;
 }
 
 .footerInfo a {
   text-decoration: none;
   color: #606060;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -143,10 +161,9 @@ footer {
 /******************************************/
 .footerEnd {
   text-align: center;
-  color: #606060;
+  color: #b6b6b6;
   font-size: 12px;
   width: 100%;
   padding: 20px 0;
   background-color: #fcfcfc;
 }
-
