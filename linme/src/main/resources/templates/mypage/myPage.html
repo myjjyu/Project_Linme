@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myPage</title>
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/mypage.css}" />
+    <style>
+    
+        /*마이페이지 전체 레이아웃*/
+        .Container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 사용자 정보와 주요 정보 섹션 */
+        .infoSection {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px; /* 간격 조절 */
+            margin-bottom: 20px;
+        }
+        /* 사용자 정보 */
+        .userInfo {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .userInfo .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .userInfo .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .userDetails {
+            line-height: 1.2;
+        }
+
+        .userDetails h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .userDetails p {
+            margin: 2px 0;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .userActions {
+            align-self: flex-start; 
+            margin-top: 5px;
+        }
+        .userActions button {
+            padding: 8px 16px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 주요 정보 섹션 */
+        .mainInfo {
+            width: 48%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .mainInfo .infoBox {
+            width: 30%;
+            display: inline-block;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .mainInfo .infoBox p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .mainInfo .infoBox span {
+            display: block;
+            margin-top: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /*쇼핑 및 고객센터*/
+        .menuContainer {
+            margin-top: 20px;
+        }
+        
+
+        .menuSection {
+            margin-bottom: 20px;
+        }
+
+        .menuSection h3 {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .menuSection ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menuSection ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+            width: 180px; 
+            position:relative;
+        }
+
+        .menuSection ul li a {
+            text-decoration: none;
+            color: #8d8d8d;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .menuSection ul li .next-icon {
+            position: absolute;
+            right: 20px;
+            height: 14px;
+            width: 12px; 
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header 영역 -->
+    <header th:fragment="my-header">
+        <link rel="stylesheet" th:href=@{/assets/css/header.css} />
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <div class="Container">
+        <h2>마이페이지</h2>
+
+        <!-- 사용자 정보+ 주요 정보 -->
+        <div class="infoSection">
+            <!-- 사용자 정보 -->
+            <div class="userInfo">
+                <div class="profile">
+                    <img src="/assets/img/mypage/profileimg.png"/>
+                    <div class="userDetails">
+                        <h3 th:text="${username}">사용자 이름 </h3>
+                        <p>등급: <span th:text="${grade}">등급</span></p>
+                        <p>라벨: <span th:text="${label}">라벨</span></p>
+                    </div>
+                </div>
+                <div class="userActions">
+                    <button>내 정보 관리</button>
+                </div>
+            </div>
+
+            <!-- 주요 정보 표시 -->
+            <div class="mainInfo">
+                <div class="infoBox">
+                    <p>쇼핑내역</p>
+                    <span th:text="${shoppingHistoryCount}">0</span>
+                </div>
+                <div class="infoBox">
+                    <p>쿠폰</p>
+                    <span th:text="${couponCount}">0</span>
+                </div>
+                <div class="infoBox">
+                    <p>리뷰</p>
+                    <span th:text="${reviewCount}">0</span>
+                </div>
+            </div>
+        </div>
+        <!-- 쇼핑 및 고객센터 메뉴 -->
+        <div class="menuContainer">
+            <div class="menuSection">
+                <h3>쇼핑</h3>
+                <ul>
+                    <li><a href="#">상품 문의 내역
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                    <li><a href="#">환불계좌 관리
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                    <li><a href="#">배송지 관리
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menuSection">
+                <h3>고객센터</h3>
+                <ul>
+                    <li><a href="#">공지사항
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                    <li><a href="#">FAQ
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                    <li><a href="#">1:1 문의
+                        <img src="/linme/src/main/resources/static/assets/img/mypage/graynext.png" class="next-icon"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer 영역 -->
+    <footer th:fragment="my-header">
+        <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
+    </footer>
+
+</body>
+</html>

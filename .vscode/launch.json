@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LinmeApplication<linme>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "kr.project.linme.LinmeApplication",
+            "projectName": "linme",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
