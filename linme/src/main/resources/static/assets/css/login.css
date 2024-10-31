@@ -1,0 +1,98 @@
+.login {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    height: auto;
+    justify-content: center
+}
+
+.login * {
+    box-sizing: border-box;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    width: auto
+}
+
+.login .contents {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.login .loginCover {
+    max-width: 550px;
+    padding: 40px 20px;
+    width: 100%
+}
+
+.login .loginCover .title {
+    color: #333;
+    font-size: 30px;
+    font-weight: 700;
+    height: fit-content;
+    letter-spacing: -.6px;
+    line-height: 1.27;
+    text-align: center
+}
+
+.login .loginCover .inputList {
+    margin-top: 48px;
+    padding: 0 1px
+}
+
+.login .loginCover .inputList .userInput {
+    height: 50px;
+    position: relative;
+    width: 100%
+}
+
+.login .loginCover .inputList .userInput input {
+    border-radius: 3px;
+    font-size: 14px;
+    height: 100%;
+    padding: 18px 10px 16px;
+    width: 100%;
+    z-index: auto
+}
+
+.login .loginCover .inputList .userInput input::placeholder {
+    color: #b6b6b6;
+    font-size: 14px;
+    letter-spacing: -.28px;
+    line-height: 2.71
+}
+
+.login .loginCover .inputList .userInput input:focus {
+    z-index: 1
+}
+
+.login .loginCover .inputList .userInput .userID {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.login .loginCover .inputList .userInput .userPW {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px
+}
+
+.login .loginCover .inputList .userInput .pwShowHide {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    cursor: pointer;
+    display: block;
+    height: 14px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    z-index: 1
+}
+
