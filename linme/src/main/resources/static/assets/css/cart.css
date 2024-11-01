@@ -1,66 +1,186 @@
 /* pretendard 웹폰트 css에서 사용하기 */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-*{
-    color: #333;
-}
-body, html {
-    background: #fff;
-    background-color: #fff;
-    color: #333;
-    font-family: Pretendard, sans-serif;
-    font-size: 14px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 400;
-    height: auto;
-    letter-spacing: -.7px;
-    line-height: 1.07;
-    margin: initial;
-    max-width: 100%;
-    padding: initial;
-    width: 100%
-}
-
-body div,html div {
-    display: block;
-    height: 100%;
-    position: relative;
-    width: 100%
+.container {
+  width: 100%;
 }
 
 .mainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+  height: fit-content;
+  margin: 0 auto;
+  width: 1200px;
 }
+
+body,
+html {
+  background: #fff;
+  background-color: #fff;
+  color: #333;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  letter-spacing: -0.7px;
+  line-height: 1.07;
+  margin: initial;
+  max-width: 100%;
+  padding: initial;
+  width: 100%;
+}
+
+body div,
+html div {
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+/*******************************************/
+/************** cartContainer **************/
+/*******************************************/
 
 .cartContainer {
-    width: 100%;
-}
+  width: 100%;
 
-.cartContainer, .progressContent, .selectContent, .mainContent {
+  .cartContainer,
+  .progressContent,
+  .selectContent,
+  .mainContent {
     height: fit-content;
     margin: 0 auto;
     width: 1200px;
-}
+  }
 
-.progressContent {
-    padding: 40px;
+  .progressContent {
+    padding: 40px 0;
     height: 169px;
-}
+  }
 
-.progressStageCart {
+  .progressStageCart {
     display: flex;
     margin-bottom: 20px;
     width: 100%;
-}
+  }
 
-.progressStep.step1.on {
+  .progressStep {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .progressNumberCover {
+    border-radius: 25px;
+    height: 43px;
+    width: 43px;
+  }
+
+  .progressName {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  /* 장바구니 */
+  .progressStageCart .progressStep:before {
+    background-color: #e6e6e6;
+    content: "";
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+  }
+
+  .progressStageCart .progressStep.step1 {
     align-items: flex-start;
-}
+  }
 
-.progressStageCart .progressStep {
+  .progressStageCart .progressStep.step2 {
+    align-items: center;
+  }
+
+  .progressStageCart .progressStep.step3 {
+    align-items: flex-end;
+  }
+
+  .progressStageCart .progressStep.step3 .progressName {
+    right: -20px;
+  }
+
+  .progressStageCart .progressStep .progressNumberCover {
+    background-color: #e6e6e6;
+    border-radius: 25px;
+    height: 43px;
+    width: 43px;
+    z-index: 1;
+  }
+
+  .progressStageCart .progressStep .progressNumberCover .progressNumber {
+    height: fit-content;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 43px;
+  }
+
+  .progressStageCart .progressStep .progressName {
+    color: #d2d2d2;
+    font-size: 20px;
+    font-weight: 600;
+    height: fit-content;
+    letter-spacing: -0.44px;
+    width: 80px;
+  }
+
+  .progressStageCart .progressStep.on .progressNumberCover {
+    background-color: #ff8181;
+  }
+
+  .progressStageCart .progressStep.on .progressNumberCover .progressNumber {
+    color: #fff;
+  }
+
+  .progressStageCart .progressStep.on .progressName {
+    color: #ff8181;
+  }
+
+  .progressStageCart .progressStep.on:after {
+    background-color: #ff8181;
+    content: "";
+    height: 3px;
+    left: 43px;
+    position: absolute;
+    top: 20px;
+    width: 100px;
+    z-index: auto;
+  }
+
+  .progressStageCart .progressStep.step2.on:after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+  }
+
+  .progressStageCart .progressStep.step3.on:after {
+    left: auto;
+    right: 0;
+  }
+
+  .progressStep.step1.on {
+    align-items: flex-start;
+    color: #ff8181;
+  }
+
+  .progressStageCart .progressStep {
     color: #b6b6b6;
     display: flex;
     flex-direction: column;
@@ -68,9 +188,58 @@ body div,html div {
     font-weight: 700;
     gap: 10px;
     height: 100%;
-    letter-spacing: -.5px;
-    line-height: .8;
+    letter-spacing: -0.5px;
+    line-height: 0.8;
     margin: initial;
     text-align: center;
-    width: 33%
+    width: 33%;
+  }
+}
+
+/*******************************************/
+/************** selectContent **************/
+/*******************************************/
+
+.selectContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.cartContainer .selectProduct {
+  color: #333;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  height: fit-content;
+  letter-spacing: -0.6px;
+  line-height: 1.6;
+}
+
+.cartContainer .selectProduct input[type="checkbox"] + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAJFBMVEVHcEy+vr6/v7+/v7++vr6+vr6+vr6/v7////++vr7v7+/W1tYYNmoCAAAACHRSTlMA6BBAwICsMG+e1swAAACESURBVDjLY2BgYA6RnIkMRIIZQIApcyY6SAKJF2IIz5xYAFQuOXNXBwro2jlTiIGBbeasDjTQNXMaA4PlzBXo4h0rZxowRM7GEO7onhnA4DkLU7xrpgOD5AxM8Y6ZAgwzsYpPGBUfFaerOK70iSs940r/uPILrvyFKz/iyr848zv28gEAJxsalTemyOAAAAAASUVORK5CYII=);
+  background-size: 23px 23px;
+  color: #333;
+  padding-left: 35px;
+}
+
+.cartContainer .selectProduct input[type="checkbox"]:checked + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAAANlBMVEVHcEz/4ub/gYH////e1tbp1tju2dv83uHx297k1Nb/iIj/mpr/u7z/+Pj/o6P/kJD/7Oz/zMyg+B5OAAAACnRSTlMA////H8Db/uxoaqo1qAAAAQxJREFUSMe9ldEagyAIRi1qGFjW+7/soH2tbcrCXey/7WQHUglBM40ROzsYxykcGWJ3nTg84Ak7T3BfflA4MfV2iJPiurpoIPdXYVkzioe8dQ0LLtwURtHoPRGZUUXYRbOqiA+5aJL6guj0vgh5SafcQG8wk5tOAJC9NAu8eU1oBVjJSyPAnL09UenF28E36ZLmXEjbfyfBzKZ0QW8AnSld0FmeJ0u69E7nt2n+kK70ROpCQ7pCL4drKV3rtxSqW255rcCmtcfbLo2e07C7IJyb+vvZERJq0nVaLWrSxq7SdqD/FGNV2qJpod9viP/Rbfdg2x3bdn+3zYaGuXNrnmlt89I5i2/Dc3Z75/wd0aAT2PlRkOYAAAAASUVORK5CYII=);
+}
+
+.cartContainer .selectProduct input[type="checkbox"]:disabled + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAJFBMVEVHcEzU1NTU1NTf39/U1NTU1NTT09PU1NTU1NTs7OzU1NTj4+Nsh7JkAAAACXRSTlMAOuAQgMDwsKAnY1CMAAAAhElEQVQ4y2NgYGB0zVqFDFIdGUCAuWoVOigGiQthCK9aJABUrrVq90wUMHvXKmUGBvZVq2eigdmrljMwSK3aiS4+c9cqAQYvDOUgDQ4MUVjFAxiyVmKKz1yVwLAKq/iCUfFRcbqK40qfuNIzrvSPK79gzV8rcOdHXPkXW35vBhcEWMsHAKIMW1R9yBhuAAAAAElFTkSuQmCC);
+}
+
+/** label **/
+.cartContainer .selectProduct label {
+  display: flex;
+  min-width: 105px;
+  width: fit-content;
+}
+
+.cartContainer .selectProduct label .selectedProductCount {
+  height: fit-content;
+  margin: -1px 0 0 7px;
+  padding: 0 12px 0 0;
+  width: fit-content;
 }
