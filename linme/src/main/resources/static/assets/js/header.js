@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownMenu.style.display === "block" ? "none" : "block";
   });
 
-  // 포커스 아웃 시 메뉴 숨기기
+  // 다시 클릭시 시 메뉴 숨기기
   document.addEventListener("click", function (event) {
     if (
       !customerServiceLink.contains(event.target) &&
@@ -22,16 +22,4 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownMenu.style.display = "none";
     }
   });
-});
-
-/*****************************/
-// ham영역///
-/*****************************/
-document.querySelector(".login-button").addEventListener("click", (e) => {
-  document.querySelector(".black-bg").classList.toggle("show-modal");
-});
-
-// 닫기버튼 누르면 모달창 닫기
-document.querySelector("#close").addEventListener("click", (e) => {
-  document.querySelector(".black-bg").classList.remove("show-modal");
 });

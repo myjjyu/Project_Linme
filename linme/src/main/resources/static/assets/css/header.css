@@ -18,20 +18,21 @@
 .headerBackground {
   /* background-color:brown; */
   position: fixed;
-  width:100%;
+  width: 100%;
   background-color: #fff;
-  box-shadow: 0 0 3px 0 #00000029;
-  /* height: 159px; */
-  position: fixed;
-  margin-left: -110px;
+  height: 170px;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid rgb(243, 243, 243);
+  padding-top: 10px;
+  right: 1px;
 }
 
 .headerContainer {
-  /* border: solid 1px brown; */
+  /* border: solid 1px rgb(16, 15, 15); */
   height: 160px;
   width: 1200px;
-  margin: auto;
-
+  margin: 0 auto;
   /*************************/
   /* 로그인, 회원가입, 고객센터 전체영역 */
   /*************************/
@@ -49,7 +50,6 @@
       font-weight: 500;
 
       li {
-        color: #707070;
         text-decoration: none;
         margin-left: 10px;
         position: relative;
@@ -80,7 +80,7 @@
     right: 0;
     z-index: 1000;
     width: 100px;
-    height: 80px;
+    height: 90px;
     font-size: bold;
     color: #707070;
     background-color: #fff;
@@ -112,8 +112,8 @@
 
   /* 린미 로고 */
   .hearderLogo {
-    width: 82px;
-    height: 41px;
+    width: 84px;
+    height: 43px;
     margin-top: 10px;
   }
 
@@ -128,12 +128,12 @@
     width: 90%;
     margin-left: 50px;
     position: relative;
-    margin-top: 18px;
+    margin-top: 25px;
   }
 
   .searchInput {
     width: 100%;
-    height: 43px;
+    height: 45px;
     color: #333;
     padding: 10px 45px 10px 20px;
     border: 1px solid #ff697b;
@@ -169,61 +169,106 @@
 /*************************/
 /* header-bottom 영역 */
 /*************************/
-
-.navbar{
-position: relative;
-display: flex;
-}
 .headerBoxend {
-  border: 1px solid rebeccapurple;
+  /* border: 1px solid rebeccapurple; */
   height: 50px;
-}
-
-/* 카테고리 영역 */
-.navbar-toggler{
-  border: none;
-}
-
-.list-group-item{
-  background-color: #efefef;
-  border-style: none;
-  padding: 16px 30px;
-  width: 260px;
-  font-size: 15px;
-  cursor: pointer;
-  
-
-  a{
-    color: #333;
-  }
-}
-
-.list-group-item:hover{
-  background-color: #f8f8f8;
-
-}
-  
-  .navbar-toggler:hover{
-    border: none;
-  }
-
-
-.navbar-brand{
-  position:relative;
+  position: relative;
   display: flex;
+}
+
+/* 햄버거 버튼 */
+.navbar-toggler {
+  /* background-color: rgb(234, 170, 170); */
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  /*포커스 할때 나오는 박스 그림자 제거 */
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+/* 햄버거버튼 이미지 */
+.togglerIcon {
+  margin-right: 12px; /* 아이콘과 텍스트 간격 */
+  width: 21px;
+  height: 18px;
+}
+
+/* 카테고리 */
+.navbar-brand {
+  z-index: 1000;
+  font-size: 16px;
+  font-weight: 600;
   color: #333;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
 }
 
-
-
-
-
-
-/* header/footer 위치 테스트시 사용 */
-main {
-  height: 1000px;
+/* 카테고리 클릭시 드롭다운 */
+.list-group {
+  border-radius: 0;
+  border: 1px solid #f3f3f3;
+  max-height: 600px;
+  width: 350px;
+  overflow-y: auto; /* 스크롤 */
+  position: absolute;
+  top: 100%; /*부모 아래에 위치*/
 }
 
+/* 카테고리 리스트 기본 숨김 처리 */
+#categoryList {
+  display: none;
+}
+
+.list-group-item {
+  background-color: #fdfdfd;
+  border-style: none;
+  padding: 16px 30px;
+  font-size: 15px;
+  cursor: pointer;
+
+  a {
+    color: #333;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* 신상품 베스트 특가상품 영역   */
+.headerItem {
+  /* background-color: rgb(241, 200, 200); */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.navMenu {
+  display: flex;
+  gap: 150px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin-right: 100px;
+}
+
+.deactivate {
+  color: #707070;
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+
+/* 신상품, 베스트, 특가상품 각각의 메뉴를 클릭했을때의 css */
+/* .activate {
+  color: #ff697b;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 2px solid #ff697b;
+  padding-bottom: 2px;
+} */
