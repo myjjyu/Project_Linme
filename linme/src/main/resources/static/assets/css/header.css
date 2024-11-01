@@ -1,0 +1,229 @@
+/*************************/
+/* 토글버튼 */
+/*************************/
+.Topbutton {
+  position: fixed;
+  right: 63px;
+  z-index: 1000;
+  bottom: 30px;
+}
+
+.Topbutton img {
+  width: 40px;
+}
+
+/*************************/
+/* header 전체영역 */
+/*************************/
+.headerBackground {
+  /* background-color:brown; */
+  position: fixed;
+  width:100%;
+  background-color: #fff;
+  box-shadow: 0 0 3px 0 #00000029;
+  /* height: 159px; */
+  position: fixed;
+  margin-left: -110px;
+}
+
+.headerContainer {
+  /* border: solid 1px brown; */
+  height: 160px;
+  width: 1200px;
+  margin: auto;
+
+  /*************************/
+  /* 로그인, 회원가입, 고객센터 전체영역 */
+  /*************************/
+  .headerBoxFirst {
+    /* border: solid 1px brown; */
+    position: relative;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ul {
+      display: flex;
+      font-size: 13px;
+      font-weight: 500;
+
+      li {
+        color: #707070;
+        text-decoration: none;
+        margin-left: 10px;
+        position: relative;
+
+        a {
+          color: #707070;
+        }
+      }
+    }
+  }
+
+  .headerBoxFirst li::after {
+    content: "|";
+    margin-left: 4px;
+    color: #e6e6e6;
+  }
+
+  .headerBoxFirst li:last-child::after {
+    content: ""; /*마지막 | 지우기*/
+    margin: 0;
+  }
+
+  /* 고객센터 클릭시 드롭다운 */
+  .topLayer {
+    display: none;
+    position: absolute;
+    top: 100%; /* 부모 아래에 위치 */
+    right: 0;
+    z-index: 1000;
+    width: 100px;
+    height: 80px;
+    font-size: bold;
+    color: #707070;
+    background-color: #fff;
+    border: 1px solid #d2d2d2;
+    box-shadow: 0 1px 2px 0 #b2b2b24d;
+  }
+
+  .topLayer .item {
+    margin: 8px;
+    cursor: pointer;
+  }
+
+  .topLayer .item:hover {
+    text-decoration: underline;
+    color: black;
+  }
+
+  /*************************/
+  /* header-main 영역 */
+  /*************************/
+
+  /* headerBoxSecond 영역 */
+  .headerBoxSecond {
+    /* border: solid 1px brown; */
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 린미 로고 */
+  .hearderLogo {
+    width: 82px;
+    height: 41px;
+    margin-top: 10px;
+  }
+
+  /* 인풋 전체영역 */
+  .searchForm {
+    position: relative;
+    width: 80%;
+    /* flex-grow: 1; */
+  }
+
+  .searchContainer {
+    width: 90%;
+    margin-left: 50px;
+    position: relative;
+    margin-top: 18px;
+  }
+
+  .searchInput {
+    width: 100%;
+    height: 43px;
+    color: #333;
+    padding: 10px 45px 10px 20px;
+    border: 1px solid #ff697b;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+
+  /* 돋보기영역 */
+  #searchButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    /* 돋보기버튼*/
+    .search {
+      position: absolute;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      top: 10px;
+      cursor: pointer;
+    }
+  }
+
+  /* icon 영역 */
+  .icon {
+    width: 30px;
+    height: 25px;
+    margin: 0 8px;
+  }
+}
+
+/*************************/
+/* header-bottom 영역 */
+/*************************/
+
+.navbar{
+position: relative;
+display: flex;
+}
+.headerBoxend {
+  border: 1px solid rebeccapurple;
+  height: 50px;
+}
+
+/* 카테고리 영역 */
+.navbar-toggler{
+  border: none;
+}
+
+.list-group-item{
+  background-color: #efefef;
+  border-style: none;
+  padding: 16px 30px;
+  width: 260px;
+  font-size: 15px;
+  cursor: pointer;
+  
+
+  a{
+    color: #333;
+  }
+}
+
+.list-group-item:hover{
+  background-color: #f8f8f8;
+
+}
+  
+  .navbar-toggler:hover{
+    border: none;
+  }
+
+
+.navbar-brand{
+  position:relative;
+  display: flex;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+
+
+
+/* header/footer 위치 테스트시 사용 */
+main {
+  height: 1000px;
+}
+
