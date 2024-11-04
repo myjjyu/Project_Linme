@@ -1,34 +1,69 @@
 /* pretendard 웹폰트 css에서 사용하기 */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/*=================  전체 영역 ================= */
+/*=================  전체 영역 ================= */
+/*=================  전체 영역 ================= */
+body main,
+html main {
+  display: block;
+  position: relative;
+  font-family: pretendard;
+}
+
+body .clickable,
+html .clickable {
+  cursor: pointer;
+}
+
+body a,
+html a {
+  color: inherit;
+  height: fit-content;
+  width: fit-content;
+}
+
+#root {
+  display: block;
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+body a,
+body a:active,
+body a:visited,
+html a,
+html a:active,
+html a:visited {
+  text-decoration: none;
+}
+
+body button,
+html button {
+  background-color: initial;
+  border: initial;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+}
+
+/* ================= Main 영역 ================= */
+/* ================= Main 영역 ================= */
+/* ================= Main 영역 ================= */
 .container {
   width: 100%;
 }
 
-.mainContainer {
+.container .contents {
   height: fit-content;
   margin: 0 auto;
-  width: 1200px;
+  width: 1080px;
 }
 
-body,
-html {
-  background: #fff;
-  background-color: #fff;
-  color: #333;
-  font-family: Pretendard, sans-serif;
-  font-size: 14px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 400;
-  height: auto;
-  letter-spacing: -0.7px;
-  line-height: 1.07;
-  margin: initial;
-  max-width: 100%;
-  padding: initial;
-  width: 100%;
-}
-
+/* =================장바구니 진행단계 : 장바구니 - 주문/결제 - 주문완료 ================= */
+/* =================장바구니 진행단계 : 장바구니 - 주문/결제 - 주문완료 ================= */
+/* =================장바구니 진행단계 : 장바구니 - 주문/결제 - 주문완료 ================= */
 body div,
 html div {
   display: block;
@@ -37,172 +72,139 @@ html div {
   width: 100%;
 }
 
-.mainContainer {
+.progressStageCart {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progressStageCart * {
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+}
+
+.progressStageCart .progressStep {
+  color: #b6b6b6;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
+  font-size: 25px;
+  font-weight: 700;
+  gap: 10px;
+  height: 100%;
+  letter-spacing: -0.5px;
+  line-height: 0.8;
+  margin: initial;
+  text-align: center;
+  width: 33%;
 }
 
-/*******************************************/
-/************** cartContainer **************/
-/*******************************************/
-
-.cartContainer {
+.progressStageCart .progressStep:before {
+  background-color: #e6e6e6;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 20px;
   width: 100%;
-
-  .cartContainer,
-  .progressContent,
-  .selectContent,
-  .mainContent {
-    height: fit-content;
-    margin: 0 auto;
-    width: 1200px;
-  }
-
-  .progressContent {
-    padding: 40px 0;
-    height: 169px;
-  }
-
-  .progressStageCart {
-    display: flex;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-
-  .progressStep {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .progressNumberCover {
-    border-radius: 25px;
-    height: 43px;
-    width: 43px;
-  }
-
-  .progressName {
-    font-size: 20px;
-    font-weight: 600;
-  }
-
-  /* 장바구니 */
-  .progressStageCart .progressStep:before {
-    background-color: #e6e6e6;
-    content: "";
-    height: 3px;
-    left: 0;
-    position: absolute;
-    top: 20px;
-    width: 100%;
-  }
-
-  .progressStageCart .progressStep.step1 {
-    align-items: flex-start;
-  }
-
-  .progressStageCart .progressStep.step2 {
-    align-items: center;
-  }
-
-  .progressStageCart .progressStep.step3 {
-    align-items: flex-end;
-  }
-
-  .progressStageCart .progressStep.step3 .progressName {
-    right: -20px;
-  }
-
-  .progressStageCart .progressStep .progressNumberCover {
-    background-color: #e6e6e6;
-    border-radius: 25px;
-    height: 43px;
-    width: 43px;
-    z-index: 1;
-  }
-
-  .progressStageCart .progressStep .progressNumberCover .progressNumber {
-    height: fit-content;
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 43px;
-  }
-
-  .progressStageCart .progressStep .progressName {
-    color: #d2d2d2;
-    font-size: 20px;
-    font-weight: 600;
-    height: fit-content;
-    letter-spacing: -0.44px;
-    width: 80px;
-  }
-
-  .progressStageCart .progressStep.on .progressNumberCover {
-    background-color: #ff8181;
-  }
-
-  .progressStageCart .progressStep.on .progressNumberCover .progressNumber {
-    color: #fff;
-  }
-
-  .progressStageCart .progressStep.on .progressName {
-    color: #ff8181;
-  }
-
-  .progressStageCart .progressStep.on:after {
-    background-color: #ff8181;
-    content: "";
-    height: 3px;
-    left: 43px;
-    position: absolute;
-    top: 20px;
-    width: 100px;
-    z-index: auto;
-  }
-
-  .progressStageCart .progressStep.step2.on:after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-  }
-
-  .progressStageCart .progressStep.step3.on:after {
-    left: auto;
-    right: 0;
-  }
-
-  .progressStep.step1.on {
-    align-items: flex-start;
-    color: #ff8181;
-  }
-
-  .progressStageCart .progressStep {
-    color: #b6b6b6;
-    display: flex;
-    flex-direction: column;
-    font-size: 25px;
-    font-weight: 700;
-    gap: 10px;
-    height: 100%;
-    letter-spacing: -0.5px;
-    line-height: 0.8;
-    margin: initial;
-    text-align: center;
-    width: 33%;
-  }
 }
 
-/*******************************************/
-/************** selectContent **************/
-/*******************************************/
+.progressStageCart .progressStep.step1 {
+  align-items: flex-start;
+}
 
-.selectContent {
-  display: flex;
-  flex-direction: row;
+.progressStageCart .progressStep.step2 {
+  align-items: center;
+}
+
+.progressStageCart .progressStep.step3 {
+  align-items: flex-end;
+}
+
+.progressStageCart .progressStep.step3 .progressName {
+  right: -20px;
+}
+
+.progressStageCart .progressStep .progressNumberCover {
+  background-color: #e6e6e6;
+  border-radius: 25px;
+  height: 43px;
+  width: 43px;
+  z-index: 1;
+}
+
+.progressStageCart .progressStep .progressNumberCover .progressNumber {
+  height: fit-content;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 43px;
+}
+
+.progressStageCart .progressStep .progressName {
+  color: #d2d2d2;
+  font-size: 20px;
+  font-weight: 600;
+  height: fit-content;
+  letter-spacing: -0.44px;
+  width: 80px;
+}
+
+.progressStageCart .progressStep.on .progressNumberCover {
+  background-color: #ff8181;
+}
+
+.progressStageCart .progressStep.on .progressNumberCover .progressNumber {
+  color: #fff;
+}
+
+.progressStageCart .progressStep.on .progressName {
+  color: #ff8181;
+}
+
+.progressStageCart .progressStep.on:after {
+  background-color: #ff8181;
+  content: "";
+  height: 3px;
+  left: 43px;
+  position: absolute;
+  top: 20px;
+  width: 100px;
+  z-index: auto;
+}
+
+.progressStageCart .progressStep.step2.on:after {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+}
+
+.progressStageCart .progressStep.step3.on:after {
+  left: auto;
+  right: 0;
+}
+
+/* ================= 체크박스 : 전체선택 | 선택삭제 ================= */
+/* ================= 체크박스 : 전체선택 | 선택삭제 ================= */
+/* ================= 체크박스 : 전체선택 | 선택삭제 ================= */
+body input[type="checkbox"],
+html input[type="checkbox"] {
+  display: none;
+}
+
+/* =================체크박스 클릭 해제 시 회색 빈체크 이미지 ================= */
+body input[type="checkbox"] + label,
+html input[type="checkbox"] + label {
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPBAMAAADJ+Ih5AAAAG1BMVEVHcEzCwsK+vr7Q0NDDw8PCwsL///++vr709PQGxSHMAAAABnRSTlMA5HDxeHmi9OWTAAAALUlEQVQI12NgEi8HAiEGBue2NCBoVmCQANFpGQIMZWBGWgHVGHCT4XaxQm0HANMkLNAjvrBbAAAAAElFTkSuQmCC)
+      1x
+  );
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  cursor: pointer;
+  padding-left: 23px;
 }
 
 .cartContainer .selectProduct {
@@ -222,15 +224,16 @@ html div {
   padding-left: 35px;
 }
 
+/* =================체크박스 클릭시 핑크색 체크 이미지 ================= */
 .cartContainer .selectProduct input[type="checkbox"]:checked + label {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAAANlBMVEVHcEz/4ub/gYH////e1tbp1tju2dv83uHx297k1Nb/iIj/mpr/u7z/+Pj/o6P/kJD/7Oz/zMyg+B5OAAAACnRSTlMA////H8Db/uxoaqo1qAAAAQxJREFUSMe9ldEagyAIRi1qGFjW+7/soH2tbcrCXey/7WQHUglBM40ROzsYxykcGWJ3nTg84Ak7T3BfflA4MfV2iJPiurpoIPdXYVkzioe8dQ0LLtwURtHoPRGZUUXYRbOqiA+5aJL6guj0vgh5SafcQG8wk5tOAJC9NAu8eU1oBVjJSyPAnL09UenF28E36ZLmXEjbfyfBzKZ0QW8AnSld0FmeJ0u69E7nt2n+kK70ROpCQ7pCL4drKV3rtxSqW255rcCmtcfbLo2e07C7IJyb+vvZERJq0nVaLWrSxq7SdqD/FGNV2qJpod9viP/Rbfdg2x3bdn+3zYaGuXNrnmlt89I5i2/Dc3Z75/wd0aAT2PlRkOYAAAAASUVORK5CYII=);
 }
 
+/* =================체크박스 클릭 해제 시 회색 빈체크 이미지 ================= */
 .cartContainer .selectProduct input[type="checkbox"]:disabled + label {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAJFBMVEVHcEzU1NTU1NTf39/U1NTU1NTT09PU1NTU1NTs7OzU1NTj4+Nsh7JkAAAACXRSTlMAOuAQgMDwsKAnY1CMAAAAhElEQVQ4y2NgYGB0zVqFDFIdGUCAuWoVOigGiQthCK9aJABUrrVq90wUMHvXKmUGBvZVq2eigdmrljMwSK3aiS4+c9cqAQYvDOUgDQ4MUVjFAxiyVmKKz1yVwLAKq/iCUfFRcbqK40qfuNIzrvSPK79gzV8rcOdHXPkXW35vBhcEWMsHAKIMW1R9yBhuAAAAAElFTkSuQmCC);
 }
 
-/** label **/
 .cartContainer .selectProduct label {
   display: flex;
   min-width: 105px;
@@ -241,5 +244,1073 @@ html div {
   height: fit-content;
   margin: -1px 0 0 7px;
   padding: 0 12px 0 0;
+  width: fit-content;
+}
+
+.cartContainer .selectProduct label .selectedProductCount span {
+  font-family: Noto Sans KR, sans-serif;
+  width: fit-content;
+}
+
+.cartContainer .selectProduct label .selectedProductCount:after {
+  background-color: #b6b6b6;
+  content: "";
+  display: block;
+  height: 19px;
+  position: absolute;
+  right: 0;
+  top: 4px;
+  width: 2px;
+}
+
+.cartContainer .selectProduct .deleteSelectedProduct {
+  cursor: pointer;
+  font-weight: 500;
+  width: fit-content;
+}
+
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+
+.cartProductContainer {
+  height: fit-content;
+  margin-bottom: 30px;
+  min-height: 300px;
+  text-align: center;
+  width: 100%;
+  width: 850px;
+}
+
+.cartProductContainer input[type="checkbox"] + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAJFBMVEVHcEy+vr6/v7+/v7++vr6+vr6+vr6/v7////++vr7v7+/W1tYYNmoCAAAACHRSTlMA6BBAwICsMG+e1swAAACESURBVDjLY2BgYA6RnIkMRIIZQIApcyY6SAKJF2IIz5xYAFQuOXNXBwro2jlTiIGBbeasDjTQNXMaA4PlzBXo4h0rZxowRM7GEO7onhnA4DkLU7xrpgOD5AxM8Y6ZAgwzsYpPGBUfFaerOK70iSs940r/uPILrvyFKz/iyr848zv28gEAJxsalTemyOAAAAAASUVORK5CYII=);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+  color: #333;
+  font-weight: 600;
+  height: 24px;
+  letter-spacing: -0.78px;
+  text-align: left;
+  width: 24px;
+}
+
+.cartProductContainer input[type="checkbox"]:checked + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAAANlBMVEVHcEz/4ub/gYH////e1tbp1tju2dv83uHx297k1Nb/iIj/mpr/u7z/+Pj/o6P/kJD/7Oz/zMyg+B5OAAAACnRSTlMA////H8Db/uxoaqo1qAAAAQxJREFUSMe9ldEagyAIRi1qGFjW+7/soH2tbcrCXey/7WQHUglBM40ROzsYxykcGWJ3nTg84Ak7T3BfflA4MfV2iJPiurpoIPdXYVkzioe8dQ0LLtwURtHoPRGZUUXYRbOqiA+5aJL6guj0vgh5SafcQG8wk5tOAJC9NAu8eU1oBVjJSyPAnL09UenF28E36ZLmXEjbfyfBzKZ0QW8AnSld0FmeJ0u69E7nt2n+kK70ROpCQ7pCL4drKV3rtxSqW255rcCmtcfbLo2e07C7IJyb+vvZERJq0nVaLWrSxq7SdqD/FGNV2qJpod9viP/Rbfdg2x3bdn+3zYaGuXNrnmlt89I5i2/Dc3Z75/wd0aAT2PlRkOYAAAAASUVORK5CYII=);
+}
+
+.cartProductContainer input[type="checkbox"]:disabled + label {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAJFBMVEVHcEzU1NTU1NTf39/U1NTU1NTT09PU1NTU1NTs7OzU1NTj4+Nsh7JkAAAACXRSTlMAOuAQgMDwsKAnY1CMAAAAhElEQVQ4y2NgYGB0zVqFDFIdGUCAuWoVOigGiQthCK9aJABUrrVq90wUMHvXKmUGBvZVq2eigdmrljMwSK3aiS4+c9cqAQYvDOUgDQ4MUVjFAxiyVmKKz1yVwLAKq/iCUfFRcbqK40qfuNIzrvSPK79gzV8rcOdHXPkXW35vBhcEWMsHAKIMW1R9yBhuAAAAAElFTkSuQmCC);
+}
+
+.cartContainer .contents:first-child {
+  padding: 40px 0;
+}
+
+.cartContainer .contents.cardContents {
+  display: flex;
+  gap: 40px;
+  padding-top: 10px;
+}
+
+.cartContainer .contents:first-child {
+  padding: 40px 0;
+}
+
+.cartContainer .contents.cardContents {
+  display: flex;
+  gap: 40px;
+  padding-top: 10px;
+}
+
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+/* ================= 하단 메인 내용 : 장바구니 목록 및 전체 합계 ================= */
+
+.cartContainer .contentsBackground {
+  background-color: #efefef;
+  height: fit-content;
+  margin-top: 20px;
+  padding: 25px 0;
+}
+
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 있을 때 ================= */
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 있을 때 ================= */
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 있을 때 ================= */
+
+/* ================= 장바구니 상품 목록 : Top - [ 상품 / 상품금액 / 배송비 ] ================= */
+.cartProductContainer .cardTop {
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #b6b6b6;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  height: auto;
+  padding: 20px 35px;
+  text-align: left;
+  width: 100%;
+}
+
+.cartProductContainer .cardTop * {
+  box-sizing: border-box;
+}
+
+.cartProductContainer .cardTop .label {
+  color: #333;
+  display: flex;
+  font-size: 15px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: -0.28px;
+}
+
+.cartProductContainer .cardTop .label.check {
+  flex: 0 0 5%;
+}
+
+.cartProductContainer .cardTop .label.product {
+  flex: 0 0 60%;
+}
+
+.cartProductContainer .cardTop .label.productPrice {
+  flex: 0 0 20%;
+}
+
+.cartProductContainer .cardTop .label.deliveryPrice {
+  flex: 0 0 12%;
+}
+
+/* ================= 장바구니 상품 목록 : Center - [ 상품 / 상품금액 / 배송비 ]에 대한 상세 정보 ================= */
+.cartProductContainer .cardCenter {
+  background-color: #fff;
+  box-sizing: border-box;
+  height: fit-content;
+  width: 100%;
+}
+
+.cartProductContainer .cardCenter * {
+  box-sizing: border-box;
+}
+
+.cartProductContainer .cardCenter .cartProductList {
+  display: flex;
+  flex-direction: column;
+  padding: 0 35px;
+  width: 100%;
+}
+
+.cartProductContainer .cardCenter .cartProductList .cartProductItem {
+  border-bottom: 1px solid #e6e6e6;
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+.cartProductContainer .cardCenter .cartProductList .cartProductItem:last-child {
+  border-bottom: none;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData {
+  box-sizing: border-box;
+  display: flex;
+  height: auto;
+  min-height: 124px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  * {
+  box-sizing: border-box;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach {
+  float: left;
+  height: inherit;
+  min-height: inherit;
+  position: relative;
+  width: fit-content;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.select {
+  align-items: center;
+  display: flex;
+  flex: 0 0 5%;
+  height: inherit;
+  padding: 40px 0;
+  width: 30px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.select
+  input[type="checkbox"]
+  + label {
+  display: block;
+  height: 30px;
+  width: 30px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product {
+  align-items: flex-start;
+  border-right: 1px solid #e6e6e6;
+  display: flex;
+  flex: 0 0 60%;
+  gap: 20px;
+  height: inherit;
+  min-height: inherit;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productImageCover {
+  background-color: #fff;
+  border: 1px solid #efefef;
+  display: block;
+  height: 122px;
+  width: 122px;
+}
+
+/* ================= 상품 이미지 사이즈 조절 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productImageCover
+  img {
+  display: block;
+  left: 50%;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ================= 상품 정보 좌측 정렬 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo {
+  text-align: left;
+}
+
+/* ================= 상품 내용 간격 조절 : 브랜드명 / 상품 이름 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productName {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.36px;
+  line-height: 1.5;
+  width: calc(100% - 10px);
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productName:first-child {
+  font-stretch: normal;
+  font-weight: 600;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productName:first-child {
+  font-stretch: normal;
+  font-weight: 600;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productNoOption
+  .numberStepper {
+  border-radius: 3px;
+  bottom: auto;
+  height: 15px;
+  left: auto;
+  margin-top: 10px;
+  padding: 6px 9px;
+  position: relative;
+  width: 64px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productNoOption
+  .numberStepper
+  input[type="number"] {
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.55px;
+  line-height: normal;
+  text-align: center;
+  width: 40px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.product
+  .productInfo
+  .productOptionType {
+  color: #707070;
+  font-size: 13px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.22px;
+  line-height: 1;
+  margin: 10px 0 5px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo {
+  border-right: 1px solid #e6e6e6;
+  flex: 0 0 20%;
+  font-family: pretendard, sans-serif;
+  padding: 20px 15px;
+  position: relative;
+  text-align: center;
+}
+
+/* ================= 할인된 상품금액의 글씨 굵기 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .salePrice {
+  color: #333;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.32px;
+  line-height: 1;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .salePrice
+  span {
+  font-family: Pretendard, sans-serif;
+  line-height: 1.35;
+  margin-left: 2px;
+}
+
+/* ================= 상품금액 할인전 가격표시 숨김 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .price {
+  color: #b6b6b6;
+  display: none;
+  font-size: 14px;
+  font-weight: 200;
+  height: fit-content;
+  letter-spacing: -0.26px;
+  line-height: 1;
+  margin: 5px auto 0;
+  position: relative;
+  text-decoration: line-through;
+  width: fit-content;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .price
+  span {
+  font-family: Pretendard, sans-serif;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+/* ================= 상품금액 할인전 가격표시 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .price.on {
+  display: flex;
+}
+
+/* ================= 주문하기 버튼 간격 조절 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button {
+  font-size: 14px;
+  height: fit-content;
+  width: max-content;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button.orderProduct,
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button.soldout {
+  border-radius: 6px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+  line-height: 1;
+  margin: 38px auto 0;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+/* ================= 주문하기 버튼 핑크색 테두리 및 글씨 적용 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button.orderProduct {
+  border: 1px solid #ff8181;
+  color: #ff8181;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button.saleEnd,
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.priceInfo
+  .button.soldout {
+  background-color: #f3f3f399;
+  border: 1px solid #d2d2d2;
+  color: #8d8d8d;
+  display: none;
+}
+
+/* ================= 배송비 간격 조절 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.deliveryPriceInfo {
+  flex-shrink: 0;
+  padding: 20px 10px;
+  text-align: center;
+  width: 95px;
+}
+
+/* ================= 배송비 글씨 조절 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.deliveryPriceInfo
+  .deliveryPrice {
+  color: #333;
+  font-family: pretendard, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.32px;
+  line-height: 1;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.deliveryPriceInfo
+  .deliveryPrice.gray {
+  color: #bebebe;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.deliveryPriceInfo
+  .deliveryPrice
+  span {
+  font-family: Pretendard, sans-serif;
+  margin-left: 2px;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.deliveryPriceInfo
+  .description {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  line-height: 1.33;
+  margin-top: 5px;
+  width: fit-content;
+}
+
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.delete {
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 5%;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* ================= 배송비 우측에 X 버튼 이미지 ================= */
+.cartProductContainer
+  .cardCenter
+  .cartProductList
+  .cartProductItem
+  .productData
+  .dataEach.delete
+  .deleteFromCart {
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAElBMVEWNjY2NjY1HcEyNjY2Ojo6NjY16sZNgAAAABnRSTlP7YQCBUUCAKuyEAAAAW0lEQVQI1yXO0QmAMAyE4StZINQJesZ37QQdQcH9ZzEX+5KfDw6KjfVe+NSNhmGK1UFRNIJhggyuORoVYd4ruBIq3P4Y7Z4V3g9TaJIEnjlJwq5JEgQiXP83ng+LCxB0Z9HDEQAAAABJRU5ErkJggg==)
+      1x
+  );
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 15px;
+  width: 15px;
+}
+
+/* ================= 배송비 글씨 간격 조절 ================= */
+.cartProductContainer .cardDeliveryPrice {
+  background-color: #f5f5f5;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 34px;
+}
+
+/* ================= 배송비 글씨 좌우로 ================= */
+.cartProductContainer .cardDeliveryPrice .cardDeliveryPriceItem {
+  font-size: 16px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+/* ================= 최종 배송비 글씨 굵게 ================= */
+.cartProductContainer .cardDeliveryPrice .cardDeliveryPriceItem.bold {
+  font-weight: 700;
+}
+
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 없을 때 ================= */
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 없을 때 ================= */
+/* ================= 하단 메인 내용 : 장바구니에 담긴 상품 없을 때 ================= */
+.cartContainer .contentsBackground .noData {
+  height: 660px;
+}
+/* ================= 장바구니가 없을 때 하트 이미지 ================= */
+.cartContainer .contentsBackground .noData:before {
+  background-image: image-set(
+    url(data:image/png;base64,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)
+      1x
+  );
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  display: block;
+  height: 104px;
+  left: 50%;
+  position: absolute;
+  top: 192px;
+  transform: translate(-50%);
+  width: 120px;
+}
+
+.cartContainer .contentsBackground .noData:after {
+  color: #333;
+  content: "장바구니에 담긴 상품이 없습니다.";
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  height: fit-content;
+  left: 0;
+  letter-spacing: -0.5px;
+  line-height: 0.8;
+  margin-top: 20px;
+  position: absolute;
+  text-align: center;
+  top: 300px;
+  width: 100%;
+}
+
+.cartContainer .contentsBackground .noData .continue {
+  display: block;
+  height: fit-content;
+  left: 50%;
+  position: absolute;
+  top: 340px;
+  transform: translateX(-50%);
+  width: fit-content;
+}
+
+.cartContainer .contentsBackground .noData .continue .button.continueShopping {
+  background-color: #fff;
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+  color: #606060;
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.36px;
+  line-height: 1.22;
+  margin: 30px auto 0;
+  padding: 8px 48px 8px 20px;
+  text-align: left;
+  width: fit-content;
+}
+
+/* ================= [ 쇼핑 계속하기 > ]에 있는 `>` 아이콘 ================= */
+.cartContainer
+  .contentsBackground
+  .noData
+  .continue
+  .button.continueShopping:after {
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAXBAMAAAAiiNiyAAAAHlBMVEVgYGBHcExgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGD7HXnAAAAACXRSTlMQANDP8C6UcEA/+dbuAAAAZElEQVQI1yXOIRKAIBCFYdBgXQIzRqptq0cgy5itNs8Cydu6+0v55j1gZ8MZkx0Jt/5OI6JsionCpDApXKmKqY2IuSpaEXB9H5w7WfbC/dF5n2vhf+vM8+h6NIkm0fe7/v2WhB9MSRTMkkpvoQAAAABJRU5ErkJggg==)
+      1x
+  );
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: block;
+  height: 15px;
+  position: absolute;
+  right: 20px;
+  top: 11px;
+  width: 7px;
+}
+
+/* ================= 전체 합계 =================*/
+/* ================= 전체 합계 =================*/
+/* ================= 전체 합계 =================*/
+
+.cartContainer .contentsBackground .cartTotalContainer {
+  background-color: #fff;
+  border-radius: 20px;
+  display: block;
+  height: 400px;
+  min-width: 300px;
+  padding: 25px 20px 35px;
+  position: sticky;
+  right: 0;
+  top: 200px;
+  width: auto;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .title {
+  color: #333;
+  font-size: 25px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.5px;
+  line-height: 0.8;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .label {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.28px;
+  line-height: 1.43;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .label .discountDetail {
+  cursor: pointer;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .label
+  .discountDetail.close,
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .label
+  .discountDetail.open {
+  display: none;
+  margin-left: 12px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .label
+  .discountDetail.close.on,
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .label
+  .discountDetail.open.on {
+  display: inline;
+  display: initial;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .price {
+  color: #333;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.32px;
+  text-align: center;
+  width: fit-content;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .price span {
+  display: block;
+  font-family: Noto Sans KR, sans-serif;
+  line-height: 1.15;
+  margin: 2px 0 0 2px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .price
+  span.currencyUnit {
+  font-family: Pretendard, sans-serif;
+  line-height: 1.25;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .price.selectedDeliveryPrice {
+  padding-left: 19px;
+}
+
+/* [총 배송비 + ]에서 `+` 아이콘 이미지 */
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .price.selectedDeliveryPrice:after {
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALBAMAAABbgmoVAAAAGFBMVEVubm5vb29HcExvb29wcHBvb29ubm5vb2/gmeFGAAAACHRSTlNCvACqGc107SCTCuMAAAAoSURBVAjXY1BSYlZSUmBQUmLEpBgYUhkYHBgMBcMFDRkwlKDqcwBSACALB7XvNbYFAAAAAElFTkSuQmCC)
+      1x
+  );
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  display: block;
+  height: 11px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .price.selectedDiscountPrice {
+  color: #ff8181;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+  line-height: 1.25;
+  padding-left: 19px;
+}
+
+/* [총 할인금액 - ] 에서 `-` 아이콘 이미지 */
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .price.selectedDiscountPrice:after {
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAABAgMAAAB1WbzTAAAADFBMVEX/gYH/gID/gYH/gYEVImARAAAAA3RSTlPd51+VzEvzAAAADElEQVQI12Oo/28BAAO3AbcBK0sUAAAAAElFTkSuQmCC)
+      1x
+  );
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .price.orderPriceTotal {
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.4px;
+  line-height: 1;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .cartTotalDataList {
+  height: fit-content;
+  margin-top: 15px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .cartTotalDataList
+  .cartTotalDataItem {
+  border-bottom: 1px solid #b6b6b6;
+  display: flex;
+  height: fit-content;
+  padding: 18px 20px 16px;
+  width: calc(100% - 40px);
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .cartTotalDataList
+  .cartTotalDataItem:first-child {
+  border-top: 1px solid #8d8d8d;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .cartTotalDataList
+  .cartTotalDataItem:last-child {
+  border-bottom: 1px solid #8d8d8d;
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .orderTotal {
+  background-color: #f8f8f8;
+  display: flex;
+  height: fit-content;
+  margin: 14px 0 19px;
+  padding: 18px 20px 16px;
+  width: calc(100% - 40px);
+}
+
+.cartContainer .contentsBackground .cartTotalContainer .button.buy.cover {
+  background-color: #ff8181;
+  border-radius: 4px;
+  display: flex;
+  height: 49px;
+  margin: 0 auto;
+  width: 209px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .button.buy.cover
+  .buttonInner {
+  display: flex;
+  height: fit-content;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .button.buy.cover
+  .buttonInner
+  .label {
+  color: #fff;
+  display: block;
+  font-size: 28px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.56px;
+  line-height: 1.43;
+  margin-top: 5px;
+  width: fit-content;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .button.buy.cover
+  .buttonInner
+  .orderProductCountCover {
+  background-color: #fff;
+  border-radius: 25px;
+  display: block;
+  height: 27px;
+  margin: 11px 0 0 12px;
+  width: 27px;
+}
+
+.cartContainer
+  .contentsBackground
+  .cartTotalContainer
+  .button.buy.cover
+  .buttonInner
+  .orderProductCountCover
+  .orderProductCount {
+  color: #ff8181;
+  display: block;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.56px;
+  line-height: 1.43;
+  margin-top: -5px;
+  text-align: center;
+}
+
+.cartContainer .bannerBand {
+  height: 70px !important;
+  margin: 70px 0 90px !important;
+}
+
+.cartContainer .recommendedProducts {
+  height: fit-content;
+  margin-top: 90px;
+}
+
+.cartContainer .recommendedProducts .title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  height: fit-content;
+  letter-spacing: -0.36px;
+  line-height: 1.11;
+  text-align: left;
+}
+
+.cartContainer .recommendedProducts .title span {
+  color: #ff8181;
+  font-weight: 700;
+}
+
+.cartContainer .recommendedProducts .pagination {
+  display: flex;
+  height: fit-content;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: fit-content;
 }
