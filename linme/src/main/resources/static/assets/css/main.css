@@ -1,0 +1,180 @@
+.mainContent {
+  /* background-color: violet; */
+  margin: auto;
+  position: relative;
+  /* top: 100%;*/
+}
+
+/* 제품박스 영역 */
+.contents {
+  position: relative;
+  border: 1px solid rebeccapurple;
+  margin-top: 20px;
+  margin: 0 auto;
+  width: 1200px;
+  height: 500px;
+}
+
+/* 어떤 영양제를 찾으세요? */
+.title {
+  font-size: 28px;
+  color: #333;
+  font-weight: 700px;
+}
+
+/* 고민을 선택해 주세요 */
+.subtitle {
+  font-size: 22px;
+  color: #787878;
+  font-weight: 700px;
+}
+
+/* 메인 컨텐츠 영역 */
+.headerMenu {
+  display: flex;
+  font-size: 22px;
+  color: #787878;
+  font-weight: 700px;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+/* 비타민충전타임 등  */
+.headerMenutitle {
+  justify-content: center;
+  display: flex;
+  font-size: 24px;
+  font-weight: 800;
+  padding-bottom: 20px;
+  gap: 14px;
+
+  button {
+    width: 26px;
+    height: 26px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* 상품 정렬 영역 */
+.headerMenutitleimg {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/* 상품 이미지 */
+.boximg {
+  border: 1px solid rebeccapurple;
+  width: 192px;
+}
+
+/* 제품 이미지사진 */
+.imgbox {
+  width: 100%;
+  height: 192px;
+  object-fit: cover;
+}
+
+/* 제품 정보 */
+/* 내용 */
+.productName {
+  -webkit-line-clamp: 2; /* 내용 줄 수 지정 */
+  -webkit-box-orient: vertical;
+  word-wrap: normal;
+  display: -webkit-box;
+  font-size: 18px;
+  letter-spacing: -0.07px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #333;
+  margin-bottom: 0;
+}
+/* 할인가 */
+.discountRate {
+  margin-bottom: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff8181;
+  letter-spacing: -0.44px;
+}
+/* 원래가격 */
+.originalPrice {
+  margin-bottom: 0;
+  color: #b6b6b6;
+  font-weight: normal;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: line-through;
+  width: auto;
+}
+/* 할인가 / 원래가격 한줄로 배치*/
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 가격 간의 간격 */
+}
+/* 세일가격 */
+.salePrice {
+  margin-bottom: 0;
+  font-size: 21px;
+  font-weight: 700;
+  margin-right: 10px;
+  color: #333;
+}
+/* 무료배송 */
+.shippingInfo {
+  color: #bebebe;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 200;
+}
+
+/* 중간 바 
+* 상품메인과 전체상품 중간에 있는 바 
+*/
+.topicContainer {
+  border-bottom: 12px solid #f3f3f3;
+}
+
+/* 전체상품영역 */
+.allProductList {
+  color: #333;
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+/*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순*/
+.productDisplayOrder {
+  color: #a5a5a5;
+  display: flex;
+  font-size: 15px;
+  font-weight: 400;
+  gap: 10px;
+  justify-content: flex-end;
+
+  a {
+    color: #a5a5a5;
+  }
+}
+
+.productDisplayOrder li::after {
+  content: "|";
+  color: #a5a5a5;
+  margin-left: 10px;
+}
+
+.productDisplayOrder li:last-child::after {
+  content: ""; /*마지막 | 지우기*/
+  margin: 0;
+  color: #a5a5a5;
+}
