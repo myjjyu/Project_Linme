@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/assets/css/common.css" />
     <link rel="stylesheet" href="../static/assets/css/login.css" />
-    <title>Document</title>
+    <title>린미-로그인</title>
 </head>
-
 <body>
     <main>
-
-        <div class="container underTopMenu login">
+        <div class="login">
             <div class="contents">
                 <div class="loginCover">
                     <div class="title">로그인</div>
@@ -24,7 +22,8 @@
                         </li>
                         <li class="userInput">
                             <input class="userPW" name="userPW" id="userPW" type="password" placeholder="비밀번호 입력">
-                            <div class="pwShowHide close">
+                            <div class="pwShowHide">
+                                <img id="pwShowHide" src="../static/assets/img/login/password.png">
                             </div>
                         </li>
                     </ul>
@@ -47,7 +46,7 @@
                     <div class="buttonCover">
                         <div class="buttonLogin">로그인</div>
                     </div>
-
+                    <div class="solid"></div>
                     <!-- 로그인 가능한 타사이트별 사진에 링크걸기 -->
                     <div class="snsLoginCover">
                         <div class="snsLoginTitle">SNS 로그인</div>
@@ -83,3 +82,5 @@
         </div>
     </main>
 </body>
+<script src="../static/assets/js/login.js"></script>
+</html>
