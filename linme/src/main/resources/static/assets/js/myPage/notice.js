@@ -1,33 +1,12 @@
-/* 공지사항 내용을 표시하거나 숨기는 함수*/
-function showNoticeContent(id) {
-  // 선택된 공지사항 내용 요소 가져오기
-  const contentRow = document.getElementById("content" + id);
-
-  // 현재 표시 상태에 따라 보여주거나 숨기기
-  if (contentRow.style.display === "table-row") {
-      contentRow.style.display = "none";
-  } else {
-      // 모든 공지사항 내용 숨기기
-      document.querySelectorAll(".noticeDetailContent").forEach(row => row.style.display = "none");
-
-      // 선택된 공지사항 내용 업데이트 및 표시
-      contentRow.style.display = "table-row";
-      contentRow.querySelector("td").innerHTML = 
-      `<p>${contentRow.getAttribute("data-content")}</p>`;
-  }
-}
-
-
-/** 긴 텍스트에서 줄바꿈을 <br>로 변환*/
+/** 긴 텍스트에서 줄바꿈을 <br>로 변환하는 함수*/
 function formatTextWithLineBreaks(text) {
     return text.replace(/\n/g, "<br>");
 }
 
+/* 공지사항 내용을 표시하거나 숨기는 함수 */
 function showNoticeContent(id) {
+    // 선택된 공지사항 내용 요소 가져오기
     const contentRow = document.getElementById("content" + id);
-    const noticeDetailContent = document.querySelector(".noticeDetailContent");
-
-    // 예시로 긴 내용을 객체에 저장
     const contents = {
     1:`린미(Linme) 서비스 이용약관
 
@@ -719,10 +698,12 @@ function showNoticeContent(id) {
 
     };
 
+   
     if (contentRow.style.display === "table-row") {
         contentRow.style.display = "none";
     } else {
         document.querySelectorAll(".noticeDetailContent").forEach(row => row.style.display = "none");
+
         contentRow.innerHTML = `<td colspan="2">${formatTextWithLineBreaks(contents[id])}</td>`;
         contentRow.style.display = "table-row";
     }
