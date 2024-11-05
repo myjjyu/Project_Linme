@@ -1,0 +1,79 @@
+/*공지사항 틀*/
+.noticeContainer{
+    margin-top: -20px;
+}
+/*공지사항 제목*/
+.noticeTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-top:28px;
+    padding: 10px;
+}
+/*공지사항*/
+.noticeTable {
+    flex:1;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 960px;
+    padding: 0 40px;
+}
+.noticeTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.noticeTable th {
+    padding: 20px; 
+    text-align: center; 
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+}
+.noticeTable td {
+    padding: 20px; 
+    text-align: left; 
+    border-bottom: 1px solid #ddd;
+}
+/*제목*/
+.noticeTable td:first-child {
+    text-align: left; 
+}
+/*날짜*/
+.noticeTable td:last-child {
+    text-align: center; 
+    width: 150px; 
+}
+.noticeTable tbody tr:last-child td {
+    border-bottom: none; 
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.pagination span {
+    margin: 0 5px;
+    cursor: pointer;
+}
+.noticeDetailContent{
+    display: none;
+    margin-top: 20px;
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    border-left: none;
+    border-right:none;
+    font-size: 14px; 
+    line-height: 1.6; 
+}
+.noticeDetailContent td {
+    text-align: left !important; 
+    vertical-align: top;
+}

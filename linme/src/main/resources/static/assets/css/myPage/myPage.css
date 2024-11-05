@@ -101,7 +101,13 @@
     font-weight: bold;
     color: #333;
 }
-
+/*쇼핑,고객센터,하위내용 그룹*/
+.contentContainer{
+    display: flex;
+    gap:20px;
+    margin-top:20px;
+    align-items: flex-start;
+}
 /*쇼핑 및 고객센터*/
 .menuContainer {
     margin-top: 20px;
@@ -136,7 +142,13 @@
     width: 180px; 
     position:relative;
 }
-
+.menuSection ul li.active {
+    background-color: #fff0f2 !important;
+    color: #ff697b !important;
+}
+.menuSection ul li.active a{
+    color: #ff697b !important;
+}
 .menuSection ul li a {
     text-decoration: none;
     color: #8d8d8d;
