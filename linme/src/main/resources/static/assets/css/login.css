@@ -79,8 +79,8 @@
     border-top-right-radius: 0;
     margin-top: -1px
 }
-
-.login .loginCover .inputList .userInput .pwShowHide {
+/* 비번 보였다 안보였다 이미지 */
+.login .loginCover .inputList .userInput .pwShowHide img{
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -93,6 +93,122 @@
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
-    z-index: 1
 }
 
+/* 추가 css */
+
+.login .loginCover .otherCover {
+    color: #787878;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 10px 10px;
+    justify-content: space-between;
+    letter-spacing: -.26px;
+    margin-top: 10px
+}
+
+.login .loginCover .otherCover .findAndSignIn {
+    display: flex;
+    gap: 4px;
+    max-height: 15px
+}
+
+.login .loginCover .otherCover .findAndSignIn li {
+    float: left;
+    height: auto;
+    min-height: auto;
+    width: fit-content
+}
+
+.login .loginCover .otherCover .findAndSignIn li:last-child {
+    margin-right: 0
+}
+
+.login .loginCover .buttonCover {
+    margin-top: 30px
+}
+
+.login .loginCover .buttonCover .buttonLogin {
+    background-color: #ff697b;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    height: 39px;
+    letter-spacing: -.4px;
+    line-height: 2;
+    margin: 0 auto;
+    max-width: 413px;
+    text-align: center;
+    width: 100%
+}
+
+.login .loginCover .buttonCover:after {
+    background-color: #b6b6b6;
+    bottom: -20px;
+    content: "";
+    display: block;
+    height: .5px;
+    left: 0;
+    position: absolute;
+    width: 100%
+}
+
+.login .loginCover .snsLoginCover {
+    height: fit-content;
+    margin-top: 30px;
+    text-align: center
+}
+
+.login .loginCover .snsLoginCover .snsLoginTitle {
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    height: 21px;
+    letter-spacing: -.36px;
+    line-height: 2.11
+}
+
+.login .loginCover .snsLoginCover .snsLogin {
+    height: 77px;
+    margin: 22px auto;
+    width: fit-content
+}
+
+.login .loginCover .snsLoginCover .snsLogin li {
+    float: left;
+    margin: 0 8px;
+    width: 50px
+}
+
+.login .loginCover .snsLoginCover .snsLogin li:first-child {
+    margin-left: 0
+}
+
+.login .loginCover .snsLoginCover .snsLogin li:last-child {
+    margin-right: 0
+}
+
+.login .loginCover .snsLoginCover .snsLogin li img {
+    height: 50px;
+    width: 50px
+}
+
+.login .loginCover .snsLoginCover .snsLogin li .snsName {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -.28px;
+    line-height: 1.07;
+    margin-top: 11px;
+    text-align: center
+}
+/* 중간선 */
+.solid {
+    width: 100%;
+    border-bottom: 1.5px solid #d2d2d2;
+    margin: 30px 0;
+  }
