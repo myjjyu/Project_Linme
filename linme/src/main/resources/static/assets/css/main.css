@@ -7,8 +7,8 @@
 
 /* 제품박스 영역 */
 .contents {
+  /* border: 1px solid rebeccapurple; */
   position: relative;
-  border: 1px solid rebeccapurple;
   margin-top: 20px;
   margin: 0 auto;
   width: 1200px;
@@ -145,7 +145,7 @@
   border-bottom: 12px solid #f3f3f3;
 }
 
-/* 전체상품영역 */
+/* 전체상품텍스트 */
 .allProductList {
   color: #333;
   font-size: 21px;
@@ -153,7 +153,7 @@
   margin-top: 30px;
 }
 
-/*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순*/
+/*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순 텍스트*/
 .productDisplayOrder {
   color: #a5a5a5;
   display: flex;
@@ -164,6 +164,10 @@
 
   a {
     color: #a5a5a5;
+  }
+
+  .active {
+    color: #ff8181;
   }
 }
 
@@ -178,3 +182,13 @@
   margin: 0;
   color: #a5a5a5;
 }
+
+/* 전체상품 리스트 영역 */
+#productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between; 
+  margin-top: 20px;
+}
+

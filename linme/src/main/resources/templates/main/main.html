@@ -27,13 +27,12 @@
           <div>아이콘 자리</div>
         </div>
 
-
-       <!-- 메인 컨텐츠 영역 -->
+        <!-- 메인 컨텐츠 영역 -->
         <div id="productContainer">
           <!--
            자바스크립트 반복문 
             -->
-        <!-- <div class="contents">
+          <!-- <div class="contents">
           <div class="headerMenu">내 몸의 활력을 위한 멀티 비타민</div>
           <div class="headerMenutitle">
             💪비타민 충전타임💪
@@ -66,91 +65,60 @@
         </div>
       </div>
 
-        <!-- 중간 바 -->
-        <div class="topicContainer"></div>
+      <!-- 중간 바 -->
+      <div class="topicContainer"></div>
 
-        <!-- 전체상품 영역 -->
-        <div class="contents" id="vitaminSection">
-          <div class="allProductList">전체상품</div>
-          <ul class="productDisplayOrder">
-            <li><a href="#">추천순</a></li>
-            <li><a href="#">혜택순</a></li>
-            <li><a href="#">낮은 가격순</a></li>
-            <li><a href="#">높은 가격순</a></li>
-          </ul>
+      <!-- 전체상품 영역 -->
+      <div class="contents" id="vitaminSection">
+        <div class="allProductList">전체상품</div>
+        <ul class="productDisplayOrder">
+          <li>
+            <a href="#" class="sort-button active" id="recommended">추천순</a>
+          </li>
+          <li><a href="#" class="sort-button" id="benefit">혜택순</a></li>
+          <li>
+            <a href="#" class="sort-button" id="low-price">낮은 가격순</a>
+          </li>
+          <li>
+            <a href="#" class="sort-button" id="high-price">높은 가격순</a>
+          </li>
+        </ul>
 
-          <!-- 전체상품 이미지 리스트 -->
-          <div class="headerMenutitleimg">
-            <ul class="boximg">
-              <li>
-                <a href="#">
-                  <img src="#" alt="제품이미지" />
-                  <p>내용</p>
-                  <p>가격</p>
-                  <p>할인가</p>
-                  <p>무료배송</p>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="boximg">
-              <li>
-                <a href="#">
-                  <img src="#" alt="제품이미지" />
-                  <p>내용</p>
-                  <p>가격</p>
-                  <p>할인가</p>
-                  <p>무료배송</p>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="boximg">
-              <li>
-                <a href="#">
-                  <img src="#" alt="제품이미지" />
-                  <p>내용</p>
-                  <p>가격</p>
-                  <p>할인가</p>
-                  <p>무료배송</p>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="boximg">
-              <li>
-                <a href="#">
-                  <img src="#" alt="제품이미지" />
-                  <p>내용</p>
-                  <p>가격</p>
-                  <p>할인가</p>
-                  <p>무료배송</p>
-                </a>
-              </li>
-            </ul>
-
-            <ul class="boximg">
-              <li>
-                <a href="#">
-                  <img src="#" alt="제품이미지" />
-                  <p>내용</p>
-                  <p>가격</p>
-                  <p>할인가</p>
-                  <p>무료배송</p>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <!-- 전체상품 이미지 리스트 -->
+        <!-- 자바스크립트 -->
+        <div id="productListContainer"></div>
+        <div id="productList">
+          <!-- <div class="headerMenutitleimg">
+            <div class="boximg">
+              <a href="./상세페이지">
+                <img
+                  src="../../static/assets/img/main/네츄럴메이드 멀티비타민.jpg "
+                  alt="제품이미지"
+                  class="imgbox"
+                />
+                <p class="productName">내용</p>
+                <p class="discountRate">할인가</p>
+                <p class="originalPrice">원래가격</p>
+                <p class="salePrice">세일가격</p>
+                <p class="shippingInfo">무료배송</p>
+              </a>
+            </div>
+          </div> -->
         </div>
       </div>
     </main>
 
     <!-- 푸터 -->
     <footer></footer>
+    <link
+      rel="stylesheet"
+      href="/linme/src/main/resources/static/data/main.json"
+    />
 
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/assets/js/header.js"></script>
     <script src="../../static/assets/js/main.js"></script>
+    <script src="../../static/assets/js/main_all_list.js"></script>
   </body>
 </html>

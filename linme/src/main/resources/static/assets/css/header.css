@@ -243,6 +243,8 @@
 }
 
 /* 신상품 베스트 특가상품 영역   */
+
+
 .headerItem {
   /* background-color: rgb(241, 200, 200); */
   margin: 0 auto;
@@ -259,18 +261,18 @@
   margin-right: 100px;
 }
 
-.deactivate {
-  color: #707070;
-  font-size: 15px;
-  font-weight: 600;
-  
-}
-
 /* 신상품, 베스트, 특가상품 각각의 메뉴를 클릭했을때의 css */
-/* .activate {
-  color: #ff697b;
+.activate {
+  color: #ff697b !important; 
   font-size: 15px;
   font-weight: 600;
   border-bottom: 2px solid #ff697b;
   padding-bottom: 2px;
-} */
+}
+
+.deactivate {
+  color: #707070;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: none; /* 비활성화된 메뉴에 언더바 없음 */
+}
