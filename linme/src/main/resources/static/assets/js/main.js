@@ -639,7 +639,7 @@ const icons = [
     title: "피부건강",
   },
   {
-    url: "../../static/assets/img/main/운동:근육.png",
+    url: "../../static/assets/img/main/운동근육.png",
     title: "운동/근육",
   },
   {
@@ -671,12 +671,12 @@ const icons = [
   { url: "../../static/assets/img/main/icon-list/갱년기.png", title: "갱년기" },
   { url: "../../static/assets/img/main/icon-list/임산부.png", title: "임산부" },
   {
-    url: "../../static/assets/img/main/icon-list/피로:활력.png",
+    url: "../../static/assets/img/main/icon-list/피로활력.png",
     title: "피로/활력",
   },
   { url: "../../static/assets/img/main/icon-list/장건강.png", title: "장건강" },
   {
-    url: "../../static/assets/img/main/icon-list/치아:잇몸.png",
+    url: "../../static/assets/img/main/icon-list/치아잇몸.png",
     title: "치아/잇몸",
   },
   { url: "../../static/assets/img/main/icon-list/빈혈.png", title: "빈혈" },
