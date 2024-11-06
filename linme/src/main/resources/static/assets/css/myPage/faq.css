@@ -1,0 +1,69 @@
+/*faq*/ 
+.faqContainer {
+    margin-top: -20px;
+}
+/*faq 제목*/
+.faqTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 28px;
+    padding: 10px;
+}
+/*faq*/
+.faqTable {
+    flex:1;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 960px;
+    padding: 0 40px;
+
+}
+.faqTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.faqQuestion {
+    cursor: pointer;
+    padding: 20px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faqAnswer{
+    display: none;
+}
+.faqAnswer td{
+    padding: 40px 20px  !important;
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    border-left: none;
+    border-right:none;
+    line-height: 2.3;
+    background-color: #f3f3f3;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.pagination span {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+
+
+
+

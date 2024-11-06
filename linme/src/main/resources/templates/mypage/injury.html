@@ -6,6 +6,7 @@
     <title>Linme</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/faq.css}" />
 </head>
 <body>
 
@@ -83,7 +84,31 @@
                         </ul>   
                     </div>
                 </div>
+                <!-- 1대 1 문의 화면 -->
+            <div class="injuryContainer">
+                <div class="injuryTitle">1:1문의</div>
+                    <div class="injuryTable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>문의</th>
+                                    <th>작성일</th>
+                                    <th>답변상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                
+                    <!-- 페이지 네비게이션 -->
+                    <div class="pagination">
+                        <span>&lt;</span>
+                        <span>1 / 1</span>
+                        <span>&gt;</span>
+                    </div>
+                </div>
             </div>
+        </div>    
     </div>
 
     <!-- Footer 영역 -->
@@ -92,6 +117,6 @@
     </footer>
 
 </body>
+<script th:src="@{/assets/js/myPage/faq.js}"></script>
 <script th:src="@{/assets/js/myPage/myPage.js}"></script>
 </html>
-
