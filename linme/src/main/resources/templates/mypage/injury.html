@@ -6,7 +6,7 @@
     <title>Linme</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
-    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/faq.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/injury.css}" />
 </head>
 <body>
 
@@ -86,26 +86,37 @@
                 </div>
                 <!-- 1대 1 문의 화면 -->
             <div class="injuryContainer">
-                <div class="injuryTitle">1:1문의</div>
-                    <div class="injuryTable">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>문의</th>
-                                    <th>작성일</th>
-                                    <th>답변상태</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                
-                    <!-- 페이지 네비게이션 -->
-                    <div class="pagination">
-                        <span>&lt;</span>
-                        <span>1 / 1</span>
-                        <span>&gt;</span>
+                <div class="injuryHeader">
+                    <h2 class="injuryTitle">1:1 문의</h2>
+                    <div class="injuryControls">
+                        <select class="inquirySelect">
+                            <option>전체</option>
+                            <option>로그인/계정</option>
+                            <option>상품</option>
+                            <option>주문/결제</option>
+                            <option>교환/환불/취소</option>
+                            <option>서비스/오류</option>
+                            <option>기타</option>
+                        </select>
+                        <button class="inquiryButton">문의하기</button>
                     </div>
+                </div>
+                <div class="injuryTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>문의</th>
+                                <th>작성일</th>
+                                <th>답변상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 여기에 문의 내역이 추가될 예정 -->
+                            <tr class="noInquiry">
+                                <td colspan="3">등록된 문의가 없습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>    
@@ -117,6 +128,5 @@
     </footer>
 
 </body>
-<script th:src="@{/assets/js/myPage/faq.js}"></script>
 <script th:src="@{/assets/js/myPage/myPage.js}"></script>
 </html>

@@ -1,0 +1,85 @@
+/* 1:1 문의 컨테이너 */
+.injuryContainer {
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+.injuryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.injuryTitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* 드롭다운과 버튼 컨트롤 */
+.injuryControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap:20px;
+}
+
+.injuryControls .inquirySelect {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+}
+
+.injuryControls .inquiryButton {
+    padding: 10px 20px;
+    background-color: #ff5f5f;
+    color: white;
+    border: none;   
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.injuryTable {
+    flex:1;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 960px;
+    padding: 0 40px;
+}
+
+.injuryTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.injuryTable th,
+.injuryTable td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    color: #333;
+}
+
+.injuryTable th {
+    font-weight: bold;
+    border-left: none;
+    border-right:none;
+}
+
+.noInquiry {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 20px;
+}

@@ -30,4 +30,29 @@ public class MypageController {
         model.addAttribute("reviewCount", 0);
         return "myPage/notice";
     }
+
+    @GetMapping("/myPage/faq")
+    public String faq(Model model) {
+        model.addAttribute("username", "사용자 이름");
+        model.addAttribute("grade", "등급");
+        model.addAttribute("reward", "리워드");
+
+        model.addAttribute("shoppingHistoryCount", 0); 
+        model.addAttribute("couponCount", 0);           
+        model.addAttribute("reviewCount", 0);
+        return "myPage/faq";
+    }
+
+    @GetMapping("/myPage/injury")
+    public String injury(Model model) {
+        model.addAttribute("username", "사용자 이름");
+        model.addAttribute("grade", "등급");
+        model.addAttribute("reward", "리워드");
+
+        model.addAttribute("shoppingHistoryCount", 0); 
+        model.addAttribute("couponCount", 0);           
+        model.addAttribute("reviewCount", 0);
+        return "myPage/injury";
+    }
+
 }
