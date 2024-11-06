@@ -1,10 +1,9 @@
-/* footer {
-  display: flex;
-  flex-direction: column;
+footer {
+  bottom: 0;
   width: 100%;
-  position: relative;
-  margin-bottom: 15px;
-} */
+  height: 100vh;
+  border: none;
+}
 
 .container {
   position: fixed;
@@ -28,8 +27,8 @@
 
   li {
     position: relative;
-    padding-right: 15px; 
-}
+    padding-right: 15px;
+  }
 }
 .footerInfo li::after {
   background-color: #6b6b6b99;

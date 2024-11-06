@@ -2,12 +2,46 @@
   /* background-color: violet; */
   margin: auto;
   position: relative;
-  /* top: 100%;*/
+  /* top: 100%; */
+}
+
+/*
+* 메인배너 라이브러리
+*/
+.swiper {
+  /* border: 1px solid red; */
+  width: 87%;
+  height: 360px;
+  /* margin-top: 170px; */ /*<=헤더랑 합친후 조절할 영역*/
+}
+.swiper-slide {
+  /* border: 1px solid red; */
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide img {
+  display: block;
+  width: 1200px;
+  height: 100%;
+  object-fit: cover;
+}
+/* 메인배너 화살표 스타일 변경*/
+.swiper-button-next,
+.swiper-button-prev {
+  color: #808080;
+  transform: translateY(-50%); /* 수직 중앙 정렬*/
+}
+
+/* 화살표 크기 변경*/
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 31px;
 }
 
 /* 제품박스 영역 */
 .contents {
-  /* border: 1px solid rebeccapurple; */
   position: relative;
   margin-top: 20px;
   margin: 0 auto;
@@ -20,14 +54,56 @@
   font-size: 28px;
   color: #333;
   font-weight: 700px;
+  margin-top: 200px;
+  font-weight: 900;
 }
 
 /* 고민을 선택해 주세요 */
 .subtitle {
   font-size: 22px;
   color: #787878;
-  font-weight: 700px;
+  font-weight: 900px;
 }
+
+/* 고민 아이콘 전체영역 */
+.iconContent {
+  /* border: 1px solid rgb(0, 0, 255); */
+  margin-top: 50px;
+}
+
+/* 아이콘 css */
+#icon {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    /* background-color: #b6b6b6; */
+    width: 92px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+
+    img {
+      height: 80%;
+      width: 70px;
+      margin: 0 auto;
+    }
+  }
+}
+
+#icon a.active {
+  color: #ff8181;
+}
+
 
 /* 메인 컨텐츠 영역 */
 .headerMenu {
@@ -71,7 +147,7 @@
 
 /* 상품 이미지 */
 .boximg {
-  border: 1px solid rebeccapurple;
+  /* border: 1px solid rebeccapurple; */
   width: 192px;
 }
 
@@ -80,6 +156,7 @@
   width: 100%;
   height: 192px;
   object-fit: cover;
+  margin-bottom: 5px;
 }
 
 /* 제품 정보 */
@@ -153,7 +230,11 @@
   margin-top: 30px;
 }
 
-/*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순 텍스트*/
+/*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순 텍스트 
+/ => 추천순은 기본으로 컬러 설정 
+/ => 각 텍스트 클릭시 컬러변경
+*/
+
 .productDisplayOrder {
   color: #a5a5a5;
   display: flex;
@@ -162,10 +243,17 @@
   gap: 10px;
   justify-content: flex-end;
 
-  a {
+  /* 클릭시 해당 텍스트 컬러*/
+  .sort-recommend .active {
+    color: #ff8181;
+  }
+
+  /* 기본값 컬러*/
+  .sort-button {
     color: #a5a5a5;
   }
 
+  /* 추천순은 기본값이 컬러이당*/
   .active {
     color: #ff8181;
   }
@@ -184,11 +272,10 @@
 }
 
 /* 전체상품 리스트 영역 */
-#productList {
+#productListContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between; 
+  gap: 60px;
   margin-top: 20px;
 }
 

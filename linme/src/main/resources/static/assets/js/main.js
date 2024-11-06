@@ -610,3 +610,113 @@ contentData.forEach((content) => {
   contentsDiv.appendChild(headerMenutitleimg);
   productContainer.appendChild(contentsDiv);
 });
+
+/*****************************************************/
+/* 메인영역 라이브러리
+/*****************************************************/
+var swiper = new Swiper(".mySwiper", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  loop: true,
+});
+
+/*****************************************************/
+/* 메인영역 어떤 영양제를 찾으세요? icon
+/*****************************************************/
+const icons = [
+  {
+    url: "../../static/assets/img/main/icon-list/혈액순환.png",
+    title: "혈액순환",
+  },
+  {
+    url: "../../static/assets/img/main/icon-list/피부건강.png",
+    title: "피부건강",
+  },
+  {
+    url: "../../static/assets/img/main/icon-list/운동:근육.png",
+    title: "운동/근육",
+  },
+  {
+    url: "../../static/assets/img/main/icon-list/남성건강.png",
+    title: "남성건강",
+  },
+  {
+    url: "../../static/assets/img/main/icon-list/여성건강.png",
+    title: "여성건강",
+  },
+  { url: "../../static/assets/img/main/icon-list/혈당.png", title: "혈당" },
+  { url: "../../static/assets/img/main/icon-list/눈건강.png", title: "눈건강" },
+  { url: "../../static/assets/img/main/icon-list/간건강.png", title: "간건강" },
+  { url: "../../static/assets/img/main/icon-list/뼈건강.png", title: "뼈건강" },
+  {
+    url: "../../static/assets/img/main/icon-list/다이어트.png",
+    title: "다이어트",
+  },
+  { url: "../../static/assets/img/main/icon-list/스트레스.png", title: "스트레스" },
+  { url: "../../static/assets/img/main/icon-list/기관지.png", title: "기관지" },
+
+  { url: "../../static/assets/img/main/icon-list/면역력.png", title: "면역력" },
+  { url: "../../static/assets/img/main/icon-list/혈관.png", title: "혈관" },
+  { url: "../../static/assets/img/main/icon-list/관절.png", title: "관절" },
+  {
+    url: "../../static/assets/img/main/icon-list/소화기건강.png",
+    title: "소화기건강",
+  },
+  { url: "../../static/assets/img/main/icon-list/갱년기.png", title: "갱년기" },
+  { url: "../../static/assets/img/main/icon-list/임산부.png", title: "임산부" },
+  {
+    url: "../../static/assets/img/main/icon-list/피로:활력.png",
+    title: "피로/활력",
+  },
+  { url: "../../static/assets/img/main/icon-list/장건강.png", title: "장건강" },
+  {
+    url: "../../static/assets/img/main/icon-list/치아:잇몸.png",
+    title: "치아/잇몸",
+  },
+  { url: "../../static/assets/img/main/icon-list/빈혈.png", title: "빈혈" },
+  { url: "../../static/assets/img/main/icon-list/항산화.png", title: "항산화" },
+  { url: "../../static/assets/img/main/icon-list/혈압.png", title: "혈압" },
+];
+
+// 아이콘 리스트 가져오기
+const iconContainer = document.getElementById("icon");
+
+// 이미지 반복
+icons.forEach((iconData) => {
+  const link = document.createElement("a");
+  link.href = "#"; // 클릭시 이동 경로(db연동후 주소수정)
+
+  // img 요소 생성
+  const img = document.createElement("img");
+  img.src = iconData.url;
+  img.alt = iconData.title;
+
+
+  const title = document.createElement("p");
+  title.textContent = iconData.title;
+
+  link.appendChild(img);
+  link.appendChild(title);
+  iconContainer.appendChild(link);
+});
+
+/*****************************/
+// 아이콘 클릭시 컬러변경 
+/*****************************/
+iconContainer.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    // 모든 링크에서 activate 클래스 제거하고 기본값 설정
+    iconContainer.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+
+    // 클릭된 링크에 activate 클래스 추가
+    this.classList.add('active');
+  });
+});
