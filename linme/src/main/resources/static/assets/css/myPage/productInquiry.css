@@ -1,0 +1,75 @@
+/* 1:1 문의 컨테이너 */
+.productInquiryContainer {
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+.productInquiryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.productInquiryTitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* 드롭다운과 버튼 컨트롤 */
+.productInquiryControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.productInquiryControls .productInquirySelect {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+}
+
+.productInquiryTable {
+    flex:1;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 960px;
+    padding: 0 40px;
+}
+
+.productInquiryTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.productInquiryTable th,
+.productInquiryTable td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    color: #333;
+}
+
+.productInquiryTable th {
+    font-weight: bold;
+    border-left: none;
+    border-right:none;
+}
+
+.noInquiry {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 20px;
+}

@@ -55,4 +55,15 @@ public class MypageController {
         return "myPage/injury";
     }
 
+    @GetMapping("/myPage/productInquiry")
+    public String productInquiry(Model model) {
+        model.addAttribute("username", "사용자 이름");
+        model.addAttribute("grade", "등급");
+        model.addAttribute("reward", "리워드");
+
+        model.addAttribute("shoppingHistoryCount", 0); 
+        model.addAttribute("couponCount", 0);           
+        model.addAttribute("reviewCount", 0);
+        return "myPage/productInquiry";
+    }
 }
