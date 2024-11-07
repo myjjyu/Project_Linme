@@ -1,25 +1,24 @@
 /* 1:1 문의 컨테이너 */
-.injuryContainer {
-    max-width: 960px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
+.inquiryContainer {
+    margin-top: 5px;
 }
-.injuryHeader {
+.inquiryHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top:18px;
     margin-bottom: 20px;
 }
 
-.injuryTitle {
-    font-size: 22px;
+.inquiryTitle {
+    font-size: 18px;
     font-weight: bold;
     color: #333333;
     margin-bottom: 20px;
 }
 
 /* 드롭다운과 버튼 컨트롤 */
-.injuryControls {
+.inquiryControls {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +26,7 @@
     gap:20px;
 }
 
-.injuryControls .inquirySelect {
+.inquiryControls .inquirySelect {
     width: 150px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -37,7 +36,7 @@
     color: #333;
 }
 
-.injuryControls .inquiryButton {
+.inquiryControls .inquiryButton {
     padding: 10px 20px;
     background-color: #ff5f5f;
     color: white;
@@ -46,22 +45,23 @@
     font-size: 14px;
 }
 
-.injuryTable {
+.inquiryTable {
     flex:1;
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 960px;
     padding: 0 40px;
+    margin-top: -20px;
 }
 
-.injuryTable table {
+.inquiryTable table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.injuryTable th,
-.injuryTable td {
+.inquiryTable th,
+.inquiryTable td {
     padding: 15px;
     border: 1px solid #ddd;
     font-size: 14px;
@@ -71,17 +71,32 @@
     color: #333;
 }
 
-.injuryTable th {
+.inquiryTable th {
     font-weight: bold;
     border-left: none;
     border-right:none;
 }
+.inquiryTable th:nth-child(1), .inquiryTable td:nth-child(1) {
+    width: 60%; /* 문의 */
+}
 
+.inquiryTable th:nth-child(2), .inquiryTable td:nth-child(2) {
+    width: 20%; /* 작성일 */
+}
+
+.inquiryTable th:nth-child(3), .inquiryTable td:nth-child(3) {
+    width: 20%; /* 답변상태 */
+}
 .noInquiry {
-    text-align: center;
-    color: #999;
+    color: #b6b6b6;
     font-size: 16px;
     padding: 20px;
+}
+.noInquiry td{
+    border:none;
+    text-align: center;
+    vertical-align: middle; 
+    height: 500px;
 }
 
 

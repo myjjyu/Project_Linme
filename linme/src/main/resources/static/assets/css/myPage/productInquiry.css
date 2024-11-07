@@ -1,8 +1,7 @@
-/* 1:1 문의 컨테이너 */
+/* 상품문의 컨테이너 */
 .productInquiryContainer {
-    max-width: 960px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    
 }
 .productInquiryHeader {
     display: flex;
@@ -12,13 +11,12 @@
 }
 
 .productInquiryTitle {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
-    color: #333333;
     margin-bottom: 20px;
 }
 
-/* 드롭다운과 버튼 컨트롤 */
+/* 드롭다운*/
 .productInquiryControls {
     display: flex;
     justify-content: space-between;
@@ -43,6 +41,7 @@
     border-radius: 5px;
     width: 960px;
     padding: 0 40px;
+    margin-top: -20px;
 }
 
 .productInquiryTable table {
@@ -60,16 +59,26 @@
     border-right: none;
     color: #333;
 }
+.productInquiryTable th:nth-child(1), .productInquiryTable td:nth-child(1) {
+    width: 60%; /* 문의 */
+}
 
-.productInquiryTable th {
-    font-weight: bold;
-    border-left: none;
-    border-right:none;
+.productInquiryTable th:nth-child(2), .productInquiryTable td:nth-child(2) {
+    width: 20%; /* 작성일 */
+}
+
+.productInquiryTable th:nth-child(3), .productInquiryTable td:nth-child(3) {
+    width: 20%; /* 답변상태 */
 }
 
 .noInquiry {
-    text-align: center;
-    color: #999;
     font-size: 16px;
-    padding: 20px;
+    padding: 40px 0;
+    color: #b6b6b6; 
+}
+.noInquiry td{
+    border:none;
+    text-align: center;
+    vertical-align: middle; 
+    height: 500px;
 }

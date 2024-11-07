@@ -6,6 +6,7 @@
     <title>Linme</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/refundAccount.css}" />
 </head>
 <body>
 
@@ -83,8 +84,67 @@
                         </ul>   
                     </div>
                 </div>
+            <!-- 환불 계좌 관리화면 -->
+            <div class="refundAccountContainer">
+                <h2 class="refundTitle">환불계좌 관리</h2>
+                <div class="refundContent">
+                    <div class="refundTable">
+                        <div class="formGroup">
+                            <label for="bank">은행</label>
+                            <select id="bank" class="refundSelect">
+                                <option>은행을 선택하세요.</option>
+                                <option>산업은행</option>
+                                <option>기업은행</option>
+                                <option>국민은행</option>
+                                <option>수협중앙회</option>
+                                <option>농협은행</option>
+                                <option>지역농축협</option>
+                                <option>우리은행</option>
+                                <option>SC은행</option>
+                                <option>씨티은행</option>
+                                <option>대구은행</option>
+                                <option>부산은행</option>
+                                <option>광주은행</option>
+                                <option>제주은행</option>
+                                <option>전북은행</option>
+                                <option>경남은행</option>
+                                <option>새마을금고</option>
+                                <option>신협</option>
+                                <option>저축은행</option>
+                                <option>산림조합</option>
+                                <option>우체국</option>
+                                <option>하나은행</option>
+                                <option>신한은행</option>
+                                <option>케이뱅크</option>
+                                <option>카카오뱅크</option>
+                                <option>토스뱅크</option>
+                            </select>
+                            <p class="requiredMessage">필수 입력 항목입니다.</p>
+                        </div>
+                            <div class="formGroup">
+                                <label for="accountNumber">계좌번호</label>
+                                <input type="text" id="accountNumber" placeholder="계좌번호를 입력해 주세요." class="refundInput" />
+                                <p class="requiredMessage">필수 입력 항목입니다.</p>
+                            </div>
+                            <button class="registerButton" disabled>환불계좌 등록</button>
+                    </div>    
+                        <div class="refundInfo">
+                            <h3><img th:src="@{/assets/img/myPage/mark.png}" class="mark-icon">환불 계좌 안내</h3>
+                            <p>무통장 입금 환불, 휴대폰 결제 취소의 경우, 입력하신 계좌로 환불해드립니다.</p>
+                            <p class="redFont">본인 명의의 계좌 외에는 등록이 불가합니다.<br>
+                            본인 명의의 계좌가 아닌 경우 발생하는 민형사상 불이익 및 손해에 대해 당사에서는 일체 책임지지 않습니다.</p>
+                            <p>아래의 경우에는 결제하신 수단으로 환불 됩니다.
+                                <ul>
+                                    <li>신용/체크카드 : 취소일자 기준 평균 3~7일 소요</li>
+                                    <li>휴대폰 : 당월(1~31일) 한해 전체취소 가능</li>
+                                    <li>계좌 간편결제 : 결제한 계좌와 동일한 계좌로 환불</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>    
             </div>
-    </div>
+        </div>    
 
     <!-- Footer 영역 -->
     <footer th:fragment="my-header">
@@ -94,4 +154,9 @@
 </body>
 <script th:src="@{/assets/js/myPage/myPage.js}"></script>
 </html>
+
+
+
+
+
 

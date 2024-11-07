@@ -1,0 +1,135 @@
+/* 환불 계좌 관리 */
+.refundAccountContainer {
+    margin-top: 20px;
+}
+.refundTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+.refundContent {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    gap: 20px;
+}
+.refundTable, .refundInfo {
+    width: 50%; 
+}
+.refundTable {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 600px;
+    margin: 0 auto;
+    width: 50%;
+}
+.formGroup {
+    margin-bottom: 20px;
+}
+.formGroup label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.requiredMessage {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+}
+
+.refundSelect {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.refundInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 등록 버튼 */
+.registerButton {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+/* 활성화된 버튼 */
+.registerButton.enabled {
+    background-color: #ff5f5f;
+    cursor: pointer;
+}
+
+/* 환불 안내 정보 */
+.refundInfo {
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    width: 50%;
+}
+.refundInfo p{
+    margin-bottom: 10px;
+}
+
+.refundInfo h3 {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: left;
+}
+
+/* 마크 아이콘 */
+.mark-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+/* 안내 사항 강조 */
+.redFont {
+    color: red;
+}
+
+/* 안내 리스트 */
+.refundInfo ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.refundInfo li {
+    margin-bottom: 5px;
+}
+
+
+
+
+
+/*.refundTable {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.refundInfo {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}*/
