@@ -2,6 +2,7 @@
 // 전체상품 부분 자바스크립트 - 후 상품 목록 페이지에 반복사용 예정
 //================================//
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("productListContainer");
   let currentSort = "recommend"; // 기본 정렬 기준 (추천순)

@@ -26,35 +26,6 @@
     <!-- 메인 영역 -->
     <main>
       <div class="mainContent" id="mainContent">
-        <!-- 헤더바로 아래 있는 메인배너 -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="#">
-                <img
-                  src="../../static/assets/img/main/mainbaner.jpg"
-                  alt="출석체크"
-              /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#">
-                <img
-                  src="../../static/assets/img/main/mainbaner2.jpg"
-                  alt="유산균"
-              /></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#">
-                <img
-                  src="../../static/assets/img/main/mainbaner3.jpg"
-                  alt="프로폴리스"
-              /></a>
-            </div>
-          </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
-
         <!-- "어떤 영양제를 찾으세요?" 섹션 -->
         <div class="contents">
           <div class="title">어떤 영양제를 찾으세요?</div>
@@ -82,43 +53,8 @@
         </div>
 
         <!-- 메인 컨텐츠 영역 -->
-        <div id="productContainer">
-          <!--
-           자바스크립트 반복문 
-            -->
-          <!-- <div class="contents">
-          <div class="headerMenu">내 몸의 활력을 위한 멀티 비타민</div>
-          <div class="headerMenutitle">
-            💪비타민 충전타임💪
-            <a href="otherPage.html">
-              <button type="submit">
-                <img
-                  src="../../static/assets/img/main/arrow_showMore.png"
-                  alt="arrow_showMore"
-                />
-              </button>
-            </a>
-          </div> -->
-          <!-- 제품 이미지 리스트 -->
-          <!-- <div class="headerMenutitleimg">
-            <div class="boximg">
-              <a href="./상세페이지">
-                <img
-                  src="../../static/assets/img/main/네츄럴메이드 멀티비타민.jpg "
-                  alt="제품이미지"
-                  class="imgbox"
-                />
-                <p class="productName">내용</p>
-                <p class="discountRate">할인가</p>
-                <p class="originalPrice">원래가격</p>
-                <p class="salePrice">세일가격</p>
-                <p class="shippingInfo">무료배송</p>
-              </a>
-            </div>
-          </div> -->
-        </div>
+        <div id="productContainer"></div>
       </div>
-
       <!-- 중간 바 -->
       <div class="topicContainer"></div>
 
@@ -181,5 +117,11 @@
     <script src="../../static/assets/js/header.js"></script>
     <script src="../../static/assets/js/main.js"></script>
     <script src="../../static/assets/js/main_all_list.js"></script>
+
+    <script>
+      // productContainer 삭제하면 고민선택 영역도 안보여서
+      // 자바스크립트로 productContainer 숨김처리함,,,ㅜㅡㅜ
+      document.getElementById("productContainer").innerHTML = "";
+    </script>
   </body>
 </html>

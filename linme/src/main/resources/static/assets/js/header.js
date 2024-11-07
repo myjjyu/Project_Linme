@@ -47,9 +47,9 @@ document.addEventListener("click", function (event) {
   }
 });
 
-/*****************************/
-// 신상품, 베스트, 특가상품 클릭시 컬러변경
-/*****************************/
+/*******************************************/
+// 신상품, 베스트, 특가상품 클릭시 컬러변경 및 화면구현
+/*******************************************/
 
 // 신상품, 베스트, 특가상품 3개의 영역은 기본상태는 deactivate (현재)이고 각 영역을 클릭하면
 // 컬러가 activate 로변함 선택되지 못한 영역은 계속 기본값
@@ -60,8 +60,8 @@ const menuList = document.querySelectorAll(".menuList a");
 
 // 클릭 이벤트 추가
 menuList.forEach((link) => {
-  link.addEventListener("click", function (event) {
-    event.preventDefault();
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
 
     // 모든 링크에서 activate 클래스 제거하고 기본값 설정
     menuList.forEach((link) => {
@@ -72,5 +72,7 @@ menuList.forEach((link) => {
     // 클릭된 링크에 activate 클래스 추가
     this.classList.add("activate");
     this.classList.remove("deactivate");
+
   });
 });
+

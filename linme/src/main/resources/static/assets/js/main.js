@@ -540,9 +540,33 @@ contentData.forEach((content) => {
   headerMenutitle.innerHTML = content.title;
 
   const buttonLink = document.createElement("a");
-  buttonLink.href = "otherPage.html";
+  // 각각의 세션에 맞는 페이지를 URL넣어서 동적으로 이동시킴
+  if (content.title === "💪비타민 충전타임💪") {
+    buttonLink.href = "../../templates/main/listNo1.html"; // 첫 번째 페이지로 이동
+  } else if (content.title === "💊온 가족 장 건강 케어💊") {
+    buttonLink.href = "../../templates/main/listNo2.html"; // 두 번째 페이지로 이동
+  } else if (content.title === "✔️대체불가 필수 지방산 오메가-3✔️") {
+    buttonLink.href = "../../templates/main/listNo3.html"; // 세 번째 페이지로 이동
+  } else if (content.title === "👧우리 아이를 위한 영양 보충제👦") {
+    buttonLink.href = "../../templates/main/listNo4.html"; // 네 번째 페이지로 이동
+  } else if (content.title === "🦴뼈 튼튼, 관절 튼튼👌") {
+    buttonLink.href = "../../templates/main/listNo5.html"; // 다섯 번째 페이지로 이동
+  } else if (content.title === "😷환절기 미리 준비하기😷") {
+    buttonLink.href = "../../templates/main/listNo6.html"; // 여섯 번째 페이지로 이동
+  } else if (content.title === "✨뇌를 깨워주세요✨") {
+    buttonLink.href = "../../templates/main/listNo7.html"; // 일곱 번째 페이지로 이동
+  } else if (content.title === "🩸혈(血)의 중요성🩸") {
+    buttonLink.href = "../../templates/main/listNo8.html"; // 여덟 번째 페이지로 이동
+  } else if (content.title === "👀피로한 눈을 위한 솔루션👀") {
+    buttonLink.href = "../../templates/main/listNo9.html"; // 아홉 번째 페이지로 이동
+  } else if (content.title === "🙌오늘이 가장 젊은 날🙌") {
+    buttonLink.href = "../../templates/main/listNo10.html"; // 열 번째 페이지로 이동
+  } else{content.title === "남성 영양제 추천📣"
+    buttonLink.href = "../../templates/main/listNo11.html"; // 열한 번째 페이지로 이동
+  }
+
   const button = document.createElement("button");
-  button.type = "button";
+  button.type = "submit";
   const img = document.createElement("img");
   img.src = "../../static/assets/img/main/arrow_showMore.png";
   img.alt = "arrow_showMore";
@@ -658,7 +682,10 @@ const icons = [
     url: "../../static/assets/img/main/icon-list/다이어트.png",
     title: "다이어트",
   },
-  { url: "../../static/assets/img/main/icon-list/스트레스.png", title: "스트레스" },
+  {
+    url: "../../static/assets/img/main/icon-list/스트레스.png",
+    title: "스트레스",
+  },
   { url: "../../static/assets/img/main/icon-list/기관지.png", title: "기관지" },
 
   { url: "../../static/assets/img/main/icon-list/면역력.png", title: "면역력" },
@@ -690,13 +717,11 @@ const iconContainer = document.getElementById("icon");
 // 이미지 반복
 icons.forEach((iconData) => {
   const link = document.createElement("a");
-  link.href = "#"; // 클릭시 이동 경로(db연동후 주소수정)
 
   // img 요소 생성
   const img = document.createElement("img");
   img.src = iconData.url;
   img.alt = iconData.title;
-
 
   const title = document.createElement("p");
   title.textContent = iconData.title;
@@ -707,16 +732,42 @@ icons.forEach((iconData) => {
 });
 
 /*****************************/
-// 아이콘 클릭시 컬러변경 
+// 아이콘 클릭시 컬러변경 및 전체영역 보이기
 /*****************************/
-iconContainer.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
 
-    // 모든 링크에서 activate 클래스 제거하고 기본값 설정
+iconContainer.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // 모든 링크에서 'active' 클래스 제거해서 기본컬러값 주기
     iconContainer.querySelectorAll('a').forEach(link => link.classList.remove('active'));
 
-    // 클릭된 링크에 activate 클래스 추가
+    // 아이콘 클릭하면 클릭된 아이콘에만 'active' 클래스 추가
     this.classList.add('active');
+
+    // 아이콘 클릭하면 'productContainer'(메인)영역 숨기고 + 
+    document.getElementById('productContainer').style.display = 'none';
+
+    // 'swiper'(메인배너)가진 요소 모두 숨기기
+    document.querySelectorAll('.swiper').forEach(swiper => {
+      swiper.style.display = 'none';
+    });
+
+    // // 'mainOkContent' 영역은 보이고 + productListContainer(전체상품) 영역도 보이기
+    document.getElementById('mainOkContent').style.display = 'block';
+    document.getElementById('productListContainer').style.display = 'block';
+
+
+    // main_ok.html 파일을 만들어서 동적으로 불러옴 그래서 위에 
+    //'mainOkContent' 영역은  ui만인지 아닌지.. 몰라서  팀원들이랑 이야기해서 main_ok 없앨지 말지 상의해보기
+    // fetch('main_ok.html')
+    //   .then(response => response.text())
+      // .then(data => {
+      //   // 'mainOkContent' 영역에 불러온 HTML 삽입
+      //   document.getElementById('mainOkContent').innerHTML = data;
+      // })
+      // .catch(error => {
+      //   console.error('Error loading main_ok.html:', error);
+      // });
   });
 });
