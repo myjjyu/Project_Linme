@@ -639,7 +639,7 @@ const icons = [
     title: "피부건강",
   },
   {
-    url: "../../static/assets/img/main/운동근육.png",
+    url: "../../static/assets/img/main/icon-list/운동근육.png",
     title: "운동/근육",
   },
   {
