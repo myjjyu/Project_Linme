@@ -1,0 +1,269 @@
+/* pretendard 웹폰트 css에서 사용하기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+main {
+  font-family: pretendard;
+  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+  width: 100%;
+}
+
+.container {
+  height: fit-content;
+  margin: 0 auto;
+  width: 1080px;
+  background-color: #efefef;
+  height: fit-content;
+  padding-bottom: 25px;
+}
+
+body div,
+html div {
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+/* -------------- 주문/결제 단계 -------------- */
+/* -------------- 주문/결제 단계 -------------- */
+/* -------------- 주문/결제 단계 -------------- */
+
+.progressStageCart {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.progressStageCart * {
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+}
+
+.progressStageCart .progressStep {
+  color: #b6b6b6;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  font-weight: 700;
+  gap: 10px;
+  height: 100%;
+  letter-spacing: -0.5px;
+  line-height: 0.8;
+  margin: initial;
+  text-align: center;
+  width: 33%;
+}
+
+.progressStageCart .progressStep:before {
+  background-color: #e6e6e6;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+
+/* -------------- 주문/결제 단계 위치 조절 -------------- */
+
+.progressStageCart .progressStep.step1 {
+  align-items: flex-start;
+}
+
+.progressStageCart .progressStep.step2 {
+  align-items: center;
+}
+
+.progressStageCart .progressStep.step3 {
+  align-items: flex-end;
+}
+
+.progressStageCart .progressStep.step3 .progressName {
+  right: -20px;
+}
+
+.progressStageCart .progressStep .progressNumberCover {
+  background-color: #e6e6e6;
+  border-radius: 25px;
+  height: 43px;
+  width: 43px;
+  z-index: 1;
+}
+
+.progressStageCart .progressStep .progressNumberCover .progressNumber {
+  height: fit-content;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 43px;
+}
+
+.progressStageCart .progressStep .progressName {
+  color: #d2d2d2;
+  font-size: 20px;
+  font-weight: 600;
+  height: fit-content;
+  letter-spacing: -0.44px;
+  width: 80px;
+}
+
+.progressStageCart .progressStep.on .progressNumberCover {
+  background-color: #ff8181;
+}
+
+.progressStageCart .progressStep.on .progressNumberCover .progressNumber {
+  color: #fff;
+}
+
+.progressStageCart .progressStep.on .progressName {
+  color: #ff8181;
+}
+
+.progressStageCart .progressStep.on:after {
+  background-color: #ff8181;
+  content: "";
+  height: 3px;
+  left: 43px;
+  position: absolute;
+  top: 20px;
+  width: 100px;
+  z-index: auto;
+}
+
+.progressStageCart .progressStep.step2.on:after {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+}
+
+.progressStageCart .progressStep.step3.on:after {
+  left: auto;
+  right: 0;
+}
+
+/* -------------- 주문/결제 및 전체 합계 -------------- */
+/* -------------- 주문/결제 및 전체 합계 -------------- */
+/* -------------- 주문/결제 및 전체 합계 -------------- */
+
+/* -------------- 주문/결제 및 전체 합계의 간격 조절 -------------- */
+.paymentContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
+/* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
+/* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
+.paymentData {
+  background-color: #fff;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 45px 30px 10px;
+  width: 780px;
+}
+
+.dataInfo {
+  border: 2px solid #ffb7b7;
+  width: 720px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.dataInfo .title {
+  color: #333;
+  font-size: 20px;
+  font-weight: 400;
+  height: fit-content;
+  letter-spacing: -0.4px;
+  line-height: 1;
+  width: fit-content;
+}
+
+/* -------------- 1-1. 주문/결제 타이틀 -------------- */
+
+/* -------------- [주문/결제 타이틀] 크기 --------------*/
+.paymentTitle {
+  color: #333;
+  font-size: 30px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.6px;
+  line-height: 0.67;
+  width: fit-content;
+  margin-bottom: 60px;
+}
+
+/* -------------- 1-2. 배송지 정보 -------------- */
+
+.deliveryInfo {
+}
+
+/* -------------- 1-3. 주문상품 확인 -------------- */
+
+.checkOrderProduct {
+}
+
+/* -------------- 1-4. 쿠폰 할인 적용 -------------- */
+
+.couponInfo {
+}
+
+/* -------------- 1-5. 결제수단 선택 -------------- */
+.paymentMethod {
+}
+
+/* -------------- 2. 전체 합계 및 이용약관 -------------- */
+/* -------------- 2. 전체 합계 및 이용약관 -------------- */
+/* -------------- 2. 전체 합계 및 이용약관 -------------- */
+
+.paymentTotalContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------- 2-1. 전체 합계 크기 조절 -------------- */
+
+.paymentTotalInfo {
+  background-color: #fff;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 25px 20px;
+  width: 280px;
+}
+
+/* -------------- [전체 합계 타이틀] 크기 --------------*/
+.paymentTotaltitle {
+  color: #333;
+  font-size: 25px;
+  font-weight: 700;
+  height: fit-content;
+  letter-spacing: -0.5px;
+  line-height: 0.8;
+}
+
+/* -------------- 2-2. 이용약관 크기 조절 -------------- */
+.paymentTermsInfo {
+  background-color: #f8f8f8;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  color: #606060;
+  font-size: 15px;
+  font-weight: 700;
+  height: 280px;
+  letter-spacing: -0.3px;
+  line-height: 1.33;
+  margin-top: 22px;
+  padding: 28px 27px;
+  width: 280px;
+}
