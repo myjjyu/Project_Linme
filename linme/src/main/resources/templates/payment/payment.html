@@ -44,6 +44,48 @@
             <!-- 1-2. 배송지 정보 -->
             <div class="dataInfo deliveryInfo">
               <div class="title">배송지 정보</div>
+              <div class="changeDeliveryInfo">변경</div>
+              <!-- 배송지 정보 리스트 -->
+              <ul class="addressBookInfoList">
+                <!-- 배송지명-->
+                <li class="addressBookInfoItem">
+                  <div class="label">배송지명</div>
+                  <span class="data" th:text="${addressNickname}">주소 닉네임</span>
+                </li>
+
+                <!-- 받는 분-->
+                <li class="addressBookInfoItem">
+                  <div class="label">받는 분</div>
+                  <span class="data" th:text="${addressName}">회원이름</span>
+                </li>
+
+                <!-- 연락처 -->
+                <li class="addressBookInfoItem">
+                  <div class="label">연락처</div>
+                  <span class="data" th:text="${phone}">회원 전화번호</span>
+                </li>
+
+                <!-- 주소-->
+                <li class="addressBookInfoItem">
+                  <div class="label">주소</div>
+                  <span class="data" th:text="${address}">회원 주소</span>
+                </li>
+
+                <!-- 배송 요청사항-->
+                <li class="addressBookInfoItem">
+                  <div class="label">배송 요청사항</div>
+                  <form class="data" th:action="#">
+                    <select class="dropdown">
+                      <option value="1">부재 시 문 앞에 놓아주세요</option>
+                      <option value="2">배송 전에 미리 연락 주세요</option>
+                      <option value="3">부재 시 경비실에 맡겨 주세요</option>
+                      <option value="4">부재 시 전화 주시거나 문자 남겨주세요</option>
+                      <option value="5">직접 입력</option>
+                    </select>
+                    <input type="text" class="memo" name="directInput" placeholder="직접 입력" value="" />
+                  </form>
+                </li>
+              </ul>
             </div>
             <!-- 1-3. 주문상품 확인 -->
             <div class="dataInfo checkOrderProduct">
