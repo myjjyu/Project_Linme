@@ -1,0 +1,89 @@
+.addressContainer {
+    margin-top: 20px;
+}
+
+.addressTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.addressList {
+    border: 1px solid #ddd;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+    max-width: 100%;
+}
+
+.addressBox {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    text-align: left;
+    position: relative;
+}
+
+.addAddress {
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.savedAddress {
+    text-align: left;
+    justify-content: space-between;
+}
+
+.defaultBadge {
+    background-color: #ff6f61;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.addressInfo {
+    width: 80%; 
+}
+.addressInfo h3 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.addressInfo p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.editButton {
+    font-size: 14px;
+    color: #ff6f61;
+    background: none;
+    border: 1px solid #ff6f61;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: flex-end;
+}
+
+
+
+
+
+
