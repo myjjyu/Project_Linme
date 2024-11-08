@@ -27,18 +27,20 @@
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    background-color: #fafafa;
     text-align: left;
     position: relative;
 }
 
 .addAddress {
-    color: #999;
+    background-color: #f8f8f8;
     font-size: 16px;
     cursor: pointer;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+}
+.addAddress a{
+    color:#8d8d8d;
 }
 
 .savedAddress {

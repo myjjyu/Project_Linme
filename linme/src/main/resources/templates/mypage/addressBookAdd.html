@@ -6,7 +6,7 @@
     <title>Linme</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
-    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/addressBook.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/addressBookAdd.css}" />
 </head>
 <body>
 
@@ -86,22 +86,9 @@
                 </div>
                 <!-- 배송지 관리 화면 -->
             <div class="addressContainer">
-                <div class="addressTitle">배송지 관리</div>
+                <div class="addressTitle">배송지 추가</div>
                 <div class="addressList">
-                    <div class="addressBox addAddress">
-                        <a th:href="@{/myPage/addressBookAdd}">
-                        <span>+ 배송지 추가하기</span>
-                        </a>
-                    </div>
-                    
-                    <div class="addressBox savedAddress">
-                        <div class="addressInfo">
-                            <h3>id <span class="defaultBadge">기본 배송지</span></h3>
-                            <p>address</p>
-                            <p>name (phone)</p>
-                        </div>
-                        <button class="editButton">수정</button>
-                    </div>
+                
                 </div>
             </div>
         </div>   

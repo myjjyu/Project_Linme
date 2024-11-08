@@ -55,6 +55,18 @@ public class MypageController {
         return "myPage/addressBook";
     }
 
+    @GetMapping("/myPage/addressBookAdd")
+    public String addressBookAdd(Model model) {
+        model.addAttribute("username", "사용자 이름");
+        model.addAttribute("grade", "등급");
+        model.addAttribute("reward", "리워드");
+
+        model.addAttribute("shoppingHistoryCount", 0); 
+        model.addAttribute("couponCount", 0);           
+        model.addAttribute("reviewCount", 0);
+        return "myPage/addressBookAdd";
+    }
+
     @GetMapping("/myPage/notice")
     public String notice(Model model) {
         model.addAttribute("username", "사용자 이름");
