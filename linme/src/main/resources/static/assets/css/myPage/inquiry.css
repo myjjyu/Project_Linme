@@ -116,6 +116,10 @@
 }
 
 /* 문의하기 팝업 */
+
+.popup-overlay{
+    display: none;
+}
 .popup-content {
     background: white;
     padding: 20px;
