@@ -1,0 +1,101 @@
+/* pretendard 웹폰트 css에서 사용하기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* 공통css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: pretendard;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  display: block;
+  position: relative;
+}
+
+/* claim 공통*/
+.contents {
+  height: fit-content;
+  margin: 0 auto;
+  width: 1080px;
+}
+
+.myPageDetail {
+  padding: 70px 0 70px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingCover {
+  margin: 0 auto;
+  width: 740px;
+}
+
+.statusTypeList {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* statusTypeItem */
+.statusTypeItem {
+  background-color: #d2d2d2;
+  border: 1px solid #b6b6b6;
+  color: #8d8d8d;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  line-height: 21px;
+  padding-block: 16px;
+  text-align: center;
+  width: 297px;
+}
+
+/* 주문/배송 버튼 */
+.statusTypeItem.order {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+/* 취소/교환/환불 버튼 */
+.statusTypeItem.claim {
+  background-color: #fff;
+  color: #333;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* 취소/교환/환불 내역 */
+.claimList {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  margin-top: 50px;
+  min-height: 600px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 내역 없음 */
+.noOrderList {
+  color: #8d8d8d;
+  font-size: 18px;
+  font-weight: 400;
+  height: fit-content;
+  letter-spacing: -0.36px;
+  line-height: 2.11;
+  text-align: center;
+  width: 0 auto;
+}

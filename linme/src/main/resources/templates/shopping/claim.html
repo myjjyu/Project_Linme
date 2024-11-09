@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../static/assets/css/shopping/claim.css" />
+    <title>린미 - 주문/배송 내역</title>
+  </head>
+  <body>
+    <!-- Header 영역 -->
+    <header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>
+
+    <!-- Main 영역-->
+    <main>
+      <div class="container underTopMenu myPage index">
+        <div class="contents">
+          <div class="myPageContents">
+            <div class="myPageDetail">
+              <div class="shoppingCover">
+                <!-- 취소/교환/환불 -->
+                <ul class="statusTypeList">
+                  <li class="statusTypeItem order">주문/배송</li>
+                  <li class="statusTypeItem claim on">취소/교환/환불</li>
+                </ul>
+                <ul class="claimList on noClaim">
+                  <li class="noData"><div class="noOrderList">취소/교환/환불 내역이 없습니다.</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer 영역 -->
+    <footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>
+  </body>
+</html>
