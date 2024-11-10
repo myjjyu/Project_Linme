@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../static/assets/css/myPage/review.css" />
+    <title>린미 - 리뷰 관리</title>
+  </head>
+  <body>
+    <!-- Header 영역 -->
+    <header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>
+
+    <!-- Main 영역-->
+    <main>
+      <div class="orderContainer">
+        <!-- 마이페이지 myPageSummary 추가해야함 -->
+        <div class="contents">마이페이지</div>
+        <div class="contents">
+          <div class="myPageContents myShopping">
+            <div class="myPageDetail">
+              <!-- 리뷰 관리 -->
+              <div class="reviewCover">
+                <div class="title">나의 리뷰</div>
+                <ul class="reviewList">
+                  <li class="noData"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer 영역 -->
+    <footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>
+  </body>
+</html>
