@@ -1,0 +1,133 @@
+.addressContainer {
+    width: 100%;
+    max-width: 960px;
+    padding: 20px;
+    margin-top: -35px;
+    
+}
+.addressTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 28px;
+    padding: 10px;
+}
+.addressForm {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.formGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.formGroup label {
+    width: 25%; 
+    font-size: 0.9em;
+    text-align: left;
+    padding-right: 5px;
+}
+.formGroup label::before {
+    content: "*";
+    color: #d9534f; 
+    position: absolute;
+    left: -10px;
+}
+.formGroup input[type="text"]{
+    width: 30%;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.formGroup select {
+    flex:1;
+    width: 70%; 
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+.addressLine {
+    display: flex;
+    align-items: center;
+    gap:2px;
+}
+
+#postCode {
+    width: 25%;
+    width: calc(75% -10px);
+}
+#address, #addressDetail {
+    margin-left: 25%;
+    width: 75%;
+    width: calc(75% -10px);
+    padding-left: 10px; 
+    box-sizing: border-box;
+    text-align: left; 
+}
+
+.searchPostalCode {
+    padding: 10px 20px;
+    border: 1px solid #d9534f;
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    
+}
+
+.defaultAddressContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.defaultAddressContainer label {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.defaultAddressContainer input[type="checkbox"]:checked {
+    background-color: #ffcccc; 
+    border: 1px solid #ff7070; 
+    color: #ffffff; 
+}
+.saveButton {
+    width: 30%;
+    padding: 15px;
+    font-size: 1em;
+    background-color: #e0e0e0;
+    color: #999;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+    margin-top: 20px;
+    margin: 0 auto; 
+}
+
+.saveButton:enabled {
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+}
+
+
+.custom-input {
+    display: none;
+    margin-top: 10px;
+}
+.hidden{
+    display: none;
+}
+
