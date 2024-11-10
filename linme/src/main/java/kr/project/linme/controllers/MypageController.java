@@ -31,6 +31,10 @@ public class MypageController {
     public String reward() {
         return "myPage/reward";
     }
+    @GetMapping("/myPage/myinfo")
+    public String myinfo() {
+        return "myPage/myinfo";
+    }
 
     @GetMapping("/myPage/productInquiry")
     public String productInquiry(Model model) {
