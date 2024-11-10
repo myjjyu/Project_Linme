@@ -1,0 +1,512 @@
+/* ---------------------------------------------*/
+/* ---------------상품주문영역---------------------*/
+/* ---------------------------------------------*/
+.mainContent {
+  margin: auto;
+  position: relative;
+  /* top: 100%; */
+}
+
+
+/* 제품박스 영역 */
+.view-contents {
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+  margin: 0 auto;
+  width: 1200px;
+  height: 500px;
+}
+
+.mini-img {
+  border: 3px solid rebeccapurple;
+  margin-bottom: 360px;
+  margin-right: 10px;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* 버튼 스타일 */
+.glider-prev,
+.glider-next {
+  position: absolute;
+  bottom: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* 왼쪽 버튼  */
+.glider-prev {
+  left: 43%;
+}
+
+/* 오른쪽 버튼 */
+.glider-next {
+  right: 43%;
+}
+
+
+
+/* ---------------------------------------------*/
+/* ---------------상품주문 디테일영역----------------*/
+/* ---------------------------------------------*/
+
+/* 컨테이너 스타일 */
+.product-container {
+  max-height: 500px;
+  padding-left: 80px;
+}
+ul {
+  list-style-type: none;
+  margin: 0 0 10px;
+}
+
+.productInfoItem {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.brandName {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.67;
+  letter-spacing: -0.75px;
+  color: #787878;
+}
+
+.productName {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.11;
+  letter-spacing: -0.9px;
+  color: #333;
+}
+
+.fa-regular {
+  margin: 0 -2px;
+  font-size: 20px;
+}
+
+.span-out {
+  margin-left: 5px;
+  font-size: 15px;
+  color: #707070;
+
+  .span-in {
+    color: #b6b6b6;
+    margin-left: 5px;
+  }
+}
+
+.arrow {
+  width: 13px;
+  height: 13px;
+  margin-bottom: 2px;
+  margin-left: 10px;
+}
+
+.discount {
+  margin-top: 15px;
+  color: #ff697b;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #b6b6b6;
+  font-size: 20px;
+  margin-left: 7px;
+}
+
+.sale-price {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  margin-top: 15px;
+}
+
+.solid {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  margin: 10px 0;
+}
+.end {
+  width: 100%;
+  border-bottom: 1px solid #ff697b;
+}
+
+.deliver {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  color: #787878;
+  margin-bottom: 12px;
+}
+
+.shipping {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  color: #333;
+
+  span {
+    color: #b6b6b6;
+    margin: 0 7px;
+  }
+}
+
+.required-Info {
+  width: 99px;
+  height: 27px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.3px;
+  color: #8d8d8d;
+  text-align: center;
+  border: solid 0.8px #d2d2d2;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* 수량 버튼 */
+.number-control {
+  width: 95px;
+  height: 27px;
+  border: solid 1px #d2d2d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 3px;
+}
+
+.minus,
+.plus {
+  width: 45px;
+  height: 100%;
+  /* background-color: #d77777; */
+  padding-left: 7px;
+  padding-right: 7px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  color: #d2d2d2;
+  cursor: pointer;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minus::after {
+  content: "-";
+  margin-top: -2px;
+}
+
+.plus::before {
+  content: "+";
+}
+.number {
+  /* background-color: #c41818; */
+  width: 40px;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+}
+
+/* 총 금액 */
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  font-size: 18px;
+  margin-bottom: -15px;
+  color: #ff697b;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+
+.total-price {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* 버튼 스타일 */
+
+.btn {
+  display: flex;
+}
+
+.cart-btn,
+.buy-btn {
+  width: 168px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.cart-btn {
+  background-color: white;
+  border: 1px solid #ff697b;
+  color: #ff697b;
+  font-weight: 900;
+}
+
+.buy-btn {
+  margin-left: 15px;
+  background-color: #ff697b;
+  color: white;
+  font-weight: 900;
+}
+
+
+
+/* ---------------------------------------------*/
+/* ---------------상품설명영역--------------------*/
+/* ---------------------------------------------*/
+#mainimg {
+  display: flex;
+  justify-content: center;
+}
+
+.solid {
+  margin: 14.5px 0;
+}
+.sticky {
+  position: sticky;
+  top: 174.5px;
+  width: 100%;
+  background-color: #fff;
+  border-top: 2px solid #f3f3f3;
+  border-bottom: 2px solid #f3f3f3;
+  z-index: 1000;
+}
+
+
+
+.productDetailTab {
+  margin: 30px;
+  max-width: 100%;
+}
+
+.imgtext {
+  display: flex;
+  gap: 130px;
+  width: 1200px;
+  font-size: 21px;
+  justify-content: center;
+  margin: auto;
+  padding-left: 65px;
+
+  a {
+    color: #b6b6b6;
+    font-weight: bold;
+  }
+
+  .on {
+    color: #333;
+  }
+}
+
+.endsolid {
+  margin-bottom: 0;
+  margin-top: 30px;
+  height: 0;
+  border: 2px solid #f3f3f3;
+}
+
+.endsolid2 {
+  width: 100%;
+  border-bottom: 1px solid #f3f3f3;
+  margin-bottom: 20px;
+}
+
+.endsolid3 {
+  width: 1200px;
+  border-bottom: 7px solid #f3f3f3;
+  margin-top: 100px;
+}
+
+.endsolid4 {
+  width: 1200px;
+  border-bottom: 2px solid #f3f3f3;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+.title {
+  margin-top: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  width: 1200px;
+  text-align: start;
+
+  span {
+    font-weight: bold;
+    color: #ff697b;
+  }
+}
+
+.reviewinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f3f3f3;
+  width: 400px;
+  height: 142px;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  left: -400px;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.box span {
+  color: #a5a5a5;
+}
+
+.reviewtext {
+  margin-top: 200px;
+  margin-bottom: 110px;
+  color: #a5a5a5;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .button {
+    width: 110px;
+    height: auto;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 3px;
+    border: solid 1px #ff697b;
+    background-color: #ff697b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 50px;
+  }
+}
+
+.inquiryCover {
+  width: 1200px;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.center-group {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.right-group {
+  display: flex;
+  gap: 30px;
+  margin-left: auto; /* 오른쪽 으로 붙기*/
+}
+
+
+/* ---------------------------------------------*/
+/* ---------------alert  css// -----------------*/
+/* ---------------------------------------------*/
+
+/* // 필수 표기정보 alert 창 css// */
+.required-box{
+overflow: hidden;
+}
+
+.required-text{
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #333;
+  margin-bottom: -20px;
+}
+
+.required-button {
+  background-color: unset;
+  color: #ff697b;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+table {
+  /* border: 1px solid #a5a5a5; */
+  border-collapse: collapse;
+  margin: 40px auto 0 auto;
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+  display: block;
+  text-align: left;
+}
+
+td {
+  border: solid 1px #d2d2d2;
+  width: 320px;
+  padding: 13px 15px 13px 10px;
+  font-size: 13px;
+  max-height: 50px;
+  overflow: hidden;
+  color: #333;
+  font-weight: 600;
+}
+
+td:nth-child(odd) {
+  background-color: #f3f3f3;
+  color: #787878;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 2;
+  letter-spacing: -0.26px;
+  width: 147px;
+  height: 52px;
+  border-right: 1px solid #f3f3f3;
+}
+
+
+/* 문의하기버튼 alert 창 css */
+.alert-button {
+  background-color: unset;
+  color: #ff697b;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.title-text {
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 20px;
+}
