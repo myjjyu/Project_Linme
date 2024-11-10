@@ -18,6 +18,19 @@ public class MypageController {
         model.addAttribute("reviewCount", 0);
         return "myPage/myPage";
     }
+    @GetMapping("/myPage/profile")
+    public String profile() {
+        return "myPage/profile";
+    }
+
+    @GetMapping("/myPage/level")
+    public String level() {
+        return "myPage/level";
+    }
+    @GetMapping("/myPage/reward")
+    public String reward() {
+        return "myPage/reward";
+    }
 
     @GetMapping("/myPage/productInquiry")
     public String productInquiry(Model model) {

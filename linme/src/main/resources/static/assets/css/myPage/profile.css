@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.profile-container {
+    width: 60%;
+    max-width: 600px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.profile-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.form-group .required {
+    color: #d9534f;
+}
+
+
+.nickname-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nickname-container input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.check-button {
+    background-color: #fff;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.notice {
+    font-size: 12px;
+    color: #888;
+    margin-top: -10px;
+    text-align: left;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cancel-button,
+.confirm-button {
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #eee;
+    color: #666;
+    margin-right: 10px;
+}
+
+.confirm-button {
+    background-color: #d9534f;
+    color: white;
+}
+
+.confirm-button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: not-allowed;
+}

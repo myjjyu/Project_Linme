@@ -131,3 +131,7 @@
     display: none;
 }
 
+.formGroup .required ,
+.addressLine .required{
+    color: #d9534f;
+}
