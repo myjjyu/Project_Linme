@@ -4,7 +4,6 @@
   position: relative;
   /* top: 100%; */
 }
-
 /*
 * 메인배너 라이브러리
 */
@@ -221,6 +220,7 @@
 */
 .topicContainer {
   border-bottom: 12px solid #f3f3f3;
+  
 }
 
 /* 전체상품텍스트 */
