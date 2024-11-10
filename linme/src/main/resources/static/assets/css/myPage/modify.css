@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.contentContainer {
+    width: 80%;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: row; 
+    gap: 20px; 
+    align-items: flex-start;
+}
+
+.menuContainer {
+    width: 200px;
+    padding-right: 20px;
+    flex-shrink: 0;
+}
+
+.menuSection ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menuSection ul li {
+    margin-bottom: 10px;
+}
+
+.menuSection ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.menuSection ul li a:hover,
+.menuSection ul li a.active {
+    background-color: #f8e8e8;
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.next-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+}
+
+.formSection {
+    flex-grow: 1; 
+    padding-left: 20px;
+}
+
+.formSection h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.formSection table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.formSection table td {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    
+}
+
+.formSection table td:first-child {
+    width: 20%;
+    font-weight: bold;
+    background-color: #f7f7f7;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.formSection table td input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.auth-btn {
+    background-color: #f8e8e8;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.save-btn-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.save-btn {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    color: #999;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: not-allowed;
+}

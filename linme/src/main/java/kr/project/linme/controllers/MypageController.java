@@ -35,6 +35,23 @@ public class MypageController {
     public String myinfo() {
         return "myPage/myinfo";
     }
+    @GetMapping("/myPage/myinfo/modify")
+    public String modify() {
+        return "/myPage/myinfo/modify";
+    }
+    @GetMapping("/myPage/myinfo/passwordModify")
+    public String passwordModify() {
+        return "/myPage/myinfo/passwordModify";
+    }
+    @GetMapping("/myPage/myinfo/notification")
+    public String notification() {
+        return "/myPage/myinfo/notification";
+    }
+    @GetMapping("/myPage/myinfo/withdrawal")
+    public String withdrawal() {
+        return "/myPage/myinfo/withdrawal";
+    }
+
 
     @GetMapping("/myPage/productInquiry")
     public String productInquiry(Model model) {
