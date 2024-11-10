@@ -1,0 +1,107 @@
+/* 전체 공통 */
+/* pretendard 웹폰트 css에서 사용하기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* 공통css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: pretendard;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  display: block;
+  position: relative;
+}
+
+/* 보유 쿠폰 공통 */
+.contents {
+  height: fit-content;
+  margin: 0 auto;
+  width: 1080px;
+}
+
+.myPageDetail {
+  padding: 70px 0 70px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingCover {
+  margin: 0 auto;
+  width: 740px;
+}
+
+.statusTypeList {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* 보유 쿠폰 */
+.couponCover {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 50px;
+  padding: 30px 37px;
+  width: 100%;
+}
+
+/* 쿠폰 */
+.title {
+  color: #333;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -1.05px;
+  line-height: 30px;
+  margin: 0 auto 32px;
+  padding-top: 0;
+  width: fit-content;
+}
+
+/* 취소/교환/환불 내역 */
+.couponList {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 363px;
+  margin-top: 15px;
+  min-height: 15px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 내역 없음 */
+.noData {
+  color: #8d8d8d;
+  font-size: 18px;
+  font-weight: 400;
+  height: fit-content;
+  letter-spacing: -0.36px;
+  line-height: 2.11;
+  text-align: center;
+  width: 0 auto;
+}
+
+/* 사용 가능한 쿠폰이 없습니다. */
+.noData:after {
+  color: #b6b6b6;
+  content: "사용 가능한 쿠폰이 없습니다.";
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  line-height: 1.44;
+}
