@@ -13,7 +13,48 @@
     <header th:fragment="my-header">
         <link rel="stylesheet" th:href=@{/assets/css/header.css} />
     </header>
+    <div class="reward-page">
+        <div class="reward-details">
+            <div class="reward-header">
+                <img th:src="@{/assets/img/myPage/reward.png}" alt="Reward Icon" class="reward-icon">
+                <div class="reward-info">
+                    <h2>Reward</h2>
+                    <ul>
+                        <li>사용 가능: <span>- R</span></li>
+                        <li>적립 예정: <span>- R</span></li>
+                        <li>총 사용: <span>- R</span></li>
+                        <li>총 적립: <span>- R</span></li>
+                    </ul>
+                    <a href="#" class="view-history">사용내역 보러 가기 ></a>
+                </div>
+            </div>
+            <ul class="reward-notes">
+                <li>리워드를 사용하여 선물로 받거나 적립금을 환원하세요.</li>
+                <li>상품 구매 및 포인트 충전에 사용 가능.</li>
+                <li>최소 10개 단위로 사용 가능합니다.</li>
+            </ul>
+        </div>
     
+        <div class="challenge-section">
+            <div class="tabs">
+                <button class="tab active" data-tab="ongoing">진행중인 챌린지</button>
+                <button class="tab" data-tab="completed">종료된 챌린지</button>
+            </div>
+            <div class="challenges">
+                <div class="challenge ongoing">
+                    <img th:src="@{/assets/img/myPage/reward2.png}" alt="Challenge Image" class="challenge-image">
+                    <div class="challenge-info">
+                        <h3>출석체크 이벤트</h3>
+                        <p>30R</p>
+                        <p>24.11.01 - 24.11.30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="page-number active">1</button>
+            </div>
+        </div>
+    </div>
     <!-- Footer 영역 -->
     <footer th:fragment="my-header">
         <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
