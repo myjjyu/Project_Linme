@@ -29,8 +29,6 @@ html div {
 }
 
 /* -------------- 주문/결제 단계 -------------- */
-/* -------------- 주문/결제 단계 -------------- */
-/* -------------- 주문/결제 단계 -------------- */
 
 .progressStageCart {
   display: flex;
@@ -150,8 +148,6 @@ html div {
 }
 
 /* -------------- 주문/결제 및 전체 합계 -------------- */
-/* -------------- 주문/결제 및 전체 합계 -------------- */
-/* -------------- 주문/결제 및 전체 합계 -------------- */
 
 /* -------------- 주문/결제 및 전체 합계의 간격 조절 -------------- */
 .paymentContainer {
@@ -161,8 +157,6 @@ html div {
   gap: 20px;
 }
 
-/* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
-/* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
 /* -------------- 1. 주문/결제 정보(데이터) 크기 조절 -------------- */
 .paymentData {
   background-color: #fff;
@@ -204,6 +198,27 @@ html div {
 }
 
 /* -------------- 1-2. 배송지 정보 -------------- */
+/* 인풋 타입 공통 */
+html input[type="text"] {
+  background-color: #fff;
+  border: initial;
+  border-radius: 3px;
+  color: #333;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  line-height: 2.71;
+  outline-color: #d2d2d2;
+  outline-style: solid;
+  outline-width: 1px;
+  padding: 11px 18px 10px;
+}
+
+/* 읽기 전용 일때 */
+input[type="text"]:read-only {
+  background-color: #f3f3f3;
+}
 
 /* -------------- 변경 --------------*/
 .changeDeliveryInfo {
@@ -223,7 +238,7 @@ html div {
 }
 
 /* -------------- 배송지 정보 리스트 --------------*/
-.addressBookInfoList {
+ul {
   border-bottom: 1px solid #8d8d8d;
   border-top: 1px solid #8d8d8d;
   height: fit-content;
@@ -238,8 +253,8 @@ html div {
   width: 100%;
 }
 
-/* 배송지명 */
-.addressBookInfoItem .label ::after {
+/* 배송지명 앞에 별 (*) */
+li .label ::after {
   background-image: image-set(
     url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGBAMAAAAS4vJ7AAAAFVBMVEX/gYH/gYH/gIBHcEz/gYH/gYH/gYGbfoyUAAAABnRSTlOQo2AA4MC6ezLLAAAAGUlEQVQI12MwDjVmEBBgZFBJcwJjEBsoBgAnugNRf8iQCQAAAABJRU5ErkJggg==)
       1x
@@ -256,12 +271,9 @@ html div {
   width: 6px;
 }
 
-.paymentContainer .dataInfo.deliveryInfo .addressBookInfoList .addressBookInfoItem div {
+.label {
   display: table-cell;
   vertical-align: middle;
-}
-
-.label {
   background-color: #f3f3f3;
   color: #333;
   font-size: 16px;
@@ -274,31 +286,28 @@ html div {
   padding: 0 0 0 36px;
 }
 
-.data {
+li .data {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
   padding: 0 32px 0 32px;
   width: calc(100% - 214px);
 }
 
-.paymentContainer .dataInfo.deliveryInfo .addressBookInfoList .addressBookInfoItem .data {
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 14px;
-}
-
 /* 배송 요청사항 */
-.addressBookInfoItem form {
+li form {
   display: flex;
   flex-direction: column;
 }
 
-.addressBookInfoItem .dropdown {
+li .dropdown {
   width: 100%;
   padding: 10px;
   margin: 20px 0 10px 0;
   height: 37px;
 }
 
-.addressBookInfoItem .memo {
+li .memo {
   width: 100%;
   padding: 10px;
   margin: 0 0 20px 0;
@@ -308,11 +317,54 @@ html div {
 /* -------------- 1-3. 주문상품 확인 -------------- */
 
 /* -------------- 1-4. 쿠폰 할인 적용 -------------- */
+.couponInfo input {
+  width: 292px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  height: 33px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  padding: 7px 10px;
+  text-align: left;
+}
 
 /* -------------- 1-5. 결제수단 선택 -------------- */
+.paymentMethodList {
+  background-color: #f8f8f8;
+  display: flex;
+  height: 48px;
+  margin-top: 15px;
+  width: 100%;
+}
 
-/* -------------- 2. 전체 합계 및 이용약관 -------------- */
-/* -------------- 2. 전체 합계 및 이용약관 -------------- */
+.paymentMethodItem {
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  letter-spacing: -0.28px;
+  line-height: normal;
+  padding: 16px 0 0 70px;
+  position: relative;
+  text-align: left;
+  width: fit-content;
+}
+
+html input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  cursor: pointer;
+  padding-left: 23px;
+  background-image: image-set(
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPBAMAAADJ+Ih5AAAAMFBMVEVHcEz/dnb/oqL/y8v/lJT/h4f/lZX/lZX/lZX/5ub/gYH/+Pj/iIj/sLD/mJj///8Dr3V+AAAACXRSTlMABsrs1Faqq60fiGI8AAAAZElEQVQI12NgYAh3cg9gAAIJy/07zQUYGBg19756u1ORgYFj5qlVq05OY2AI3rNq1ao1mwMYKm8BGatuJjB4vwIxXjsw6IPoVesVECJwNXBd7DBz4CYziAHtMhMA2Rrm5Aa0HQDSwDgnip9isgAAAABJRU5ErkJggg==)
+      1x
+  );
+}
 /* -------------- 2. 전체 합계 및 이용약관 -------------- */
 
 .paymentTotalContainer {

@@ -90,14 +90,69 @@
             <!-- 1-3. 주문상품 확인 -->
             <div class="dataInfo checkOrderProduct">
               <div class="title">주문상품 확인</div>
+              <div class="combinedProductList">
+                <ul class="combinedProductContainer">
+                  <li class="productItem title">
+                    <div class="product">상품정보</div>
+                    <div class="salePriceInfo">판매가</div>
+                    <div class="priceInfo">구매가</div>
+                    <div class="deliveryPriceInfo">배송비</div>
+                  </li>
+                  <li class="productItem">
+                    <div class="product">
+                      <a href="#"
+                        ><div class="productImageCover">
+                          <img class="" srcset="" src="#" alt="브랜드+상품명" /></div
+                      ></a>
+                      <div>
+                        <div class="productItemBrandName"><a href="#">브랜드명</a></div>
+                        <div class="productItemProductName">
+                          <a href="#">상품명</a>
+                        </div>
+                        <div class="productOptionQuantity">상품수량<span class="quantityUnit">개</span></div>
+                      </div>
+                    </div>
+                    <div class="salePriceInfo">판매가<span class="currencyUnit">원</span></div>
+                    <div class="priceInfo">
+                      <div class="price">원가<span class="currencyUnit">원</span></div>
+                      <div class="priceContainer">구매가<span class="currencyUnit">원</span></div>
+                    </div>
+                    <div class="deliveryPriceInfo">0<span class="currencyUnit">원</span></div>
+                  </li>
+                  <li class="productItem lineProductInfo"></li>
+                  <li class="productItem lineSalePriceInfo"></li>
+                  <li class="productItem linePriceInfo"></li>
+                </ul>
+                <div class="cardDeliveryPrice">
+                  <div class="cardDeliveryPriceItem">총 배송비</div>
+                  <div class="cardDeliveryPriceItem bold">0원</div>
+                </div>
+              </div>
             </div>
             <!-- 1-4. 쿠폰 할인 적용 -->
             <div class="dataInfo couponInfo">
               <div class="title">쿠폰 할인 적용</div>
+              <ul>
+                <li>
+                  <div class="label">쿠폰</div>
+                  <div class="data">
+                    <input type="text" class="selectedCouponName" readonly="" placeholder="사용 가능한 쿠폰이 없습니다." />
+                  </div>
+                </li>
+              </ul>
             </div>
             <!-- 1-5. 결제수단 선택 -->
             <div class="dataInfo paymentMethod">
               <div class="title">결제수단 선택</div>
+              <ul class="paymentMethodList">
+                <li class="paymentMethodItem methodBox">
+                  <input class="method" name="method" id="payMethodcard" type="radio" value="CARD" checked="" /><label
+                    class="method"
+                    for="payMethodcard"
+                    >신용카드</label
+                  >
+                </li>
+              </ul>
             </div>
           </div>
           <!-- 2. 전체 합계 및 이용약관 -->
