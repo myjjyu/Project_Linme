@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linme</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/myPage.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/notification.css}" />
+</head>
+<body>
+<!-- Header 영역 -->
+<header th:fragment="my-header">
+    <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
+</header>
+
+<div class="contentContainer">
+    <div class="menuContainer">
+        <div class="menuSection">
+            <ul>
+                <li><a th:href="@{/myPage/myinfo/modify}" class="menu-link">회원 정보 수정
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                </li>
+                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menu-link">비밀번호 변경
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                </li>
+                <li><a th:href="@{/myPage/myinfo/notification}" class="menu-link">알림 설정
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                </li>
+                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menu-link">회원탈퇴
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                </li>
+            </ul>
+        </div>
+    </div>     
+
+    <div class="formSection">
+        <h1>알림 설정</h1>
+        <div class="notification-option">
+            <div class="notification-item">
+                <div class="notification-text">
+                    <span class="notification-title">SMS</span>
+                    <p class="notification-description">수신 설정이 되어있어야 설치 알람 수신이 가능합니다.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="notification-item">
+                <div class="notification-title">이메일</div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:fragment="my-header">
+    <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
+</footer>
+<script th:src="@{/assets/js/myPage/myPage.js}"></script>
+</body>
+</html>
