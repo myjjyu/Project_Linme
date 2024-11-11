@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Mypage2Controller {
-    @GetMapping("/myPage/coupon")
+    @GetMapping("/mypage/coupon")
     public String coupon(Model model) {
-        return "myPage/coupon";
+        return "mypage/coupon";
+    }
+
+    @GetMapping("/mypage/review")
+    public String review(Model model) {
+        return "mypage/review";
     }
 }
