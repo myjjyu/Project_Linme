@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>린미 - 회원가입</title>
-    <link rel="stylesheet" href="../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../static/assets/css/signUp.css" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/signUp.css}" />
 </head>
-
 <body>
     <main>
         <div class="container underTopMenu signUp">
@@ -61,7 +59,7 @@
                                 <span>비밀번호</span>
                             </div>
                             <div class="userInput">
-                                <input type="password" class="pw" name="pw" id="pw" minlength="8" maxlength="20" pattern="/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/" placeholder="비밀번호를 입력해 주세요." />
+                                <input type="password" class="pw" name="pw" id="pw" placeholder="비밀번호를 입력해 주세요." />
                                 <div class="pwShowHide close"></div>
                                 <div class="guide">
                                     <div class="inputGuide off">• 8자 이상 20자 이하로 입력해 주세요.</div>
@@ -127,6 +125,6 @@
         </div>
     </main>
 
+    <script th:src="@{/static/assets/js/signUp.js}"></script>
 </body>
-
 </html>
