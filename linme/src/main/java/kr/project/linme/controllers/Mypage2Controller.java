@@ -15,4 +15,9 @@ public class Mypage2Controller {
     public String review(Model model) {
         return "mypage/review";
     }
+
+    @GetMapping("/mypage/shopping/order")
+    public String order(Model model) {
+        return "mypage/shopping/order";
+    }
 }
