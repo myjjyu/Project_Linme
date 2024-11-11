@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../static/assets/css/login.css" />
     <title>린미-로그인</title>
+    <th:block th:replace="~{/fragments/header}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/login.css}" />
 </head>
+
 <body>
     <main>
         <div class="login">
@@ -23,7 +25,7 @@
                         <li class="userInput">
                             <input class="userPW" name="userPW" id="userPW" type="password" placeholder="비밀번호 입력">
                             <div class="pwShowHide">
-                                <img id="pwShowHide" src="../static/assets/img/login/password.png">
+                                <img id="pwShowHide" th:src="@{/assets/img/login/password.png}">
                             </div>
                         </li>
                     </ul>
@@ -35,11 +37,17 @@
                             <label for="checkSaveUserId">아이디 저장</label>
                         </span>
                         <ul class="findAndSignIn">
-                            <li class="clickable findId">아이디 찾기</li>
+                            <li class="clickable findId">
+                                <a th:href="@{/member/findId}">아이디</a>
+                            </li>
                             <li>｜</li>
-                            <li class="clickable findPW">비밀번호 찾기</li>
+                            <li class="clickable findPw">
+                                <a th:href="@{/member/findPw}">비밀번호 찾기</a>
+                            </li>
                             <li>｜</li>
-                            <li class="clickable signIn">회원가입</li>
+                            <li class="clickable signIn">
+                                <a th:href="@{/signUp}">회원가입 하기</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- 로그인 버튼 구현 -->
@@ -51,26 +59,26 @@
                     <div class="snsLoginCover">
                         <div class="snsLoginTitle">SNS 로그인</div>
                         <ul class="snsLogin">
-                            <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3D407c4a070937b463315209deaf7f8984%26redirect_uri%3Dhttps%253A%252F%252Flinme.kr%252Flogin%252Fkakao%26through_account%3Dtrue#login">
+                            <a th:href="'https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3D407c4a070937b463315209deaf7f8984%26redirect_uri%3Dhttps%253A%252F%252Flinme.kr%252Flogin%252Fkakao%26through_account%3Dtrue#login'">
                                 <li class="clickable kakao">
                                     <img class="snsLoginKakao"
-                                        src="../static/assets/img/login/sns_kakao.png"
+                                        th:src="@{/assets/img/login/sns_kakao.png}"
                                         alt="카카오로 로그인" />
                                     <div class="snsName">카카오</div>
-                                </a>
-                            </li>
+                                </li>
+                            </a>
                             <li class="clickable naver">
-                                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=hcK06aGchmiXvkDxg2Po&state=fpp6hahsb1730389133372&redirect_uri=https://linme.kr/login/naver">
+                                <a th:href="'https://nid.naver.com/oauth2.0/authorize?response_type=code&amp;client_id=hcK06aGchmiXvkDxg2Po&amp;state=fpp6hahsb1730389133372&amp;redirect_uri=https://linme.kr/login/naver'">
                                     <img class="snsLoginNaver"
-                                        src="../static/assets/img/login/sns_naver.png"
+                                        th:src="@{/assets/img/login/sns_naver.png}"
                                         alt="네이버로 로그인" />
                                     <div class="snsName">네이버</div>
                                 </a>
                             </li>
                             <li class="clickable apple">
-                                <a href="https://appleid.apple.com/auth/authorize?client_id=kr.linme.app.services&redirect_uri=https%3A%2F%2Flinme.kr%2Flogin%2Fapple&response_type=code%20id_token&state=fy1ukkfbyt1730388583589&scope=email&nonce=fy1ukkfbyt1730388583589&response_mode=web_message&frame_id=533b6586-7fd8-4bd7-86d0-c0b053b46d83&m=11&v=1.5.5">
+                                <a th:href="'https://appleid.apple.com/auth/authorize?client_id=kr.linme.app.services&amp;redirect_uri=https%3A%2F%2Flinme.kr%2Flogin%2Fapple&amp;response_type=code%20id_token&amp;state=fy1ukkfbyt1730388583589&amp;scope=email&amp;nonce=fy1ukkfbyt1730388583589&amp;response_mode=web_message&amp;frame_id=533b6586-7fd8-4bd7-86d0-c0b053b46d83&amp;m=11&amp;v=1.5.5'">
                                     <img class="snsLoginApple"
-                                        src="../static/assets/img/login/sns_apple.png"
+                                        th:src="@{/assets/img/login/sns_apple.png}"
                                         alt="애플로 로그인" />
                                     <div class="snsName">애플</div>
                                 </a>
@@ -81,6 +89,8 @@
             </div>
         </div>
     </main>
+    
+    <script th:src="@{/assets/js/login.js}"></script>
 </body>
-<script src="../static/assets/js/login.js"></script>
+
 </html>
