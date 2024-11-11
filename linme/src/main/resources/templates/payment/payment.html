@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/assets/css/payment.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/assets/css/payment.css" />-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/payment.css}" />
     <title>린미 - 주문/결제</title>
   </head>
   <body>
@@ -56,7 +58,7 @@
                 <!-- 받는 분-->
                 <li class="addressBookInfoItem">
                   <div class="label">받는 분</div>
-                  <span class="data" th:text="${addressName}">회원이름</span>
+                  <span class="data" th:text="${addressName}">주소 이름</span>
                 </li>
 
                 <!-- 연락처 -->
@@ -74,8 +76,8 @@
                 <!-- 배송 요청사항-->
                 <li class="addressBookInfoItem">
                   <div class="label">배송 요청사항</div>
-                  <form class="data" th:action="#">
-                    <select class="dropdown">
+                  <form class="data">
+                    <select name="dropdown" class="dropdown">
                       <option value="1">부재 시 문 앞에 놓아주세요</option>
                       <option value="2">배송 전에 미리 연락 주세요</option>
                       <option value="3">부재 시 경비실에 맡겨 주세요</option>
@@ -87,42 +89,55 @@
                 </li>
               </ul>
             </div>
+
             <!-- 1-3. 주문상품 확인 -->
             <div class="dataInfo checkOrderProduct">
-              <div class="title">주문상품 확인</div>
+              <div class="OrderProductTitle">주문상품</div>
               <div class="combinedProductList">
                 <ul class="combinedProductContainer">
+                  <!-- 상단 제목 -->
                   <li class="productItem title">
-                    <div class="product">상품정보</div>
-                    <div class="salePriceInfo">판매가</div>
+                    <div class="productTitle">상품정보</div>
+                    <div class="salePriceInfoTitle">판매가</div>
                     <div class="priceInfo">구매가</div>
                     <div class="deliveryPriceInfo">배송비</div>
                   </li>
+
+                  <!-- 구매상품 정보 -->
                   <li class="productItem">
                     <div class="product">
-                      <a href="#"
-                        ><div class="productImageCover">
-                          <img class="" srcset="" src="#" alt="브랜드+상품명" /></div
-                      ></a>
+                      <a><div class="productImageCover"></div></a>
                       <div>
-                        <div class="productItemBrandName"><a href="#">브랜드명</a></div>
+                        <!-- 브랜드명 -->
+                        <div class="productItemBrandName"><a>브랜드명</a></div>
+                        <!-- 상품명 -->
                         <div class="productItemProductName">
-                          <a href="#">상품명</a>
+                          <a>상품명</a>
                         </div>
-                        <div class="productOptionQuantity">상품수량<span class="quantityUnit">개</span></div>
+                        <!-- 개수 -->
+                        <div class="productOptionQuantity">1<span class="quantityUnit">개</span></div>
                       </div>
                     </div>
-                    <div class="salePriceInfo">판매가<span class="currencyUnit">원</span></div>
+                    <!-- 판매가 -->
+                    <div class="salePriceInfo">{판매가}<span class="currencyUnit">원</span></div>
+                    <!-- 구매가/원가 -->
                     <div class="priceInfo">
-                      <div class="price">원가<span class="currencyUnit">원</span></div>
-                      <div class="priceContainer">구매가<span class="currencyUnit">원</span></div>
+                      <!-- 원가 -->
+                      <div class="price">{원가}<span class="currencyUnit">원</span></div>
+                      <!-- 구매가 -->
+                      <div class="priceContainer">{구매가}<span class="currencyUnit">원</span></div>
                     </div>
+                    <!-- 배송비 -->
                     <div class="deliveryPriceInfo">0<span class="currencyUnit">원</span></div>
                   </li>
+
+                  <!-- 구분선 -->
                   <li class="productItem lineProductInfo"></li>
                   <li class="productItem lineSalePriceInfo"></li>
                   <li class="productItem linePriceInfo"></li>
                 </ul>
+
+                <!-- 총 배송비 -->
                 <div class="cardDeliveryPrice">
                   <div class="cardDeliveryPriceItem">총 배송비</div>
                   <div class="cardDeliveryPriceItem bold">0원</div>
@@ -131,19 +146,19 @@
             </div>
             <!-- 1-4. 쿠폰 할인 적용 -->
             <div class="dataInfo couponInfo">
-              <div class="title">쿠폰 할인 적용</div>
+              <div class="couponTitle">쿠폰 할인 적용</div>
               <ul>
                 <li>
                   <div class="label">쿠폰</div>
                   <div class="data">
-                    <input type="text" class="selectedCouponName" readonly="" placeholder="사용 가능한 쿠폰이 없습니다." />
+                    <input type="text" name="selectedCouponName" class="selectedCouponName" readonly="" placeholder="사용 가능한 쿠폰이 없습니다." />
                   </div>
                 </li>
               </ul>
             </div>
             <!-- 1-5. 결제수단 선택 -->
             <div class="dataInfo paymentMethod">
-              <div class="title">결제수단 선택</div>
+              <div class="paymentMethodTitle">결제수단 선택</div>
               <ul class="paymentMethodList">
                 <li class="paymentMethodItem methodBox">
                   <input class="method" name="method" id="payMethodcard" type="radio" value="CARD" checked="" /><label
@@ -159,11 +174,28 @@
           <div class="paymentTotalContainer">
             <!-- 2-1. 전체 합계 -->
             <div class="paymentTotalInfo">
-              <!-- 전체 합계 타이틀 -->
-              <div class="paymentTotaltitle">전체 합계</div>
+              <!-- 전체 합계 -->
+              <div class="title">전체 합계</div>
+              <ul>
+                <!-- 총 선택상품금액 -->
+                <li>
+                  <div class="label">총 선택상품금액</div>
+                  <div class="price selectedProductPrice">{1234}<span class="currencyUnit">원</span></div>
+                </li>
+                <!-- 총 배송비 -->
+                <li>
+                  <div class="label">총 배송비</div>
+                  <div class="price selectedDeliveryPrice"><span class="plus">+</span>0<span class="currencyUnit">원</span></div>
+                </li>
+              </ul>
+              <div class="orderTotal">
+                <div class="label">전체 주문금액</div>
+                <div class="price orderPriceTotal">{1234}<span class="currencyUnit">원</span></div>
+              </div>
+              <div class="button clickable buy cover">
+                <div class="buttonInner"><div class="label">결제하기</div></div>
+              </div>
             </div>
-            <!-- 2-2. 이용약관 -->
-            <div class="paymentTermsInfo">이용약관</div>
           </div>
         </div>
       </div>
