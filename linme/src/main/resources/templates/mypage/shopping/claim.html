@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../../static/assets/css/myPage/shopping/claim.css" />
+    <!--<link rel="stylesheet" href="../../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../../static/assets/css/myPage/shopping/claim.css" />-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/shopping/claim.css}" />
     <title>린미 - 주문/배송 내역</title>
   </head>
   <body>
     <!-- Header 영역 -->
-    <header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>
+    <!--<header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>-->
 
     <!-- Main 영역-->
     <main>
@@ -34,6 +36,6 @@
     </main>
 
     <!-- Footer 영역 -->
-    <footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>
+    <!--<footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>-->
   </body>
 </html>

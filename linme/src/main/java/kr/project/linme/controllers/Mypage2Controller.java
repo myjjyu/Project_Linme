@@ -20,4 +20,9 @@ public class Mypage2Controller {
     public String order(Model model) {
         return "mypage/shopping/order";
     }
+
+    @GetMapping("/mypage/shopping/claim")
+    public String claim(Model model) {
+        return "mypage/shopping/claim";
+    }
 }
