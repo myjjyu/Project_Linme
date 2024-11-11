@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../static/assets/css/myPage/coupon.css" />
+    <!--<link rel="stylesheet" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../static/assets/css/myPage/coupon.css" />-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/coupon.css}" />
     <title>린미 - 보유 쿠폰</title>
   </head>
   <body>
@@ -15,7 +17,7 @@
     <main>
       <div class="orderContainer">
         <!-- 마이페이지 myPageSummary 추가해야함 -->
-        <div class="contents">마이페이지</div>
+        <div class="myPage"></div>
         <div class="contents">
           <div class="myPageContents myShopping">
             <div class="myPageDetail">
