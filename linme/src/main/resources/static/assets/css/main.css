@@ -1,9 +1,11 @@
 .mainContent {
-  /* background-color: violet; */
   margin: auto;
   position: relative;
-  /* top: 100%; */
+  top: 100%;
+  height: 100%;
+  padding-bottom: 1200px;
 }
+
 /*
 * 메인배너 라이브러리
 */
@@ -11,7 +13,7 @@
   /* border: 1px solid red; */
   width: 87%;
   height: 360px;
-  /* margin-top: 170px; */ /*<=헤더랑 합친후 조절할 영역*/
+  margin-top: 170px;
 }
 .swiper-slide {
   /* border: 1px solid red; */
@@ -53,7 +55,7 @@
   font-size: 28px;
   color: #333;
   font-weight: 700px;
-  margin-top: 200px;
+  margin-top: 100px;
   font-weight: 900;
 }
 
@@ -103,7 +105,6 @@
 #icon a.active {
   color: #ff8181;
 }
-
 
 /* 메인 컨텐츠 영역 */
 .headerMenu {
@@ -220,7 +221,6 @@
 */
 .topicContainer {
   border-bottom: 12px solid #f3f3f3;
-  
 }
 
 /* 전체상품텍스트 */
@@ -281,10 +281,8 @@
 }
 
 /* listNo.html 텍스트 css */
-.titleContent{
+.titleContent {
   /* border: 1px solid red; */
   text-align: center;
   margin-bottom: 50px;
 }
-
-
