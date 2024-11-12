@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>린미 - 세상에 없던 H-커머스</title>
+    <th:block th:replace="~{/fragments/header}" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -18,35 +20,30 @@
   </head>
 
   <body>
-    <!-- 헤더 -->
-    <header>
-      <div id="header"></div>
-    </header>
-
     <!-- 메인 영역 -->
     <main>
       <div class="mainContent" id="mainContent">
       <!-- 전체상품 영역 -->
 
       <div class="titleContent">
-      <div class="title">남성 영양제 추천📣</div>
-      <div class="subtitle">남성 활력 증진에 필요한 영양제 모음</div>
+      <div class="title">🙌오늘이 가장 젊은 날🙌</div>
+      <div class="subtitle">건강한 아름다움을 위한 이너뷰티 추천템</div>
     </div>
       <div class="contents" id="vitaminSection">
         <ul class="productDisplayOrder">
           <li class="productText">
-            <a th:href="@{#}" class="sort-button sort-recommend" id="recommended"
+            <a href="#" class="sort-button sort-recommend" id="recommended"
               >추천순</a
             >
           </li>
           <li class="productText">
-            <a th:href="@{#}" class="sort-button" id="benefit">혜택순</a>
+            <a href="#" class="sort-button" id="benefit">혜택순</a>
           </li>
           <li class="productText">
-            <a th:href="@{#}" class="sort-button" id="low-price">낮은 가격순</a>
+            <a href="#" class="sort-button" id="low-price">낮은 가격순</a>
           </li>
           <li class="productText">
-            <a th:href="@{#}" class="sort-button" id="high-price">높은 가격순</a>
+            <a href="#" class="sort-button" id="high-price">높은 가격순</a>
           </li>
         </ul>
 
@@ -56,9 +53,9 @@
         <div id="productList" class="all-list">
           <!-- <div class="headerMenutitleimg">
             <div class="boximg">
-              <a th:href="@{./상세페이지}">
+              <a href="./상세페이지">
                 <img
-                  th:src="@{../../static/assets/img/main/네츄럴메이드 멀티비타민.jpg }"
+                  src="../../static/assets/img/main/네츄럴메이드 멀티비타민.jpg "
                   alt="제품이미지"
                   class="imgbox"
                 />
@@ -73,16 +70,9 @@
         </div>
       </div>
     </main>
-
-    <!-- 푸터 -->
     <footer>
-      <div id="footer"></div>
+      <th:block th:replace="~{/fragments/footer}" />
     </footer>
-    <link
-      rel="stylesheet"
-      th:href="@{/linme/src/main/resources/static/data/main.json}"
-    />
-
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

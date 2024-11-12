@@ -8,6 +8,7 @@
   position: relative;
   display: flex;
   width: 1200px;
+  margin-top: 70px;
   /* border: 2px solid palevioletred; */
 }
 
@@ -15,6 +16,7 @@
 .mySwiper2 {
   /* border: 5px solid red; */
   height: 100%;
+  
 }
 .main-img img {
   /* border: 5px solid rgb(20, 2, 2); */
@@ -40,6 +42,10 @@
     height: 137px;
     object-fit: cover;
   }
+}
+
+.swiper-thumbs{
+  margin-top: 0;
 }
 
 /* 미리보기 이미지 흐림효과 */
@@ -91,6 +97,7 @@
   /* border: 5px solid rgb(24, 239, 0); */
   margin-right: 50px;
   width: 330px;
+  margin-top: 180px;
 
   ul {
     padding: 0;
@@ -341,7 +348,7 @@
 /* <!-- 상품설명/리뷰/상품문의 --> */
 .sticky {
   position: sticky;
-  top: 174.5px;
+  top: 170px;
   width: 100%;
   background-color: #fff;
   border-top: 2px solid #f3f3f3;

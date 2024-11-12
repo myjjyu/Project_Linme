@@ -7,7 +7,7 @@ const contentData = [
     title: "💪비타민 충전타임💪",
     products: [
       {
-        image: "../../static/assets/img/main/비타민충전타임1.jpg",
+        image: "/assets/img/main/비타민충전타임1.jpg",
         productName: "네추럴메이드 멀티비타민 앤 미네랄",
         discountRate: "45",
         originalPrice: "36,000",
@@ -15,7 +15,7 @@ const contentData = [
         shippingInfo: "무료배송",
       },
       {
-        image: "../../static/assets/img/main/비타민충전타임2.jpg",
+        image: "/assets/img/main/비타민충전타임2.jpg",
         productName: "[앙팡] 다이노 비타민C (500정)",
         discountRate: "9",
         originalPrice: "30,000",
@@ -479,7 +479,7 @@ const contentData = [
     title: "남성 영양제 추천📣",
     products: [
       {
-        image: "../../static/assets/img/main/남성영양제1.jpg",
+        image: "/assets/img/main/남성영양제1.jpg",
         productName: "[퍼니트] 프리미엄 유기농 밀크씨슬 1,000mgX30정",
         discountRate: "44",
         originalPrice: "29,000",
@@ -542,7 +542,7 @@ contentData.forEach((content) => {
   const buttonLink = document.createElement("a");
   // 각각의 세션에 맞는 페이지를 URL넣어서 동적으로 이동시킴
   if (content.title === "💪비타민 충전타임💪") {
-    buttonLink.href = "../../templates/main/listNo1.html"; // 첫 번째 페이지로 이동
+    buttonLink.content.title = "../../templates/main/listNo1.html"; // 첫 번째 페이지로 이동
   } else if (content.title === "💊온 가족 장 건강 케어💊") {
     buttonLink.href = "../../templates/main/listNo2.html"; // 두 번째 페이지로 이동
   } else if (content.title === "✔️대체불가 필수 지방산 오메가-3✔️") {
@@ -568,7 +568,7 @@ contentData.forEach((content) => {
   const button = document.createElement("button");
   button.type = "submit";
   const img = document.createElement("img");
-  img.src = "../../static/assets/img/main/arrow_showMore.png";
+  img.setAttribute = ("src","/assets/img/main/arrow_showMore.png");
   img.alt = "arrow_showMore";
   button.appendChild(img);
   buttonLink.appendChild(button);
@@ -587,7 +587,7 @@ contentData.forEach((content) => {
     boximg.classList.add("boximg");
 
     const link = document.createElement("a");
-    link.href = "./상세페이지"; // 상세 페이지로의 링크 설정
+    link.href = "../../templates/view/view.html"; // 상세 페이지로의 링크 설정
 
     const productImg = document.createElement("img");
     productImg.src = product.image; // 이미지 경로
@@ -636,26 +636,11 @@ contentData.forEach((content) => {
 });
 
 /*****************************************************/
-/* 메인영역 라이브러리
-/*****************************************************/
-var swiper = new Swiper(".mySwiper", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  loop: true,
-});
-
-/*****************************************************/
 /* 메인영역 어떤 영양제를 찾으세요? icon
 /*****************************************************/
 const icons = [
   {
-    url: "../../static/assets/img/main/icon-list/혈액순환.png",
+    url: "assets/img/main/icon-list/혈액순환.png",
     title: "혈액순환",
   },
   {
@@ -663,7 +648,7 @@ const icons = [
     title: "피부건강",
   },
   {
-    url: "../../static/assets/img/main/icon-list/운동근육.png",
+    url: "../../static/assets/img/main/icon-list/운동:근육.png",
     title: "운동/근육",
   },
   {
@@ -698,12 +683,12 @@ const icons = [
   { url: "../../static/assets/img/main/icon-list/갱년기.png", title: "갱년기" },
   { url: "../../static/assets/img/main/icon-list/임산부.png", title: "임산부" },
   {
-    url: "../../static/assets/img/main/icon-list/피로활력.png",
+    url: "../../static/assets/img/main/icon-list/피로:활력.png",
     title: "피로/활력",
   },
   { url: "../../static/assets/img/main/icon-list/장건강.png", title: "장건강" },
   {
-    url: "../../static/assets/img/main/icon-list/치아잇몸.png",
+    url: "../../static/assets/img/main/icon-list/치아:잇몸.png",
     title: "치아/잇몸",
   },
   { url: "../../static/assets/img/main/icon-list/빈혈.png", title: "빈혈" },

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>린미 - 세상에 없던 H-커머스</title>
+    <th:block th:replace="~{/fragments/header}" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -21,15 +22,6 @@
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/view.css}" />
-
-    <style>
-      .footer {
-        bottom: 0;
-        width: 100%;
-        height: 100vh;
-        border: none;
-      }
-    </style>
   </head>
   <body>
     <div id="loading"></div>
@@ -37,7 +29,7 @@
     <!-- 오른쪽 하단 토글버튼 -->
     <div class="Topbutton">
       <a th:href="@{#}">
-        <img th:src="@{../../static/assets/img/main/topToggle.png}" />
+        <img th:src="@{/assets/img/main/topToggle.png}" />
       </a>
     </div>
 
@@ -56,26 +48,26 @@
           <!-- 메인이미지 -->
           <div class="swiper-wrapper">
             <div class="swiper-slide main-img">
-              <img th:src="@{../../static/assets/img/view/main-img.png}" />
+              <img th:src="@{/assets/img/view/main-img.png}" />
             </div>
             <div class="swiper-slide main-img">
-              <img th:src="@{../../static/assets/img/view/side-img.png}" />
+              <img th:src="@{/assets/img/view/side-img.png}" />
             </div>
             <div class="swiper-slide main-img">
-              <img th:src="@{../../static/assets/img/view/side-img2.png}" />
+              <img th:src="@{/assets/img/view/side-img2.png}" />
             </div>
           </div>
           <!--화살표 버튼  -->
           <div class="swiper-button">
             <div class="swiper-button-next">
               <img
-                th:src="@{../../static/assets/img/view/swiper-button2.png}"
+                th:src="@{/assets/img/view/swiper-button2.png}"
                 alt="img-button"
               />
             </div>
             <div class="swiper-button-prev">
               <img
-                th:src="@{../../static/assets/img/view/swiper-button.png}"
+                th:src="@{/assets/img/view/swiper-button.png}"
                 alt="img-button"
               />
             </div>
@@ -119,7 +111,7 @@
                 <a th:href="@{#review}"
                   ><img
                     class="arrow"
-                    th:src="@{../../static/assets/img/view/arrow_showMore.png}"
+                    th:src="@{/assets/img/view/arrow_showMore.png}"
                 /></a>
               </li>
               <li class="discountRate">
@@ -315,11 +307,9 @@
       
       <div class="division"></div>
     </main>
-
-    <!-- 푸터 -->
     <footer>
+      <th:block th:replace="~{/fragments/footer}" />
     </footer>
-
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script
