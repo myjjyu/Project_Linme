@@ -23,7 +23,6 @@ main {
 body div,
 html div {
   display: block;
-  height: 100%;
   position: relative;
   width: 100%;
 }
@@ -385,117 +384,6 @@ input[type="text"]:read-only {
   height: 30px;
 }
 
-/* -------------- 1-3. 주문상품 확인 -------------- */
-
-.checkOrderProduct {
-  padding: 0 20px 0 0;
-  width: 100%;
-}
-
-.combinedProductList {
-  border: 1px solid #e6e6e6;
-  border-radius: 14px;
-  margin-top: 16px;
-}
-
-.combinedProductContainer {
-  height: fit-content;
-  overflow: hidden;
-  width: 100%;
-}
-
-.combinedProductList .combinedProductContainer .productItem {
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  box-sizing: border-box;
-  display: table;
-  height: fit-content;
-  padding: 20px 0 20px 10px;
-  position: relative;
-  width: 100%;
-}
-
-/* 상단 제목 */
-.combinedProductContainer .title {
-  background-color: #f3f3f3;
-  height: 16px;
-  min-height: 0;
-  min-height: auto;
-  padding: 15px 0;
-}
-
-/* 구매상품 정보 */
-.combinedProductList .combinedProductContainer .productItem {
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  box-sizing: border-box;
-  display: table;
-  height: fit-content;
-  padding: 20px 0 20px 10px;
-  position: relative;
-  width: 100%;
-}
-
-/* 상품정보 */
-.dataInfo.checkOrderProduct .combinedProductList .combinedProductContainer .productItem .product {
-  box-sizing: border-box;
-  display: flex;
-  gap: 10px;
-  height: 100%;
-  padding-right: 10px;
-  position: relative;
-}
-
-.combinedProductContainer .productItem .product .productImageCover {
-  background-color: #fff;
-  border: none;
-  display: block;
-  height: 124px;
-  width: 124px;
-}
-
-/* 이미지 크기 */
-.productImageCover img {
-  height: 124px;
-  width: 124px;
-}
-
-/* 브랜드명 */
-.productItemBrandName {
-  color: #606060;
-  font-size: 18px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: -0.9px;
-  line-height: 1.11;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-/* 상품명 */
-.productItemProductName {
-  font-size: 18px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  line-height: 1.11;
-  text-align: left;
-}
-
-/* 상품개수 */
-.productOptionQuantity {
-  color: #707070;
-  font-size: 15px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 500;
-  height: fit-content;
-  letter-spacing: -0.3px;
-  margin-top: 10px;
-}
-
 /* -------------- 1-4. 쿠폰 할인 적용 -------------- */
 .couponInfo input {
   width: 292px;
@@ -659,4 +547,115 @@ input[type="radio"]:checked + label {
   line-height: 1.43;
   margin-top: 5px;
   width: fit-content;
+}
+
+/* -------------- 1-3. 주문상품 -------------- */
+
+/* 테두리 둥글게 */
+.combinedProductList {
+  display: block;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  margin-top: 16px;
+}
+
+/* 상단 */
+.productItem {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px 10px;
+  position: relative;
+  width: 100%;
+}
+
+/* 상품 상단 */
+.combinedProductList {
+  /* 상단 둥글게 */
+  .title {
+    background-color: #f3f3f3;
+    padding: 15px;
+    text-align: center;
+
+    /*상품정보*/
+    .productTitle {
+      width: 100%;
+    }
+    /* 판매가 */
+    .salePriceInfoTitle {
+      width: 150px;
+    }
+
+    /* 구매가 */
+    .priceInfo {
+      width: 150px;
+    }
+
+    /* 배송비 */
+    .deliveryPriceInfo {
+      width: 150px;
+    }
+  }
+
+  /* 총배송비 */
+  .cardDeliveryPrice {
+    background-color: #f5f5f5;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+
+    .cardDeliveryPriceItem {
+      font-size: 16px;
+      font-weight: 500;
+      width: fit-content;
+    }
+  }
+}
+
+/* 구매상품 정보 */
+.detail {
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+
+  /* 상품정보 */
+  .product {
+    display: flex;
+    gap: 10px;
+    height: 100%;
+    position: relative;
+
+    /* 상품 이미지 */
+    .productImageCover {
+      width: 124px;
+    }
+  }
+
+  /* 상품 브랜드/상품명/개수 */
+  .productItemNameNo {
+    text-align: start;
+    height: 124px;
+  }
+  /*판매가*/
+  .salePriceInfo {
+    width: 150px;
+  }
+  /*구매가/원가*/
+  .priceInfo {
+    width: 150px;
+  }
+  /*배송비*/
+  .deliveryPriceInfo {
+    width: 150px;
+  }
+}
+
+.top-solidline {
+  border: 1px solid #b6b6b6;
+  height: 20px;
+  width: 0;
 }

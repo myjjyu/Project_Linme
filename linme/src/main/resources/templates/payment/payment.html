@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link rel="stylesheet" type="text/css" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/assets/css/payment.css" />-->
+    <link rel="stylesheet" type="text/css" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/assets/css/payment.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/payment.css}" />
     <title>린미 - 주문/결제</title>
@@ -98,16 +98,24 @@
                   <!-- 상단 제목 -->
                   <li class="productItem title">
                     <div class="productTitle">상품정보</div>
+                    <div class="top-solidline"></div>
                     <div class="salePriceInfoTitle">판매가</div>
+                    <div class="top-solidline"></div>
                     <div class="priceInfo">구매가</div>
+                    <div class="top-solidline"></div>
                     <div class="deliveryPriceInfo">배송비</div>
                   </li>
 
                   <!-- 구매상품 정보 -->
-                  <li class="productItem">
+                  <li class="productItem detail">
+                    <!-- 상품 정보-->
                     <div class="product">
-                      <a><div class="productImageCover"></div></a>
-                      <div>
+                      <!-- 상품 이미지-->
+                      <a th:href="@{#}"
+                        ><div class="productImageCover"><img th:src="@{productImage}" />사진</div></a
+                      >
+                      <!-- 상품 브랜드/상품명/개수 -->
+                      <div class="productItemNameNo">
                         <!-- 브랜드명 -->
                         <div class="productItemBrandName"><a>브랜드명</a></div>
                         <!-- 상품명 -->
@@ -120,6 +128,7 @@
                     </div>
                     <!-- 판매가 -->
                     <div class="salePriceInfo">{판매가}<span class="currencyUnit">원</span></div>
+
                     <!-- 구매가/원가 -->
                     <div class="priceInfo">
                       <!-- 원가 -->
@@ -130,11 +139,6 @@
                     <!-- 배송비 -->
                     <div class="deliveryPriceInfo">0<span class="currencyUnit">원</span></div>
                   </li>
-
-                  <!-- 구분선 -->
-                  <li class="productItem lineProductInfo"></li>
-                  <li class="productItem lineSalePriceInfo"></li>
-                  <li class="productItem linePriceInfo"></li>
                 </ul>
 
                 <!-- 총 배송비 -->
