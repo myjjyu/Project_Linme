@@ -74,69 +74,25 @@ body {
     margin-top: 20px;
 }
 
-.challengeSection {
+.usingSection {
     border: 1px solid #efefef;
     width: 70%;
     padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    height: 600px;
     text-align: center;
 }
 
-.tabs {
-    display: flex;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
+.usingSection h2 {
+    margin-top: 0;
+    margin-bottom: 20px; 
+    text-align: center;
 }
 
-.tab {
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #888;
-    border: none;
-    background: none;
-}
-
-.tab.active {
-    color: #ff697b;
-    border-bottom: 2px solid #ff697b;
-}
-
-.challenges {
-    display: flex;
-    align-items: center;
-}
-
-.challenge {
-    display: flex;
-    align-items: center;
-}
-
-.challengeImage {
-    width: 120px;
-    height: 80px;
-    margin-right: 20px;
-}
-
-.challengeInfo h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.challengeInfo p {
-    margin: 5px 0;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #888;
-    margin-top: 20px;
-}
-
-.pagination span {
-    margin: 0 5px;
-    cursor: pointer;
+.usingList {
+    color: #8e8e8e;
+    margin-top:200px;
 }

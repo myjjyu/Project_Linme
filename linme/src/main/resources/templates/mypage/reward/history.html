@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linme</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/reward.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/history.css}" />
 </head>
 <body>
     <!-- Header 영역 -->
     <header th:fragment="my-header">
         <link rel="stylesheet" th:href=@{/assets/css/header.css} />
     </header>
-
     <div class="rewardPage">
         <div class="rewardDetails">
             <h2>리워드</h2>
@@ -24,6 +23,7 @@
                         <li><span>적립 예정:</span> - R</li>
                         <li><span>총 사용:</span> - R</li>
                         <li><span>총 적립:</span> - R</li>
+
                     </ul>
                     <a th:href="@{/myPage/reward/history}" class="viewHistory">사용내역 보러 가기 ></a>
                 </div>
@@ -34,33 +34,18 @@
                 <li>최소 10개 단위로 사용 가능합니다.</li>
             </ul>
         </div>
-
-        <div class="challengeSection">
-            <div class="tabs">
-                <button class="tab active" data-tab="ongoing">진행중인 챌린지</button>
-                <button class="tab" data-tab="completed">종료된 챌린지</button>
-            </div>
-            <div class="challenges">
-                <div class="challenge ongoing">
-                    <img th:src="@{/assets/img/myPage/reward2.png}" class="challengeImage">
-                    <div class="challengeInfo">
-                        <h3>출석체크 이벤트</h3>
-                        <p>30R</p>
-                        <p>24.11.01 - 24.11.30</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pagination">
-                <span>&lt;</span>
-                <span>1 / 1</span>
-                <span>&gt;</span>
+    
+        <div class="usingSection">
+            <h2>리워드 사용내역</h2>
+            <div class="usingList">
+                <div>최근 사용내역이 없습니다.</div>
             </div>
         </div>
     </div>
-
     <!-- Footer 영역 -->
     <footer th:fragment="my-header">
         <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
     </footer>
 </body>
 </html>
+

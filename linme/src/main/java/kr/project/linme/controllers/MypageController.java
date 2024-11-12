@@ -27,26 +27,36 @@ public class MypageController {
     public String level() {
         return "myPage/level";
     }
+
     @GetMapping("/myPage/reward")
     public String reward() {
         return "myPage/reward";
+    }
+
+    @GetMapping("/myPage/reward/history")
+    public String history() {
+        return "myPage/reward/history";
     }
     @GetMapping("/myPage/myinfo")
     public String myinfo() {
         return "myPage/myinfo";
     }
+
     @GetMapping("/myPage/myinfo/modify")
     public String modify() {
         return "/myPage/myinfo/modify";
     }
+
     @GetMapping("/myPage/myinfo/passwordModify")
     public String passwordModify() {
         return "/myPage/myinfo/passwordModify";
     }
+
     @GetMapping("/myPage/myinfo/notification")
     public String notification() {
         return "/myPage/myinfo/notification";
     }
+
     @GetMapping("/myPage/myinfo/withdrawal")
     public String withdrawal() {
         return "/myPage/myinfo/withdrawal";
