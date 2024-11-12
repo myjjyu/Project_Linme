@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>린미 - 세상에 없던 H-커머스</title>
+    <th:block th:replace="~{/fragments/header}" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -20,7 +20,6 @@
   <body>
     <!-- 헤더 -->
     <header>
-      <div id="header"></div>
     </header>
 
     <!-- 메인 영역 -->
@@ -93,7 +92,7 @@
             <a th:href="@{otherPage.html}">
               <button type="submit">
                 <img
-                  th:src="@{../../static/assets/img/main/arrow_showMore.png}"
+                  th:src="@{/assets/img/main/arrow_showMore.png}"
                   alt="arrow_showMore"
                 />
               </button>
