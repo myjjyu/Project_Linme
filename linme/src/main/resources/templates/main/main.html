@@ -14,7 +14,9 @@
     />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/view.css}" />
   </head>
 
   <body>
@@ -167,12 +169,13 @@
 
     <!-- 푸터 -->
     <footer>
-      <div id="footer"></div>
     </footer>
+
     <link
       rel="stylesheet"
       th:href="@{/linme/src/main/resources/static/data/main.json}"
     />
+    <th:block th:replace="~{/fragments/footer}" />
 
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -180,5 +183,18 @@
     <script th:src="@{/assets/js/header.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script th:src="@{/assets/js/main_all_list.js}"></script>
+    <script th:src="@{/assets/js/view.js}"></script>
+<script>
+      // main_all_list.js 파일에 추가
+fetch('/assets/data/main.json')
+  .then(response => response.json())
+  .then(data => {
+    // data를 사용하여 필요한 요소에 표시
+    console.log(data);
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+</script>
+
+
   </body>
 </html>
