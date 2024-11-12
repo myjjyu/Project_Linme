@@ -7,10 +7,10 @@ document.getElementById("pwShowHide").addEventListener("click", function () {
     if (userPW.type === "password") {
       // 패스워드 보이기
       userPW.type = "text";
-      passwordIcon.src = "../static/assets/img/login/password(2).png";
+      passwordIcon.setAttribute("src","/assets/img/login/password(2).png");
     } else {
       // 패스워드 숨기기
       userPW.type = "password";
-      passwordIcon.src = "../static/assets/img/login/password.png";
+      passwordIcon.setAttribute("src","/assets/img/login/password.png");
     }
   });
