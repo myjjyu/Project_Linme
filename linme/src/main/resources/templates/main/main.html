@@ -31,7 +31,7 @@
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <a th:href="@{#}">
+              <a href="#">
                 <img
                   th:src="@{/assets/img/main/mainbaner.jpg}"
                   alt="출석체크"
@@ -167,10 +167,6 @@
       </div>
     </main>
 
-    <!-- 푸터 -->
-    <footer>
-    </footer>
-
     <link
       rel="stylesheet"
       th:href="@{/linme/src/main/resources/static/data/main.json}"
@@ -184,16 +180,6 @@
     <script th:src="@{/assets/js/main.js}"></script>
     <script th:src="@{/assets/js/main_all_list.js}"></script>
     <script th:src="@{/assets/js/view.js}"></script>
-<script>
-      // main_all_list.js 파일에 추가
-fetch('/assets/data/main.json')
-  .then(response => response.json())
-  .then(data => {
-    // data를 사용하여 필요한 요소에 표시
-    console.log(data);
-  })
-  .catch(error => console.error('Error fetching JSON:', error));
-</script>
 
 
   </body>
