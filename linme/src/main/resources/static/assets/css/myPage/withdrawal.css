@@ -52,11 +52,11 @@ body {
 .menuSection ul li a:hover,
 .menuSection ul li a.active {
     background-color: #f8e8e8;
-    color: #d9534f;
+    color: #ff697b;
     font-weight: bold;
 }
 
-.next-icon {
+.nextIcon {
     width: 10px;
     height: 10px;
     margin-left: 5px;
@@ -77,7 +77,7 @@ body {
     font-weight: bold; 
 }
 
-.notice-box {
+.noticeBox {
     background-color: #f7f7f7;
     padding: 20px;
     border-radius: 10px;
@@ -87,22 +87,22 @@ body {
     line-height: 1.6;
 }
 
-.notice-box ul {
+.noticeBox ul {
     list-style: none;
     padding: 0;
 }
 
-.notice-box li {
+.noticeBox li {
     margin-bottom: 8px;
 }
 
-.notice-box li strong {
+.noticeBox li strong {
     font-weight: bold;
     display: block;
     margin-bottom: 2px;
     padding-left: 20px;
 }
-.notice-box li strong::before {
+.noticeBox li strong::before {
     content: "• ";
     color: #333;
     margin-right: 5px;

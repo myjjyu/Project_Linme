@@ -52,11 +52,11 @@ body {
 .menuSection ul li a:hover,
 .menuSection ul li a.active {
     background-color: #f8e8e8;
-    color: #d9534f;
+    color: #ff697b;
     font-weight: bold;
 }
 
-.next-icon {
+.nextIcon {
     width: 10px;
     height: 10px;
     margin-left: 5px;
@@ -73,12 +73,12 @@ body {
     margin-bottom: 20px;
 }
 
-.notification-option {
+.notificationOption {
     display: flex;
     gap: 20px;
 }
 
-.notification-item {
+.notificationItem {
     flex: 1;
     display: flex;
     align-items: center;
@@ -93,17 +93,17 @@ body {
     box-sizing: border-box;
 }
 
-.notification-text {
+.notificationText {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.notification-title {
+.notificationTitle {
     font-weight: bold;
 }
 
-.notification-description {
+.notificationDescription {
     font-size: 12px;
     color: #888;
     margin-top: 4px;

@@ -10,24 +10,24 @@
 </head>
 <!-- Header 영역 -->
 <header th:fragment="my-header">
-    <link rel="stylesheet" th:href=@{/assets/css/header.css} />
+    <link rel="stylesheet" th:href="@{/assets/fragments/header.html}" />
 </header>
 
 <div class="contentContainer">
     <div class="menuContainer">
         <div class="menuSection">
             <ul>
-                <li><a th:href="@{/myPage/myinfo/modify}"  class="menu-link">회원 정보 수정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                <li><a th:href="@{/myPage/myinfo/modify}"  class="menuLink">회원 정보 수정
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                 </li>
-                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menu-link">비밀번호 변경
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                 </li>
-                <li><a th:href="@{/myPage/myinfo/notification}" class="menu-link">알림 설정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                 </li>
-                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menu-link">회원탈퇴
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
+                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                 </li>
             </ul>
         </div>
@@ -46,18 +46,18 @@
                 <tr>
                     <td>휴대폰</td>
                     <td>
-                        <button class="auth-btn">본인인증</button>
+                        <button class="authButton">본인인증</button>
                     </td>
                 </tr>
             </table>
-            <div class="save-btn-container">    
-                <button class="save-btn" disabled>저장</button>
+            <div class="savebuttonContainer">    
+                <button class="savebutton" disabled>저장</button>
             </div>
         </div>
 </div>
-<footer th:fragment="my-header">
+<!-- <footer th:fragment="my-header">
     <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
-</footer>
+</footer> -->
 <script th:src="@{/assets/js/myPage/myPage.js}"></script>
 </body>
 </html>

@@ -24,15 +24,21 @@
             <!-- 사용자 정보 -->
             <div class="userInfo">
                 <div class="profile">
-                    <img th:src="@{/assets/img/myPage/profileimg.png}"/>
+                    <a th:href="@{/myPage/profile}">
+                        <img th:src="@{/assets/img/myPage/profileimg.png}"/>
+                    </a>
                     <div class="userDetails">
-                        <h3 th:text="${username}"></h3>
-                        <p>등급: <span th:text="${grade}"></span></p>
-                        <p>리워드: <span th:text="${reward}"></span></p>
+                        <a th:href="@{/myPage/profile}">
+                            <h3 th:text="${username}"></h3>
+                        </a>
+                        <p>등급: <a th:href="@{/myPage/level}"><span th:text="${grade}"></span></a></p>
+                        <p>리워드: <a th:href="@{/myPage/reward}"><span th:text="${reward}"></span></a></p>
                     </div>
                 </div>
                 <div class="userActions">
-                    <button>내 정보 관리</button>
+                    <a th:href="@{/myPage/myinfo}">
+                        <button>내 정보 관리</button>
+                    </a>
                 </div>
             </div>
 
@@ -58,28 +64,28 @@
                     <div class="menuSection">
                         <h3>쇼핑</h3>
                         <ul>
-                            <li><a th:href="@{/myPage/productInquiry}" class="menu-link">상품 문의 내역
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/productInquiry}" class="menuLink">상품 문의 내역
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
-                            <li><a th:href="@{/myPage/refundAccount}" class="menu-link">환불계좌 관리
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/refundAccount}" class="menuLink">환불계좌 관리
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
-                            <li><a th:href="@{/myPage/addressBook}" class="menu-link">배송지 관리
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/addressBook}" class="menuLink">배송지 관리
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
                         </ul>
                     </div>      
                     <div class="menuSection">
                         <h3>고객센터</h3>
                         <ul>
-                            <li><a th:href="@{/myPage/notice}" class="menu-link">공지사항
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/notice}" class="menuLink">공지사항
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
-                            <li><a th:href="@{/myPage/faq}" class="menu-link">FAQ
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/faq}" class="menuLink">FAQ
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
-                            <li><a th:href="@{/myPage/inquiry}" class="menu-link">1:1 문의
-                                <img th:src="@{/assets/img/myPage/graynext.png}" class="next-icon"/></a>
+                            <li><a th:href="@{/myPage/inquiry}" class="menuLink">1:1 문의
+                                <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
                             </li>
                         </ul>   
                     </div>
@@ -120,39 +126,39 @@
                 </div>
             </div>
             <!-- 문의하기 팝업 -->
-<div id="inquiryPopup" class="popup-overlay">
-    <div class="popup-content">
-        <h2>1:1 문의 작성하기</h2>
-        <p>문의 내용을 자세히 남겨주시면 빠른 시간 내 상담원이 답변을 남겨드려요.</p>
-        <div class="popup-form">
-            <label for="inquiryType">문의 유형</label>
-            <select id="inquiryType">
-                <option>선택</option>
-                <option>로그인/계정</option>
-                <option>상품</option>
-                <option>주문/결제</option>
-                <option>교환/환불/취소</option>
-                <option>서비스/오류</option>
-                <option>기타</option>
-            </select>
-            <label for="inquiryContent">내용</label>
-            <textarea id="inquiryContent" placeholder="문의 내용을 입력해 주세요." maxlength="300"></textarea>
-            <p class="char-count">0 / 300자</p>
-            <label>사진 업로드(선택)</label>
-            <div class="image-upload">
-                <div class="upload-box">+</div>
-                <div class="upload-box">+</div>
-                <div class="upload-box">+</div>
-                <div class="upload-box">+</div>
-                <div class="upload-box">+</div>
+            <div id="inquiryPopup" class="popupOverlay">
+                <div class="popupContent">
+                    <h2>1:1 문의 작성하기</h2>
+                    <p>문의 내용을 자세히 남겨주시면 빠른 시간 내 상담원이 답변을 남겨드려요.</p>
+                    <div class="popupForm">
+                        <label for="inquiryType">문의 유형</label>
+                        <select id="inquiryType">
+                            <option>선택</option>
+                            <option>로그인/계정</option>
+                            <option>상품</option>
+                            <option>주문/결제</option>
+                            <option>교환/환불/취소</option>
+                            <option>서비스/오류</option>
+                            <option>기타</option>
+                        </select>
+                        <label for="inquiryContent">내용</label>
+                        <textarea id="inquiryContent" placeholder="문의 내용을 입력해 주세요." maxlength="300"></textarea>
+                        <p class="charCount">0 / 300자</p>
+                        <label>사진 업로드(선택)</label>
+                        <div class="imageUpload">
+                            <div class="uploadBox">+</div>
+                            <div class="uploadBox">+</div>
+                            <div class="uploadBox">+</div>
+                            <div class="uploadBox">+</div>
+                            <div class="uploadBox">+</div>
+                        </div>
+                        <div class="popupButtons">
+                            <button class="cancelButton" onclick="closePopup()">취소</button>
+                            <button class="submitButton">완료</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="popup-buttons">
-                <button class="cancel-button" onclick="closePopup()">취소</button>
-                <button class="submit-button">완료</button>
-            </div>
-        </div>
-    </div>
-</div>
 
         </div>    
     </div>

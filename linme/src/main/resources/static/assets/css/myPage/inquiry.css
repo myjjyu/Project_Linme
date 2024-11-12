@@ -101,8 +101,8 @@
 
 
 /* 팝업 배경 */
-.popup-overlay {
-    display: none; /* 초기에는 숨김 */
+.popupOverlay {
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -116,11 +116,7 @@
 }
 
 /* 문의하기 팝업 */
-
-.popup-overlay{
-    display: none;
-}
-.popup-content {
+.popupContent {
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -128,21 +124,21 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.popup-content h2 {
+.popupContent h2 {
     margin-top: 0;
     font-size: 18px;
     font-weight: bold;
     color: #333;
 }
 
-.popup-form label {
+.popupForm label {
     display: block;
     font-size: 14px;
     color: #666;
     margin-top: 10px;
 }
 
-.popup-form select, .popup-form textarea {
+.popupForm select, .popupForm textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -152,20 +148,20 @@
     box-sizing: border-box;
 }
 
-.popup-form .char-count {
+.popupForm .charCount {
     font-size: 12px;
     color: #888;
     text-align: right;
     margin-top: 5px;
 }
 
-.image-upload {
+.imageUpload {
     display: flex;
     gap: 10px;
     margin-top: 10px;
 }
 
-.upload-box {
+.uploadBox {
     width: 50px;
     height: 50px;
     background: #f3f3f3;
@@ -179,26 +175,26 @@
     cursor: pointer;
 }
 
-.popup-buttons {
+.popupButtons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 20px;
 }
 
-.cancel-button, .submit-button {
+.cancelButton, .submitButton {
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.cancel-button {
+.cancelButton {
     background-color: #ddd;
     color: #333;
 }
 
-.submit-button {
-    background-color: #ff5f5f;
+.submitButton {
+    background-color: #ff697b;;
     color: white;
 }

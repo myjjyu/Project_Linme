@@ -11,7 +11,7 @@ body {
     margin: 0;
 }
 
-.profile-container {
+.profileContainer {
     width: 60%;
     max-width: 600px;
     padding: 40px;
@@ -21,30 +21,30 @@ body {
     text-align: left;
 }
 
-.profile-container h2 {
+.profileContainer h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-.profile-content {
+.profileContent {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.profile-image {
+.profileImage {
     position: relative;
     margin-bottom: 20px;
 }
 
-.profile-image img {
+.profileImage img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     border: 2px solid #ddd;
 }
 
-.edit-button {
+.editButton {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -58,46 +58,46 @@ body {
     font-size: 14px;
 }
 
-.profile-form {
+.profileForm {
     width: 100%;
 }
 
-.form-group {
+.formGroup {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 10px;
 }
 
-.form-group label {
+.formGroup label {
     flex: 1;
     text-align: left;
     font-size: 14px;
     margin-right: 10px;
 }
 
-.form-group .required {
-    color: #d9534f;
+.formGroup .required {
+    color: #ff697b;
 }
 
 
-.nickname-container {
+.nicknameContainer {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.nickname-container input[type="text"] {
+.nicknameContainer input[type="text"] {
     flex: 1;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.check-button {
+.checkButton {
     background-color: #fff;
-    color: #d9534f;
-    border: 1px solid #d9534f;
+    color: #ff697b;
+    border: 1px solid #ff697b;
     padding: 8px 10px;
     border-radius: 5px;
     margin-left: 10px;
@@ -117,7 +117,7 @@ body {
     margin-top: 20px;
 }
 
-.cancel-button,
+.cancelButton,
 .confirm-button {
     width: 100px;
     padding: 10px;
@@ -127,14 +127,14 @@ body {
     cursor: pointer;
 }
 
-.cancel-button {
+.cancelButton {
     background-color: #eee;
     color: #666;
     margin-right: 10px;
 }
 
 .confirm-button {
-    background-color: #d9534f;
+    background-color: #ff697b;
     color: white;
 }
 

@@ -35,7 +35,7 @@
 }
 .formGroup label::before {
     content: "*";
-    color: #d9534f; 
+    color: #ff697b; 
     position: absolute;
     left: -10px;
 }
@@ -78,8 +78,8 @@
 
 .searchPostalCode {
     padding: 10px 20px;
-    border: 1px solid #d9534f;
-    background-color: #d9534f;
+    border: 1px solid #ff697b;;
+    background-color: #ff697b;;
     color: white;
     cursor: pointer;
     border-radius: 4px;
@@ -100,7 +100,7 @@
 
 .defaultAddressContainer input[type="checkbox"]:checked {
     background-color: #ffcccc; 
-    border: 1px solid #ff7070; 
+    border: 1px solid #ff697b;; 
     color: #ffffff; 
 }
 .saveButton {
@@ -117,13 +117,13 @@
 }
 
 .saveButton:enabled {
-    background-color: #d9534f;
+    background-color: #ff697b;;
     color: white;
     cursor: pointer;
 }
 
 
-.custom-input {
+.customInput {
     display: none;
     margin-top: 10px;
 }

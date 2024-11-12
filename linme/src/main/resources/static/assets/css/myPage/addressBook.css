@@ -39,17 +39,17 @@
     align-items: center;
     font-weight: bold;
 }
-.addAddress a{
+.Add a{
     color:#8d8d8d;
 }
 
-.savedAddress {
+.Save {
     text-align: left;
     justify-content: space-between;
 }
 
 .defaultBadge {
-    background-color: #ff6f61;
+    background-color: #ff697b;;
     color: white;
     padding: 2px 8px;
     border-radius: 10px;
@@ -74,9 +74,9 @@
 
 .editButton {
     font-size: 14px;
-    color: #ff6f61;
+    color: #ff697b;;
     background: none;
-    border: 1px solid #ff6f61;
+    border: 1px solid #ff697b;;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;

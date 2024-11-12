@@ -31,13 +31,13 @@ h1 {
     text-align: left;
 }
 
-.benefits-container {
+.benefitsContainer {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.grade-section {
+.gradeSection {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -47,20 +47,20 @@ h1 {
     margin-right: 20px;
 }
 
-.user-grade {
+.userGrade {
     text-align: center;
 }
 
-.user-grade .grade-icon {
+.userGrade .gradeIcon {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
 }
 
-.current-grade {
+.currentGrade {
     font-size: 28px;
     font-weight: bold;
-    color: #d9534f;
+    color: #ff697b;;
     margin-top: 10px;
 }
 
@@ -71,12 +71,12 @@ h1 {
     text-align: center;
 }
 
-.benefit-table {
+.benefitTable {
     flex: 2;
     padding-left: 20px;
 }
 
-.benefit-row {
+.benefitRow {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -99,17 +99,17 @@ h1 {
     color: #333;
 }
 
-.benefit-details p {
+.benefitDetails p {
     margin: 3px 0;
 }
 
-.additional-info {
+.additionalInfo {
     margin-top: 20px;
     font-size: 14px;
     color: #555;
     line-height: 1.5;
 }
-.additional-info ul {
+.additionalInfo ul {
     list-style-type: disc; 
     padding-left: 20px; 
 }

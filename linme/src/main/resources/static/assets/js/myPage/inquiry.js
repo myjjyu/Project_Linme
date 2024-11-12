@@ -12,7 +12,7 @@ function closePopup() {
 
 // 글자 수 세기
 const textarea = document.getElementById('inquiryContent');
-const charCount = document.querySelector('.char-count');
+const charCount = document.querySelector('.charCount');
 
 textarea.addEventListener('input', function() {
     charCount.textContent = `${textarea.value.length} / 300자`;

@@ -24,7 +24,7 @@ h1 {
     text-align: left;
 }
 
-.info-cards {
+.infoCards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
