@@ -16,7 +16,6 @@
     <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
   </head>
-
   <body>
     <!-- 메인 영역 -->
     <main>
@@ -50,48 +49,111 @@
           <div class="title">어떤 영양제를 찾으세요?</div>
           <div class="subtitle">고민을 선택해 주세요</div>
           <div class="iconContent">
-            <form id="icon" action="#">
+            <form id="icon">
               <!-- 타임리프를 이용하여 반복문 처리 -->
-              <!-- <a th:each="icon : ${icons}" th:href="@{#}">
-                <img th:src="@{${icon.url}}" alt="아이콘" />
-                <p th:text="${icon.title}"></p>
-              </a> -->
+               <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/혈액순환.png}" alt="아이콘" />
+                혈액순환
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/피부건강.png}" alt="아이콘" />
+                피부건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/운동근육.png}" alt="아이콘" />
+                운동/근육
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/남성건강.png}" alt="아이콘" />
+               남성건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/여성건강.png}" alt="아이콘" />
+               여성건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/혈당.png}" alt="아이콘" />
+                혈당
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/눈건강.png}" alt="아이콘" />
+                눈건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/간건강.png}" alt="아이콘" />
+                간건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/뼈건강.png}" alt="아이콘" />
+                뼈건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/다이어트.png}" alt="아이콘" />
+                다이어트
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/스트레스.png}" alt="아이콘" />
+                스트레스
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/기관지.png}" alt="아이콘" />
+                기관지
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/면역력.png}" alt="아이콘" />
+                면역력
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/혈관.png}" alt="아이콘" />
+                혈관
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/관절.png}" alt="아이콘" />
+               관절
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/소화기건강.png}" alt="아이콘" />
+                소화기건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/갱년기.png}" alt="아이콘" />
+             갱년기
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/임산부.png}" alt="아이콘" />
+                임산부
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/피로활력.png}" alt="아이콘" />
+                피로/활력
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/장건강.png}" alt="아이콘" />
+               장건강
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/치아잇몸.png}" alt="아이콘" />
+                치아/잇몸
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/빈혈.png}" alt="아이콘" />
+                빈혈
+              </a>  
+               <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/항산화.png}" alt="아이콘" />
+               항산화
+              </a>
+              <a th:href="@{/main/main_ok}">
+                <img th:src="@{/assets/img/main/icon-list/혈압.png}" alt="아이콘" />
+               혈압
+              </a>
+        
+        
+          
+
               <!-- <a th:href="@{#}">아이콘2</a>
               <a th:href="@{#}">아이콘3</a>
-              <a th:href="@{#}">아이콘4</a>
-              <a th:href="@{#}">아이콘5</a>
-              <a th:href="@{#}">아이콘6</a>
-              <a th:href="@{#}">아이콘7</a>
-              <a th:href="@{#}">아이콘8</a>
-              <a th:href="@{#}">아이콘9</a>
-              <a th:href="@{#}">아이콘10</a>
-              <a th:href="@{#}">아이콘11</a>
-              <a th:href="@{#}">아이콘12</a>
-              <a th:href="@{#}">아이콘1</a> -->
-            </form>
-          </div>
-        </div>
-
-        <!-- 메인 컨텐츠 영역 -->
-        <div id="productContainer">
-          <!--
-           자바스크립트 반복문 
-            -->
-          <!-- <div class="contents">
-          <div class="headerMenu">내 몸의 활력을 위한 멀티 비타민</div>
-          <div class="headerMenutitle">
-            💪비타민 충전타임💪
-            <a th:href="@{otherPage.html}">
-              <button type="submit">
-                <img
-                  th:src="@{/assets/img/main/arrow_showMore.png}"
-                  alt="arrow_showMore"
-                />
-              </button>
-            </a>
-          </div> -->
-          <!-- 제품 이미지 리스트 -->
-          <!-- <div class="headerMenutitleimg">
+               <div class="headerMenutitleimg">
             <div class="boximg">
               <a th:href="@{./상세페이지}">
                 <img
@@ -107,6 +169,54 @@
               </a>
             </div>
           </div> -->
+              <!-- <a th:href="@{#}">아이콘4</a>
+              <a th:href="@{#}">아이콘5</a>
+              <a th:href="@{#}">아이콘6</a>
+              <a th:href="@{#}">아이콘7</a>
+              <a th:href="@{#}">아이콘8</a>
+              <a th:href="@{#}">아이콘9</a>
+              <a th:href="@{#}">아이콘10</a>
+              <a th:href="@{#}">아이콘11</a>
+              <a th:href="@{#}">아이콘12</a>
+              <a th:href="@{#}">아이콘1</a>  -->
+            </form>
+          </div>
+        </div>
+
+        <!-- 메인 컨텐츠 영역 -->
+        <div id="productContainer">
+          <!--
+           자바스크립트 반복문 
+            -->
+       <div class="contents">
+          <div class="headerMenu">내 몸의 활력을 위한 멀티 비타민</div>
+          <div class="headerMenutitle">
+            💪비타민 충전타임💪
+            <a th:href="@{/main/list_no1}">
+              <button type="submit">
+                <img
+                  th:src="@{/assets/img/main/arrow_showMore.png}"
+                  alt="arrow_showMore"
+                />
+              </button>
+            </a>
+          </div> 
+          <!-- 제품 이미지 리스트 -->
+         <div class="headerMenutitleimg">
+            <div class="boximg">
+              <a th:href="@{/view/view}">
+                <img
+                  th:src="@{/assets/img/main/비타민충전타임1.jpg }"
+                  class="imgbox"
+                />
+                <p class="productName">내용</p>
+                <p class="discountRate">할인가</p>
+                <p class="originalPrice">원래가격</p>
+                <p class="salePrice">세일가격</p>
+                <p class="shippingInfo">무료배송</p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -185,6 +295,9 @@
         },
         loop: true,
       });
+
+      // footer 위치설정
+      // document.querySelector('.footerContainer').style.magin="0px";
     </script>
   </body>
 </html>

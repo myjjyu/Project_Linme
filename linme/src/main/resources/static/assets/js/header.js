@@ -61,7 +61,7 @@ const menuList = document.querySelectorAll(".menuList a");
 // 클릭 이벤트 추가
 menuList.forEach((link) => {
   link.addEventListener("click", function (e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     // 모든 링크에서 activate 클래스 제거하고 기본값 설정
     menuList.forEach((link) => {
