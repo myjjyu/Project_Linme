@@ -53,41 +53,6 @@ public class MainContorller {
       return "main/list_no4";
     }
 
-    @GetMapping("/main/list_no5")
-    public String listNo5(Model model) {
-      return "main/list_no5";
-    }
-
-    @GetMapping("/main/list_no6")
-    public String listNo6(Model model) {
-      return "main/list_no6";
-    }
-
-    @GetMapping("/main/list_no7")
-    public String listNo7(Model model) {
-      return "main/list_no7";
-    }
-
-    @GetMapping("/main/list_no8")
-    public String listNo8(Model model) {
-      return "main/list_no8";
-    }
-
-    @GetMapping("/main/list_no9")
-    public String listNo9(Model model) {
-      return "main/list_no9";
-    }
-
-    @GetMapping("/main/list_no10")
-    public String listNo10(Model model) {
-      return "main/list_no10";
-    }
-
-    @GetMapping("/main/list_no11")
-    public String listNo11(Model model) {
-      return "main/list_no11";
-    }
-
     @GetMapping("/header/new")
     public String New(Model model) {
       return "header/new";
