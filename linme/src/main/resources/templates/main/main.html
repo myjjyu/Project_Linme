@@ -50,7 +50,6 @@
           <div class="subtitle">고민을 선택해 주세요</div>
           <div class="iconContent">
             <form id="icon">
-              <!-- 타임리프를 이용하여 반복문 처리 -->
                <a th:href="@{/main/main_ok}">
                 <img th:src="@{/assets/img/main/icon-list/혈액순환.png}" alt="아이콘" />
                 혈액순환
@@ -351,9 +350,6 @@
         },
         loop: true,
       });
-
-      // footer 위치설정
-      // document.querySelector('.footerContainer').style.magin="0px";
     </script>
   </body>
 </html>

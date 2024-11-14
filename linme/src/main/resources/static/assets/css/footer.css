@@ -1,22 +1,15 @@
 .container {
-  /* width: 100%;*/
   margin: 0;
   position: relative;
-  
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .footerContainer {
-  /* width: 100%;
-  position: fixed;
-  bottom: 0;
-  margin-top: 20px;  */
-
-  /* width: 2000px; */
-  /* margin-left: -300px; */
-  width: 100vw;
+  width: 99vw;
   margin: 0;
   position: relative;
-  margin-top: 1800px;
+  margin-top: 1700px;
 }
 /******************************************/
 /* footer header 영역 */

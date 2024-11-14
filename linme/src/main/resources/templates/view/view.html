@@ -22,6 +22,11 @@
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/view.css}" />
+    <style>
+      .footerContainer {
+        margin-top: 100px !important;
+      }
+    </style>
   </head>
   <body>
     <div id="loading"></div>
@@ -290,21 +295,21 @@
             <!-- 문의하기 버튼 -->
             <div class="button inquiry productInquiry">문의하기</div>
           </div>
-            <!-- 문의 리스트 -->
-            <ul class="inquiryList">
-              <li class="inquiry">
-                <div class="inquiryCover">
-                  <div class="inquiryTitle">제목</div>
-                  <div class="inquiryWriter">작성자</div>
-                  <div class="inquiryWriteDate">작성일</div>
-                  <div class="inquiryStatus">답변상태</div>
-                </div>
-              </li>
-              <li class="noData"></li>
-            </ul>
+          <!-- 문의 리스트 -->
+          <ul class="inquiryList">
+            <li class="inquiry">
+              <div class="inquiryCover">
+                <div class="inquiryTitle">제목</div>
+                <div class="inquiryWriter">작성자</div>
+                <div class="inquiryWriteDate">작성일</div>
+                <div class="inquiryStatus">답변상태</div>
+              </div>
+            </li>
+            <li class="noData"></li>
+          </ul>
         </div>
       </div>
-      
+
       <div class="division"></div>
     </main>
     <footer>
