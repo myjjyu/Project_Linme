@@ -3,7 +3,7 @@
     flex: 1 1;
     flex-direction: column;
     height: auto;
-    justify-content: center
+    justify-content: center;
 }
 
 .login * {
@@ -12,20 +12,21 @@
     margin: 0;
     overflow: visible;
     padding: 0;
-    width: auto
+    width: auto;
 }
 
 .login .contents {
     align-items: center;
     display: flex;
     justify-content: center;
-    width: 100%
+    width: 100%;
 }
 
 .login .loginCover {
     max-width: 550px;
     padding: 40px 20px;
-    width: 100%
+    width: 100%;
+    margin-top: 200px;
 }
 
 .login .loginCover .title {
@@ -35,18 +36,18 @@
     height: fit-content;
     letter-spacing: -.6px;
     line-height: 1.27;
-    text-align: center
+    text-align: center;
 }
 
 .login .loginCover .inputList {
     margin-top: 48px;
-    padding: 0 1px
+    padding: 0 1px;
 }
 
 .login .loginCover .inputList .userInput {
     height: 50px;
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
 .login .loginCover .inputList .userInput input {
@@ -55,29 +56,29 @@
     height: 100%;
     padding: 18px 10px 16px;
     width: 100%;
-    z-index: auto
+    z-index: auto;
 }
 
 .login .loginCover .inputList .userInput input::placeholder {
     color: #b6b6b6;
     font-size: 14px;
     letter-spacing: -.28px;
-    line-height: 2.71
+    line-height: 2.71;
 }
 
 .login .loginCover .inputList .userInput input:focus {
-    z-index: 1
+    z-index: 1;
 }
 
 .login .loginCover .inputList .userInput .userID {
     border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0
+    border-bottom-right-radius: 0;
 }
 
 .login .loginCover .inputList .userInput .userPW {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    margin-top: -1px
+    margin-top: -1px;
 }
 /* 비번 보였다 안보였다 이미지 */
 .login .loginCover .inputList .userInput .pwShowHide img{
@@ -106,28 +107,28 @@
     gap: 10px 10px;
     justify-content: space-between;
     letter-spacing: -.26px;
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 .login .loginCover .otherCover .findAndSignIn {
     display: flex;
     gap: 4px;
-    max-height: 15px
+    max-height: 15px;
 }
 
 .login .loginCover .otherCover .findAndSignIn li {
     float: left;
     height: auto;
     min-height: auto;
-    width: fit-content
+    width: fit-content;
 }
 
 .login .loginCover .otherCover .findAndSignIn li:last-child {
-    margin-right: 0
+    margin-right: 0;
 }
 
 .login .loginCover .buttonCover {
-    margin-top: 30px
+    margin-top: 30px;
 }
 
 .login .loginCover .buttonCover .buttonLogin {
@@ -154,13 +155,13 @@
     height: .5px;
     left: 0;
     position: absolute;
-    width: 100%
+    width: 100%;
 }
 
 .login .loginCover .snsLoginCover {
     height: fit-content;
     margin-top: 30px;
-    text-align: center
+    text-align: center;
 }
 
 .login .loginCover .snsLoginCover .snsLoginTitle {
@@ -169,32 +170,32 @@
     font-weight: 700;
     height: 21px;
     letter-spacing: -.36px;
-    line-height: 2.11
+    line-height: 2.11;
 }
 
 .login .loginCover .snsLoginCover .snsLogin {
     height: 77px;
     margin: 22px auto;
-    width: fit-content
+    width: fit-content;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li {
     float: left;
     margin: 0 8px;
-    width: 50px
+    width: 50px;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li:first-child {
-    margin-left: 0
+    margin-left: 0;;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li:last-child {
-    margin-right: 0
+    margin-right: 0;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li img {
     height: 50px;
-    width: 50px
+    width: 50px;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li .snsName {
@@ -204,11 +205,16 @@
     letter-spacing: -.28px;
     line-height: 1.07;
     margin-top: 11px;
-    text-align: center
+    text-align: center;
 }
 /* 중간선 */
 .solid {
     width: 100%;
     border-bottom: 1.5px solid #d2d2d2;
     margin: 30px 0;
+}
+/* 색상 변경 */
+a {
+    color: #787878;
+    text-decoration: underline;
   }
