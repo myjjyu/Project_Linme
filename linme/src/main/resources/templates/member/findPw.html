@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>린미 - 비밀번호 찾기</title>
+    <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/findPw.css}" />
 </head>
@@ -12,17 +13,24 @@
         <div class="findPw">
             <div class="contents">
                 <div class="title">비밀번호 찾기</div>
-                    <div class="findOn">
-                        <div class="description">회원가입 시 인증하신 휴대폰 번호로 본인인증을 진행해 주세요.</div>
-                        <div class="button certification" th:onclick="'handleClick()'">본인인증</div>
-                    </div>
+                <div class="findOn">
+                    <div class="description">회원가입 시 인증하신 휴대폰 번호로 본인인증을 진행해 주세요.</div>
+                    <div class="button certification" th:onclick="'handleClick()'">본인인증</div>
+                </div>
             </div>
         </div>
     </main>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
     <script th:inline="javascript">
         function handleClick() {
             alert("본인인증 버튼이 클릭되었습니다");
         }
+    </script>
+    <!-- 푸터 0px로 붙게 -->
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
     </script>
 </body>
 </html>
