@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>린미-아이디 찾기</title>
+    <title>린미 - 아이디 찾기</title>
+    <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/findId.css}" />
 </head>
@@ -19,10 +20,17 @@
             </div>
         </div>
     </main>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
     <script th:inline="javascript">
         function handleClick() {
             alert("본인인증 버튼이 클릭되었습니다");
         }
+    </script>
+    <!-- 푸터 0px로 붙게 -->
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
     </script>
 </body>
 </html>

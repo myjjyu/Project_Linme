@@ -1,9 +1,3 @@
-.findId {
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    justify-content: center
-}
 
 .findId .title {
     color: #333;
@@ -11,7 +5,7 @@
     font-weight: 700;
     height: fit-content;
     padding-top: 112px;
-    text-align: center
+    text-align: center;
 }
 
 .findId .button {
@@ -24,12 +18,12 @@
     height: 46px;
     padding-top: 5px;
     text-align: center;
-    width: 309px
+    width: 309px;
 }
 .findId .button.certification {
     background-color: #ff697b;
     color: #fff;
-    margin: 40px auto
+    margin: 40px auto;
 }
 
 .findId .findOn .description {
@@ -38,5 +32,5 @@
     font-weight: 400;
     height: fit-content;
     margin-top: 40px;
-    text-align: center
+    text-align: center;
 }
