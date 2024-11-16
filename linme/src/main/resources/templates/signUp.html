@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>린미 - 회원가입</title>
+    <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/signUp.css}" />
 </head>
@@ -124,7 +125,14 @@
             </div>
         </div>
     </main>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
 
     <script th:src="@{/static/assets/js/signUp.js}"></script>
+    <!-- 푸터 0px로 붙게 -->
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
 </body>
 </html>
