@@ -31,7 +31,8 @@ const categoryToggle = document.getElementById("categoryToggle");
 const categoryList = document.getElementById("categoryList");
 
 // 햄버거 버튼 클릭 시 카테고리 보이기
-categoryToggle.addEventListener("click", function () {
+categoryToggle.addEventListener("click", function (event) {
+  event.stopPropagation(); 
   // 카테고리 목록의 화면 상태에 따라 'block' 또는 'none'으로 변경
   categoryList.style.display =
     categoryList.style.display === "block" ? "none" : "block";
@@ -40,15 +41,15 @@ categoryToggle.addEventListener("click", function () {
 // 다시 클릭시 햄버거 드롭다운 메뉴 숨기기
 document.addEventListener("click", function (event) {
   if (
-    !customerServiceLink.contains(event.target) &&
-    !dropdownMenu.contains(event.target)
+    !categoryToggle.contains(event.target) &&
+    !categoryList.contains(event.target)
   ) {
-    dropdownMenu.style.display = "none";
+    categoryList.style.display = "none";
   }
 });
 
 /*******************************************/
-// 신상품, 베스트, 특가상품 클릭시 컬러변경 및 화면구현
+// 신상품, 베스트, 특가상품 클릭시 컬러변경
 /*******************************************/
 
 // 신상품, 베스트, 특가상품 3개의 영역은 기본상태는 deactivate (현재)이고 각 영역을 클릭하면
@@ -72,6 +73,6 @@ menuList.forEach((link) => {
     // 클릭된 링크에 activate 클래스 추가
     this.classList.add("activate");
     this.classList.remove("deactivate");
-
   });
 });
+
