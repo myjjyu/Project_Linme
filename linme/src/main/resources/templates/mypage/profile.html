@@ -16,7 +16,7 @@
         <h2>프로필 수정</h2>
         <div class="profileContent">
             <div class="profileImage">
-                <img th:src="@{/assets/img/myPage/profileimg.png}" alt="프로필 이미지">
+                <img th:src="@{/assets/img/myPage/profileimg.png}">
                 <button class="editButton">수정</button>
             </div>
             <div class="profileForm">
@@ -24,11 +24,14 @@
                     <div class="formGroup">
                         <label for="nickname">닉네임 <span class="required">*</span></label>
                         <div class="nicknameContainer">
-                            <input type="text" id="nickname" placeholder="닉네임">
-                            <button type="button" class="checkButton">중복확인</button>
+                            <input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요.">
+                            <button type="button" class="checkButton" id="nickname_unique_check">중복확인</button>
+                            <input type="hidden" name="nickname_check" value="N"/>
                         </div>
                     </div>
-                    <p class="notice">닉네임은 2자 이상 12자 이하의 한글, 영문, 숫자로 입력해 주세요.</p>
+                    <div class="noticeAlarm">
+                        <p class="notice">• 닉네임은 2자 이상 12자 이하의 한글, 영문, 숫자로 입력해 주세요.</p>
+                    </div>
                     <div class="button-group">
                         <button type="button" class="cancelButton">취소</button>
                         <button type="submit" class="confirm-button" disabled>완료</button>
@@ -41,5 +44,7 @@
     <footer th:fragment="my-header">
         <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
     </footer>
+
+    <script th:src="@{/assets/js/myPage/profile.js}"></script>
 </body>
 </html>

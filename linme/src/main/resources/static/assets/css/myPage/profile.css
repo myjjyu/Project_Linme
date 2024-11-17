@@ -1,4 +1,4 @@
-* {
+/** {
     box-sizing: border-box;
 }
 
@@ -15,9 +15,6 @@ body {
     width: 60%;
     max-width: 600px;
     padding: 40px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
@@ -27,10 +24,16 @@ body {
 }
 
 .profileContent {
+    width: 80%; 
+    max-width: 800px; 
+    padding: 40px 60px; 
+    border-radius: 20px;
+    border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .profileImage {
     position: relative;
@@ -104,9 +107,9 @@ body {
     cursor: pointer;
 }
 
-.notice {
+.notice{
     font-size: 12px;
-    color: #888;
+    color: #bcbcbc;
     margin-top: -10px;
     text-align: left;
 }
@@ -121,6 +124,159 @@ body {
 .confirm-button {
     width: 100px;
     padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: #eee;
+    color: #666;
+    margin-right: 10px;
+}
+
+.confirm-button {
+    background-color: #ff697b;
+    color: white;
+}
+
+.confirm-button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: not-allowed;
+}*/
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.profileContainer {
+    width: 70%;
+    max-width: 800px;
+    padding: 40px;
+    text-align: left;
+}
+
+.profileContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profileContent {
+    width: 100%; 
+    padding: 50px 100px; 
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileImage {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.profileImage img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profileForm {
+    width: 100%;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.formGroup label {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.formGroup .required {
+    color: #ff697b;
+}
+
+.nicknameContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nicknameContainer input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.checkButton {
+    background-color: #fff;
+    color: #ff697b;
+    border: 1px solid #ff697b;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.notice {
+    font-size: 12px;
+    color: #bcbcbc;
+    margin-top: -10px;
+    text-align: left;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cancelButton,
+.confirm-button {
+    width: 120px;
+    padding: 12px;
     border-radius: 5px;
     border: none;
     font-size: 14px;
