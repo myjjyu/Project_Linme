@@ -7,59 +7,58 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/myPage.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/notification.css}" />
+    <th:block th:replace="~{/fragments/header}" />
 </head>
 <body>
-<!-- Header 영역 -->
-<header th:fragment="my-header">
-    <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
-</header>
-
-<div class="contentContainer">
-    <div class="menuContainer">
-        <div class="menuSection">
-            <ul>
-                <li><a th:href="@{/myPage/myinfo/modify}" class="menuLink">회원 정보 수정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-            </ul>
-        </div>
-    </div>     
-
-    <div class="formSection">
-        <h1>알림 설정</h1>
-        <div class="notificationOption">
-            <div class="notificationItem">
-                <div class="notificationText">
-                    <span class="notificationTitle">SMS</span>
-                    <p class="notificationDescription">수신 설정이 되어있어야 설치 알람 수신이 가능합니다.</p>
-                </div>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
+    <div class="contentContainer">
+        <div class="menuContainer">
+            <div class="menuSection">
+                <ul>
+                    <li><a th:href="@{/myPage/myinfo/modify}" class="menuLink">회원 정보 수정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                </ul>
             </div>
-            <div class="notificationItem">
-                <div class="notificationTitle">이메일</div>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
+        </div>     
+
+        <div class="formSection">
+            <h1>알림 설정</h1>
+            <div class="notificationOption">
+                <div class="notificationItem">
+                    <div class="notificationText">
+                        <span class="notificationTitle">SMS</span>
+                        <p class="notificationDescription">수신 설정이 되어있어야 설치 알람 수신이 가능합니다.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="notificationItem">
+                    <div class="notificationTitle">이메일</div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<footer th:fragment="my-header">
-    <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
-</footer>
-<script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
+    <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
 </body>
 </html>

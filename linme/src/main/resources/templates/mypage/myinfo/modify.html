@@ -7,57 +7,57 @@
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/modify.css}" />
+    <th:block th:replace="~{/fragments/header}" />
 </head>
-<!-- Header 영역 -->
-<header th:fragment="my-header">
-    <link rel="stylesheet" th:href="@{/assets/fragments/header.html}" />
-</header>
-
-<div class="contentContainer">
-    <div class="menuContainer">
-        <div class="menuSection">
-            <ul>
-                <li><a th:href="@{/myPage/myinfo/modify}"  class="menuLink">회원 정보 수정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-            </ul>
-        </div>
-    </div>     
-        <div class="formSection">
-            <h1>회원 정보 수정</h1>
-            <table>
-                <tr>
-                    <td>이름</td>
-                    <td><input type="text" value="name" readonly></td>
-                </tr>
-                <tr>
-                    <td>이메일</td>
-                    <td><input type="text" value="email" readonly></td>
-                </tr>
-                <tr>
-                    <td>휴대폰</td>
-                    <td>
-                        <button class="authButton">본인인증</button>
-                    </td>
-                </tr>
-            </table>
-            <div class="savebuttonContainer">    
-                <button class="savebutton" disabled>저장</button>
+<body>
+    <div class="contentContainer">
+        <div class="menuContainer">
+            <div class="menuSection">
+                <ul>
+                    <li><a th:href="@{/myPage/myinfo/modify}"  class="menuLink">회원 정보 수정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                </ul>
             </div>
-        </div>
-</div>
-<!-- <footer th:fragment="my-header">
-    <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
-</footer> -->
-<script th:src="@{/assets/js/myPage/myPage.js}"></script>
+        </div>     
+            <div class="formSection">
+                <h1>회원 정보 수정</h1>
+                <table>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" value="name" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td><input type="text" value="email" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>휴대폰</td>
+                        <td>
+                            <button class="authButton">본인인증</button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="savebuttonContainer">    
+                    <button class="savebutton" disabled>저장</button>
+                </div>
+            </div>
+    </div>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
+    <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
 </body>
 </html>

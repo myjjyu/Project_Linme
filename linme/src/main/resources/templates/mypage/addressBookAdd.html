@@ -7,14 +7,9 @@
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/addressBookAdd.css}" />
+    <th:block th:replace="~{/fragments/header}" />
 </head>
 <body>
-
-    <!-- Header 영역 -->
-    <header th:fragment="my-header">
-        <link rel="stylesheet" th:href=@{/assets/css/header.css} />
-    </header>
-
     <!-- 메인 콘텐츠 영역 -->
     <div class="Container">
         <h2>마이페이지</h2>
@@ -145,12 +140,14 @@
             </div>
         </div>
 
-    <!-- Footer 영역 -->
-    <footer th:fragment="my-header">
-        <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
-    </footer>
-
+        <footer>
+            <th:block th:replace="~{/fragments/footer}" />
+        </footer>
+        
+        <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+        <scirpt th:src="@{/assets/js/myPage/addressBookAdd.js}"></scirpt>
+        <script>
+            document.querySelector(".footerContainer").style.margin = "0px";
+        </script>
 </body>
-<scirpt th:src="@{/assets/js/myPage/addressBookAdd.js}"></scirpt>
-<script th:src="@{/assets/js/myPage/myPage.js}"></script>
 </html>

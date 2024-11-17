@@ -6,12 +6,9 @@
     <title>Linme</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/profile.css}" />
+    <th:block th:replace="~{/fragments/header}" />
 </head>
 <body>
-    <!-- Header 영역 -->
-    <header th:fragment="my-header">
-        <link rel="stylesheet" th:href=@{/assets/css/header.css} />
-    </header>
     <div class="profileContainer">
         <h2>프로필 수정</h2>
         <div class="profileContent">
@@ -40,11 +37,12 @@
             </div>
         </div>
     </div>
-    <!-- Footer 영역 -->
-    <footer th:fragment="my-header">
-        <link rel="stylesheet" th:href=@{/assets/css/footer.css} />
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
     </footer>
-
     <script th:src="@{/assets/js/myPage/profile.js}"></script>
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
 </body>
 </html>

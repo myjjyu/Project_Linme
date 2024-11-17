@@ -7,72 +7,70 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/myPage.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/withdrawal.css}" />
+    <th:block th:replace="~{/fragments/header}" />
 </head>
 <body>
-<!-- Header 영역 -->
-<header th:fragment="my-header">
-    <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
-</header>
+    <div class="contentContainer">
+        <div class="menuContainer">
+            <div class="menuSection">
+                <ul>
+                    <li><a th:href="@{/myPage/myinfo/modify}" class="menuLink">회원 정보 수정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                    <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
+                        <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>     
 
-<div class="contentContainer">
-    <div class="menuContainer">
-        <div class="menuSection">
-            <ul>
-                <li><a th:href="@{/myPage/myinfo/modify}" class="menuLink">회원 정보 수정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/passwordModify}" class="menuLink">비밀번호 변경
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/notification}" class="menuLink">알림 설정
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-                <li><a th:href="@{/myPage/myinfo/withdrawal}" class="menuLink">회원탈퇴
-                    <img th:src="@{/assets/img/myPage/graynext.png}" class="nextIcon"/></a>
-                </li>
-            </ul>
+        <div class="formSection">
+            <h1>회원탈퇴</h1>
+            <p>아이디님, 린미를 떠나신다니 아쉬워요.</p>
+            <p>회원탈퇴 전, 아래 유의사항을 확인해 주세요.</p>
+
+            <div class="noticeBox">
+                <ul>
+                    <li>
+                        <strong>탈퇴 후 14일 간 재가입이 어려워요!</strong><br>
+                        회원 탈퇴 후 동일한 명의자로 14일간 회원가입이 불가능하며, 14일 이후 새로운 계정으로 가입이 가능합니다.
+                    </li>
+                    <li>
+                        <strong>재가입 시 신규 회원 혜택이 제한될 수 있어요!</strong><br>
+                        회원 탈퇴 후 재가입 시 신규 회원만 받을 수 있는 혜택에 제한이 있을 수 있습니다.
+                    </li>
+                    <li>
+                        <strong>탈퇴한 이메일은 재사용이 어려워요!</strong><br>
+                        한 번 가입한 이메일 주소로는 재가입이 불가하며, 재가입 시 다른 이메일 주소를 사용해야 합니다.
+                    </li>
+                    <li>
+                        <strong>개인정보 및 회원 정보, 서비스 이용 내역이 모두 삭제돼요!</strong><br>
+                        가입 시 입력했던 개인정보나 회원등급, 리뷰, 쿠폰, 구매내역 등의 데이터가 영구적으로 삭제되며 복구가 불가합니다.
+                        <br>다만, 일부 정보들은 개인정보 보호법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 일정기간 보관 후 파기 됩니다.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="confirmSection">
+                <input type="checkbox" id="confirmWithdrawal">
+                <label for="confirmWithdrawal">린미의 회원 탈퇴 유의사항을 확인했어요.</label>
+            </div>
+
+            <button class="withdrawalButton" disabled>탈퇴하기</button>
         </div>
-    </div>     
-
-    <div class="formSection">
-        <h1>회원탈퇴</h1>
-        <p>아이디님, 린미를 떠나신다니 아쉬워요.</p>
-        <p>회원탈퇴 전, 아래 유의사항을 확인해 주세요.</p>
-
-        <div class="noticeBox">
-            <ul>
-                <li>
-                    <strong>탈퇴 후 14일 간 재가입이 어려워요!</strong><br>
-                    회원 탈퇴 후 동일한 명의자로 14일간 회원가입이 불가능하며, 14일 이후 새로운 계정으로 가입이 가능합니다.
-                </li>
-                <li>
-                    <strong>재가입 시 신규 회원 혜택이 제한될 수 있어요!</strong><br>
-                    회원 탈퇴 후 재가입 시 신규 회원만 받을 수 있는 혜택에 제한이 있을 수 있습니다.
-                </li>
-                <li>
-                    <strong>탈퇴한 이메일은 재사용이 어려워요!</strong><br>
-                    한 번 가입한 이메일 주소로는 재가입이 불가하며, 재가입 시 다른 이메일 주소를 사용해야 합니다.
-                </li>
-                <li>
-                    <strong>개인정보 및 회원 정보, 서비스 이용 내역이 모두 삭제돼요!</strong><br>
-                    가입 시 입력했던 개인정보나 회원등급, 리뷰, 쿠폰, 구매내역 등의 데이터가 영구적으로 삭제되며 복구가 불가합니다.
-                    <br>다만, 일부 정보들은 개인정보 보호법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 일정기간 보관 후 파기 됩니다.
-                </li>
-            </ul>
-        </div>
-
-        <div class="confirmSection">
-            <input type="checkbox" id="confirmWithdrawal">
-            <label for="confirmWithdrawal">린미의 회원 탈퇴 유의사항을 확인했어요.</label>
-        </div>
-
-        <button class="withdrawalButton" disabled>탈퇴하기</button>
     </div>
-</div>
-
-<footer th:fragment="my-header">
-    <link rel="stylesheet" th:href="@{/assets/css/footer.css}" />
-</footer>
-<script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
+    <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
 </body>
 </html>
