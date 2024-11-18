@@ -4,10 +4,9 @@
 
 body {
     background-color: #f9f9f9;
-    display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 100vh;
+
     padding-top: 20px;
     margin: 0;
 }
@@ -23,6 +22,9 @@ body {
     flex-direction: row; 
     gap: 20px; 
     align-items: flex-start;
+    margin: 0 auto;
+    margin-top: 300px;
+    margin-bottom: 300px;
 }
 
 .menuContainer {
