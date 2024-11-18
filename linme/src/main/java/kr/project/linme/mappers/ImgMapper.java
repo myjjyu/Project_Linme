@@ -31,7 +31,7 @@ public interface ImgMapper {
             "#{img1}, #{img2}, #{img3}, " + 
             "#{dImg1}, #{dImg2}, #{dImg3}, " + 
             "#{regDate}, #{editDate})")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    @Options(useGeneratedKeys = true, keyProperty = "imgId", keyColumn = "img_id")
     public int insert(Img input);
 
     /**
@@ -51,7 +51,7 @@ public interface ImgMapper {
             "d_img3 = #{dImg3}, " + 
             "reg_date = #{regDate}, " + 
             "edit_date = #{editDate} " + 
-            "WHERE id = #{id}")
+            "WHERE img_id = #{imgId}")
     public int update(Img input);
 
     /**
@@ -59,7 +59,7 @@ public interface ImgMapper {
      * @param input
      * @return
      */
-    @Delete("DELETE FROM img WHERE id = #{id}")
+    @Delete("DELETE FROM img WHERE img_id = #{imgId}")
     public int delete(Img input);
 
     /**
@@ -68,14 +68,14 @@ public interface ImgMapper {
      * @return
      */
     @Select("SELECT " + 
-            "id, product_id, img_url, img_path, " + 
+            "img_id, product_id, img_url, img_path, " + 
             "img1, img2, img3, " + 
             "d_img1, d_img2, d_img3, " + 
             "reg_date, edit_date " + 
             "FROM img " + 
-            "WHERE id = #{id}")
+            "WHERE img_id = #{imgId}")
     @Results(id="imgMap", value={
-        @Result(property="id", column="id"),
+        @Result(property="imgId", column="img_id"),
         @Result(property="productId", column="product_id"),
         @Result(property="imgUrl", column="img_url"),
         @Result(property="imgPath", column="img_path"),
@@ -96,7 +96,7 @@ public interface ImgMapper {
      * @return
      */
     @Select("SELECT " + 
-            "id, product_id, img_url, img_path, " + 
+            "img_id, product_id, img_url, img_path, " + 
             "img1, img2, img3, " + 
             "d_img1, d_img2, d_img3, " + 
             "reg_date, edit_date " + 

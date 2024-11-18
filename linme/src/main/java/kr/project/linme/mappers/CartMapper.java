@@ -22,10 +22,14 @@ public interface CartMapper {
      * @return
      */
     @Insert("INSERT INTO cart (" + 
-            "product_count, total_price, member_id, product_id, reg_date, edit_date) " + 
+            "product_count, total_price, " + 
+            "member_id, product_id, " + 
+            "reg_date, edit_date) " + 
             "VALUES (" + 
-            "#{productCount}, #{totalPrice}, #{memberId}, #{productId}, #{regDate}, #{editDate})")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+            "#{productCount}, #{totalPrice}, " + 
+            "#{memberId}, #{productId}, " + 
+            "#{regDate}, #{editDate})")
+    @Options(useGeneratedKeys = true, keyProperty = "cartId", keyColumn = "cart_id")
     public int insert(Cart input);
 
     /**
@@ -40,7 +44,7 @@ public interface CartMapper {
             "product_id = #{productId}, " + 
             "reg_date = #{regDate}, " + 
             "edit_date = #{editDate} " + 
-            "WHERE id = #{id}")
+            "WHERE cart_id = #{cartId}")
     public int update(Cart input);
 
     /**
@@ -48,7 +52,7 @@ public interface CartMapper {
      * @param input
      * @return
      */
-    @Delete("DELETE FROM cart WHERE id = #{id}")
+    @Delete("DELETE FROM cart WHERE cart_id = #{cartId}")
     public int delete(Cart input);
 
     /**
@@ -57,11 +61,13 @@ public interface CartMapper {
      * @return
      */
     @Select("SELECT " + 
-            "id, product_count, total_price, member_id, product_id, reg_date, edit_date " + 
+            "cart_id, product_count, total_price, " + 
+            "member_id, product_id, " + 
+            "reg_date, edit_date " + 
             "FROM cart " + 
-            "WHERE id = #{id}")
+            "WHERE cart_id = #{cartId}")
     @Results(id="cartMap", value={
-        @Result(property="id", column="id"),
+        @Result(property="cartId", column="cart_id"),
         @Result(property="productCount", column="product_count"),
         @Result(property="totalPrice", column="total_price"),
         @Result(property="memberId", column="member_id"),
@@ -77,7 +83,9 @@ public interface CartMapper {
      * @return
      */
     @Select("SELECT " + 
-            "id, product_count, total_price, member_id, product_id, reg_date, edit_date " + 
+            "cart_id, product_count, total_price, " + 
+            "member_id, product_id, " + 
+            "reg_date, edit_date " + 
             "FROM cart")
     @ResultMap("cartMap")
     public List<Cart> selectList(Cart input);

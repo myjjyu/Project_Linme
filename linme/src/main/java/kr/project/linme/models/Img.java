@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Data
 public class Img {
-    private int id;             // 이미지 일련번호
+    private int imgId;          // 이미지 일련번호
     private int productId;      // 상품 일련번호
     private String imgUrl;      // 이미지 URL
     private String imgPath;     // 이미지 경로
