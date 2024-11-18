@@ -7,13 +7,13 @@ import lombok.Setter;
 @Data
 public class Category {
 
-  private int id;                   // 카테고리 일련번호 
-  private String category_name;     // 카테고리명 
-  private String icon_category;     // 아이콘 카테고리
-  private String title_category;    // 타이틀 카테고리
-  private String header_item;       // 카테고리 헤더 아이템
-  private String reg_date;          // 등록일시
-  private String edit_date;         // 변경일시
+  private int categoryId;             // 카테고리 일련번호
+  private String categoryName;        // 카테고리명
+  private String iconCategory;        // 아이콘 카테고리
+  private String titleCategory;       // 타이틀 카테고리
+  private String headerItem;          // 카테고리 헤더 아이템
+  private String regDate;             // 등록일시
+  private String editDate;            // 변경일시
 
   @Getter
   @Setter
