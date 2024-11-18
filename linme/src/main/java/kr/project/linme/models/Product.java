@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Data
 public class Product {
-  private int productId;                // 상품 일련번호 
+  private int productId;         // 상품 일련번호 
   private String productName;    // 상품명 
   private int brandId;           // 브랜드 일련번호 
   private int price;             // 정가 
