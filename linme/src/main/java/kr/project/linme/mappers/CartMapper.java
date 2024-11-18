@@ -79,7 +79,7 @@ public interface CartMapper {
     @Select("SELECT " + 
             "id, product_count, total_price, member_id, product_id, reg_date, edit_date " + 
             "FROM cart")
-    @ResultMap("resultMap")
+    @ResultMap("cartMap")
     public List<Cart> selectList(Cart input);
 
     /**
