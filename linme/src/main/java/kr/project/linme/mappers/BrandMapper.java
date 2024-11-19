@@ -27,8 +27,8 @@ public interface BrandMapper {
     // 브랜드 정보 수정
     @Update("UPDATE brand SET " +
             "brand_name = #{brandName}, " +
-            "reg_date = #{regDate}, " +
-            "edit_date = #{editDate} " +
+            // "reg_date = #{regDate}, " +
+            "edit_date = NOW() " +
             "WHERE brand_id = #{brandId}")
     public int update(Brand input);
 
