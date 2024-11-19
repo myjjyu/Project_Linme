@@ -9,7 +9,7 @@ public class Member {
     private int memberId;                   // 회원 일련번호
     private String userId;                  // 아이디(이메일)
     private String userPw;                  // 비밀번호
-    private String userNeme;                // 회원 이름
+    private String userName;                // 회원 이름
     private String nickname;                // 닉네임
     private String tel;                     // 휴대폰
     private String postcode;                // 우편번호
