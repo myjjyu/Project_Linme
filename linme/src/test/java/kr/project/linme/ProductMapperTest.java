@@ -99,6 +99,6 @@ public class ProductMapperTest {
     List<Product> output = productMapper.selectWheretList(input);
 
     // 조회된 상품 개수 출력
-    log.debug("조건에 맞는 상품 목록: " + output);
+    log.debug("output: " + output);
   }
 }
