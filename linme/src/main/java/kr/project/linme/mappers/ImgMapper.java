@@ -43,8 +43,9 @@ public interface ImgMapper {
                 "#{dImg1}, " + 
                 "#{dImg2}, " + 
                 "#{dImg3}, " + 
-                "#{regDate}, " + 
-                "#{editDate})")
+                "NOW(), " + 
+                "NOW()" + 
+            ")")
     @Options(useGeneratedKeys = true, keyProperty = "imgId", keyColumn = "img_id")
     public int insert(Img input);
 
@@ -63,8 +64,7 @@ public interface ImgMapper {
                 "d_img1 = #{dImg1}, " + 
                 "d_img2 = #{dImg2}, " + 
                 "d_img3 = #{dImg3}, " + 
-                "reg_date = #{regDate}, " + 
-                "edit_date = #{editDate} " + 
+                "edit_date = NOW() " + 
             "WHERE img_id = #{imgId}")
     public int update(Img input);
 
