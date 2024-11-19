@@ -20,7 +20,7 @@ public interface BrandMapper {
     // 브랜드 정보 삽입
     @Insert("INSERT INTO brand (" +
             "brand_name, reg_date, edit_date) " +
-            "VALUES (#{brandName}, #{regDate}, #{editDate})")
+            "VALUES (#{brandName}, now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "brandId", keyColumn = "brand_id")
     public int insert(Brand input);
 
