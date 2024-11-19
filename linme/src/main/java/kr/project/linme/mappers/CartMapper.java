@@ -33,8 +33,9 @@ public interface CartMapper {
                 "#{totalPrice}, " + 
                 "#{memberId}, " + 
                 "#{productId}, " + 
-                "#{regDate}, " + 
-                "#{editDate})")
+                "NOW(), " + 
+                "NOW()" + 
+            ")")
     @Options(useGeneratedKeys = true, keyProperty = "cartId", keyColumn = "cart_id")
     public int insert(Cart input);
 
@@ -48,8 +49,7 @@ public interface CartMapper {
                 "total_price = #{totalPrice}, " + 
                 "member_id = #{memberId}, " + 
                 "product_id = #{productId}, " + 
-                "reg_date = #{regDate}, " + 
-                "edit_date = #{editDate} " + 
+                "edit_date = NOW() " + 
             "WHERE cart_id = #{cartId}")
     public int update(Cart input);
 
