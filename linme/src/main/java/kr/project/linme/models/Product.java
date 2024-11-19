@@ -20,6 +20,13 @@ public class Product {
   private String regDate;        // 등록일시 
   private String editDate;       // 변경일시
 
+
+  // salePrice 설정 시 discountPrice 자동 계산
+  public void setSalePrice(int salePrice) {
+    this.salePrice = salePrice;
+    this.discountPrice = this.price - salePrice; // 할인 금액 계산
+  }
+
   @Getter
   @Setter
   private static int listCount = 0;
