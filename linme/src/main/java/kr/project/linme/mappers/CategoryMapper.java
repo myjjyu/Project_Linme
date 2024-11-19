@@ -25,13 +25,13 @@ public interface CategoryMapper {
      */
     @Insert("INSERT INTO category (" +
             "category_name, icon_category, title_category, header_item, reg_date, edit_date) " +
-            "VALUES (#{categoryName}, #{iconCategory}, #{titleCategory}, #{headerItem}, #{regDate}, #{editDate})")
+            "VALUES (#{categoryName}, #{iconCategory}, #{titleCategory}, #{headerItem}, now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "categoryId", keyColumn = "category_id")
     public int insert(Category input);
 
     /**
      * 카테고리 수정
-     * 
+     * 수정하기 부분에서는 등록일시가 필요하지 않기때문에 제거
      * @param input
      * @return
      */
@@ -40,8 +40,7 @@ public interface CategoryMapper {
             "icon_category = #{iconCategory}, " +
             "title_category = #{titleCategory}, " +
             "header_item = #{headerItem}, " +
-            "reg_date = #{regDate}, " +
-            "edit_date = #{editDate} " +
+            "edit_date = now() " +
             "WHERE category_id = #{categoryId}")
     public int update(Category input);
 
