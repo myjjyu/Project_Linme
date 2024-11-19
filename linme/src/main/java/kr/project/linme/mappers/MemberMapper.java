@@ -44,11 +44,10 @@ public interface MemberMapper {
             "addr_name = #{addrName}, " +
             "addr_msg = #{addrMsg}, " +
             "profile = #{profile}, " +
-            "is_out = #{isOut}, " +
-            "is_admin = #{isAdmin}, " +
-            "login_date = #{loginDate}, " +
-            "reg_date = #{regDate}, " +
-            "edit_date = #{editDate} " +
+            // "is_out = #{isOut}, " +
+            // "is_admin = #{isAdmin}, " +
+            // "login_date = #{loginDate}, " +
+            "edit_date = NOW() " +
             "WHERE member_id = #{memberId}")
     public int update(Member input);
 
