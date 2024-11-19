@@ -20,6 +20,7 @@ public interface ProductMapper {
         /**
          * 상품 저장
          * discountPrice: 모델에서 자동계산 만들어서 생략가능
+         * 
          * @param input
          * @return
          */
@@ -34,6 +35,7 @@ public interface ProductMapper {
         /**
          * 상품 수정
          * discountPrice : 모델에서 자동계산 만들어서 생략가능
+         * 
          * @param input
          * @return
          */
@@ -91,6 +93,7 @@ public interface ProductMapper {
 
         /**
          * 전체 상품 조회
+         * 
          * @param input
          * @return
          */
@@ -100,8 +103,6 @@ public interface ProductMapper {
                         "FROM product ")
         @ResultMap("productMapper")
         public List<Product> selectList(Product input);
-
-
 
         /**
          * 상품 개수 조회
@@ -116,6 +117,6 @@ public interface ProductMapper {
                         "FROM product " +
                         "WHERE category_id = #{categoryId} AND header_item = #{headerItem}")
         @ResultMap("productMapper")
-        public List<Product> selecWheretList(Product input);
+        public List<Product> selectWheretList(Product input);
 
 }

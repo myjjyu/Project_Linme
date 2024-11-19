@@ -84,4 +84,18 @@ void insertCategorys() {
       log.debug("output: " + item.toString());
     }
   }
+
+
+  @Test
+  @DisplayName("조건에 맞는 상품 목록 조회 테스트")
+  void selectWhereCategory() {
+    Category input = new Category();
+        input.setCategoryName("영양제"); // categoryId 값
+    
+        // 조건에 맞는 상품 목록 조회
+        List<Category> output = categoryMapper.selectWhereList(input);
+  
+      // 조회된 상품 개수 출력
+      log.debug("조건에 맞는 상품 목록: " + output);
+  }
 }

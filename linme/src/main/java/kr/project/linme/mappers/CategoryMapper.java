@@ -84,17 +84,17 @@ public interface CategoryMapper {
         @ResultMap("categoryMap")
         public List<Category> selectList(Category input);
 
-        /**
-         * 조건에 맞는 카테고리 목록 조회
-         * WHERE category_name : 특정 조건 카테고리 항목 조회
-         * 
-         * @param input
-         * @return
-         */
-        @Select("SELECT " +
-                        "category_id, category_name, icon_category, title_category, header_item, reg_date, edit_date " +
-                        "FROM category " +
-                        "WHERE category_name = #{categoryName}")
-        public List<Category> selectWheretListCategory(Category input);
+/**
+ * 조건에 맞는 카테고리 목록 조회
+ * WHERE category_name : 특정 조건 카테고리 항목 조회
+ * 
+ * @param input
+ * @return
+ */
+@Select("SELECT " +
+            "category_id, category_name, icon_category, title_category, header_item, reg_date, edit_date " +
+            "FROM category " +
+            "WHERE category_name = #{categoryName}")
+public List<Category> selectWhereList(Category input);
 
 }
