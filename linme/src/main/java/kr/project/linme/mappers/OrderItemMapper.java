@@ -23,17 +23,17 @@ public interface OrderItemMapper {
             "VALUES (#{orderBname}, #{orderPname}, "+
             "#{orderCount}, #{orderSprice}, #{orderPrice}, #{paymentId}, "+
             "NOW(), NOW())")
-    @Options(useGeneratedKeys = true, keyProperty = "OrderItemId", keyColumn = "order_item_id")
+    @Options(useGeneratedKeys = true, keyProperty = "orderItemId", keyColumn = "order_item_id")
     public int insert(OrderItem input);
 
     @Update("UPDATE order_item SET " +
             "order_bname = #{orderBname}, order_pname = #{orderPname}, "+
             "order_count = #{orderCount}, order_sprice = #{orderSprice}, "+
             "order_price = #{orderPrice}, edit_date = NOW() " +
-            "WHERE orderItem_id = #{OrderItemId}")
+            "WHERE orderItem_id = #{orderItemId}")
     public int update(OrderItem input);
 
-    @Delete("DELETE FROM order_item WHERE orderItem_id = #{OrderItemId}")
+    @Delete("DELETE FROM order_item WHERE orderItem_id = #{orderItemId}")
     public int delete(OrderItem input);
 
     /**
@@ -46,7 +46,7 @@ public interface OrderItemMapper {
                 "order_count, order_sprice, order_price, payment_id, " + 
                 "reg_date, edit_date "+
             "FROM order_item "+
-            "WHERE orderItem_id = #{Order_itemId}")
+            "WHERE orderItem_id = #{orderItemId}")
     @Results(id="OrderItemMap", value={
         @Result(property="orderItem_id", column="orderItemId"),
         @Result(property="order_bname",column="orderBname"),
@@ -69,6 +69,6 @@ public interface OrderItemMapper {
     @ResultMap("OrderItemMap")
     public List<OrderItem> selectList(OrderItem input);
 
-    @Select("...")
+    @Select("SELECT COUNT(*) FROM order_item")
     public int selectCount(OrderItem input);
 }

@@ -71,6 +71,6 @@ public interface PaymentMapper {
     @ResultMap("PaymentMap")
     public List<Payment> selectList(Payment input);
 
-    @Select("...")
+    @Select("SELECT COUNT(*) FROM payment")
     public int selectCount(Payment input);
 }
