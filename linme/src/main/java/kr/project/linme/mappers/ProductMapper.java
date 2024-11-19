@@ -19,7 +19,7 @@ public interface ProductMapper {
 
         /**
          * 상품 저장
-         * 
+         * discountPrice: 모델에서 자동계산 만들어서 생략가능
          * @param input
          * @return
          */
@@ -33,7 +33,7 @@ public interface ProductMapper {
 
         /**
          * 상품 수정
-         * 
+         * discountPrice : 모델에서 자동계산 만들어서 생략가능
          * @param input
          * @return
          */
@@ -90,9 +90,22 @@ public interface ProductMapper {
         public Product selectItem(Product input);
 
         /**
-         * 상품 다중 조회
-         * 상품 목록을 가져오는 작업
-         * WHERE : 조건에 맞는 여러 상품을 가져오는 작업
+         * 전체 상품 조회
+         * @param input
+         * @return
+         */
+        @Select("SELECT " +
+                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
+                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
+                        "FROM product ")
+        @ResultMap("productMapper")
+        public List<Product> selectList(Product input);
+
+
+
+        /**
+         * 상품 개수 조회
+         * WHERE : 조건에 맞는 상품이 몇 개 있는지 계산
          * 
          * @param input
          * @return
@@ -103,17 +116,6 @@ public interface ProductMapper {
                         "FROM product " +
                         "WHERE category_id = #{categoryId} AND header_item = #{headerItem}")
         @ResultMap("productMapper")
-        public List<Product> selectList(Product input);
+        public List<Product> selecWheretList(Product input);
 
-        /**
-         * 상품 개수 조회
-         * WHERE : 조건에 맞는 상품이 몇 개 있는지 계산
-         * 
-         * @param input
-         * @return
-         */
-        @Select("SELECT COUNT(*) FROM product " +
-                        "WHERE category_id = #{categoryId} " + // 카테고리 조건
-                        "AND header_item = #{headerItem}") // 헤더항목 조건
-        public int selectCount(Product input);
 }
