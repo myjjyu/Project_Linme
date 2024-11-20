@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/signUp.css}" />
 </head>
+
 <body>
     <main>
         <div class="container underTopMenu signUp">
@@ -25,7 +27,8 @@
                                 <span>아이디 (이메일)</span>
                             </div>
                             <div class="userInput">
-                                <input type="text" class="email" name="email" id="email" placeholder="linme@linme.com" />
+                                <input type="text" class="email" name="email" id="email"
+                                    placeholder="linme@linme.com" />
                                 <input type="hidden" name="checkEmail" id="checkEmail" />
                                 <button class="button duplicateCheck duplicateCheckID">중복확인</button>
                                 <!-- 자바스크립트 구현 예정 -->
@@ -43,7 +46,8 @@
                                 <span>닉네임</span>
                             </div>
                             <div class="userInput">
-                                <input type="text" class="nickname" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요." />
+                                <input type="text" class="nickname" name="nickname" id="nickname"
+                                    placeholder="닉네임을 입력해주세요." />
                                 <input type="hidden" name="checkNickname" id="checkNickname" value="false">
                                 <button class="button duplicateCheck duplicateCheckNickName">중복확인</button>
                                 <!-- 자바스크립트 구현 예정 -->
@@ -75,7 +79,8 @@
                                 <span>비밀번호 확인</span>
                             </div>
                             <div class="userInput">
-                                <input type="password" class="pwCheck" name="pwCheck" id="pwCheck" placeholder="비밀번호를 한 번 더 입력해 주세요.">
+                                <input type="password" class="pwCheck" name="pwCheck" id="pwCheck"
+                                    placeholder="비밀번호를 한 번 더 입력해 주세요.">
                                 <div class="pwShowHide close"></div>
                                 <div class="guide">
                                     <div class="inputGuideWarn"></div>
@@ -101,14 +106,18 @@
                             </div>
                             <div class="userInput">
                                 <div>
-                                    <input type="text" class="postcode" name="postcode" id="postcode" readonly="" placeholder="우편번호">
-                                    <button class="button findPostCode">우편번호 찾기</button>
+                                    <input type="text" class="postcode" name="postcode" id="postcode" readonly=""
+                                        placeholder="우편번호">
+                                    <button type="button" class="button findPostCode" id="find-postcode">우편번호
+                                        찾기</button>
                                 </div>
                                 <div>
-                                    <input type="text" class="address" name="address1" id="address1" readonly="" placeholder="주소를 검색하여 등록해 주세요." />
+                                    <input type="text" class="address1" name="address1" id="addr1" readonly=""
+                                        placeholder="주소를 검색하여 등록해 주세요." />
                                 </div>
                                 <div>
-                                    <input type="text" class="address2" name="address2" id="address2" readonly="" placeholder="나머지 주소를 입력해 주세요." />
+                                    <input type="text" class="address2" name="address2" id="addr2"
+                                        placeholder="나머지 주소를 입력해 주세요." />
                                     <div class="guide">
                                         <div class="inputGuideWarn"></div>
                                     </div>
@@ -129,10 +138,25 @@
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
 
-    <script th:src="@{/static/assets/js/signUp.js}"></script>
+    <!-- 헬퍼 가져오기 -->
+    <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
     <!-- 푸터 0px로 붙게 -->
     <script>
         document.querySelector(".footerContainer").style.margin = "0px";
     </script>
+    <!-- 다음 우편번호 검색 : https://postcode.map.daum.net/guide -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        // 우편번호 검색
+        document.querySelector("#find-postcode").addEventListener("click", (e) => {
+            e.preventDefault();
+            utilHelper.findPostCode();
+        });
+
+    </script>
+
 </body>
+
 </html>

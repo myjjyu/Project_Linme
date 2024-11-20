@@ -1,237 +1,246 @@
-
 .signUp {
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    height: auto;
-    justify-content: center;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
 }
 
 .signUp * {
-    box-sizing: border-box;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    padding: 0;
-    width: auto;
+  box-sizing: border-box;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  width: auto;
 }
 
 .signUp .contents {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .signUp .signUpCover {
-    max-width: 768px;
-    padding: 50px 0;
-    margin-top: 200px;
-    margin-left: 200px;
+  max-width: 768px;
+  padding: 50px 0;
+  margin-top: 200px;
 }
 
 .signUp .signUpCover .title {
-    color: #333;
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -.6px;
-    line-height: .67;
-    padding-top: 10px;
-    text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  line-height: 0.67;
+  padding-top: 10px;
+  text-align: center;
 }
 /* 상자마다 칸 */
 .signUp .signUpCover .inputDataCover {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 /* 제목 css */
 .signUp .signUpCover .inputDataCover .title {
-    color: #333;
-    display: flex;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -.4px;
-    line-height: 1;
-    margin-bottom: 15px;
+  color: #333;
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  line-height: 1;
+  margin-bottom: 15px;
 }
 
 .signUp .signUpCover .inputDataCover .title .separator {
-    height: 6px;
-    margin-top: 6px;
-    width: 6px;
+  height: 6px;
+  margin-top: 6px;
+  width: 6px;
 }
 
 .signUp .signUpCover .inputDataCover .title .text {
-    display: block;
-    margin-left: 6px;
+  display: block;
+  margin-left: 6px;
 }
 /* 각칸 사이즈 */
 .signUp .signUpCover .inputDataCover .inputDataItem {
-    border-bottom: 1px solid #e6e6e6;
-    display: flex;
-    width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  width: 100%;
 }
 /* 표 상단 줄*/
 .signUp .signUpCover .inputDataCover .inputDataItem:nth-child(2) {
-    border-top: 2px solid #8d8d8d;
+  border-top: 2px solid #8d8d8d;
 }
 /* 표 하단 줄 */
 .signUp .signUpCover .inputDataCover .inputDataItem:last-child {
-    border-bottom: 2px solid #8d8d8d;
+  border-bottom: 2px solid #8d8d8d;
 }
 /*  */
 .signUp .signUpCover .inputDataCover .inputDataItem .label {
-    align-items: center;
-    background-color: #f3f3f3;
-    display: flex;
-    height: auto;
-    min-height: 60px;
-    padding-left: 36px;
-    position: relative;
-    width: 182px;
+  align-items: center;
+  background-color: #f3f3f3;
+  display: flex;
+  height: auto;
+  min-height: 60px;
+  padding-left: 36px;
+  position: relative;
+  width: 182px;
 }
 /* 부주제 글자설정 */
 .signUp .signUpCover .inputDataCover .inputDataItem .label span {
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -.32px;
-    line-height: 1.25;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.32px;
+  line-height: 1.25;
 }
 /* 인풋 사이즈 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput {
-    margin-left: 32px;
-    padding: 15px 0;
-    width: 444px;
+  margin-left: 32px;
+  padding: 15px 0;
+  width: 444px;
 }
 /* 인풋 사이즈 */
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type=password],.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type=text] {
-    height: 30px;
-    min-width: 222px;
-    padding: 7px 10px 5px;
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="password"],
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="text"] {
+  height: 30px;
+  min-width: 222px;
+  padding: 7px 10px 5px;
 }
 
 /* placeholder 글씨 조정 */
 input::placeholder {
-    font-size: 10px; 
-    color: #aaa; 
+  font-size: 10px;
+  color: #aaa;
 }
-
 
 /* 비번 보였다 안보였다 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .pwShowHide {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    content: "";
-    cursor: pointer;
-    display: block;
-    height: 14px;
-    left: 216px;
-    position: absolute;
-    top: 24px;
-    width: 20px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  cursor: pointer;
+  display: block;
+  height: 14px;
+  left: 216px;
+  position: absolute;
+  top: 24px;
+  width: 20px;
 }
 /* 버튼 색상 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button {
-    background-color: #fff;
-    border: 1px solid #ff8181;
-    border-radius: 3px;
-    color: #ff8181;
-    font-size: 15px;
-    font-weight: 500;
-    height: 30px;
-    letter-spacing: -.3px;
-    line-height: 1.33;
-    margin-left: 22px;
-    padding: 5px 0;
-    text-align: center;
+  background-color: #fff;
+  border: 1px solid #ff8181;
+  border-radius: 3px;
+  color: #ff8181;
+  font-size: 15px;
+  font-weight: 500;
+  height: 30px;
+  letter-spacing: -0.3px;
+  line-height: 1.33;
+  margin-left: 22px;
+  padding: 5px 0;
+  text-align: center;
 }
 /* 중복확인 버튼 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button.duplicateCheck {
-    margin-left: 11px;
-    width: 79px;
+  margin-left: 11px;
+  width: 79px;
 }
 /* 본인인증 버튼 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button.verification {
-    margin-left: 0;
-    width: 242px;
+  margin-left: 0;
+  width: 242px;
 }
 /* 우편번호 찾기 버튼 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button.findPostCode {
-    margin-left: 8px;
-    width: 117px;
+  margin-left: 8px;
+  width: 117px;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button.showTerms {
-    background-color: #fff;
-    border: .8px solid #d2d2d2;
-    color: #8d8d8d;
-    font-size: 11px;
-    font-weight: 500;
-    height: 20px;
-    letter-spacing: -.22px;
-    line-height: 1.45;
-    margin-left: 0;
-    padding: 2px 6px 3px;
-    width: 53px;
+  background-color: #fff;
+  border: 0.8px solid #d2d2d2;
+  color: #8d8d8d;
+  font-size: 11px;
+  font-weight: 500;
+  height: 20px;
+  letter-spacing: -0.22px;
+  line-height: 1.45;
+  margin-left: 0;
+  padding: 2px 6px 3px;
+  width: 53px;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: -.2px;
-    line-height: 2;
-    margin: 5px 0 0 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 2;
+  margin: 5px 0 0 10px;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuide {
-    color: #a5a5a5;
-    height: fit-content;
-    margin-top: -5px;
+  color: #a5a5a5;
+  height: fit-content;
+  margin-top: -5px;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuide:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 /* 글씨 온 오프 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuide.off {
-    display: none;
+  display: none;
 }
 /* 경고 글씨 색 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideWarn {
-    color: #ff6969;
+  color: #ff6969;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideWarn.off {
-    display: none;
+  display: none;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideChecked {
-    color: #69a5ff;
+  color: #69a5ff;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideChecked.off {
-    display: none;
+  display: none;
 }
 
 /* 가입하기 버튼 */
 .signUp button.inputCompleted {
-    background-color: #b6b6b6;
-    border-radius: 4px;
-    color: #fff;
-    display: block;
-    font-size: 22px;
-    font-weight: 500;
-    height: 51px;
-    letter-spacing: -.04px;
-    line-height: 1.82;
-    margin: 50px auto 0;
-    padding: 6px 0;
-    text-align: center;
-    width: 309px;
+  background-color: #b6b6b6;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 22px;
+  font-weight: 500;
+  height: 51px;
+  letter-spacing: -0.04px;
+  line-height: 1.82;
+  margin: 50px auto 0;
+  padding: 6px 0;
+  text-align: center;
+  width: 309px;
 }
 /* 가입하기 완료시 버튼 컬러*/
 .signUp button.inputCompleted.on {
-    background-color: #ff697b;
+  background-color: #ff697b;
 }
 
-  
+/* 주소 입력란 */
+.address1,
+.address2 {
+  width: 350px; /*주소 입력란 길이 늘리기 */
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 각 입력칸 간의 간격 */
+.userInput div {
+  margin-bottom: 5px; /* 아래쪽 간격 추가 */
+}
