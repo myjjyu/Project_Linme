@@ -23,8 +23,8 @@ public class CategoryMapperTest {
 void insertCategorys() {
   Category input = new Category();
     input.setCategoryName("영양제");
-    input.setIconCategory("혈액순환");
-    input.setTitleCategory("비타민충전타임");
+    // input.setIconCategory("혈액순환");
+    // input.setTitleCategory("비타민충전타임");
     input.setHeaderItem("신상품");
     // input.setRegDate("now()");
     // input.setEditDate("now()");
@@ -42,8 +42,8 @@ void insertCategorys() {
     Category input = new Category();
     input.setCategoryId(1);
     input.setCategoryName("비타민");
-    input.setIconCategory("눈건강");
-    input.setTitleCategory("장 건강 케어");
+    // input.setIconCategory("눈건강");
+    // input.setTitleCategory("장 건강 케어");
     input.setHeaderItem("베스트");
 
     int output = categoryMapper.update(input);
@@ -89,7 +89,7 @@ void insertCategorys() {
   @DisplayName("조건에 맞는 카테고리 목록 조회 테스트")
   void selectWhereCategory() {
     Category input = new Category();
-        input.setCategoryName("영양제"); // categoryId 값
+        input.setHeaderItem("신상품"); // categoryId 값
     
         // 조건에 맞는 상품 목록 조회
         List<Category> output = categoryMapper.selectWhereList(input);
