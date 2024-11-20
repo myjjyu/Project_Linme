@@ -3,166 +3,196 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link rel="stylesheet" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../static/assets/css/cart.css" />-->
+    <link rel="stylesheet" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../static/assets/css/cart.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/cart.css}" />
-
     <title>린미 - 장바구니</title>
+    <!-- Header 영역 -->
+    <th:block th:replace="~{/fragments/header}" />
   </head>
   <body>
-    <!-- Header 영역 -->
-    <!--<header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>-->
-
     <!-- Main 영역-->
     <main>
-      <div class="container underTopMenu cartContainer">
-        <!-- 장바구니 진행단계 : 장바구니 - 주문/결제 - 주문완료 -->
-        <div class="contents">
-          <div class="progressStageCart">
-            <div class="progressStep step1 on">
-              <div class="progressNumberCover">
-                <div class="progressNumber">1</div>
-              </div>
-              <div class="progressName">장바구니</div>
-            </div>
-            <div class="progressStep step2">
-              <div class="progressNumberCover">
-                <div class="progressNumber">2</div>
-              </div>
-              <div class="progressName">주문/결제</div>
-            </div>
-            <div class="progressStep step3">
-              <div class="progressNumberCover">
-                <div class="progressNumber">3</div>
-              </div>
-              <div class="progressName">주문완료</div>
-            </div>
+      <div class="cartContainer">
+        <!-- 장바구니 단계 -->
+        <nav class="cartProgress">
+          <div class="progressStep on">
+            <div class="circle on">1</div>
+            <span class="progressStepText on">장바구니</span>
           </div>
+          <div class="progressStep">
+            <div class="circle">2</div>
+            <span class="progressStepText">주문/결제</span>
+          </div>
+          <div class="progressStep">
+            <div class="circle">3</div>
+            <span class="progressStepText">주문완료</span>
+          </div>
+        </nav>
+
+        <!-- 전체선택 | 선택삭제 -->
+        <div class="cartSelectContainer">
+          <!-- 체크 박스 -->
+          <input type="checkbox" id="cartSelectAll" onclick="toggleSelectAll(this)" />
+          <!-- 전체 선택 -->
+          <label class="cartSelectAllText" id="cartSelectAll" for="cartSelectAll">전체 선택</label> &#124;
+          <!-- 선택 삭제 -->
+          <label id="cartSelectItem" type="button" onclick="deleteSelected()">선택 삭제</label>
         </div>
 
-        <!-- 체크박스 : 전체선택 | 선택삭제 -->
-        <div class="contents">
-          <div class="selectProduct">
-            <input class="selectAll" name="selectAll" id="selectAll" type="checkbox" /><label for="selectAll"
-              >전체 선택
-              <div class="selectedProductCount">(<span>0</span>)</div></label
-            >
-            <div class="button deleteSelectedProduct">　선택 삭제</div>
-          </div>
-        </div>
-
-        <!-- 하단 메인 내용 : 장바구니 목록 및 전체 합계-->
-        <div class="contentsBackground">
-          <div class="contents cardContents">
-            <!-- 장바구니 목록 -->
-            <div class="cardLists">
-              <!-- 장바구니에 담은 상품이 있을 때 -->
-              <div class="cartProductContainer">
-                <!-- 장바구니 상품 목록 : Top - [ 상품 / 상품금액 / 배송비 ] -->
-                <div class="cardTop">
-                  <div class="label check">
-                    <input class="itemSelection" id="itemSelection0" type="checkbox" /><label for="itemSelection0"></label>
-                  </div>
-                  <div class="label product">상품</div>
-                  <div class="label productPrice">상품금액</div>
-                  <div class="label deliveryPrice">배송비</div>
+        <!-- 장바구니 상품 목록 -->
+        <section class="cartProductList">
+          <!-- 장바구니에 상품이 있을 때 -->
+          <div class="ProductInCart">
+            <!--<div th:if="${cart.products.size() > 0}">-->
+            <!-- 장바구니 상품 정보 -->
+            <ul id="cartList">
+              <li id="cartProductItem">
+                <!-- 상단 : 상품 / 상품금액 / 배송비 -->
+                <div class="cartTop">
+                  <span>상품</span>
+                  <span>상품금액</span>
+                  <span>배송비</span>
                 </div>
 
-                <!-- 장바구니 상품 목록 : Center - [ 상품 / 상품금액 / 배송비 ]에 대한 상세 정보 -->
-                <div class="cardCenter">
-                  <div class="cartProductList">
-                    <div class="cartProductItem productNo958">
-                      <div class="productData pc">
-                        <div class="dataEach select">
-                          <input class="itemSelection" name="itemSelection" id="itemSelection958" type="checkbox" data-index="0" value="958" /><label
-                            for="itemSelection958"></label>
-                        </div>
-                        <div class="dataEach product">
-                          <a href="/productDetail/ingredients/958"
-                            ><div class="productImageCover">
-                              <img
-                                class=""
-                                srcset=""
-                                src="https://image.linme.kr/PRODUCT/THB_LM_F_cc083fa78fc1423f8f96eafa5eaeea9c.jpg?w=400&amp;q=90"
-                                alt="네추럴메이드 멀티비타민 앤 미네랄"
-                                loading="lazy" /></div
-                          ></a>
-                          <div class="productInfo">
-                            <div class="productName">
-                              <a href="/productDetail/ingredients/958">주식회사 에프디랩</a>
-                            </div>
-                            <div class="productName">
-                              <a href="/productDetail/ingredients/958">네추럴메이드 멀티비타민 앤 미네랄</a>
-                            </div>
-                            <div class="productNoOption">
-                              <div class="customNumberStepperContainer">
-                                <div class="customNumberStepperButton">
-                                  <div class="minus"></div>
-                                </div>
-                                <input class="customNumberStepperInput" type="number" min="1" max="9999" value="1" />
-                                <div class="customNumberStepperButton">
-                                  <div class="plus"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="dataEach priceInfo">
-                          <div class="salePrice"><span>19,800</span><span>원</span></div>
-                          <div class="price on"><span>36,000</span><span>원</span></div>
-                          <div class="button clickable orderProduct">주문하기</div>
-                        </div>
-                        <div class="dataEach deliveryPriceInfo">
-                          <div class="deliveryPrice"><span>0</span><span>원</span></div>
-                        </div>
-                        <div class="dataEach delete">
-                          <div class="button clickable deleteFromCart"></div>
+                <!-- 상품 정보 -->
+                <div class="cartCenter">
+                  <!-- 상품 -->
+                  <div class="productBox">
+                    <!-- 체크 박스 -->
+                    <div class="productCheckbox">
+                      <input type="checkbox" class="productCheckbox" />
+                    </div>
+                    <!-- 상품 상세 정보 -->
+                    <div class="productInfo">
+                      <!-- 상품 이미지 -->
+                      <a class="productImg" th:href="@{/main/main}">
+                        <img src="../../static/assets/images/product/product1.jpg" alt="상품 이미지" />
+                      </a>
+                      <div class="productDetailInfo">
+                        <!-- 브랜드명 -->
+                        <a th:href="@{/main/main}">
+                          <span>주식회사 에프디랩</span>
+                        </a>
+                        <!-- 상품명 -->
+                        <a th:href="@{/main/main}">
+                          <span>[네츄럴메이드]멀티비타민 앤 미네랄 선물세트_1박스(1,445mg*90정 X 2개입)(6개월분)</span>
+                        </a>
+                        <!-- 수량 조절 -->
+                        <div class="quantityControl">
+                          <!-- `-` 버튼 -->
+                          <button type="button" onclick="decreaseQuantity(this)">-</button>
+                          <!-- 상품 수량 -->
+                          <input type="text" class="productQuantity" value="1" readonly />
+                          <!-- `+` 버튼 -->
+                          <button type="button" onclick="increaseQuantity(this)">+</button>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <!-- 상품 금액-->
+                  <div class="productPriceBox">
+                    <!-- 판매가 -->
+                    <span class="salePrice">36,000원</span>
+                    <!-- 정가 -->
+                    <span class="lineThrough">72,000원</span>
+                    <!-- 주문하기 링크 -->
+                    <a class="goPayment" th:href="@{/payment/payment}">주문하기</a>
+                  </div>
+
+                  <!-- 배송비 -->
+                  <span class="deliveryPriceBox">0원</span>
                 </div>
 
-                <!-- 장바구니 상품 목록 : Bottom - 배송비 -->
-                <div class="cardDeliveryPrice">
-                  <div class="cardDeliveryPriceItem">배송비</div>
-                  <div class="cardDeliveryPriceItem bold">0원</div>
+                <!-- 배송비 정보-->
+                <div class="cartBottom">
+                  <span>배송비</span>
+                  <span>0원</span>
                 </div>
-              </div>
-              <!-- 장바구니가 비었을 때 -->
-              <div class="noData">
-                <a class="continue" href="#"><button class="button clickable continueShopping">쇼핑 계속하기</button></a>
-              </div>
-            </div>
-
-            <!-- 전체 합계 -->
-            <div class="cartTotalContainer">
-              <div class="title">전체 합계</div>
-              <ul class="cartTotalDataList">
-                <li class="cartTotalDataItem productPrice">
-                  <div class="label">총 선택상품금액</div>
-                  <div class="price selectedProductPrice"><span>0</span><span class="currencyUnit">원</span></div>
-                </li>
-                <li class="cartTotalDataItem deliveryPrice">
-                  <div class="label">총 배송비</div>
-                  <div class="price selectedDeliveryPrice"><span>0</span><span class="currencyUnit">원</span></div>
-                </li>
-              </ul>
-              <div class="orderTotal">
-                <div class="label">전체 주문금액</div>
-                <div class="price orderPriceTotal"><span>0</span><span class="currencyUnit">원</span></div>
-              </div>
-              <div class="button clickable buy cover">
-                <div th:href="@{/payment/payment}" class="buttonInner"><div class="label">주문하기</div></div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-        </div>
+
+          <!-- 전체 합계 -->
+          <section class="cartTotal">
+            <!-- 전체 주문금액 타이틀 -->
+            <div class="cartTotalTitle">전체 합계</div>
+            <!-- 전체 주문금액 -->
+            <div class="totalPrice">
+              <span>전체 주문금액</span>
+              <span class="totalPriceText">0원</span>
+            </div>
+            <!-- 주문하기 버튼 -->
+            <a class="orderBtn" th:href="@{/payment/payment}"><span>주문하기</span></a>
+          </section>
+        </section>
       </div>
     </main>
 
     <!-- Footer 영역 -->
-    <!--<footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>-->
+    <th:block th:replace="~{/fragments/footer}" />
+
+    <!-- Script 영역 -->
+    <script>
+      // Footer 영역의 margin을 0으로 설정
+      document.querySelector(".footerContainer").style.margin = "0px";
+
+      /* 전체 선택/해제 함수 */
+      const toggleSelectAll = (v) => {
+        const checkboxes = document.getElementsByClassName("productCheckbox");
+        for (let i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = v.checked;
+        }
+      };
+
+      /* 선택된 항목 삭제 함수 */
+      const deleteSelected = () => {
+        const selectedItems = document.querySelectorAll(".productCheckbox:checked");
+        selectedItems.forEach((item) => {
+          item.closest("li").remove();
+        });
+      };
+
+      /* 수량 감소 함수 */
+      const decreaseQuantity = (button) => {
+        const quantityInput = button.nextElementSibling;
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 1) {
+          quantityInput.value = currentQuantity - 1;
+          alert("수량이 변경되었습니다.");
+        } else {
+          alert("최저 수량 미만으로 설정할 수 없습니다.");
+        }
+      };
+
+      /* 수량 증가 함수 */
+      const increaseQuantity = (button) => {
+        const quantityInput = button.previousElementSibling;
+        let currentQuantity = parseInt(quantityInput.value);
+        quantityInput.value = currentQuantity + 1;
+        alert("수량이 변경되었습니다.");
+      };
+
+      /* 전체 주문 금액을 계산하는 함수 */
+      const calculateTotalPrice = () => {
+        // 모든 상품 li 요소를 선택
+        const productList = document.querySelectorAll("#productList li");
+        let totalPrice = 0;
+
+        // 각 상품의 수량과 판매가를 곱하여 전체 주문 금액을 계산
+        productList.forEach((product) => {
+          const productCount = parseInt(product.querySelector(".productCount").textContent);
+          const salePrice = parseInt(product.querySelector(".salePrice").textContent);
+          totalPrice += productCount * salePrice;
+        });
+
+        // 계산된 전체 주문 금액을 totalPrice 요소에 반영
+        document.getElementById("totalPrice").textContent = totalPrice;
+      };
+      // 페이지 로드 시 총 금액 계산
+      calculateTotalPrice();
+    </script>
   </body>
 </html>
