@@ -31,10 +31,10 @@ public interface PaymentMapper {
                 "addr1 = #{addr1}, addr2 = #{addr2}, addr_name = #{addrName},"+ 
                 "addr_msg = #{addrMsg}, discount_price = #{discountPrice}, "+
                 "total_price = #{totalPrice}, edit_date = NOW() " +
-            "WHERE payment_id = #{payment_id}")
+            "WHERE payment_id = #{paymentId}")
     public int update(Payment input);
 
-    @Delete("DELETE FROM payment WHERE payment_id = #{payment_id}")
+    @Delete("DELETE FROM payment WHERE payment_id = #{paymentId}")
     public int delete(Payment input);
 
     /**
@@ -42,23 +42,23 @@ public interface PaymentMapper {
      * @param input
      * @return
      */
-    @Select("SELECT"+
+    @Select("SELECT "+
                 "order_name, order_tel, addr1, addr2, "+
                 "addr_name, addr_msg, discount_price, " + 
-                "total_price, reg_date, edit_date) " +
-            "FROM payment WHERE payment_id = #{payment_id}")
+                "total_price, reg_date, edit_date " +
+            "FROM payment WHERE payment_id = #{paymentId}")
     @Results(id="PaymentMap", value={
-        @Result(property = "payment_id", column = "paymentId"),
-            @Result(property = "order_name", column = "orderName"),
-            @Result(property = "order_tel", column = "orderTel"),
-            @Result(property = "addr1", column = "addr1"),
-            @Result(property = "addr2", column = "addr2"),
-            @Result(property = "addr_name", column = "addrName"),
-            @Result(property = "addr_msg", column = "addrMsg"),
-            @Result(property = "discount_price", column = "discountPrice"),
-            @Result(property = "total_price", column = "totalPrice"),
-            @Result(property = "reg_date", column = "regDate"),
-            @Result(property = "edit_date", column = "editDate")
+        @Result(property = "paymentId", column = "payment_id"),
+        @Result(property = "orderName", column = "order_name"),
+        @Result(property = "orderTel", column = "order_tel"),
+        @Result(property = "addr1", column = "addr1"),
+        @Result(property = "addr2", column = "addr2"),
+        @Result(property = "addrName", column = "addr_name"),
+        @Result(property = "addrMsg", column = "addr_msg"),
+        @Result(property = "discountPrice", column = "discount_price"),
+        @Result(property = "totalPrice", column = "total_price"),
+        @Result(property = "regDate", column = "reg_date"),
+        @Result(property = "editDate", column = "edit_date")
     })
     public Payment selectItem(Payment input);
 
