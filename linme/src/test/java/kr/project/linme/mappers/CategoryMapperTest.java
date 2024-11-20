@@ -1,4 +1,4 @@
-package kr.project.linme;
+package kr.project.linme.mappers;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import kr.project.linme.mappers.CategoryMapper;
 import kr.project.linme.models.Category;
 import lombok.extern.slf4j.Slf4j;
 
