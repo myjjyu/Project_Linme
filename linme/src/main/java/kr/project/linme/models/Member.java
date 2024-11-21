@@ -24,6 +24,9 @@ public class Member {
     private String regDate;                 // 등록일시
     private String editDate;                // 변경일시
 
+    // 여기 추가 후 재로그인 필요
+    private String newUserPw; // 회원정보 수정에서 사용할 신규 비밀번호
+
     @Getter
     @Setter
     private static int listCount = 0;
