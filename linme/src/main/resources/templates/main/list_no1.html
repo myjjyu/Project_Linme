@@ -69,6 +69,23 @@
           </div> -->
         </div>
       </div>
+
+<!-- 페이지네이션 -->
+      <div class="pagination">
+        <ul>
+          <li th:if="${pagination.prevPage > 0}">
+            <a th:href="@{/products(page=${pagination.prevPage})}">이전</a>
+          </li>
+          <li th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+            <a th:href="@{/products(page=${i})}" 
+               th:classappend="${pagination.nowPage == i} ? 'active' : ''">[[${i}]]</a>
+          </li>
+          <li th:if="${pagination.nextPage > 0}">
+            <a th:href="@{/products(page=${pagination.nextPage})}">다음</a>
+          </li>
+        </ul>
+      </div>
+
     </main>
     <footer>
       <th:block th:replace="~{/fragments/footer}" />
@@ -79,5 +96,6 @@
     <script th:src="@{/assets/js/header.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script th:src="@{/assets/js/main_all_list.js}"></script>
+
   </body>
 </html>

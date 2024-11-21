@@ -78,6 +78,7 @@ public class MainContorller {
     public String View(Model model) {
       return "view/view";
     }
+  
 
   }
 }
