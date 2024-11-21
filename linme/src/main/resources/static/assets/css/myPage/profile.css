@@ -114,14 +114,14 @@ body {
     text-align: left;
 }
 
-.button-group {
+.buttonGroup {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
 .cancelButton,
-.confirm-button {
+.confirmButton {
     width: 120px;
     padding: 12px;
     border-radius: 5px;
@@ -136,12 +136,12 @@ body {
     margin-right: 10px;
 }
 
-.confirm-button {
+.confirmButton {
     background-color: #ff697b;
     color: white;
 }
 
-.confirm-button:disabled {
+.confirmButton:disabled {
     background-color: #eee;
     color: #aaa;
     cursor: not-allowed;
