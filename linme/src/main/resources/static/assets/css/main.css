@@ -27,18 +27,6 @@
   height: 100%;
   object-fit: cover;
 }
-/* 메인배너 화살표 스타일 변경*/
-.swiper-button-next,
-.swiper-button-prev {
-  color: #808080;
-  transform: translateY(-50%); /* 수직 중앙 정렬*/
-}
-
-/* 화살표 크기 변경*/
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 31px;
-}
 
 /* 제품박스 영역 */
 .contents {
