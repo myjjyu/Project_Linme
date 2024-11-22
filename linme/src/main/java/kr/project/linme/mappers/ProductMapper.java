@@ -105,18 +105,11 @@ public interface ProductMapper {
         public List<Product> selectList(Product input);
 
         /**
-         * 상품 개수 조회
-         * WHERE : 조건에 맞는 상품이 몇 개 있는지 계산
+         * 조건에 맞는 데이터의 개수를 반환
          * 
          * @param input
-         * @return
+         * @return 데이터 개수
          */
-        @Select("SELECT " +
-                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
-                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
-                        "FROM product " +
-                        "WHERE category_id = #{categoryId} AND header_item = #{headerItem}")
-        @ResultMap("productMapper")
-        public List<Product> selectWheretList(Product input);
-
+        @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
+        public int selectCount(Product input);
 }
