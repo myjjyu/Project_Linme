@@ -31,18 +31,6 @@
     position: relative;
 }
 
-.addAddress {
-    background-color: #f8f8f8;
-    font-size: 16px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-.Add a{
-    color:#8d8d8d;
-}
-
 .Save {
     text-align: left;
     justify-content: space-between;

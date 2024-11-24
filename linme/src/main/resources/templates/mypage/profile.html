@@ -13,10 +13,16 @@
     <div class="profileContainer">
         <h2>프로필 수정</h2>
         <div class="profileContent">
+            <!--프로필 사진 등록-->
             <div class="profileImage">
-                <img th:src="@{/assets/img/myPage/profileimg.png}">
-                <button class="editButton">수정</button>
+                <!-- 기본 프로필 사진 -->
+                <img id="profileImage" class="profileImage" th:src="${session.memberInfo.profile != null ? session.memberInfo.profile : '/assets/img/profileimg.png'}">
+                <!-- 수정 버튼 -->
+                <label for="fileInput" class="editButton">수정</label>
+                <!-- 파일 업로드 필드 -->
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
+            
             <div class="profileForm">
                 <form>
                     <div class="formGroup">
@@ -24,7 +30,7 @@
 
                         <!-- 닉네임 입력 창-->
                         <div class="nicknameContainer">
-                            <input type="text" name="nickname" id="nickname" class="input-field"placeholder="닉네임을 입력해주세요.">
+                            <input  type="text" name="nickname" id="nickname" class="input-field" placeholder="닉네임을 입력해주세요.">
                             <button type="button" class="checkButton" id="nickname_unique_check">중복확인</button>
                             <input type="hidden" name="nickname_check" id= "nickname_check" value="N"/>
                         </div>
@@ -43,6 +49,10 @@
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script th:src="@{/assets/js/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/RegexHelper.js}"></script>
     <script th:src="@{/assets/js/myPage/profile.js}"></script>
     <script>
         document.querySelector(".footerContainer").style.margin = "0 -500px";
@@ -52,46 +62,3 @@
 
 
 
-
-
-<div class="profileContainer">
-    <h2>프로필 수정</h2>
-    <div class="profileContent">
-        <div class="profileImage">
-            <img th:src="@{/assets/img/myPage/profileimg.png}">
-            <button class="editButton">수정</button>
-        </div>
-        <div class="profileForm">
-            <form id="signup-form">
-                <div class="formGroup">
-                    <label for="nickname">닉네임 <span class="required">*</span></label>
-                    <!-- 닉네임 입력 창-->
-                    <div class="nicknameContainer">
-                        <input
-                            type="text"
-                            name="nickname"
-                            id="nickname"
-                            class="input-field"
-                            placeholder="닉네임을 입력해주세요."
-                        />
-                        <button type="button" class="checkButton" id="nickname_unique_check">
-                            중복확인
-                        </button>
-                        <input type="hidden" name="nickname_check" id="nickname_check" value="N" />
-                    </div>
-                    <!-- 유효성 container -->
-                    <div class="error-message" id="nickname-error"></div>
-                </div>
-                <div class="noticeAlarm">
-                    <p class="notice">
-                        • 닉네임은 2자 이상 12자 이하의 한글, 영문, 숫자로 입력해 주세요.
-                    </p>
-                </div>
-                <div class="button-group">
-                    <button type="button" class="cancelButton">취소</button>
-                    <button type="submit" class="confirm-button" disabled>완료</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

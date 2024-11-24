@@ -1,0 +1,26 @@
+package kr.project.linme.services;
+
+import kr.project.linme.models.Member;
+public interface MemberService {
+    
+
+    //회원가입
+    public Member addItem(Member input) throws Exception;
+    
+    //로그인
+    public Member login(Member input)throws Exception;
+
+    //비밀번호변경
+    public Member editPw(Member input)throws Exception;
+
+    //닉네임 중복 검사
+    public void isUniqueNickname(String nickname) throws Exception;
+
+    // 프로필 사진 업데이트
+    public Member updateProfile(Member input) throws Exception;
+
+    // 닉네임 변경
+    public Member updateNickname(Member input) throws Exception;
+    
+}
+

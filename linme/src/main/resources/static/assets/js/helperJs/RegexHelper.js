@@ -194,6 +194,15 @@ class RegexHelper {
   }
 
   /**
+   * 한글, 영어, 숫자로만 구성되었느지에 대한 형식 검사(공백 허용하지 않음)
+   * @param {*} selector 
+   * @param {*} msg 
+   */
+  nickName(selector,msg){
+    return this.selector(selector, msg, /^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$/);
+  }
+  
+  /**
    * 이메일 형식인지에 대한 검사.
    * @param {*} selector
    * @param {*} msg
