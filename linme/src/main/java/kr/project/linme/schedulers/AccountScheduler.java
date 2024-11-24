@@ -43,7 +43,7 @@ public class AccountScheduler {
 
         try {
             log.debug("탈퇴 회원 조회 및 삭제");
-            //outMembers = memberService.processOutMembers();
+            outMembers = memberService.processOutMembers();
         } catch (Exception e) {
             log.error("탈퇴 회원 조회 및 삭제 실패");
             return;
