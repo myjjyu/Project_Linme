@@ -1,5 +1,7 @@
 package kr.project.linme.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,26 +83,6 @@ public class MemberServiceImpl implements MemberService{
         return memberMapper.selectItem(input);
     }
 
-
-    //닉네임 유효성 검사
-    /*@Override  
-    public void isUniqueNickname(String nickname) throws  Exception {
-        Member input=new Member();
-        input.setNickname(nickname);
-
-        int output=0;
-        try {
-            output=memberMapper.selectCount(input);
-
-            if(output>0){
-                throw new Exception("사용 중인 닉네임입니다.");
-            }
-        } catch (Exception e) {
-            log.error("닉네임 중복검사에 실패했습니다.",e);
-            throw e;
-        }
-    }*/
-
     @Override  
     public void isUniqueNickname(String nickname) throws Exception {
         Member input = new Member();
@@ -148,5 +130,20 @@ public class MemberServiceImpl implements MemberService{
     }
 
 
+    @Override
+    public List<Member>processOutMembers()throws Exception{
+        List<Member>output=null;
+
+        try {
+            //1) is_out이 Y인 상태로 특정 시간이 지난 데이터를 조회한다.
+            output=memberMapper.selectOutMembersPhoto();
+
+            //2) 탈퇴 요청된 데이터를 삭제한다.
+            memberMapper.deleteOutMembers();
+        } catch (Exception e) {
+            throw new Exception("탈퇴 처리에 실패했습니다.");
+        }
+        return output;
+    }
 
 }

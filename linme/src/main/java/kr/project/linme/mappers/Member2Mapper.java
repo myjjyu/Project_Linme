@@ -118,13 +118,22 @@ public interface Member2Mapper {
     @Select("SELECT COUNT(*) FROM member WHERE nickname = #{nickname}")
     public int selectNickname(Member input);
 
-    
-
-    
-
     //로그인 시간 업데이트
     @Update("UPDATE member SET login_date=NOW() WHERE member_id=#{id} AND is_out='N'")
     public int updateLoginDate(Member input);
     
+
+    @Select("SELECT profile FROM members \n"+ //
+                "WHERE is_out='Y' AND \n"+//
+                "edit_date<DATE_ADD(NOW(),interval -1 minute) AND \n"+ //
+                "profile IS NOT NULL ")
+        @ResultMap("memberMap")
+    public List<Member>selectOutMembersPhoto();
+
+
+    @Delete("DELETE FROM members \n"+//
+                "WHERE is_out='Y' AND \n "+//
+                "edit_date <DATE_ADD(NOW(),interval -1 minute)")
+    public int deleteOutMembers();
 }
 

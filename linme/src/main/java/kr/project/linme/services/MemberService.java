@@ -1,5 +1,7 @@
 package kr.project.linme.services;
 
+import java.util.List;
+
 import kr.project.linme.models.Member;
 public interface MemberService {
     
@@ -21,6 +23,9 @@ public interface MemberService {
 
     // 닉네임 변경
     public Member updateNickname(Member input) throws Exception;
+
+    // 탈퇴회원 관리
+    public List<Member> processOutMembers() throws Exception;
     
 }
 
