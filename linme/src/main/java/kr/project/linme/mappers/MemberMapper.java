@@ -18,17 +18,32 @@ import kr.project.linme.models.Member;
 public interface MemberMapper {
 
     // 회원 정보 삽입
+    // 회원 가입시 필요한 정보들만 제외 하고는 N
+    // 인증 칸을 나중에 번호로 직접 넣어서 정보 전달하게 수정
     @Insert("INSERT INTO member (" +
             "user_id, user_pw, user_name, nickname, " +
             "tel, postcode, addr1, addr2, addr_name, " +
             "addr_msg, profile, is_out, is_admin, login_date, " +
             "reg_date, edit_date) " +
-            "VALUES (#{userId}, #{userPw}, #{userName}, #{nickname}, " +
-            "#{tel}, #{postcode}, #{addr1}, #{addr2}, #{addrName}, " +
-            "#{addrMsg}, #{profile}, 'N', 'N', null, " +
+            "VALUES (#{userId}, #{userPw}, 'N', #{nickname}, " +
+            "'N', #{postcode}, #{addr1}, #{addr2}, 'N', " +
+            "'N', 'N', 'N', 'N', null, " +
             "now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")
     public int insert(Member input);
+
+    // 회원 정보 삽입
+    // @Insert("INSERT INTO member (" +
+    //         "user_id, user_pw, user_name, nickname, " +
+    //         "tel, postcode, addr1, addr2, addr_name, " +
+    //         "addr_msg, profile, is_out, is_admin, login_date, " +
+    //         "reg_date, edit_date) " +
+    //         "VALUES (#{userId}, #{userPw}, #{userName}, #{nickname}, " +
+    //         "#{tel}, #{postcode}, #{addr1}, #{addr2}, #{addrName}, " +
+    //         "#{addrMsg}, #{profile}, 'N', 'N', null, " +
+    //         "now(), now())")
+    // @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")
+    // public int insert(Member input);
 
     // 회원 정보 수정
     // user_id = 이메일
@@ -83,8 +98,15 @@ public interface MemberMapper {
     @ResultMap("memberMap")
     public List<Member> selectList(Member input);
 
-    // 회원 수 조회
-    @Select("SELECT COUNT(*) FROM member")
+    // 회원가입 아이디(이메일) , 닉네임 중복 체크
+    @Select("<script>" + //
+            "SELECT COUNT(*) FROM member\n" + //
+            "<where>\n" + //
+            "<if test='userId != null'>user_id = #{userId}</if>\n" + // 사용할수없는 이메일 입니다
+            "<if test='nickname != null'>nickname = #{nickname}</if>\n" + // 사용할수없는 닉네임 입니다
+        //     "<if test='member_id != 0'>AND member_id != #{memberId}</if>\n" +
+            "</where>\n" +
+            "</script>")
     public int selectCount(Member input);
 }
 
