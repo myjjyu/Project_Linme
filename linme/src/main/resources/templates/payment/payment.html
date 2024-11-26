@@ -14,200 +14,198 @@
   <body>
     <!-- 메인 영역 -->
     <main>
-      <div class="container">
-        <div class="contents">
-          <!-- 주문/결제 단계-->
-          <div class="progressStageCart">
-            <!-- 장바구니 -->
-            <div class="progressStep step1">
-              <div class="progressNumberCover"><div class="progressNumber">1</div></div>
-              <div class="progressName">장바구니</div>
-            </div>
-            <!-- 주문/결제 -->
-            <div class="progressStep step2 on">
-              <div class="progressNumberCover"><div class="progressNumber">2</div></div>
-              <div class="progressName">주문/결제</div>
-            </div>
-            <!-- 주문완료 -->
-            <div class="progressStep step3">
-              <div class="progressNumberCover"><div class="progressNumber">3</div></div>
-              <div class="progressName">주문완료</div>
-            </div>
+      <div class="paymentContainer">
+        <!-- 장바구니 단계 -->
+        <nav class="paymentProgress">
+          <div class="progressStep">
+            <div class="circle">1</div>
+            <span class="progressStepText">장바구니</span>
           </div>
-        </div>
+          <div class="progressStep on">
+            <div class="circle on">2</div>
+            <span class="progressStepText on">주문/결제</span>
+          </div>
+          <div class="progressStep">
+            <div class="circle">3</div>
+            <span class="progressStepText">주문완료</span>
+          </div>
+        </nav>
 
-        <!-- 주문/결제 및 전체 합계 -->
-        <div class="paymentContainer">
-          <!-- 1. 주문/결제 정보(데이터)-->
-          <div class="paymentData">
-            <!-- 1-1. 주문/결제 타이틀 -->
-            <div class="paymentTitle">주문/결제</div>
-            <!-- 1-2. 배송지 정보 -->
-            <div class="dataInfo deliveryInfo">
-              <div class="title">배송지 정보</div>
-              <div class="changeDeliveryInfo">변경</div>
-              <!-- 배송지 정보 리스트 -->
-              <ul class="addressBookInfoList">
-                <!-- 배송지명-->
-                <li class="addressBookInfoItem">
-                  <div class="label">배송지명</div>
-                  <span class="data" th:text="${addressNickname}">주소 닉네임</span>
+        <!-- 주문결제 및 전체합계 -->
+        <div class="paymentMainContainer">
+          <!-- 주문 결제 -->
+          <section class="paymentInfo">
+            <!-- 주문 결제 타이틀 -->
+            <span class="paymentTitle">주문/결제</span>
+
+            <!-- 배송지 정보 -->
+            <div class="deliveryInfo">
+              <!-- 배송지 타이틀 -->
+              <span class="deliveryTitle">배송지 정보</span>
+
+              <ul id="deliveryList">
+                <!-- 배송지명 -->
+                <li class="addrName">
+                  <span>배송지명</span>
+                  <a>jinju</a>
                 </li>
 
-                <!-- 받는 분-->
-                <li class="addressBookInfoItem">
-                  <div class="label">받는 분</div>
-                  <span class="data" th:text="${addressName}">주소 이름</span>
+                <!-- 받는 분 -->
+                <li class="receiver">
+                  <span>받는 분</span>
+                  <a>김진주</a>
                 </li>
 
                 <!-- 연락처 -->
-                <li class="addressBookInfoItem">
-                  <div class="label">연락처</div>
-                  <span class="data" th:text="${phone}">회원 전화번호</span>
+                <li class="tel">
+                  <span>연락처</span>
+                  <a>01012345678</a>
                 </li>
 
-                <!-- 주소-->
-                <li class="addressBookInfoItem">
-                  <div class="label">주소</div>
-                  <span class="data" th:text="${address}">회원 주소</span>
+                <!-- 배송지 -->
+                <li class="addr">
+                  <span>배송지</span>
+                  <a>서울시 강남구 역삼동 123-45</a>
                 </li>
 
-                <!-- 배송 요청사항-->
-                <li class="addressBookInfoItem">
-                  <div class="label">배송 요청사항</div>
-                  <form class="data">
-                    <select name="dropdown" class="dropdown">
+                <!-- 배송요청사항 -->
+                <li class="deliveryRequest">
+                  <span class="noRequired">배송요청사항</span>
+                  <!-- 배송요청사항 선택 영역 -->
+                  <a class="selectDeliveryMsg">
+                    <!-- 선택 옵션 -->
+                    <select id="selectDeliveryMsgOption">
                       <option value="1">부재 시 문 앞에 놓아주세요</option>
                       <option value="2">배송 전에 미리 연락 주세요</option>
                       <option value="3">부재 시 경비실에 맡겨 주세요</option>
                       <option value="4">부재 시 전화 주시거나 문자 남겨주세요</option>
-                      <option value="5">직접 입력</option>
+                      <option value="directInput">직접입력</option>
                     </select>
-                    <input type="text" class="memo" name="directInput" placeholder="직접 입력" value="" />
-                  </form>
+                    <div id="inputContainer"></div
+                  ></a>
                 </li>
               </ul>
             </div>
 
-            <!-- 1-3. 주문상품 확인 -->
-            <div class="dataInfo checkOrderProduct">
-              <div class="OrderProductTitle">주문상품</div>
-              <div class="combinedProductList">
-                <ul class="combinedProductContainer">
-                  <!-- 상단 제목 -->
-                  <li class="productItem title">
-                    <div class="productTitle">상품정보</div>
-                    <div class="top-solidline"></div>
-                    <div class="salePriceInfoTitle">판매가</div>
-                    <div class="top-solidline"></div>
-                    <div class="priceInfo">구매가</div>
-                    <div class="top-solidline"></div>
-                    <div class="deliveryPriceInfo">배송비</div>
-                  </li>
+            <!-- 주문상품 확인 -->
+            <div class="OrderCheckInfo">
+              <!-- 주문상품 확인 타이틀 -->
+              <span class="OrderCheckTitle">주문상품 확인</span>
+              <!-- 주문상품 확인 : 상품-->
+              <ul class="OrderCheckList">
+                <!-- 상품 ListItem-->
+                <li class="OrderCheckItem">
+                  <!-- 상단 -->
+                  <div class="OrderCheckItemTop">
+                    <span>상품정보</span>
+                    <span>판매가</span>
+                    <span>구매가</span>
+                    <span>배송비</span>
+                  </div>
 
-                  <!-- 구매상품 정보 -->
-                  <li class="productItem detail">
-                    <!-- 상품 정보-->
-                    <div class="product">
-                      <!-- 상품 이미지-->
-                      <a
-                        ><div class="productImageCover"><img th:src="@{productImage}" />사진</div></a
-                      >
-                      <!-- 상품 브랜드/상품명/개수 -->
-                      <div class="productItemNameNo">
-                        <!-- 브랜드명 -->
-                        <div class="productItemBrandName"><a>브랜드명</a></div>
-                        <!-- 상품명 -->
-                        <div class="productItemProductName">
-                          <a>상품명</a>
+                  <!-- 상품 정보 -->
+                  <div class="OrderCheckItemCenter">
+                    <!-- 상품 -->
+                    <div class="OrderCheckItemBox">
+                      <!-- 상품 상세 정보 -->
+                      <div class="OrderCheckItemInfo">
+                        <!-- 상품 이미지 -->
+                        <a class="OrderCheckItemImg" th:href="@{/main/main}">
+                          <img src="https://placehold.co/120" alt="상품 이미지" />
+                        </a>
+                        <div class="OrderCheckItemDetailInfo">
+                          <!-- 브랜드명 -->
+                          <a th:href="@{/main/main}">
+                            <span>주식회사 에프디랩</span>
+                          </a>
+                          <!-- 상품명 -->
+                          <a th:href="@{/main/main}">
+                            <span>[네츄럴메이드]멀티비타민 앤 미네랄 선물세트_1박스(1,445mg*90정 X 2개입)(6개월분)</span>
+                          </a>
+                          <!-- 선택 수량 -->
+                          <div class="selectedQuantity"><span>1</span>개</div>
                         </div>
-                        <!-- 개수 -->
-                        <div class="productOptionQuantity">1<span class="quantityUnit">개</span></div>
                       </div>
                     </div>
-                    <!-- 판매가 -->
-                    <div class="salePriceInfo">{판매가}<span class="currencyUnit">원</span></div>
 
-                    <!-- 구매가/원가 -->
-                    <div class="priceInfo">
-                      <!-- 원가 -->
-                      <div class="price">{원가}<span class="currencyUnit">원</span></div>
-                      <!-- 구매가 -->
-                      <div class="priceContainer">{구매가}<span class="currencyUnit">원</span></div>
+                    <!-- 정가 -->
+                    <span class="price">72,000원</span>
+                    <!-- 판매가 -->
+                    <div class="salePriceBox">
+                      <span class="lineThrough">72,000원</span>
+                      <span class="salePrice">36,000원</span>
                     </div>
                     <!-- 배송비 -->
-                    <div class="deliveryPriceInfo">0<span class="currencyUnit">원</span></div>
-                  </li>
-                </ul>
+                    <span class="deliveryPriceBox">0원</span>
+                  </div>
 
-                <!-- 총 배송비 -->
-                <div class="cardDeliveryPrice">
-                  <div class="cardDeliveryPriceItem">총 배송비</div>
-                  <div class="cardDeliveryPriceItem bold">0원</div>
-                </div>
-              </div>
-            </div>
-            <!-- 1-4. 쿠폰 할인 적용 -->
-            <div class="dataInfo couponInfo">
-              <div class="couponTitle">쿠폰 할인 적용</div>
-              <ul>
-                <li>
-                  <div class="label">쿠폰</div>
-                  <div class="data">
-                    <input type="text" name="selectedCouponName" class="selectedCouponName" readonly="" placeholder="사용 가능한 쿠폰이 없습니다." />
+                  <!-- 배송비 정보-->
+                  <div class="OrderCheckItemBottom">
+                    <span>총 배송비</span>
+                    <span>0원</span>
                   </div>
                 </li>
               </ul>
             </div>
-            <!-- 1-5. 결제수단 선택 -->
-            <div class="dataInfo paymentMethod">
-              <div class="paymentMethodTitle">결제수단 선택</div>
-              <ul class="paymentMethodList">
-                <li class="paymentMethodItem methodBox">
-                  <input class="method" name="method" id="payMethodcard" type="radio" value="CARD" checked="" /><label
-                    class="method"
-                    for="payMethodcard"
-                    >신용카드</label
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- 2. 전체 합계 및 이용약관 -->
-          <div class="paymentTotalContainer">
-            <!-- 2-1. 전체 합계 -->
-            <div class="paymentTotalInfo">
-              <!-- 전체 합계 -->
-              <div class="title">전체 합계</div>
-              <ul>
-                <!-- 총 선택상품금액 -->
-                <li>
-                  <div class="label">총 선택상품금액</div>
-                  <div class="price selectedProductPrice">{1234}<span class="currencyUnit">원</span></div>
-                </li>
-                <!-- 총 배송비 -->
-                <li>
-                  <div class="label">총 배송비</div>
-                  <div class="price selectedDeliveryPrice"><span class="plus">+</span>0<span class="currencyUnit">원</span></div>
-                </li>
-              </ul>
-              <div class="orderTotal">
-                <div class="label">전체 주문금액</div>
-                <div class="price orderPriceTotal">{1234}<span class="currencyUnit">원</span></div>
-              </div>
-              <div class="button clickable buy cover">
-                <div class="buttonInner"><div class="label">결제하기</div></div>
+
+            <!-- 1-4. 쿠폰 할인 적용 -->
+            <div class="couponInfo">
+              <div class="couponTitle">쿠폰 할인 적용</div>
+              <div class="couponContent">
+                <span class="label">쿠폰</span>
+                <div class="noCoupon">
+                  <input type="text" class="couponText" readonly="" placeholder="사용 가능한 쿠폰이 없습니다." />
+                </div>
               </div>
             </div>
-          </div>
+
+            <!-- 결제수단 선택-->
+            <div class="paymentMethodInfo">
+              <!-- 쿠폰 할인 적용 타이틀 -->
+              <span class="paymentMethodTitle">결제수단 선택</span>
+              <div class="paymentMethod">
+                <input class="methodRadio" type="radio" checked="" />
+                <label class="methodCard" for="payMethodcard">신용카드</label>
+              </div>
+            </div>
+          </section>
+
+          <!-- 전체 합계 -->
+          <section class="paymentTotal">
+            <!-- 전체 주문금액 타이틀 -->
+            <div class="paymentTotalTitle">전체 합계</div>
+            <!-- 전체 주문금액 -->
+            <div class="totalPrice">
+              <span>전체 주문금액</span>
+              <span class="totalPriceText">0원</span>
+            </div>
+            <!-- 결제하기 버튼 -->
+            <a id="orderBtn"><span>결제하기</span></a>
+          </section>
         </div>
       </div>
     </main>
 
     <!-- Footer 영역 -->
     <th:block th:replace="~{/fragments/footer}" />
+
     <script>
+      // Footer 영역의 margin을 0으로 설정
       document.querySelector(".footerContainer").style.margin = "0px";
+
+      // 배송 요청 사항 선택 시 이벤트 리스너 추가
+      document.getElementById("selectDeliveryMsgOption").addEventListener("change", (event) => {
+        const inputContainer = document.getElementById("inputContainer");
+        inputContainer.innerHTML = ""; // 기존 input 태그 제거
+
+        // '직접입력' 옵션이 선택되었을 때 input 태그 추가
+        if (event.target.value === "directInput") {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.placeholder = "직접 입력";
+          inputContainer.appendChild(input);
+        }
+      });
     </script>
   </body>
 </html>
