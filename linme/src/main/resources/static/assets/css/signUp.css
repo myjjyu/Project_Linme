@@ -213,7 +213,7 @@ input::placeholder {
 
 /* 가입하기 버튼 */
 .signUp button.inputCompleted {
-  background-color: #b6b6b6;
+  background-color: #ff697b;
   border-radius: 4px;
   color: #fff;
   display: block;
