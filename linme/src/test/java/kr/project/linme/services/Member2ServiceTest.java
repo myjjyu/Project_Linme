@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Member2ServiceTest {
 
     @Autowired
-    private MemberService memberService;
+    private Member2Service memberService;
 
     @Test
     @DisplayName("회원가입 테스트")
@@ -30,7 +30,7 @@ public class Member2ServiceTest {
         member.setAddr2("123호");
         member.setAddrName("신짱구");
         member.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        member.setProfile(null);
+        member.setProfile("test.png");
 
         Member result = null;
 
@@ -87,4 +87,29 @@ public class Member2ServiceTest {
             log.debug("프로필 사진 변경 성공: " + result.toString());
         }
     }
+
+
+    @Test
+    @DisplayName("비밀번호 변경 테스트")
+    void updatePassword() throws Exception {
+        Member member = new Member();
+        member.setMemberId(6); // 테스트 대상 회원 ID
+        member.setUserPw("123qwe!@#");
+        member.setNewUserPw("1111");
+
+        Member result = null;
+
+        try {
+            result = memberService.editPw(member);
+        } catch (Exception e) {
+            log.error("비밀번호 변경 실패", e);
+            throw e;
+        }
+
+        if (result != null) {
+            log.debug("비밀번호 변경 성공: " + result.toString());
+        }
+    }
+
+
 }

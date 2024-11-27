@@ -10,7 +10,7 @@ function displayMessage(message, color) {
 }
 
 // 닉네임 입력 이벤트
-nicknameInput.addEventListener("input", () => {
+nicknameInput.addEventListener("change", () => {
     const nickname = nicknameInput.value;
 
     // 닉네임 중복 여부 초기화
@@ -71,6 +71,7 @@ nicknameCheckButton.addEventListener("click", async (e) => {
 //프로필 사진 등록
 const fileInput = document.getElementById('fileInput');
 const profileImage = document.getElementById('profileImage');
+const deleteProfileButton = document.getElementById('deleteProfileButton');
 
 // 사진 업로드 처리
 fileInput.addEventListener('change', async (event) => {
@@ -80,6 +81,7 @@ fileInput.addEventListener('change', async (event) => {
         const reader = new FileReader();
         reader.onload = (e) => {
             profileImage.src = e.target.result;
+            deleteProfileButton.style.display = 'block'; 
         };
         reader.readAsDataURL(file);
 
@@ -102,5 +104,26 @@ fileInput.addEventListener('change', async (event) => {
         } catch (error) {
             Swal.fire('에러', '사진 업로드에 실패했습니다.', 'error');
         }
+    }
+});
+
+// 삭제 버튼 클릭 이벤트
+document.getElementById('deleteProfileButton')?.addEventListener('click', async () => {
+
+    try {
+        const response = await axios.post('/api/myPage/profile-delete', {});
+
+        if (response.data.success) {
+            alert('프로필 사진이 삭제되었습니다.');
+            // 기본 이미지로 변경
+            document.getElementById('userProfileImage').src = '/assets/img/myPage/profileimg.png';
+            // 삭제 버튼 숨기기
+            document.getElementById('deleteProfileButton').style.display = 'none';
+        } else {
+            alert('프로필 사진 삭제에 실패했습니다.');
+        }
+    } catch (error) {
+        console.error('프로필 사진 삭제 중 오류:', error);
+        alert('프로필 사진 삭제 중 문제가 발생했습니다.');
     }
 });

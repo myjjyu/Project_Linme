@@ -1,11 +1,13 @@
 package kr.project.linme.models;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class Member {
+public class Member implements Serializable{
     private int memberId;                   // 회원 일련번호
     private String userId;                  // 아이디(이메일)
     private String userPw;                  // 비밀번호

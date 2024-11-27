@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.project.linme.mappers.Member2Mapper;
 import kr.project.linme.models.Member;
-import kr.project.linme.services.MemberService;
+import kr.project.linme.services.Member2Service;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 */
 @Slf4j
 @Service
-public class MemberServiceImpl implements MemberService{
+public class Member2ServiceImpl implements Member2Service{
     //SQL문을 구현하고 있는 Mapper 객체 주입
     @Autowired
     private Member2Mapper memberMapper;
@@ -68,21 +68,33 @@ public class MemberServiceImpl implements MemberService{
     
     // 비밀번호 변경
     @Override
-    public Member editPw(Member input) throws  Exception {
-        int rows=0;
-        try {
-            rows=memberMapper.updatePw(input);
-            //WHERE절 조건에 맞는 데이터가 없는 경우 --> 비밀번호 잘못됨
-            if(rows==0){
-                throw new Exception("현재 비밀번호를 확인하세요.");
-            }
-        } catch (Exception e) {
-            log.error("Member 데이터 수정에 실패했습니다.", e);
-            throw e;
+    public Member editPw(Member input) throws Exception {
+        // 데이터베이스에서 현재 비밀번호 확인
+        int validPassword = memberMapper.countByPassword(input);
+    
+        if (validPassword == 0) {
+            // 비밀번호가 일치하지 않을 경우 예외 발생
+            throw new Exception("현재 비밀번호가 올바르지 않습니다.");
         }
+    
+        // 비밀번호 업데이트
+        int updatedRows = memberMapper.updatePw(input);
+        if (updatedRows == 0) {
+            // 업데이트 실패 시 예외 발생
+            throw new Exception("비밀번호 업데이트에 실패했습니다.");
+        }
+    
+        // 업데이트된 사용자 정보 조회 및 반환
         return memberMapper.selectItem(input);
     }
 
+    // 입력한 비밀번호와 DB 비밀번호가 일치한지 확인
+    @Override
+    public boolean checkPassword(Member input) throws Exception {
+        int count = memberMapper.countByPassword(input);
+        return count > 0; // 비밀번호가 일치하면 true, 아니면 false 반환
+    }
+    
     @Override  
     public void isUniqueNickname(String nickname) throws Exception {
         Member input = new Member();

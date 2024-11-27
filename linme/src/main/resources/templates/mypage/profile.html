@@ -13,21 +13,25 @@
     <div class="profileContainer">
         <h2>프로필 수정</h2>
         <div class="profileContent">
-            <!--프로필 사진 등록-->
-            <div class="profileImage">
-                <!-- 기본 프로필 사진 -->
-                <img id="profileImage" class="profileImage" th:src="${session.memberInfo.profile != null ? session.memberInfo.profile : '/assets/img/profileimg.png'}">
-                <!-- 수정 버튼 -->
-                <label for="fileInput" class="editButton">수정</label>
-                <!-- 파일 업로드 필드 -->
-                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <div class="profileImgContainer">
+                <!-- 등록된 프로필 사진이 없는 경우 -->
+                <th:block th:if="${session.memberInfo?.profile == null or session.memberInfo.profile == ''}">
+                    <img id="profileImage" class="profileImage" th:src="@{/assets/img/myPage/profileimg.png}" alt="기본 프로필 이미지">
+                    <label for="fileInput" class="editButton">수정</label>
+                </th:block>
+            
+                <!-- 등록된 프로필 사진이 있는 경우 -->
+                <th:block th:unless="${session.memberInfo?.profile == null or session.memberInfo.profile == ''}">
+                    <img id="profileImage" class="profileImage" th:src="${session.memberInfo.profile}" alt="등록된 프로필 이미지">
+                    <label for="fileInput" class="editButton">수정</label>
+                    <button name="delete-profile" id="delete-profile" class="deleteButton">X</button>
+                </th:block>
             </div>
             
             <div class="profileForm">
                 <form>
                     <div class="formGroup">
                         <label for="nickname">닉네임 <span class="required">*</span></label>
-
                         <!-- 닉네임 입력 창-->
                         <div class="nicknameContainer">
                             <input  type="text" name="nickname" id="nickname" class="input-field" placeholder="닉네임을 입력해주세요.">
@@ -45,7 +49,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>

@@ -1,6 +1,10 @@
 package kr.project.linme.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.HttpSession;
+import kr.project.linme.models.Member;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -18,10 +22,35 @@ public class MypageController {
         model.addAttribute("reviewCount", 0);
         return "myPage/myPage";
     }
+    // @GetMapping("/myPage/profile")
+    // public String getProfilePage(HttpSession session, Model model) {
+    //     Member memberInfo = (Member) session.getAttribute("memberInfo");
+    //     if (memberInfo == null) {
+    //         // 세션에 memberInfo가 없을 경우 기본값 추가
+    //         memberInfo = new Member();
+    //         memberInfo.setProfile("/assets/img/profileimg.png"); // 기본 프로필 이미지 설정
+    //         session.setAttribute("memberInfo", memberInfo);
+    //     }
+    //     model.addAttribute("memberInfo", memberInfo);
+    //     return "myPage/profile";
+    // }
     @GetMapping("/myPage/profile")
-    public String profile() {
+    public String getProfilePage(HttpSession session, Model model) {
+        Member memberInfo = (Member) session.getAttribute("memberInfo");
+
+        if (memberInfo == null) {
+            memberInfo = new Member();
+            memberInfo.setProfile("/assets/img/myPage/profileimg.png"); // 기본 프로필 이미지 경로 설정
+            session.setAttribute("memberInfo", memberInfo);
+        } else if (memberInfo.getProfile() == null || memberInfo.getProfile().isEmpty()) {
+            memberInfo.setProfile("/assets/img/myPage/profileimg.png"); // 기본값 설정
+        }
+
+        model.addAttribute("memberInfo", memberInfo);
         return "myPage/profile";
     }
+
+
 
     @GetMapping("/myPage/level")
     public String level() {

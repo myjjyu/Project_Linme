@@ -1,5 +1,6 @@
 package kr.project.linme.mappers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -23,17 +24,17 @@ public class Member2MapperTest {
     @DisplayName("회원 추가 테스트")
     void insertMember() {
         Member input = new Member();
-        input.setUserId("cg2522@naver.com");
+        input.setUserId("yujeong@naver.com");
         input.setUserPw("123qwe!@#");
-        input.setUserName("신지예");
-        input.setNickname("지예");
+        input.setUserName("우유");
+        input.setNickname("아야정");
         input.setTel("010-1234-1234");
         input.setPostcode("06035");
         input.setAddr1("서울 강남구 가로수길5");
         input.setAddr2("123호");
-        input.setAddrName("신짱구");
+        input.setAddrName("집");
         input.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        input.setProfile(null);
+        input.setProfile("test.png");
         // input.setIsOut("N");
         // input.setIsAdmin("N");
         // input.setLoginDate(null);
@@ -62,7 +63,7 @@ public class Member2MapperTest {
     @DisplayName("프로필 수정 테스트")
     void updateProfile() {
         Member input = new Member();
-        input.setMemberId(1); 
+        input.setMemberId(4); 
         input.setProfile("test.png"); // 테스트용 프로필 경로 설정
 
         int output = memberMapper.updateProfile(input);
@@ -70,7 +71,34 @@ public class Member2MapperTest {
         log.debug("output: " + output);
         assertTrue(output > 0);
     }
+    @Test
+    @DisplayName("비밀번호 수정 테스트")
+    void updatePassword(){
+        Member input = new Member();
+        input.setMemberId(5);
+        input.setUserPw("1234");
+        input.setNewUserPw("1111");
 
+        int output = memberMapper.updatePw(input);
+
+        log.debug("output: " + output);
+    }
+
+    @Test
+    @DisplayName("현재 비밀번호 확인 테스트")
+    void CountByPassword() {
+        // given: 테스트에 사용할 회원 데이터
+        Member input = new Member();
+        input.setMemberId(6); // 테스트용 회원 ID
+        input.setUserPw("1111"); // MD5로 암호화된 값이 있는 실제 비밀번호 입력
+
+        // when: countByPassword 메서드를 호출
+        int count = memberMapper.countByPassword(input);
+
+        // then: 결과 검증
+        // count가 1이어야 비밀번호가 일치
+        assertEquals(1, count, "현재 비밀번호 확인 실패");
+    }
 
     @Test
     // 삭제하려는 데이터가 있는지 확인

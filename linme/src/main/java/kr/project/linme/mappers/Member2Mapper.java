@@ -20,11 +20,11 @@ public interface Member2Mapper {
     // 회원 정보 삽입
     @Insert("INSERT INTO member (" +
             "user_id, user_pw, user_name, nickname, " +
-            "tel, postcode, addr1, addr2, addr_name, " +
+            "tel, postcode, addr1, addr2, profile, addr_name, " +
             "addr_msg, is_out, is_admin, login_date, " +
             "reg_date, edit_date) " +
-            "VALUES (#{userId}, #{userPw}, #{userName}, #{nickname}, " +
-            "#{tel}, #{postcode}, #{addr1}, #{addr2}, #{addrName}, " +
+            "VALUES (#{userId}, MD5(#{userPw}), #{userName}, #{nickname}, " +
+            "#{tel}, #{postcode}, #{addr1}, #{addr2}, #{profile}, #{addrName}, " +
             "#{addrMsg}, 'N', 'N', null, " +
             "now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")
@@ -33,11 +33,11 @@ public interface Member2Mapper {
     // 로그인
     @Select("SELECT "+
             "member_id, user_id, user_pw, user_name, nickname, " +
-            "tel, postcode, addr1, addr2, addr_name, " +
+            "tel, postcode, addr1, addr2, profile, addr_name, " +
             "addr_msg, is_out, is_admin, login_date, " +
             "reg_date, edit_date "+
             "FROM member "+
-            "WHERE user_id=#{userId} AND user_pw=MD5(#{userPw}AND is_out='N' ")
+            "WHERE user_id=#{userId} AND user_pw=MD5(#{userPw}) AND is_out='N'")
     @ResultMap("memberMap")
     public Member login(Member input);
     
@@ -74,12 +74,15 @@ public interface Member2Mapper {
     public int updatePostcode(Member input);
 
     // 비밀번호 변경 
-    @Update("<script> "+//
-            "UPDATE members SET "+
+    @Update("UPDATE member SET "+
             "user_pw=MD5(#{newUserPw}) "+
-            "WHERE member_id= #{memberId} AND user_pw=MD5(#{userPw}) "+
-            "</script> ")
+            "WHERE member_id= #{memberId}")
     public int updatePw(Member input);
+
+    // 현재 비밀번호 확인 
+    @Select("SELECT COUNT(*) FROM member WHERE member_id = #{memberId} AND user_pw = MD5(#{userPw})")
+    public int countByPassword(Member input);
+
 
     // 회원 정보 삭제
     @Delete("DELETE FROM member WHERE member_id = #{memberId}")
@@ -123,7 +126,7 @@ public interface Member2Mapper {
     public int updateLoginDate(Member input);
     
 
-    @Select("SELECT profile FROM members \n"+ //
+    @Select("SELECT profile FROM member \n"+ //
                 "WHERE is_out='Y' AND \n"+//
                 "edit_date<DATE_ADD(NOW(),interval -1 minute) AND \n"+ //
                 "profile IS NOT NULL ")
@@ -131,7 +134,7 @@ public interface Member2Mapper {
     public List<Member>selectOutMembersPhoto();
 
 
-    @Delete("DELETE FROM members \n"+//
+    @Delete("DELETE FROM member \n"+//
                 "WHERE is_out='Y' AND \n "+//
                 "edit_date <DATE_ADD(NOW(),interval -1 minute)")
     public int deleteOutMembers();
