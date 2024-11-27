@@ -23,12 +23,12 @@
     <!-- 메인 영역 -->
     <main>
       <div class="mainContent" id="mainContent">
-      <!-- 전체상품 영역 -->
-
+        <!-- 전체상품 영역 -->
+      </div>
       <div class="titleContent">
-      <div class="title">💪비타민 충전 타임💪</div>
-      <div class="subtitle">내 몸의 활력을 위한 멀티 비타민</div>
-    </div>
+        <div class="title">💪비타민 충전타임💪</div>
+        <div class="subtitle">내 몸의 활력을 위한 멀티 비타민</div>
+      </div>
       <div class="contents" id="vitaminSection">
         <ul class="productDisplayOrder">
           <li class="productText">
@@ -69,23 +69,6 @@
           </div> -->
         </div>
       </div>
-
-<!-- 페이지네이션 -->
-      <div class="pagination">
-        <ul>
-          <li th:if="${pagination.prevPage > 0}">
-            <a th:href="@{/products(page=${pagination.prevPage})}">이전</a>
-          </li>
-          <li th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-            <a th:href="@{/products(page=${i})}" 
-               th:classappend="${pagination.nowPage == i} ? 'active' : ''">[[${i}]]</a>
-          </li>
-          <li th:if="${pagination.nextPage > 0}">
-            <a th:href="@{/products(page=${pagination.nextPage})}">다음</a>
-          </li>
-        </ul>
-      </div>
-
     </main>
     <footer>
       <th:block th:replace="~{/fragments/footer}" />
@@ -96,6 +79,5 @@
     <script th:src="@{/assets/js/header.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script th:src="@{/assets/js/main_all_list.js}"></script>
-
   </body>
 </html>

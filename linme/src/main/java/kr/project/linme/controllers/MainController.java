@@ -12,96 +12,92 @@ import kr.project.linme.models.Product;
 import kr.project.linme.services.ProductService;
 
 @Controller
-public class MainContorller {
+public class MainController {
 
-  @Autowired
-  private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-  @Autowired
-  private WebHelper webHelper;
+    @Autowired
+    private WebHelper webHelper;
 
-  /**
-   * 메인 페이지
-   * 
-   * @param model
-   * @return
-   */
-  @GetMapping("/main/main")
-  public String main(Model model) {
-    Product product = new Product();
+    /**
+     * 메인 페이지
+     * 
+     * @param model
+     * @return
+     */
+    @GetMapping("/main/main")
+    public String main(Model model) {
+        Product product = new Product();
 
-    List<Product> output = null;
-    try {
-      output = productService.getList(product);
-    } catch (Exception e) {
-      webHelper.serverError(e);
+        List<Product> output = null;
+        try {
+            output = productService.getList(product);
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+
+        model.addAttribute("product", output);
+        return "main/main"; // 메인 페이지
     }
 
-    model.addAttribute("output", output);
-    return "main/main"; // 메인 페이지
-  }
-
-  /**
-   * 헤더 카테고리 클릭시 페이지 이동
-   */
-  @Controller
-  public class headerCategoryController {
+    /**
+     * 카테고리 클릭 시 페이지 이동
+     */
     @GetMapping("/header/categoryList")
     public String categoryList(Model model) {
-      model.addAttribute("category", "category");
-      return "header/category_list";
+        model.addAttribute("category", "category");
+        return "header/category_list"; // 카테고리 리스트 페이지
     }
 
     @GetMapping("/main/main_ok")
     public String mainOk(Model model) {
-      return "main/main_ok";
+        return "main/main_ok";
     }
 
     @GetMapping("/main/list_no1")
     public String listNo1(Model model) {
-      return "main/list_no1";
+        return "main/list_no1";
     }
 
     @GetMapping("/main/list_no2")
     public String listNo2(Model model) {
-      return "main/list_no2";
+        return "main/list_no2";
     }
 
     @GetMapping("/main/list_no3")
     public String listNo3(Model model) {
-      return "main/list_no3";
+        return "main/list_no3";
     }
 
     @GetMapping("/main/list_no4")
     public String listNo4(Model model) {
-      return "main/list_no4";
+        return "main/list_no4";
     }
 
     @GetMapping("/header/new")
     public String New(Model model) {
-      return "header/new";
+        return "header/new";
     }
 
     @GetMapping("/header/best")
     public String Best(Model model) {
-      return "header/best";
+        return "header/best";
     }
 
     @GetMapping("/header/spacial")
     public String Spacial(Model model) {
-      return "header/spacial";
+        return "header/spacial";
     }
 
     /**
-     * 상세페이지
+     * 상세 페이지
      * 
      * @param model
      * @return
      */
     @GetMapping("/view/view")
     public String View(Model model) {
-      return "view/view";
+        return "view/view"; // 상품 상세 페이지
     }
-
-  }
 }

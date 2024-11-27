@@ -1,5 +1,8 @@
 package kr.project.linme.models;
 
+import java.awt.Image;
+import java.util.List;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +22,8 @@ public class Product {
   private int discountPrice;     // 할인 금액 
   private String regDate;        // 등록일시 
   private String editDate;       // 변경일시
+
+  List<Image> imageList; // 나중에 이미지 추가>!
 
 
   // salePrice 설정 시 discountPrice 자동 계산

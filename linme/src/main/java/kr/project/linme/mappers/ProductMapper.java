@@ -123,7 +123,7 @@ public interface ProductMapper {
          * 조건에 맞는 데이터의 개수를 반환
          * 
          * @param input
-         * @return 데이터 개수
+         * @return 데이터 개수ㅎㅎ
          */
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
         public int selectCount(Product input);
