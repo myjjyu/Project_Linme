@@ -71,11 +71,16 @@ public interface CartMapper {
                 "product_count, " + 
                 "total_price, " + 
                 "member_id, " + 
-                "product_id, " + 
-                "reg_date, " + 
-                "edit_date " + 
-            "FROM cart " + 
-            "WHERE cart_id = #{cartId}")
+                "p.product_id, " + 
+                "c.reg_date, " + 
+                "c.edit_date, " + 
+                "product_name, " +
+                "price, " +
+                "sale_price " +
+                "brand_name " +
+            "FROM cart c " + 
+            "INNER JOIN product p ON p.product_id = c.product_id " +
+            "WHERE member_id = #{memberId}")
     @Results(id="cartMap", value={
         @Result(property="cartId", column="cart_id"),
         @Result(property="productCount", column="product_count"),
@@ -83,7 +88,11 @@ public interface CartMapper {
         @Result(property="memberId", column="member_id"),
         @Result(property="productId", column="product_id"),
         @Result(property="regDate", column="reg_date"),
-        @Result(property="editDate", column="edit_date")
+        @Result(property="editDate", column="edit_date"),
+        @Result(property="productName", column="product_name"),
+        @Result(property="price", column="price"),
+        @Result(property="salePrice", column="sale_price"),
+        @Result(property="brandName", column="brand_name")
     })
     public Cart selectItem(Cart input);
 
@@ -95,12 +104,33 @@ public interface CartMapper {
     @Select("SELECT " + 
                 "cart_id, " + 
                 "product_count, " + 
-                "total_price, " + 
+                // "SUM(sale_price * product_count) AS total_price, " + 
+                "c.total_price, " +
                 "member_id, " + 
-                "product_id, " + 
-                "reg_date, " + 
-                "edit_date " + 
-            "FROM cart")
+                "p.product_id, " + 
+                "c.reg_date, " + 
+                "c.edit_date, " + 
+                "p.product_name, " +
+                "p.price, " +
+                "p.sale_price, " +
+                "b.brand_name " +
+                // "i.img" +
+            "FROM cart c " + 
+            "INNER JOIN product p ON p.product_id = c.product_id " +
+            "INNER JOIN brand b ON b.brand_id = p.brand_id " +
+            // "INNER JOIN img i ON i.product_id = c.product_id" +
+            "WHERE member_id = #{memberId} " +
+            "GROUP BY " + 
+                "cart_id, " + 
+                "product_count, " + 
+                "member_id, " + 
+                "p.product_id, " + 
+                "c.reg_date, " + 
+                "c.edit_date, " + 
+                "p.product_name, " + 
+                "p.price, " + 
+                "p.sale_price, " + 
+                "b.brand_name")
     @ResultMap("cartMap")
     public List<Cart> selectList(Cart input);
 

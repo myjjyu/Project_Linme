@@ -10,6 +10,7 @@
 
 ul {
   list-style: none;
+  padding-left: 0 !important;
 }
 
 a {
@@ -20,11 +21,10 @@ a {
 main {
   font-family: pretendard;
   color: #333;
-  margin-top: 200px;
-  margin-top: 200px;
+  margin-top: 145px;
   display: block;
   height: 100%;
-  margin-bottom: 50px;
+  background-color: #efefef;
 
   /* 장바구니 컨테이너 */
   .cartContainer {
@@ -36,6 +36,7 @@ main {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 50px;
       margin-bottom: 40px;
 
       .progressStep {
@@ -160,8 +161,6 @@ main {
       display: flex;
       margin: 0 auto;
       justify-content: space-between;
-      background-color: #efefef;
-      padding: 20px;
 
       /* 장바구니에 상품이 있을 때 */
       .ProductInCart {
@@ -203,7 +202,7 @@ main {
                 }
 
                 &:last-child {
-                  width: 150px;
+                  width: 130px;
                 }
               }
             }
@@ -293,10 +292,16 @@ main {
                     word-wrap: break-word; /* 긴 문자열을 줄바꿈 */
 
                     span {
+                      font-size: 17px;
+                      color: #333;
+                      font-weight: 600;
+                    }
+
+                    .productName {
                       font-size: 16px;
                       color: #333;
-                      margin: 5px 0 5px 0;
                       cursor: pointer;
+                      margin-bottom: 8px;
 
                       &:first-child {
                         font-weight: 600;
@@ -357,13 +362,13 @@ main {
                 border-right: 1px solid #b6b6b6;
 
                 /* 판매가 */
-                .salePrice {
+                .cartSalePrice {
                   font-size: 16px;
                   font-weight: 700;
                 }
 
                 /* 정가 */
-                .lineThrough {
+                .lineThroughPrice {
                   color: #b6b6b6;
                   text-decoration: line-through;
                   font-size: 14px;
@@ -380,6 +385,9 @@ main {
                   padding: 4px 10px;
                   margin-top: 33px;
                   cursor: pointer;
+                  display: flex;
+                  text-align: center;
+                  justify-content: center;
                 }
               }
 
@@ -449,6 +457,8 @@ main {
           padding: 10px;
           background-color: #f8f8f8;
           margin-bottom: 20px;
+          text-align: right;
+          align-items: center;
 
           span {
             font-size: 15px;
@@ -456,8 +466,13 @@ main {
 
           /* 금액 텍스트 */
           .totalPriceText {
-            font-size: 20px;
+            display: flex;
             font-weight: 600;
+            align-items: center;
+
+            span {
+              font-size: 20px;
+            }
           }
         }
 

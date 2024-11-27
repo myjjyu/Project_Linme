@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../static/assets/css/cart.css" />
+    <!--<link rel="stylesheet" href="../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../static/assets/css/cart.css" />-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/cart.css}" />
     <title>린미 - 장바구니</title>
@@ -48,7 +48,7 @@
             <!--<div th:if="${cart.products.size() > 0}">-->
             <!-- 장바구니 상품 정보 -->
             <ul id="cartList">
-              <li id="cartProductItem">
+              <li id="cartProductItem" th:each="cart : ${cart}">
                 <!-- 상단 : 상품 / 상품금액 / 배송비 -->
                 <div class="cartTop">
                   <span>상품</span>
@@ -67,23 +67,23 @@
                     <!-- 상품 상세 정보 -->
                     <div class="productInfo">
                       <!-- 상품 이미지 -->
-                      <a class="productImg" th:href="@{/main/main}">
-                        <img src="https://placehold.co/120" alt="상품 이미지" />
+                      <a class="productImg" th:href="@{/view/view}">
+                        <img src="https://placehold.co/124" alt="상품 이미지" />
                       </a>
                       <div class="productDetailInfo">
                         <!-- 브랜드명 -->
-                        <a th:href="@{/main/main}">
-                          <span>주식회사 에프디랩</span>
+                        <a th:href="@{/view/view}">
+                          <span th:text="${cart.brandName}">테스트</span>
                         </a>
                         <!-- 상품명 -->
-                        <a th:href="@{/main/main}">
-                          <span>[네츄럴메이드]멀티비타민 앤 미네랄 선물세트_1박스(1,445mg*90정 X 2개입)(6개월분)</span>
+                        <a th:href="@{/view/view}">
+                          <span class="productName" th:text="${cart.productName}"></span>
                         </a>
                         <!-- 수량 조절 -->
                         <div class="quantityControl">
                           <!-- `-` 버튼 -->
                           <button type="button" onclick="decreaseQuantity(this)">-</button>
-                          <!-- 상품 수량 -->
+                          <!-- 상품 수량 ==> 추후 th:value="${cart.productCount}" 로 변경-->
                           <input type="text" class="productQuantity" value="1" readonly />
                           <!-- `+` 버튼 -->
                           <button type="button" onclick="increaseQuantity(this)">+</button>
@@ -95,9 +95,11 @@
                   <!-- 상품 금액-->
                   <div class="productPriceBox">
                     <!-- 판매가 -->
-                    <span class="salePrice">36,000원</span>
+                    <span class="cartSalePrice" th:text="${#numbers.formatInteger(cart.salePrice, 3, 'COMMA') + ' 원'}"></span>
+
                     <!-- 정가 -->
-                    <span class="lineThrough">72,000원</span>
+                    <span class="lineThroughPrice" th:text="${#numbers.formatInteger(cart.price, 3, 'COMMA') + ' 원'}"></span>
+
                     <!-- 주문하기 링크 -->
                     <a class="goPayment" th:href="@{/payment/payment}">주문하기</a>
                   </div>
@@ -122,7 +124,7 @@
             <!-- 전체 주문금액 -->
             <div class="totalPrice">
               <span>전체 주문금액</span>
-              <span class="totalPriceText">0원</span>
+              <span class="totalPriceText" th:text="${#numbers.formatInteger(cart.totalPrice ?: 0, 3, 'COMMA') + ' 원'}"></span>
             </div>
             <!-- 주문하기 버튼 -->
             <a class="orderBtn" th:href="@{/payment/payment}"><span>주문하기</span></a>
