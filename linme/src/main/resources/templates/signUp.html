@@ -139,6 +139,8 @@
     </footer>
 
     <!-- 헬퍼 가져오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
     <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
@@ -154,9 +156,64 @@
             e.preventDefault();
             utilHelper.findPostCode();
         });
-
     </script>
 
+    <script>
+        // 아이디(이메일) / 닉네임 유효성 검사
+        document.querySelector("#id_unique_checkk").addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            try {
+                regexHelper.value("#user_id", "아이디(이메일)를 입력하세요");
+            } catch (e) {
+                await utilHelper.alertDanger(e.message);
+                e.element.focus();
+                return;
+            }
+
+            const userId = document.querySelector("#user_id").value;
+            const data = await axiosHelper.get(`/api/account/id_unique_checkk`, {
+                user_id: userId
+            });
+
+            if (data) {
+                await utilHelper.alertSuccess("사용 가능한 아이디(이메일) 입니다.");
+                document.querySelector("#id_check").value = "Y";
+            }
+        });
+
+
+        // ++
+        document.querySelector("#user_id").addEventListener("change", e => {
+            document.querySelector("#id_check").value = "N";
+        });
+
+        document.querySelector("#nickname_unique_check").addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            try {
+                regexHelper.value("#nickname", "닉네임을 입력하세요");
+            } catch (e) {
+                await utilHelper.alertDanger(e.message);
+                return;
+            }
+
+            const nickname = document.querySelector("#nickname").value;
+            const data = await axiosHelper.get(`/api/account/nickname_unique_check`, {
+                nickname: nickname
+            });
+
+            if (data) {
+                await utilHelper.alertSuccess("사용 가능한 닉네임 입니다.");
+                document.querySelector("#nickname_check").value = "Y";
+            }
+        });
+
+        // ++
+        document.querySelector("#nickname").addEventListener("change", e => {
+            document.querySelector("#nickname_check").value = "N";
+        });
+    </script>
 </body>
 
 </html>
