@@ -102,6 +102,8 @@
 }
 /* 인풋 사이즈 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="password"],
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="email"],
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="tel"],
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="text"] {
   height: 30px;
   min-width: 222px;
