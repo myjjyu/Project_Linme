@@ -1,20 +1,44 @@
 package kr.project.linme.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.project.linme.helpers.WebHelper;
+import kr.project.linme.models.Product;
+import kr.project.linme.services.ProductService;
+
 @Controller
 public class MainContorller {
+
+  @Autowired
+  private ProductService productService;
+
+  @Autowired
+  private WebHelper webHelper;
+
   /**
-   * 메인페이지
+   * 메인 페이지
    * 
    * @param model
    * @return
    */
   @GetMapping("/main/main")
   public String main(Model model) {
-    return "main/main";
+    Product product = new Product();
+
+    List<Product> output = null;
+    try {
+      output = productService.getList(product);
+    } catch (Exception e) {
+      webHelper.serverError(e);
+    }
+
+    model.addAttribute("output", output);
+    return "main/main"; // 메인 페이지
   }
 
   /**
@@ -78,7 +102,6 @@ public class MainContorller {
     public String View(Model model) {
       return "view/view";
     }
-  
 
   }
 }

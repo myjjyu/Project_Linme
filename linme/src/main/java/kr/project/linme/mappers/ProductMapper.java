@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -100,8 +101,22 @@ public interface ProductMapper {
         @Select("SELECT " +
                         "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
                         "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
-                        "FROM product ")
-        @ResultMap("productMapper")
+                        "FROM product")
+        @Results({
+                        @Result(property = "productId", column = "product_id"),
+                        @Result(property = "productName", column = "product_name"),
+                        @Result(property = "brandId", column = "brand_id"),
+                        @Result(property = "price", column = "price"),
+                        @Result(property = "salePrice", column = "sale_price"),
+                        @Result(property = "discountRate", column = "discount_rate"),
+                        @Result(property = "productImg", column = "product_img"),
+                        @Result(property = "detailImg", column = "detail_img"),
+                        @Result(property = "categoryId", column = "category_id"),
+                        @Result(property = "headerItem", column = "header_item"),
+                        @Result(property = "discountPrice", column = "discount_price"),
+                        @Result(property = "regDate", column = "reg_date"),
+                        @Result(property = "editDate", column = "edit_date")
+        })
         public List<Product> selectList(Product input);
 
         /**
@@ -112,4 +127,18 @@ public interface ProductMapper {
          */
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
         public int selectCount(Product input);
+
+        /**
+         * 카테고리별 상품 조회 기능
+         * 
+         * @param categoryId
+         * @return
+         */
+        @Select("SELECT " +
+                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
+                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
+                        "FROM product " +
+                        "WHERE category_id = #{categoryId}")
+        @ResultMap("productMapper")
+        public List<Product> selectByCategory(@Param("categoryId") int categoryId);
 }
