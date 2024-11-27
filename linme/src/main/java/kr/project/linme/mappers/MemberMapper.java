@@ -19,14 +19,14 @@ public interface MemberMapper {
 
     // 회원 정보 삽입
     // 회원 가입시 필요한 정보들만 제외 하고는 N
-    // 인증 칸을 나중에 번호로 직접 넣어서 정보 전달하게 수정
+    // 인증 칸을 나중에 번호로 직접 넣어서 정보 전달하게 수정 (완료)
     @Insert("INSERT INTO member (" +
             "user_id, user_pw, user_name, nickname, " +
             "tel, postcode, addr1, addr2, addr_name, " +
             "addr_msg, profile, is_out, is_admin, login_date, " +
             "reg_date, edit_date) " +
-            "VALUES (#{userId}, #{userPw}, 'N', #{nickname}, " +
-            "'N', #{postcode}, #{addr1}, #{addr2}, 'N', " +
+            "VALUES (#{userId}, #{userPw}, #{userName}, #{nickname}, " +
+            "#{tel}, #{postcode}, #{addr1}, #{addr2}, 'N', " +
             "'N', 'N', 'N', 'N', null, " +
             "now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")

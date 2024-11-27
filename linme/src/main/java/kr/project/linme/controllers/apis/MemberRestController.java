@@ -51,6 +51,8 @@ public class MemberRestController {
         @RequestParam("user_id") String userId,
         @RequestParam("nickname") String nickname,
         @RequestParam("pw") String userPw,
+        @RequestParam("userName") String userName,
+        @RequestParam("tel") String tel,
         @RequestParam("postcode") String postcode,
         @RequestParam("addr1") String addr1,
         @RequestParam("addr2") String addr2
@@ -77,6 +79,8 @@ public class MemberRestController {
         member.setUserId(userId);
         member.setNickname(nickname);
         member.setUserPw(userPw);
+        member.setUserName(userName);
+        member.setTel(tel);
         member.setPostcode(postcode);
         member.setAddr1(addr1);
         member.setAddr2(addr2);
