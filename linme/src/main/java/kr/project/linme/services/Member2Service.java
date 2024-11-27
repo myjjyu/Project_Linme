@@ -27,6 +27,10 @@ public interface Member2Service {
     // 닉네임 변경
     public Member updateNickname(Member input) throws Exception;
 
+    // 주소 변경
+    public Member updatePostcode(Member input) throws Exception;
+
+
     // 탈퇴회원 관리
     public List<Member> processOutMembers() throws Exception;
     

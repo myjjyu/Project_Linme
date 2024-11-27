@@ -92,9 +92,18 @@
                 <div class="addressList">
                     <div class="addressBox Save">
                         <div class="addressInfo">
-                            <h3>id <span class="defaultBadge">기본 배송지</span></h3>
-                            <p>address</p>
-                            <p>name (phone)</p>
+                            <h3>
+                                <!-- <span th:text="${session.memberinfo.nickname}"></span> -->id
+                                <span class="defaultBadge">기본 배송지</span>
+                            </h3>
+                            <p>
+                                <!-- <span th:text="${session.memberinfo.addr1}"></span>
+                                <span th:text="${session.memberinfo.addr2}"></span> -->address
+                            </p>
+                            <p>
+                                <!-- <span th:text="${session.memberinfo.userName}"></span>
+                                (<span th:text="${session.memberinfo.tel}"></span>) -->name(phone)
+                            </p>
                         </div>
                         <a th:href="@{/myPage/addressBookAdd}" class="editButton">수정</a>
                     </div>    

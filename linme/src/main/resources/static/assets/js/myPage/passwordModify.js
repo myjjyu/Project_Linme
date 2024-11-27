@@ -33,8 +33,8 @@ document.getElementById("signup-form").addEventListener("submit",async(e)=>{
         
         // 공백 입력 검사 함수
         const checkspace = (selector, message) => {
-            const value = document.querySelector(selector).value;
-            if (value.trim() === "") {
+            const val = document.querySelector(selector).value;
+            if (val.trim() === "") {
                 throw new Error(message);
             }
         };
@@ -52,18 +52,18 @@ document.getElementById("signup-form").addEventListener("submit",async(e)=>{
         }
         
         regexHelper.value("#user_pw", "필수 입력항목입니다.");
-        regexHelper.value("#user_new_pw","필수 입력항목입니다.");
-        regexHelper.value("#user_new_pw_confirm","필수 입력항목입니다.");
+        regexHelper.value("#new_user_pw","필수 입력항목입니다.");
+        regexHelper.value("#new_user_pw_confirm","필수 입력항목입니다.");
         checkspace("#user_pw", "공백은 사용할 수 없습니다.");
         checkspace("#new_user_pw", "공백은 사용할 수 없습니다.");
         checkspace("#new_user_pw_confirm", "공백은 사용할 수 없습니다.");
-        regexHelper.compareTo("#user_pw","#user_new_pw","현재 비밀번호와 새 비밀번호가 동일합니다.")
+        regexHelper.equalTo("#user_pw","#new_user_pw","현재 비밀번호와 새 비밀번호가 동일합니다.")
         regexHelper.minLength("#user_pw", 8, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
-        regexHelper.minLength("#user_new_pw", 8, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
-        regexHelper.minLength("#user_new_pw_confirm", 8, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+        regexHelper.minLength("#new_user_pw", 8, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+        regexHelper.minLength("#new_user_pw_confirm", 8, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
         regexHelper.pwLinme("#user_pw","비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
-        regexHelper.pwLinme("#user_new_pw","비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
-        regexHelper.pwLinme("#user_new_pw_confirm","비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+        regexHelper.pwLinme("#new_user_pw","비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+        regexHelper.pwLinme("#new_user_pw_confirm","비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
 
 
     } catch (e) {

@@ -91,41 +91,49 @@
                     <form class="addressForm">
                         <div class="formGroup">
                             <label for="addressName"><span class="required">* </span>배송지명</label>
-                            <input type="text" id="addressName" placeholder="배송지명">
+                            <input type="text" name="addressName" id="addressName" placeholder="배송지명">
+                            <!-- <input th:value=${session.memberinfo.addressName} type="text" name="addressName" id="addressName" placeholder="배송지명"> -->
                         </div>
                         
                         <div class="formGroup">
                             <label for="recipient"><span class="required">* </span>받는 분</label>
-                            <input type="text" id="recipient" placeholder="홍길동">
+                            <input type="text" name="userName" id="userName" placeholder="홍길동">
+                            <!-- <input th:value=${session.memberinfo.userName} type="text" name="userName" id="userName" placeholder="홍길동"> -->
                         </div>
                 
                         <div class="formGroup">
                             <label for="contact"><span class="required">* </span>연락처</label>
-                            <input type="text" id="contact" placeholder="00000000000">
+                            <input type="text" name="contact" id="contact" placeholder="00000000000">
+                            <!-- <input th:value=${session.memberinfo.tel} type="text" name="contact" id="contact" placeholder="00000000000"> -->
                         </div>
                 
                         <div class="formGroup addressLine">
                             <label for="postCode"><span class="required">* </span>주소</label>
-                            <input type="text" id="postCode" placeholder="우편번호" readonly>
-                            <button type="button" class="searchPostalCode">우편번호 찾기</button>
+                            <input type="text" name="postcode" id="postcode" class="input-field" placeholder="우편번호" readonly>
+                            <!-- <input th:value=${session.memberinfo.postcode} type="text" name="postcode" id="postcode" placeholder="우편번호" readonly> -->
+                            <button type="button" class="findPostCode" id="find-postcode">우편번호 찾기</button>
                         </div>
                         <div class="formGroup">
-                            <input type="text" id="address" placeholder="주소를 검색하여 등록해 주세요" readonly>
+                            <input type="text" name="addr1" id="addr1" class="input-field" placeholder="주소를 검색하여 등록해 주세요" readonly>
+                            <!-- <input th:value=${session.memberinfo.addr1} type="text" name="address" id="address" placeholder="주소를 검색하여 등록해 주세요" readonly> -->
                         </div>
                         <div class="formGroup">
-                            <input type="text" id="addressDetail" placeholder="나머지 주소를 입력해 주세요">
+                            <input type="text" name="addr2" id="addr2" class="input-field" placeholder="나머지 주소를 입력해 주세요">
+                            <!-- <input th:value=${session.memberinfo.addr2} type="text" name="addressDetail" id="addressDetail" placeholder="나머지 주소를 입력해 주세요"> -->
                         </div>
                 
                         <div class="formGroup">
-                            <label for="deliveryRequest">배송 요청사항</label>
-                            <select id="deliveryRequest">
+                            <label for="addrMsg">배송 요청사항</label>
+                            <select id="addrMsg">
+                                <!-- <select th:value=${session.memberinfo.addrMsg} id="addrMsg"></select> -->
                                 <option>부재 시 문 앞에 놓아주세요</option>
                                 <option>배송 전에 미리 연락 주세요</option>
                                 <option>부재 시 경비실에 맡겨 주세요</option>
                                 <option>부재 시 전화주시거나 문자 남겨주세요</option>
                                 <option>직접 입력</option>
                             </select>
-                            <input type="text" id="customRequestInput" class="customInput" placeholder="직접 입력">
+                            <input type="text" id="customInput" class="customInput" placeholder="직접 입력">
+                            <!-- <input th:value=${session.memberinfo.addrMsg} type="text" id="customRequestInput" class="customInput" placeholder="직접 입력"> -->
                         </div>
                 
                         <div class="defaultAddressContainer">
@@ -133,7 +141,7 @@
                             <label for="defaultAddress">기본 배송지 설정</label>
                         </div>
                 
-                        <button type="submit" class="saveButton" disabled>저장</button>
+                        <button type="submit" class="saveButton">저장</button>
                     </form>
                 </div>
                     
@@ -144,9 +152,15 @@
             <th:block th:replace="~{/fragments/footer}" />
         </footer>
         
-        <script th:src="@{/assets/js/myPage/myPage.js}"></script>
-        <scirpt th:src="@{/assets/js/myPage/addressBookAdd.js}"></scirpt>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
+        <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+        <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
+        <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+        <script th:src="@{/assets/js/myPage/addressBookAdd.js}"></script>
         <script>
             document.querySelector(".footerContainer").style.margin = "0px";
         </script>

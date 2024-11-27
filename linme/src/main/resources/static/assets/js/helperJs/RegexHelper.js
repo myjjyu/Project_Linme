@@ -87,6 +87,19 @@ class RegexHelper {
 
     return true;
   }
+  equalTo(origin, compare, msg) {
+    this.value(origin, msg);
+    this.value(compare, msg);
+
+    var src = document.querySelector(origin).value.trim(); //원본값을 가져온다
+    var dsc = document.querySelector(compare).value.trim(); //비교할 값을 가져온다
+
+    if (src === dsc) {
+      throw new StringFormatException(msg, origin);
+    }
+
+    return true;
+  }
 
   /**
    * 라디오나 체크박스가 선택된 항목인지 확인한다

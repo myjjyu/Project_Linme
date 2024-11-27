@@ -63,11 +63,11 @@
     gap:2px;
 }
 
-#postCode {
+#postcode {
     width: 25%;
     width: calc(75% -10px);
 }
-#address, #addressDetail {
+#addr1, #addr2 {
     margin-left: 25%;
     width: 75%;
     width: calc(75% -10px);
@@ -76,7 +76,7 @@
     text-align: left; 
 }
 
-.searchPostalCode {
+.findPostCode {
     padding: 10px 20px;
     border: 1px solid #ff697b;;
     background-color: #ff697b;;
