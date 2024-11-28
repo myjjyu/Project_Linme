@@ -72,8 +72,8 @@ public interface ProductMapper {
                         "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
                         "p.edit_date AS p_edit_date, i.img, i.d_img " +
                         "FROM product p " +
-                        "INNER JOIN img i ON i.product_id = p.product_id" +
-                        "WHERE product_id = #{productId}")
+                        "INNER JOIN img i ON i.product_id = p.product_id " +  
+                        "WHERE p.product_id = #{productId}")
         @Results(id = "productMapper", value = {
                         @Result(property = "productId", column = "product_id"),
                         @Result(property = "productName", column = "product_name"),
