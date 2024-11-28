@@ -11,4 +11,7 @@ public interface MemberService {
 
     public void isUniqueNickname(String nickname) throws Exception;
 
+    //로그인
+    public Member login(Member input)throws Exception;
+
 }
