@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.MemberService;
+
 
 @RestController
 public class MemberRestController {
@@ -95,4 +98,42 @@ public class MemberRestController {
         return restHelper.sendJson();
     }
 
+    // 로그인
+    @PostMapping("/api/account/login")
+    public Map<String, Object> login(
+            // 세션을 사용해야 하므로 request 객체가 필요하다
+            // --> 
+            HttpServletRequest request,
+            @RequestParam("userId") String userId,
+            @RequestParam("userPw") String userPw) {
+        // 1) 입력값에 대한 유효성 검사
+        // --- 생략 ---
+
+        // 2) 입력값을 Beans 객체레 저장
+        Member input = new Member();
+        input.setUserId(userId);
+        input.setUserPw(userPw);
+
+        // 3) 로그인 시도
+        Member output = null;
+
+        try {
+            output = memberService.login(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        // // 추가 내용 (프로필 사진의 경로의 URL로 변환)
+        // output.setPhoto(fileHelper.getUrl(output.getPhoto()));
+
+        // 4) 로그인에 성공했다면 회원 정보를 세션에 저장한다
+        HttpSession session = request.getSession();
+        session.setAttribute("memberInfo", output);
+
+        // 5) 로그인이 처리되었음을 응답한다
+
+        return restHelper.sendJson();
+    }
+
+    
 }
