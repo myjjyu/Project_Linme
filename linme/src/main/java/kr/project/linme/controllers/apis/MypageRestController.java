@@ -16,9 +16,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Member;
-import kr.project.linme.models.Payment;
 import kr.project.linme.services.Member2Service;
-import kr.project.linme.services.Payment2Service;
+
 
 
 
@@ -33,9 +32,6 @@ public class MypageRestController {
 
     @Autowired
     private Member2Service memberService;
-
-    @Autowired
-    private Payment2Service paymentService;
 
 
     /**
@@ -176,12 +172,11 @@ public class MypageRestController {
     }
 
 
-   // 주소 변경
+   // 배송지 변경
     @PutMapping("/api/myPage/postcode-update")
         public Map<String, Object> updatePostcode(
                 HttpServletRequest request, // 세션 갱신용
                 @SessionAttribute("memberInfo") Member memberInfo, // 현재 세션 정보 확인용
-                @RequestParam("addressName") String addressName,
                 @RequestParam("postcode") String postcode,
                 @RequestParam("addr1") String addr1,
                 @RequestParam("addr2") String addr2,
@@ -202,15 +197,6 @@ public class MypageRestController {
                 return restHelper.serverError(e);
             }
 
-            // 2) Payment 테이블에 배송지명 저장
-            Payment payment = new Payment();
-            payment.setAddrName(addressName); // 배송지명
-            
-            try {
-                paymentService.saveAddressName(payment);
-            } catch (Exception e) {
-                return restHelper.serverError(e);
-            }
 
             // 3) 세션 갱신
             request.getSession().setAttribute("memberInfo", updatedMember);

@@ -141,16 +141,18 @@ public class Member2ServiceImpl implements Member2Service{
         return memberMapper.selectItem(input);
     }
 
-    // 주소변경
+
+    // 배송지 변경
     @Override
     public Member updatePostcode(Member input) throws Exception {
         try {
             int rows = memberMapper.updatePostcode(input); 
             if (rows == 0) {
-                throw new Exception("주소 변경에 실패했습니다.");
+                throw new Exception("배송지 변경에 실패했습니다.");
             }
         } catch (Exception e) {
-            log.error("주소 변경 실패", e);
+            log.error("배송지 변경 실패", e);
+  
             throw e;
         }
         // 업데이트된 회원 정보를 다시 조회하여 반환

@@ -63,13 +63,14 @@ public interface Member2Mapper {
         public int updateProfile(Member input);
         
 
-        // 주소 변경
+        // 배송지 변경
         @Update("<script>" +
                 "UPDATE member " +
                 "SET " +
                 "postcode=#{postcode} " +
                 "addr1=#{addr1} "+
                 "addr2=#{addr2} "+
+                "addr_msg=#{addrMsg} "+
                 // "is_out = #{isOut}, " +
                 // "is_admin = #{isAdmin}, " +
                 // "login_date = #{loginDate}, " +
