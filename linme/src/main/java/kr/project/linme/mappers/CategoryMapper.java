@@ -24,8 +24,8 @@ public interface CategoryMapper {
          * @return
          */
         @Insert("INSERT INTO category (" +
-                        "category_name, header_item, reg_date, edit_date) " +
-                        "VALUES (#{categoryName}, #{iconCategory}, #{titleCategory}, #{headerItem}, now(), now())")
+                        "category_name, reg_date, edit_date) " +
+                        "VALUES (#{categoryName}, now(), now())")
         @Options(useGeneratedKeys = true, keyProperty = "categoryId", keyColumn = "category_id")
         public int insert(Category input);
 

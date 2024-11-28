@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.models.Product;
 import kr.project.linme.services.ProductService;
@@ -19,6 +20,9 @@ public class MainController {
 
     @Autowired
     private WebHelper webHelper;
+
+    @Autowired
+    private FileHelper fileHelper;
 
     /**
      * 메인 페이지
@@ -33,6 +37,10 @@ public class MainController {
         List<Product> output = null;
         try {
             output = productService.getList(product);
+            for ( Product item : output) {
+                System.out.println("이미지 경로: " + item.getImg());
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
         } catch (Exception e) {
             webHelper.serverError(e);
         }

@@ -26,10 +26,10 @@ public interface ProductMapper {
          * @return
          */
         @Insert("INSERT INTO product (" +
-                        "product_name, brand_id, price, sale_price, discount_rate, product_img, detail_img, category_id, header_item, discount_price, reg_date, edit_date) "
+                        "product_name, brand_id, price, sale_price, discount_rate, category_id, discount_price, reg_date, edit_date) "
                         +
                         "VALUES (" +
-                        "#{productName}, #{brandId}, #{price}, #{salePrice}, #{discountRate}, #{productImg}, #{detailImg}, #{categoryId}, #{headerItem}, #{discountPrice}, now(), now())")
+                        "#{productName}, #{brandId}, #{price}, #{salePrice}, #{discountRate}, #{categoryId}, #{discountPrice}, now(), now())")
         @Options(useGeneratedKeys = true, keyProperty = "productId", keyColumn = "product_id")
         public int insert(Product input);
 
@@ -46,10 +46,7 @@ public interface ProductMapper {
                         "price = #{price}, " +
                         "sale_price = #{salePrice}, " +
                         "discount_rate = #{discountRate}, " +
-                        "product_img = #{productImg}, " +
-                        "detail_img = #{detailImg}, " +
                         "category_id = #{categoryId}, " +
-                        "header_item = #{headerItem}, " +
                         "discount_price = #{discountPrice}, " +
                         "edit_date = now() " +
                         "WHERE product_id = #{productId}")
@@ -71,9 +68,11 @@ public interface ProductMapper {
          * @return
          */
         @Select("SELECT " +
-                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
-                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
-                        "FROM product " +
+                        "p.product_id, p.product_name, p.brand_id, p.price, p.sale_price, " +
+                        "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
+                        "p.edit_date AS p_edit_date, i.img, i.d_img " +
+                        "FROM product p " +
+                        "INNER JOIN img i ON i.product_id = p.product_id" +
                         "WHERE product_id = #{productId}")
         @Results(id = "productMapper", value = {
                         @Result(property = "productId", column = "product_id"),
@@ -82,41 +81,22 @@ public interface ProductMapper {
                         @Result(property = "price", column = "price"),
                         @Result(property = "salePrice", column = "sale_price"),
                         @Result(property = "discountRate", column = "discount_rate"),
-                        @Result(property = "productImg", column = "product_img"),
-                        @Result(property = "detailImg", column = "detail_img"),
                         @Result(property = "categoryId", column = "category_id"),
-                        @Result(property = "headerItem", column = "header_item"),
                         @Result(property = "discountPrice", column = "discount_price"),
                         @Result(property = "regDate", column = "reg_date"),
-                        @Result(property = "editDate", column = "edit_date")
+                        @Result(property = "editDate", column = "edit_date"),
+                        @Result(property = "img", column = "img"),
+                        @Result(property = "dImg", column = "d_img")
         })
         public Product selectItem(Product input);
 
-        /**
-         * 전체 상품 조회
-         * 
-         * @param input
-         * @return
-         */
         @Select("SELECT " +
-                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
-                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
-                        "FROM product")
-        @Results({
-                        @Result(property = "productId", column = "product_id"),
-                        @Result(property = "productName", column = "product_name"),
-                        @Result(property = "brandId", column = "brand_id"),
-                        @Result(property = "price", column = "price"),
-                        @Result(property = "salePrice", column = "sale_price"),
-                        @Result(property = "discountRate", column = "discount_rate"),
-                        @Result(property = "productImg", column = "product_img"),
-                        @Result(property = "detailImg", column = "detail_img"),
-                        @Result(property = "categoryId", column = "category_id"),
-                        @Result(property = "headerItem", column = "header_item"),
-                        @Result(property = "discountPrice", column = "discount_price"),
-                        @Result(property = "regDate", column = "reg_date"),
-                        @Result(property = "editDate", column = "edit_date")
-        })
+                        "p.product_id, p.product_name, p.brand_id, p.price, p.sale_price, " +
+                        "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
+                        "p.edit_date AS p_edit_date, i.img, i.d_img " +
+                        "FROM product p " +
+                        "INNER JOIN img i ON i.product_id = p.product_id")
+                        @ResultMap("productMapper")
         public List<Product> selectList(Product input);
 
         /**
@@ -135,8 +115,8 @@ public interface ProductMapper {
          * @return
          */
         @Select("SELECT " +
-                        "product_id, product_name, brand_id, price, sale_price, discount_rate, product_img, " +
-                        "detail_img, category_id, header_item, discount_price, reg_date, edit_date " +
+                        "product_id, product_name, brand_id, price, sale_price, discount_rate, " +
+                        "category_id, discount_price, reg_date, edit_date " +
                         "FROM product " +
                         "WHERE category_id = #{categoryId}")
         @ResultMap("productMapper")

@@ -9,9 +9,6 @@ public class Category {
 
   private int categoryId;             // 카테고리 일련번호
   private String categoryName;        // 카테고리명
-  private String iconCategory;        // 아이콘 카테고리
-  private String titleCategory;       // 타이틀 카테고리
-  private String headerItem;          // 카테고리 헤더 아이템
   private String regDate;             // 등록일시
   private String editDate;            // 변경일시
 
