@@ -73,7 +73,7 @@ public class ProductMapperTest {
   @DisplayName("단일 상품 조회 테스트")
   void selectOneProduct() {
     Product input = new Product();
-    input.setProductId(6);
+    input.setProductId(8);
 
     Product output = productMapper.selectItem(input);
 
