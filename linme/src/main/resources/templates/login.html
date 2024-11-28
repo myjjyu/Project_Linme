@@ -106,6 +106,38 @@
         document.querySelector(".footerContainer").style.margin = "0px";
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
+    <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
+
+    <script>
+        document.querySelector(".login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            try {
+                regexHelper.value("#userId", "아이디를 입력하세요.");
+                regexHelper.email("#userId", "이메일 형식이 올바르지 않습니다.");
+
+                regexHelper.value("#userPw", "비밀번호를 입력하세요.");
+                regexHelper.minLength("#userPw", 7, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+                regexHelper.pwLinme("#userPw", "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                setTimeout(() => err.element.focus(), 300);
+                return false;
+            }
+
+            const data = await axiosHelper.post("[[@{/api/account/login}]]", new FormData(e.currentTarget));
+
+            if (data) {
+                window.location = "[[@{/main/main}]]";
+            }
+        });
+    </script>
+
 </body>
 
 </html>
