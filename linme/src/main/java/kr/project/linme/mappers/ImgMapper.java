@@ -23,28 +23,16 @@ public interface ImgMapper {
      */
     @Insert("INSERT INTO img (" + 
                 "product_id, " + 
-                "img_url, " + 
-                "img_path, " + 
-                "img1, " + 
-                "img2, " + 
-                "img3, " + 
-                "d_img1, " + 
-                "d_img2, " + 
-                "d_img3, " + 
+                "img, " + 
+                "d_img, " + 
                 "reg_date, " + 
-                "edit_date) " + 
+                "edit_date " + 
             "VALUES (" + 
                 "#{productId}, " + 
-                "#{imgUrl}, " + 
-                "#{imgPath}, " + 
-                "#{img1}, " + 
-                "#{img2}, " + 
-                "#{img3}, " + 
-                "#{dImg1}, " + 
-                "#{dImg2}, " + 
-                "#{dImg3}, " + 
-                "NOW(), " + 
-                "NOW()" + 
+                "#{img}, " + 
+                "#{dImg}" + 
+                "reg_date = NOW(), " +
+                "edit_date = NOW() " +
             ")")
     @Options(useGeneratedKeys = true, keyProperty = "imgId", keyColumn = "img_id")
     public int insert(Img input);
@@ -56,15 +44,9 @@ public interface ImgMapper {
      */
     @Update("UPDATE img SET " + 
                 "product_id = #{productId}, " + 
-                "img_url = #{imgUrl}, " + 
-                "img_path = #{imgPath}, " + 
                 "img1 = #{img1}, " + 
-                "img2 = #{img2}, " + 
-                "img3 = #{img3}, " + 
                 "d_img1 = #{dImg1}, " + 
-                "d_img2 = #{dImg2}, " + 
-                "d_img3 = #{dImg3}, " + 
-                "edit_date = NOW() " + 
+                "edit_date = NOW() " +
             "WHERE img_id = #{imgId}")
     public int update(Img input);
 
@@ -84,32 +66,20 @@ public interface ImgMapper {
     @Select("SELECT " + 
             "img_id, " + 
             "product_id, " + 
-            "img_url, " + 
-            "img_path, " + 
-            "img1, " + 
-            "img2, " + 
-            "img3, " + 
-            "d_img1, " + 
-            "d_img2, " + 
-            "d_img3, " + 
+            "img, " + 
+            "d_img, " + 
             "reg_date, " + 
-            "edit_date " + 
+            "edit_date " +             
             "FROM img " + 
             "WHERE img_id = #{imgId}")
     @Results(id="imgMap", value={
         @Result(property="imgId", column="img_id"),
         @Result(property="productId", column="product_id"),
-        @Result(property="imgUrl", column="img_url"),
-        @Result(property="imgPath", column="img_path"),
-        @Result(property="img1", column="img1"),
-        @Result(property="img2", column="img2"),
-        @Result(property="img3", column="img3"),
-        @Result(property="dImg1", column="d_img1"),
-        @Result(property="dImg2", column="d_img2"),
-        @Result(property="dImg3", column="d_img3"),
+        @Result(property="img", column="img"),
+        @Result(property="dImg", column="d_img"),
         @Result(property="regDate", column="reg_date"),
         @Result(property="editDate", column="edit_date")
-    })
+    }) 
     public Img selectItem(Img input);
 
     /**
@@ -120,14 +90,8 @@ public interface ImgMapper {
     @Select("SELECT " + 
                 "img_id, " + 
                 "product_id, " + 
-                "img_url, " + 
-                "img_path, " + 
                 "img1, " + 
-                "img2, " + 
-                "img3, " + 
                 "d_img1, " + 
-                "d_img2, " + 
-                "d_img3, " + 
                 "reg_date, " + 
                 "edit_date " + 
             "FROM img")
