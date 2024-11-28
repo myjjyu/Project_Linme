@@ -22,12 +22,12 @@ public class ProductMapperTest {
   @DisplayName("상품 추가 테스트")
   void insertProduct() {
     Product input = new Product();
-    input.setProductName("[뉴트리어스]국내최초 100% 식물성 비타민B컴플렉스_1박스(500mg*60캡슐, 총 30g)(2개월분)");
-    input.setBrandId(4);
-    input.setPrice(50000);
-    input.setSalePrice(30000);
+    input.setProductName("[뉴트리어스]국내최초 100% 식물성 비타민D아연_(500mg*60캡슐, 총 30g)(1개월분)");
+    input.setBrandId(2);
+    input.setPrice(55000);
+    input.setSalePrice(33000);
     input.setDiscountRate(40);
-    input.setCategoryId(2);
+    input.setCategoryId(1);
 
 
     int output = productMapper.insert(input);
@@ -41,14 +41,14 @@ public class ProductMapperTest {
   @DisplayName("상품 수정 테스트")
   void updateProduct() {
     Product input = new Product();
-    input.setProductId(6);
-    input.setProductName("[네츄럴메이드]플랙씨드 앤 햄프씨드 선물세트_1박스(1,000mg*180캡슐, 총 180g X 2개입)(6개월분)");
-    input.setBrandId(1);
-    input.setPrice(174000);
-    input.setSalePrice(52500);
-    input.setDiscountRate(70);
-
-    input.setCategoryId(3);
+    input.setProductId(15);
+    input.setProductName("[오로니아][유통기한 임박]엔초비 오메가3 징코 플러스_1박스(1,331mg*60캡슐, 총 79.86g)(2개월)");
+    input.setBrandId(5);
+    input.setPrice(16520);
+    input.setSalePrice(11800);
+    input.setDiscountRate(48);
+    input.setCategoryId(4);
+    
 
 
     int output = productMapper.update(input);

@@ -21,7 +21,7 @@ public class BrandMapperTest {
         Brand input = new Brand();
         // input.setBrandName("글로우밍글");
         // input.setBrandName("주식회사 에프디랩");
-        input.setBrandName("파파초이스");
+        input.setBrandName("오로니아");
 
         int output = brandMapper.insert(input);
 

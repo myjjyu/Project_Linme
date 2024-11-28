@@ -22,9 +22,9 @@ public class ImgMapperTest {
     void insertImg() {
         Img input = new Img();
         // 이미지에 추가할 데이터
-        input.setProductId(6); // 어떤 상품의 이미지인지
-        input.setImg("/product/vitamin/vitamin1.jpg"); // 이미지
-        input.setDImg("/product/vitamin/d_vitamin1.jpg"); // 상세 이미지
+        input.setProductId(20); // 어떤 상품의 이미지인지
+        input.setImg("/product/supplements/supplements5.jpg"); // 이미지
+        input.setDImg("/product/supplements/d_supplements5.jpg"); // 상세 이미지
 
         int ouput = imgMapper.insert(input);
 
@@ -39,11 +39,11 @@ public class ImgMapperTest {
     void updateImg() {
         Img input = new Img();
         // 수정할 데이터 일련번호
-        input.setImgId(1);
+        input.setImgId(8);
         // 수정할 데이터
-        input.setProductId(1); // 어떤 상품의 이미지인지
-        input.setImg("/product/vitamin/vitamin2.jpg"); // 이미지
-        input.setDImg("/product/vitamin/d_vitamin2.jpg"); // 상세 이미지
+        input.setProductId(8); // 어떤 상품의 이미지인지
+        input.setImg("/product/lacto/lacto3.jpg"); // 이미지
+        input.setDImg("/product/lacto/d_lacto3.jpg"); // 상세 이미지
 
         int ouput = imgMapper.update(input);
 

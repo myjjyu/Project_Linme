@@ -20,7 +20,7 @@ public class CategoryMapperTest {
   @DisplayName("카테고리 추가 테스트")
   void insertCategory() {
     Category input = new Category();
-    input.setCategoryName("영양제");
+    input.setCategoryName("오메가3");
 
     int output = categoryMapper.insert(input);
 

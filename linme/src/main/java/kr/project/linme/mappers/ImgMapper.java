@@ -26,14 +26,13 @@ public interface ImgMapper {
                 "img, " + 
                 "d_img, " + 
                 "reg_date, " + 
-                "edit_date " + 
+                "edit_date) " + 
             "VALUES (" + 
                 "#{productId}, " + 
                 "#{img}, " + 
-                "#{dImg}" + 
-                "reg_date = NOW(), " +
-                "edit_date = NOW() " +
-            ")")
+                "#{dImg}, " + 
+                "NOW(), " +
+                "NOW())")
     @Options(useGeneratedKeys = true, keyProperty = "imgId", keyColumn = "img_id")
     public int insert(Img input);
 
@@ -44,11 +43,11 @@ public interface ImgMapper {
      */
     @Update("UPDATE img SET " + 
                 "product_id = #{productId}, " + 
-                "img1 = #{img1}, " + 
-                "d_img1 = #{dImg1}, " + 
+                "img = #{img}, " + 
+                "d_img = #{dImg}, " + 
                 "edit_date = NOW() " +
             "WHERE img_id = #{imgId}")
-    public int update(Img input);
+            public int update(Img input);
 
     /**
      * 이미지 삭제
