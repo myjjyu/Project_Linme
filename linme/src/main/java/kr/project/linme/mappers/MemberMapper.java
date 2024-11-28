@@ -108,5 +108,20 @@ public interface MemberMapper {
             "</where>\n" +
             "</script>")
     public int selectCount(Member input);
+
+    // 로그인
+    @Select("SELECT " +
+            "member_id, user_id, user_pw, user_name, nickname, " +
+            "tel, postcode, addr1, addr2, profile, addr_name, " +
+            "addr_msg, is_out, is_admin, login_date, " +
+            "reg_date, edit_date " +
+            "FROM member " +
+            "WHERE user_id = #{userId} AND user_pw = #{userPw}")
+    @ResultMap("memberMap")
+    public Member login(Member input);
+
+    //로그인 시간 업데이트
+    @Update("UPDATE member SET login_date = NOW() WHERE member_id = #{memberId}")
+    public int updateLoginDate(Member input);
 }
 
