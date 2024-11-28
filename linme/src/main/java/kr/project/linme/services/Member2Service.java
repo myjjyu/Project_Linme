@@ -27,7 +27,8 @@ public interface Member2Service {
     // 닉네임 변경
     public Member updateNickname(Member input) throws Exception;
 
-    // 주소 변경
+
+    // 배송지 변경
     public Member updatePostcode(Member input) throws Exception;
 
 
