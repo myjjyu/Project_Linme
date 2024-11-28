@@ -23,11 +23,11 @@ public class ProductMapperTest {
   void insertProduct() {
     Product input = new Product();
     input.setProductName("[뉴트리어스]국내최초 100% 식물성 비타민D아연_(500mg*60캡슐, 총 30g)(1개월분)");
-    input.setBrandId(2);
+    input.setBrandId(4);
     input.setPrice(55000);
     input.setSalePrice(33000);
     input.setDiscountRate(40);
-    input.setCategoryId(1);
+    input.setCategoryId(2);
 
 
     int output = productMapper.insert(input);
