@@ -30,6 +30,8 @@ public class PaymentMapperTest {
         input.setAddrMsg("도착 시 연락부탁드립니다.");
         input.setDiscountPrice(3000);
         input.setTotalPrice(45000);
+        // DB에 img 컬럼 추가 후 주석 해제
+        // input.setImg("/product/vitamin/vitamin1.jpg");
 
         int output=paymentMapper.insert(input);
 
@@ -53,6 +55,9 @@ public class PaymentMapperTest {
         input.setAddrMsg("도착 시 연락부탁드립니다.");
         input.setDiscountPrice(8000);
         input.setTotalPrice(40000);
+        // DB에 img 컬럼 추가 후 주석 해제
+        // input.setImg("/product/vitamin/vitamin1.jpg");
+        
 
         int output=paymentMapper.update(input);
 

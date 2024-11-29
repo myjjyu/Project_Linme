@@ -16,21 +16,43 @@ import kr.project.linme.models.Payment;
 
 @Mapper
 public interface PaymentMapper {
-    @Insert("INSERT INTO payment "+
-            "(order_name, order_tel, addr1, addr2, "+
-            "addr_name, addr_msg, discount_price, "+
-            "total_price, reg_date, edit_date) " +
-            "VALUES (#{orderName}, #{orderTel}, #{addr1}, "+
-            "#{addr2}, #{addrName}, #{addrMsg}, #{discountPrice}, "+
-            "#{totalPrice}, NOW(), NOW())")
+    @Insert("INSERT INTO payment (" + 
+                "order_name, " + 
+                "order_tel, " + 
+                "addr1, " + 
+                "addr2, " +
+                "addr_name, " + 
+                "addr_msg, " + 
+                "discount_price, " +
+                "total_price, " + 
+                "reg_date, " + 
+                "edit_date" + 
+            ") " +
+                "VALUES (" + 
+                "#{orderName}, " + 
+                "#{orderTel}, " + 
+                "#{addr1}, " +
+                "#{addr2}, " + 
+                "#{addrName}, " + 
+                "#{addrMsg}, " + 
+                "#{discountPrice}, " +
+                "#{totalPrice}, " + 
+                "NOW(), " + 
+                "NOW()" + 
+            ")")
     @Options(useGeneratedKeys = true, keyProperty = "paymentId", keyColumn = "payment_id")
     public int insert(Payment input);
 
     @Update("UPDATE payment SET " +
-                "order_name = #{orderName}, order_tel = #{orderTel}, "+
-                "addr1 = #{addr1}, addr2 = #{addr2}, addr_name = #{addrName},"+ 
-                "addr_msg = #{addrMsg}, discount_price = #{discountPrice}, "+
-                "total_price = #{totalPrice}, edit_date = NOW() " +
+                "order_name = #{orderName}, " + 
+                "order_tel = #{orderTel}, "+
+                "addr1 = #{addr1}, " + 
+                "addr2 = #{addr2}, " + 
+                "addr_name = #{addrName},"+ 
+                "addr_msg = #{addrMsg}, " + 
+                "discount_price = #{discountPrice}, "+
+                "total_price = #{totalPrice}, " + 
+                "edit_date = NOW() " +
             "WHERE payment_id = #{paymentId}")
     public int update(Payment input);
 
@@ -43,10 +65,18 @@ public interface PaymentMapper {
      * @return
      */
     @Select("SELECT "+
-                "order_name, order_tel, addr1, addr2, "+
-                "addr_name, addr_msg, discount_price, " + 
-                "total_price, reg_date, edit_date " +
-            "FROM payment WHERE payment_id = #{paymentId}")
+                "order_name, " + 
+                "order_tel, " + 
+                "addr1, " + 
+                "addr2, "+
+                "addr_name, " + 
+                "addr_msg, " + 
+                "discount_price, " + 
+                "total_price, " + 
+                "reg_date, " + 
+                "edit_date " +
+            "FROM payment " + 
+            "WHERE payment_id = #{paymentId}")
     @Results(id="PaymentMap", value={
         @Result(property = "paymentId", column = "payment_id"),
         @Result(property = "orderName", column = "order_name"),
@@ -63,9 +93,17 @@ public interface PaymentMapper {
     public Payment selectItem(Payment input);
 
     @Select("SELECT "+
-               "payment_id, order_name, order_tel, addr1, addr2, " + 
-                "addr_name, addr_msg, discount_price," + 
-                "total_price, reg_date, edit_date " +
+                "payment_id, " + 
+                "order_name, " + 
+                "order_tel, " + 
+                "addr1, " + 
+                "addr2, " + 
+                "addr_name, " + 
+                "addr_msg, " + 
+                "discount_price," + 
+                "total_price, " + 
+                "reg_date, " + 
+                "edit_date " +
             "FROM payment "+
             "WHERE payment_id = #{paymentId}")
     @ResultMap("PaymentMap")

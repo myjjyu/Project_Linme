@@ -18,6 +18,9 @@ public class Payment {
     private String regDate; // 등록일시
     private String editDate; // 변경일시
     
+    // DB에 img 컬럼 추가 후 주석 해제
+    // private String img; // 이미지
+    
     @Getter
     @Setter
     private static int listCount = 0;
