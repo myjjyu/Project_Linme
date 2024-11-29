@@ -135,6 +135,7 @@ public class MemberRestController {
         return restHelper.sendJson();
     }
 
+    // 로그아웃 기능 
     @GetMapping("/api/account/logout")
     public Map<String, Object> logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
