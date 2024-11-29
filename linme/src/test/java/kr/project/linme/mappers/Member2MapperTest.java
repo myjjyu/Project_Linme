@@ -18,33 +18,8 @@ public class Member2MapperTest {
     @Autowired
     private Member2Mapper memberMapper;
 
-    @Test
-    // 조금씩 변경해서 데이터 3-4개 정도 만들기
-    // 다른 테스트 할때 편리함
-    @DisplayName("회원 추가 테스트")
-    void insertMember() {
-        Member input = new Member();
-        input.setUserId("yujeong@naver.com");
-        input.setUserPw("123qwe!@#");
-        input.setUserName("우유");
-        input.setNickname("아야정");
-        input.setTel("010-1234-1234");
-        input.setPostcode("06035");
-        input.setAddr1("서울 강남구 가로수길5");
-        input.setAddr2("123호");
-        input.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        input.setProfile("test.jpg");
-        // input.setIsOut("N");
-        // input.setIsAdmin("N");
-        // input.setLoginDate(null);
-        // input.setRegDate("2022-12-12");
-        // input.setEditDate("2024-11-19");
-
-        int output = memberMapper.insert(input);
-
-        log.debug("output: " + output);
-        log.debug("new id: " + input.getMemberId());
-    }
+    
+    
 
     @Test
     @DisplayName("닉네임 수정 테스트")

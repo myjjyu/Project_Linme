@@ -3,9 +3,9 @@ package kr.project.linme.mappers;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
+
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -17,16 +17,6 @@ import kr.project.linme.models.Member;
 @Mapper
 public interface Member2Mapper {
 
-        // 로그인
-        @Select("SELECT "+
-                "member_id, user_id, user_pw, user_name, nickname, " +
-                "tel, postcode, addr1, addr2, profile, " +
-                "addr_msg, is_out, is_admin, login_date, " +
-                "reg_date, edit_date "+
-                "FROM member "+
-                "WHERE user_id=#{userId} AND user_pw=MD5(#{userPw}) AND is_out='N'")
-        @ResultMap("memberMap")
-        public Member login(Member input);
         
         // 회원 정보 수정
         // 닉네임 변경

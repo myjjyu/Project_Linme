@@ -6,12 +6,6 @@ import kr.project.linme.models.Member;
 public interface Member2Service {
     
 
-    //회원가입
-    public Member addItem(Member input) throws Exception;
-    
-    //로그인
-    public Member login(Member input)throws Exception;
-
     //비밀번호변경
     public Member editPw(Member input)throws Exception;
 
