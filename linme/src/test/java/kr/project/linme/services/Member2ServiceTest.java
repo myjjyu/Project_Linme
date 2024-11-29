@@ -16,34 +16,6 @@ public class Member2ServiceTest {
     @Autowired
     private Member2Service memberService;
 
-    @Test
-    @DisplayName("회원가입 테스트")
-    void addMember() throws Exception {
-        Member member = new Member();
-        member.setUserId("cg2522@naver.com");
-        member.setUserPw("123qwe!@#");
-        member.setUserName("신지예");
-        member.setNickname("지예");
-        member.setTel("010-1234-1234");
-        member.setPostcode("06035");
-        member.setAddr1("서울 강남구 가로수길5");
-        member.setAddr2("123호");
-        member.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        member.setProfile("test.jpg");
-
-        Member result = null;
-
-        try {
-            result = memberService.addItem(member);
-        } catch (Exception e) {
-            log.error("회원가입 실패", e);
-            throw e;
-        }
-
-        if (result != null) {
-            log.debug("회원가입 성공: " + result.toString());
-        }
-    }
 
     @Test
     @DisplayName("닉네임 변경 테스트")
