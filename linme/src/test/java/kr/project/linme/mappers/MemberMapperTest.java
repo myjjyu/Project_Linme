@@ -29,7 +29,6 @@ public class MemberMapperTest {
         input.setPostcode("06035");
         input.setAddr1("서울 강남구 가로수길5");
         input.setAddr2("123호");
-        input.setAddrName("신짱구");
         input.setAddrMsg("부재 시 문 앞에 놓아주세요");
         input.setProfile(null);
         // input.setIsOut("N");
@@ -59,7 +58,6 @@ public class MemberMapperTest {
         input.setPostcode("06035");
         input.setAddr1("서울 강남구 가로수길5");
         input.setAddr2("123호");
-        input.setAddrName("신짱아");
         input.setAddrMsg("부재 시 문 앞에 놓아주세요");
         input.setProfile(null);
     
