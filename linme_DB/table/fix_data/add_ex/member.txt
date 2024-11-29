@@ -1,0 +1,12 @@
+INSERT INTO member (
+    user_id, user_pw, user_name, nickname,
+    tel, postcode, addr1, addr2,
+    addr_msg, profile, is_out, is_admin, login_date,
+    reg_date, edit_date
+) 
+VALUES (
+    'tlawlswn28', '123qwe!@#', '심진주', 'jinju',
+    '01012345678', '06129', '서울 강남구 강남대로94길 13', '삼경빌딩 3층', 
+    'Null', 'Null', 'N', 'Y', Null,
+    now(), now()
+);

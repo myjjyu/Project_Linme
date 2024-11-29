@@ -22,8 +22,7 @@ public class CategoryMapperTest {
   @DisplayName("카테고리 추가 테스트")
   void insertCategory() {
     Category input = new Category();
-    input.setCategoryName("영양제");
-    input.setHeaderItem("신상품");
+    input.setCategoryName("오메가3");
 
     int output = categoryMapper.insert(input);
 
@@ -36,10 +35,8 @@ public class CategoryMapperTest {
   @DisplayName("카테고리 수정 테스트")
   void updateCategory() {
     Category input = new Category();
-    input.setCategoryId(1);
+    input.setCategoryId(3);
     input.setCategoryName("비타민");
-    input.setHeaderItem("베스트");
-
     int output = categoryMapper.update(input);
 
     log.debug("output: {}", output);

@@ -14,6 +14,17 @@ public class Cart {
     private String regDate;         // 등록 일시
     private String editDate;        // 변경 일시
 
+    /** 상품 */
+    private String productName;     // 상품 이름
+    private String salePrice;       // 판매 가격
+    private String price;           // 정가
+
+    /** 브랜드 */
+    private String brandName;       // 브랜드 이름
+
+    /** 이미지 */
+    private String img;             // 이미지
+
     @Getter
     @Setter
     private static int listCount = 0;

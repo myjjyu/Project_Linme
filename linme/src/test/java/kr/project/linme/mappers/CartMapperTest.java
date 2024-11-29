@@ -23,9 +23,9 @@ public class CartMapperTest {
         Cart input = new Cart();
         // 장바구니에 추가할 데이터
         input.setProductCount(1);
-        input.setTotalPrice(10000);
+        input.setTotalPrice(27000);
         input.setMemberId(1);
-        input.setProductId(6);
+        input.setProductId(1);
 
         int ouput = cartMapper.insert(input);
 
@@ -69,7 +69,7 @@ public class CartMapperTest {
     void selectItemCart() {
         Cart input = new Cart();
         // 조회할 데이터 일련번호
-        input.setCartId(2);
+        input.setMemberId(1);
         
         Cart output = cartMapper.selectItem(input);
         log.debug("output: " + output.toString());

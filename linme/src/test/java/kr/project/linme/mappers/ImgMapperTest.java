@@ -22,15 +22,9 @@ public class ImgMapperTest {
     void insertImg() {
         Img input = new Img();
         // 이미지에 추가할 데이터
-        input.setProductId(6); // 어떤 상품의 이미지인지
-        input.setImgUrl("http://www.test.com"); // 이미지 URL
-        input.setImgPath("C:/test"); // 이미지 경로
-        input.setImg1("img1.jpg"); // 이미지1
-        input.setImg2("img2.jpg"); // 이미지2
-        input.setImg3("img3.jpg"); // 이미지3
-        input.setDImg1("d_img1.jpg"); // 상세 이미지1
-        input.setDImg2("d_img2.jpg"); // 상세 이미지2
-        input.setDImg3("d_img3.jpg"); // 상세 이미지3
+        input.setProductId(20); // 어떤 상품의 이미지인지
+        input.setImg("/product/supplements/supplements5.jpg"); // 이미지
+        input.setDImg("/product/supplements/d_supplements5.jpg"); // 상세 이미지
 
         int ouput = imgMapper.insert(input);
 
@@ -45,17 +39,11 @@ public class ImgMapperTest {
     void updateImg() {
         Img input = new Img();
         // 수정할 데이터 일련번호
-        input.setImgId(1);
+        input.setImgId(8);
         // 수정할 데이터
-        input.setProductId(1); // 어떤 상품의 이미지인지
-        input.setImgUrl("http://www.test.com"); // 이미지 URL
-        input.setImgPath("C:/test"); // 이미지 경로
-        input.setImg1("img1.jpg"); // 이미지1
-        input.setImg2("img2.jpg"); // 이미지2
-        input.setImg3("img3.jpg"); // 이미지3
-        input.setDImg1("d_img1.jpg"); // 상세 이미지1
-        input.setDImg2("d_img2.jpg"); // 상세 이미지2
-        input.setDImg3("d_img3.jpg"); // 상세 이미지3
+        input.setProductId(8); // 어떤 상품의 이미지인지
+        input.setImg("/product/lacto/lacto3.jpg"); // 이미지
+        input.setDImg("/product/lacto/d_lacto3.jpg"); // 상세 이미지
 
         int ouput = imgMapper.update(input);
 

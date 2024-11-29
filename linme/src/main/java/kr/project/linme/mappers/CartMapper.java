@@ -78,8 +78,11 @@ public interface CartMapper {
                 "price, " +
                 "sale_price " +
                 "brand_name " +
+                "i.img" +
             "FROM cart c " + 
             "INNER JOIN product p ON p.product_id = c.product_id " +
+            "INNER JOIN brand b ON b.brand_id = p.brand_id " +
+            "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE member_id = #{memberId}")
     @Results(id="cartMap", value={
         @Result(property="cartId", column="cart_id"),
@@ -92,7 +95,8 @@ public interface CartMapper {
         @Result(property="productName", column="product_name"),
         @Result(property="price", column="price"),
         @Result(property="salePrice", column="sale_price"),
-        @Result(property="brandName", column="brand_name")
+        @Result(property="brandName", column="brand_name"),
+        @Result(property="img", column="img")
     })
     public Cart selectItem(Cart input);
 
@@ -113,12 +117,12 @@ public interface CartMapper {
                 "p.product_name, " +
                 "p.price, " +
                 "p.sale_price, " +
-                "b.brand_name " +
-                // "i.img" +
+                "b.brand_name, " +
+                "i.img " +
             "FROM cart c " + 
             "INNER JOIN product p ON p.product_id = c.product_id " +
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
-            // "INNER JOIN img i ON i.product_id = c.product_id" +
+            "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE member_id = #{memberId} " +
             "GROUP BY " + 
                 "cart_id, " + 
@@ -130,7 +134,8 @@ public interface CartMapper {
                 "p.product_name, " + 
                 "p.price, " + 
                 "p.sale_price, " + 
-                "b.brand_name")
+                "b.brand_name, " + 
+                "i.img")
     @ResultMap("cartMap")
     public List<Cart> selectList(Cart input);
 
@@ -141,4 +146,20 @@ public interface CartMapper {
      */
     @Select("SELECT COUNT(*) FROM cart")
     public int selectCount(Cart input);
+
+    /**
+     * 장바구니 상품 수량 조회
+     * @param input 
+     * @return 조회된 데이터 수
+     */
+    @Select("SELECT SUM(product_count) FROM cart WHERE member_id = #{memberId}")
+    public int selectProductCount(Cart input);
+
+    /**
+     * 장바구니 상품 금액 조회
+     * @param input 
+     * @return 조회된 데이터 수
+     */
+    @Select("SELECT SUM(total_price) FROM cart WHERE member_id = #{memberId}")
+    public int getTotalPrice(Cart input);
 }

@@ -24,8 +24,8 @@ public interface CategoryMapper {
          * @return
          */
         @Insert("INSERT INTO category (" +
-                        "category_name, header_item, reg_date, edit_date) " +
-                        "VALUES (#{categoryName}, #{iconCategory}, #{titleCategory}, #{headerItem}, now(), now())")
+                        "category_name, reg_date, edit_date) " +
+                        "VALUES (#{categoryName}, now(), now())")
         @Options(useGeneratedKeys = true, keyProperty = "categoryId", keyColumn = "category_id")
         public int insert(Category input);
 
@@ -38,7 +38,6 @@ public interface CategoryMapper {
          */
         @Update("UPDATE category SET " +
                         "category_name = #{categoryName}, " +
-                        "header_item = #{headerItem}, " +
                         "edit_date = now() " +
                         "WHERE category_id = #{categoryId}")
         public int update(Category input);
@@ -56,13 +55,12 @@ public interface CategoryMapper {
          * 카테고리 단일 조회
          */
         @Select("SELECT " +
-                        "category_id, category_name, header_item, reg_date, edit_date " +
+                        "category_id, category_name, reg_date, edit_date " +
                         "FROM category " +
                         "WHERE category_id = #{categoryId}")
         @Results(id = "categoryMap", value = {
                         @Result(property = "categoryId", column = "category_id"),
                         @Result(property = "categoryName", column = "category_name"),
-                        @Result(property = "headerItem", column = "header_item"),
                         @Result(property = "regDate", column = "reg_date"),
                         @Result(property = "editDate", column = "edit_date")
         })
@@ -75,7 +73,7 @@ public interface CategoryMapper {
          * @return
          */
         @Select("SELECT " +
-                        "category_id, category_name, header_item, reg_date, edit_date " +
+                        "category_id, category_name, reg_date, edit_date " +
                         "FROM category")
         @ResultMap("categoryMap")
         public List<Category> selectList(Category input);

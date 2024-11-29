@@ -22,15 +22,13 @@ public class ProductMapperTest {
   @DisplayName("상품 추가 테스트")
   void insertProduct() {
     Product input = new Product();
-    input.setProductName("[광동 메모리365]알티지rTG오메가3루테인밀크씨슬 혈행개선_1박스(740mg*60캡슐, 총 88.8g X 2개입)(2개월)");
-    input.setBrandId(1);
-    input.setPrice(88000);
-    input.setSalePrice(50000);
-    input.setDiscountRate(43);
-    input.setProductImg(""); // 이미지 경로는 비워두었음
-    input.setDetailImg("");
-    input.setCategoryId(3);
-    input.setHeaderItem("신상품");
+    input.setProductName("[뉴트리어스]국내최초 100% 식물성 비타민D아연_(500mg*60캡슐, 총 30g)(1개월분)");
+    input.setBrandId(4);
+    input.setPrice(55000);
+    input.setSalePrice(33000);
+    input.setDiscountRate(40);
+    input.setCategoryId(2);
+
 
     int output = productMapper.insert(input);
 
@@ -43,16 +41,15 @@ public class ProductMapperTest {
   @DisplayName("상품 수정 테스트")
   void updateProduct() {
     Product input = new Product();
-    input.setProductId(6);
-    input.setProductName("[네츄럴메이드]플랙씨드 앤 햄프씨드 선물세트_1박스(1,000mg*180캡슐, 총 180g X 2개입)(6개월분)");
-    input.setBrandId(1);
-    input.setPrice(174000);
-    input.setSalePrice(52500);
-    input.setDiscountRate(70);
-    input.setProductImg(""); // 이미지 경로는 비워두었음
-    input.setDetailImg("");
-    input.setCategoryId(3);
-    input.setHeaderItem("베스트");
+    input.setProductId(15);
+    input.setProductName("[오로니아][유통기한 임박]엔초비 오메가3 징코 플러스_1박스(1,331mg*60캡슐, 총 79.86g)(2개월)");
+    input.setBrandId(5);
+    input.setPrice(16520);
+    input.setSalePrice(11800);
+    input.setDiscountRate(48);
+    input.setCategoryId(4);
+    
+
 
     int output = productMapper.update(input);
 
@@ -76,7 +73,7 @@ public class ProductMapperTest {
   @DisplayName("단일 상품 조회 테스트")
   void selectOneProduct() {
     Product input = new Product();
-    input.setProductId(6);
+    input.setProductId(8);
 
     Product output = productMapper.selectItem(input);
 
@@ -98,7 +95,6 @@ public class ProductMapperTest {
   void selectProductCountByCondition() {
     Product input = new Product();
     input.setCategoryId(3); // categoryId 값
-    input.setHeaderItem("신상품"); // headerItem 값
 
     int output = productMapper.selectCount(input);
 
