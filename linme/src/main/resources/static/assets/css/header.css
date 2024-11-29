@@ -64,17 +64,6 @@
     }
   }
 
-  .headerBoxFirst li::after {
-    content: "|";
-    margin-left: 4px;
-    color: #e6e6e6;
-  }
-
-  .headerBoxFirst li:last-child::after {
-    content: ""; /*마지막 | 지우기*/
-    margin: 0;
-  }
-
   /* 고객센터 클릭시 드롭다운 */
   .topLayer {
     display: none;
@@ -295,7 +284,6 @@
 
 /* 작은박스 css*/
 .list {
-
   display: flex;
   background-color: #f8f8f8;
   width: 1180px;
@@ -317,10 +305,9 @@
   color: #ff8181;
 }
 
-
 /*******************************/
 /* header / new best spacial css */
 /*******************************/
-.headerNBS{
+.headerNBS {
   margin-top: 200px;
-  }
+}

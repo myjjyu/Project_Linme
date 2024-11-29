@@ -135,5 +135,10 @@ public class MemberRestController {
         return restHelper.sendJson();
     }
 
-    
+    @GetMapping("/api/account/logout")
+    public Map<String, Object> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return restHelper.sendJson();
+    }
 }
