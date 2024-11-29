@@ -28,7 +28,7 @@ public class MypageController {
     //     if (memberInfo == null) {
     //         // 세션에 memberInfo가 없을 경우 기본값 추가
     //         memberInfo = new Member();
-    //         memberInfo.setProfile("/assets/img/profileimg.png"); // 기본 프로필 이미지 설정
+    //         memberInfo.setProfile("/assets/img/profileimg.jpg"); // 기본 프로필 이미지 설정
     //         session.setAttribute("memberInfo", memberInfo);
     //     }
     //     model.addAttribute("memberInfo", memberInfo);
@@ -40,10 +40,10 @@ public class MypageController {
 
         if (memberInfo == null) {
             memberInfo = new Member();
-            memberInfo.setProfile("/assets/img/myPage/profileimg.png"); // 기본 프로필 이미지 경로 설정
+            memberInfo.setProfile("/assets/img/myPage/profileimg.jpg"); // 기본 프로필 이미지 경로 설정
             session.setAttribute("memberInfo", memberInfo);
         } else if (memberInfo.getProfile() == null || memberInfo.getProfile().isEmpty()) {
-            memberInfo.setProfile("/assets/img/myPage/profileimg.png"); // 기본값 설정
+            memberInfo.setProfile("/assets/img/myPage/profileimg.jpg"); // 기본값 설정
         }
 
         model.addAttribute("memberInfo", memberInfo);

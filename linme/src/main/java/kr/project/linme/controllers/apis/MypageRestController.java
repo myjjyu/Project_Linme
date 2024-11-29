@@ -65,6 +65,55 @@ public class MypageRestController {
         return restHelper.sendJson();
     }
 
+    // /**
+    //  * 프로필 사진 수정 API
+    //  */
+    // @PutMapping("/api/myPage/profile-update")
+    // public Map<String, Object> updateProfile(
+    //         HttpServletRequest request,
+    //         @SessionAttribute("memberInfo") Member memberInfo,
+    //         @RequestParam(value = "delete_profile", defaultValue = "N") String deleteProfile,
+    //         @RequestParam(value = "profile", required = false) MultipartFile profile) {
+
+    //     // 현재 프로필 사진 경로 가져오기
+    //     String currentProfile = memberInfo.getProfile();
+
+    //     // 업로드된 파일 처리
+    //     String savedFilePath = null;
+    //     if (profile != null && !profile.isEmpty()) {
+    //         try {
+    //             savedFilePath = fileHelper.saveMultipartFile(profile).getFilePath();
+    //         } catch (Exception e) {
+    //             return restHelper.serverError("파일 저장 중 오류가 발생했습니다.");
+    //         }
+    //     }
+
+    //     // 기존 사진 삭제 요청 처리
+    //     if (currentProfile != null && deleteProfile.equals("Y")) {
+    //         fileHelper.deleteUploadFile(currentProfile);
+    //         currentProfile = null; // 기존 사진 경로 초기화
+    //     }
+
+    //     // 새로 업로드된 파일 경로가 있다면 갱신
+    //     if (savedFilePath != null) {
+    //         currentProfile = savedFilePath;
+    //     }
+
+    //     // DB 업데이트
+    //     memberInfo.setProfile(currentProfile);
+    //     Member updatedMember;
+    //     try {
+    //         updatedMember = memberService.updateProfile(memberInfo);
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+
+    //     // 변경된 정보로 세션 갱신
+    //     request.getSession().setAttribute("memberInfo", updatedMember);
+
+    //     return restHelper.sendJson();
+    // }
+
     /**
      * 프로필 사진 수정 API
      */
@@ -90,8 +139,12 @@ public class MypageRestController {
 
         // 기존 사진 삭제 요청 처리
         if (currentProfile != null && deleteProfile.equals("Y")) {
-            fileHelper.deleteUploadFile(currentProfile);
-            currentProfile = null; // 기존 사진 경로 초기화
+            try {
+                fileHelper.deleteUploadFile(currentProfile);
+                currentProfile = null; // 기존 사진 경로 초기화
+            } catch (Exception e) {
+                return restHelper.serverError("기존 파일 삭제 중 오류가 발생했습니다.");
+            }
         }
 
         // 새로 업로드된 파일 경로가 있다면 갱신
@@ -105,7 +158,7 @@ public class MypageRestController {
         try {
             updatedMember = memberService.updateProfile(memberInfo);
         } catch (Exception e) {
-            return restHelper.serverError(e);
+            return restHelper.serverError("프로필 DB 수정 중 오류가 발생했습니다.");
         }
 
         // 변경된 정보로 세션 갱신
@@ -113,6 +166,7 @@ public class MypageRestController {
 
         return restHelper.sendJson();
     }
+
 
     /**
      * 비밀번호 확인 API
@@ -203,5 +257,5 @@ public class MypageRestController {
 
             return restHelper.sendJson();
         }
-
+    
 }

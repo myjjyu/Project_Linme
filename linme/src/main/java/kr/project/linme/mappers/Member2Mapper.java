@@ -17,23 +17,10 @@ import kr.project.linme.models.Member;
 @Mapper
 public interface Member2Mapper {
 
-        // 회원 정보 삽입
-        @Insert("INSERT INTO member (" +
-                "user_id, user_pw, user_name, nickname, " +
-                "tel, postcode, addr1, addr2, profile, addr_name, " +
-                "addr_msg, is_out, is_admin, login_date, " +
-                "reg_date, edit_date) " +
-                "VALUES (#{userId}, MD5(#{userPw}), #{userName}, #{nickname}, " +
-                "#{tel}, #{postcode}, #{addr1}, #{addr2}, #{profile}, #{addrName}, " +
-                "#{addrMsg}, 'N', 'N', null, " +
-                "now(), now())")
-        @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")
-        public int insert(Member input);
-
         // 로그인
         @Select("SELECT "+
                 "member_id, user_id, user_pw, user_name, nickname, " +
-                "tel, postcode, addr1, addr2, profile, addr_name, " +
+                "tel, postcode, addr1, addr2, profile, " +
                 "addr_msg, is_out, is_admin, login_date, " +
                 "reg_date, edit_date "+
                 "FROM member "+
@@ -96,7 +83,7 @@ public interface Member2Mapper {
         public int delete(Member input);
 
         // 단일 회원 정보 조회
-        @Select("SELECT member_id, user_id, user_pw, user_name, nickname, tel, postcode, addr1, addr2, addr_name, addr_msg, profile, is_out, is_admin, login_date, reg_date, edit_date FROM member WHERE member_id = #{memberId}")
+        @Select("SELECT member_id, user_id, user_pw, user_name, nickname, tel, postcode, addr1, addr2, addr_name, profile, is_out, is_admin, login_date, reg_date, edit_date FROM member WHERE member_id = #{memberId}")
         @Results(id = "memberMap", value = {
                 @Result(property = "memberId", column = "member_id"),
                 @Result(property = "userId", column = "user_id"),
@@ -107,7 +94,6 @@ public interface Member2Mapper {
                 @Result(property = "postcode", column = "postcode"),
                 @Result(property = "addr1", column = "addr1"),
                 @Result(property = "addr2", column = "addr2"),
-                @Result(property = "addrName", column = "addr_name"),
                 @Result(property = "addrMsg", column = "addr_msg"),
                 @Result(property = "profile", column = "profile"),
                 @Result(property = "isOut", column = "is_out"),
@@ -119,7 +105,7 @@ public interface Member2Mapper {
         public Member selectItem(Member input);
 
         // 회원 다중 조회
-        @Select("SELECT member_id, user_id, user_pw, user_name, nickname, tel, postcode, addr1, addr2, addr_name, addr_msg, profile, is_out, is_admin, login_date, reg_date, edit_date FROM member")
+        @Select("SELECT member_id, user_id, user_pw, user_name, nickname, tel, postcode, addr1, addr2, addr_msg, profile, is_out, is_admin, login_date, reg_date, edit_date FROM member")
         @ResultMap("memberMap")
         public List<Member> selectList(Member input);
 

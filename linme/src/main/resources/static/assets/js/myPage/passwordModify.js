@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // 현재 비밀번호 타입 확인 후 평문/숨김 전환
             if (passwordInput.type === "password") {
                 passwordInput.type = "text"; // 평문으로 전환
-                toggleButton.src = "/assets/img/myPage/original.png"; // 눈 아이콘으로 변경
+                toggleButton.src = "/assets/img/myPage/original.jpg"; // 눈 아이콘으로 변경
             } else {
                 passwordInput.type = "password"; // 숨김으로 전환
-                toggleButton.src = "/assets/img/myPage/secret.png"; // 닫힌 눈 아이콘으로 변경
+                toggleButton.src = "/assets/img/myPage/secret.jpg"; // 닫힌 눈 아이콘으로 변경
             }
         });
     });

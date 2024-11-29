@@ -32,9 +32,8 @@ public class Member2MapperTest {
         input.setPostcode("06035");
         input.setAddr1("서울 강남구 가로수길5");
         input.setAddr2("123호");
-        input.setAddrName("집");
         input.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        input.setProfile("test.png");
+        input.setProfile("test.jpg");
         // input.setIsOut("N");
         // input.setIsAdmin("N");
         // input.setLoginDate(null);
@@ -64,7 +63,7 @@ public class Member2MapperTest {
     void updateProfile() {
         Member input = new Member();
         input.setMemberId(4); 
-        input.setProfile("test.png"); // 테스트용 프로필 경로 설정
+        input.setProfile("test.jpg"); // 테스트용 프로필 경로 설정
 
         int output = memberMapper.updateProfile(input);
 

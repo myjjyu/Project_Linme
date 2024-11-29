@@ -28,9 +28,8 @@ public class Member2ServiceTest {
         member.setPostcode("06035");
         member.setAddr1("서울 강남구 가로수길5");
         member.setAddr2("123호");
-        member.setAddrName("신짱구");
         member.setAddrMsg("부재 시 문 앞에 놓아주세요");
-        member.setProfile("test.png");
+        member.setProfile("test.jpg");
 
         Member result = null;
 
@@ -72,7 +71,7 @@ public class Member2ServiceTest {
     void updateProfile() throws Exception {
         Member member = new Member();
         member.setMemberId(1); // 테스트 대상 회원 ID
-        member.setProfile("test.png"); // 테스트용 프로필 사진 경로
+        member.setProfile("test.jpg"); // 테스트용 프로필 사진 경로
 
         Member result = null;
 
