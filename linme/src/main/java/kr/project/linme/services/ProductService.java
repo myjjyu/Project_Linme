@@ -58,4 +58,15 @@ public interface ProductService {
      * @throws Exception
      */
     public int getCount(Product params) throws Exception;
+
+
+     /**
+     * 카테고리 ID로 상품 리스트 조회
+     * @param categoryId
+     * @return
+     * @throws Exception
+     */
+    public List<Product> getProductsByCategory(int categoryId) throws Exception;
 }
+
+

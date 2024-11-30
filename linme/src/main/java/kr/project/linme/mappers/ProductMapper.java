@@ -108,6 +108,8 @@ public interface ProductMapper {
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
         public int selectCount(Product input);
 
+
+
         /**
          * 카테고리별 상품 조회 기능
          * 
@@ -115,10 +117,12 @@ public interface ProductMapper {
          * @return
          */
         @Select("SELECT " +
-                        "product_id, product_name, brand_id, price, sale_price, discount_rate, " +
-                        "category_id, discount_price, reg_date, edit_date " +
-                        "FROM product " +
-                        "WHERE category_id = #{categoryId}")
+                        "p.product_id, p.product_name, p.brand_id, p.price, p.sale_price, " +
+                        "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
+                        "p.edit_date AS p_edit_date, i.img, i.d_img " +
+                        "FROM product p " +
+                        "LEFT JOIN img i ON i.product_id = p.product_id " + 
+                        "WHERE p.category_id = #{categoryId}")
         @ResultMap("productMapper")
         public List<Product> selectByCategory(@Param("categoryId") int categoryId);
 }

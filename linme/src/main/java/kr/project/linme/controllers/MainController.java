@@ -1,11 +1,13 @@
 package kr.project.linme.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
@@ -37,7 +39,7 @@ public class MainController {
         List<Product> output = null;
         try {
             output = productService.getList(product);
-            for ( Product item : output) {
+            for (Product item : output) {
                 System.out.println("이미지 경로: " + item.getImg());
                 item.setImg(fileHelper.getUrl(item.getImg()));
             }
@@ -46,17 +48,40 @@ public class MainController {
         }
 
         model.addAttribute("product", output);
-        return "main/main"; // 메인 페이지
+        return "main/main";
     }
 
     /**
-     * 카테고리 클릭 시 페이지 이동
+     * 카테고리 리스트 페이지
+     * 
+     * @param categoryId
+     * @param model
+     * @return
      */
-    @GetMapping("/header/categoryList")
-    public String categoryList(Model model) {
-        model.addAttribute("category", "category");
-        return "header/category_list"; // 카테고리 리스트 페이지
+    @GetMapping("/header/categoryList/{categoryId}")
+    public String categoryList(@PathVariable("categoryId") int categoryId, Model model) {
+        List<Product> products = new ArrayList<>();
+        try {
+            products = productService.getProductsByCategory(categoryId);
+            if (products.isEmpty()) {
+                model.addAttribute("noProducts", true);
+            } else {
+                model.addAttribute("noProducts", false);
+                for (Product product : products) {
+                    if (product.getImg() != null) {
+                        product.setImg(fileHelper.getUrl(product.getImg()));
+                    }
+                }
+                model.addAttribute("products", products);
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e.getMessage());
+            e.printStackTrace();
+        }
+        return "header/category_list";
     }
+
+
 
     @GetMapping("/main/main_ok")
     public String mainOk(Model model) {

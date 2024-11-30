@@ -17,26 +17,69 @@
     <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
   </head>
-
   <body>
     <div class="mainContent" id="mainContent">
       <!-- 카테고리 전체 텍스트 메뉴 -->
       <div class="categorylist">
         <ul class="list">
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/1}">영양제</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/2}">비타민</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/3}">유산균</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/4}">오메가3</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/5}">다이어트/뷰티</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/6}">꿀/프로폴리스/로얄젤리</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/7}">기능별</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/8}">홍삼/인삼</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/9}">건강/과일즙</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/10}">환자식/영양보충식</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/11}">건강환/정</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/12}">건강분말</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/13}">한방재료</a></li>
-          <li class="menuList"><a class="textlist" th:href="@{/header/categoryList/14}">대상별</a></li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/3}">유산균</a>
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/2}">비타민</a>
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/1}">영양제</a>
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/4}">오메가3</a>
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/5}"
+              >다이어트/뷰티</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/6}"
+              >꿀/프로폴리스/로얄젤리</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/7}">기능별</a>
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/8}"
+              >홍삼/인삼</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/9}"
+              >건강/과일즙</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/10}"
+              >환자식/영양보충식</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/11}"
+              >건강환/정</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/12}"
+              >건강분말</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/13}"
+              >한방재료</a
+            >
+          </li>
+          <li class="menuList">
+            <a class="textlist" th:href="@{/header/categoryList/14}">대상별</a>
+          </li>
         </ul>
       </div>
 
@@ -44,7 +87,9 @@
       <div class="contents" id="vitaminSection">
         <ul class="productDisplayOrder">
           <li class="productText">
-            <a href="#" class="sort-button sort-recommend" id="recommended">추천순</a>
+            <a href="#" class="sort-button sort-recommend" id="recommended"
+              >추천순</a
+            >
           </li>
           <li class="productText">
             <a href="#" class="sort-button" id="benefit">혜택순</a>
@@ -61,16 +106,38 @@
         <div id="productListContainer">
           <div th:each="product : ${products}">
             <div class="boximg">
-              <a th:href="@{/product/detail/{id}(id=${product.productId})}">
-                <img th:src="@{/assets/img/products/{image}(image=${product.image})}" alt="제품이미지" class="imgbox" />
+              <a th:href="@{/view/view}">
+                <img th:src="${product.img}" class="imgbox" />
                 <p class="productName" th:text="${product.productName}">내용</p>
-                <p class="discountRate" th:text="${product.discountRate}">할인가</p>
-                <p class="originalPrice" th:text="${product.originalPrice}">원래가격</p>
-                <p class="salePrice" th:text="${product.salePrice}">세일가격</p>
-                <p class="shippingInfo" th:text="${product.shippingInfo}">무료배송</p>
+                <div class="priceContainer">
+                  <p
+                    class="discountRate"
+                    th:text="${product.discountRate + '%'}"
+                  >
+                    할인가
+                  </p>
+                  <p
+                    class="originalPrice"
+                    th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                  >
+                    원래가격
+                  </p>
+                </div>
+                <p
+                  class="salePrice"
+                  th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
+                >
+                  세일가격
+                </p>
+                <p class="shippingInfo">무료배송</p>
               </a>
             </div>
           </div>
+        </div>
+
+        <!-- 제품이 없을 때 메시지 -->
+        <div id="noProductsMessage" style="display: none">
+          해당 제품이 없습니다.
         </div>
       </div>
     </div>
@@ -82,36 +149,110 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script th:src="@{/assets/js/header.js}"></script>
-    <script th:src="@{/assets/js/main_all_list.js}"></script>
 
     <script>
-      //header 카테고리에서 제품 클릭시 페이지이동 하면서 선택한 제품 컬러값 넣기▼
-      // URL에서 'category' 파라미터 값 가져오기
-      // EX) a href="/header/categoryList.html?category=전체보기"
+      // URL에서 'categoryId' 파라미터 값 가져오기
       const urlParams = new URLSearchParams(window.location.search);
-      const selectedCategory = urlParams.get("category");
+      const categoryId = urlParams.get("categoryId");
 
-      // 모든 .textlist 요소 선택
-      const menuItems = document.querySelectorAll(".textlist");
+      // categoryId가 존재하면 서버로 요청
+      if (categoryId) {
+        fetch(`/api/products?categoryId=${categoryId}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const productListContainer = document.getElementById(
+              "productListContainer"
+            );
+            const noProductsMessage =
+              document.getElementById("noProductsMessage");
 
-      // 선택된 카테고리와 일치하는 항목에 'active' 클래스 추가
-      menuItems.forEach((item) => {
-        if (item.textContent === selectedCategory) {
-          item.classList.add("coloractive");
-        }
+            productListContainer.innerHTML = ""; // 기존 내용 초기화
+            if (data.length === 0) {
+              noProductsMessage.style.display = "block";
+            } else {
+              noProductsMessage.style.display = "none";
+              data.forEach((product) => {
+                const productElement = document.createElement("div");
+                productElement.classList.add("boximg");
+                productElement.innerHTML = `
+                                <a href="/product/detail/${product.productId}">
+                                    <img src="${
+                                      product.img
+                                    }" alt="제품이미지" class="imgbox" />
+                                    <p class="productName">${
+                                      product.productName
+                                    }</p>
+                                    <p class="discountRate">${
+                                      product.discountRate
+                                    }%</p>
+                                    <p class="originalPrice">
+                                        <span>${formatPrice(
+                                          product.price
+                                        )}원</span>
+                                    </p>
+                                    <p class="salePrice">${formatPrice(
+                                      product.salePrice
+                                    )}원</span>
+                                    <p class="shippingInfo">${
+                                      product.shippingInfo || "무료배송"
+                                    }</p>
+                                </a>
+                            `;
+                productListContainer.appendChild(productElement);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          });
+      }
+
+      // 가격 포맷 함수
+      function formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      /*****************************************************/
+      /* 글자 컬러 변경 
+        /*****************************************************/
+      const productText = document.querySelectorAll(".productText a");
+
+      // 기본 컬러 설정 (추천순 글자컬러)
+      const defaultLink = document.querySelector(".sort-recommend");
+      defaultLink.classList.add("active");
+
+      // 클릭 이벤트 추가
+      productText.forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // 모든 링크에서 activate 클래스 제거하고 기본값 설정
+          productText.forEach((link) => {
+            link.classList.remove("active");
+            link.classList.add("sort-button"); // 기본값
+          });
+
+          // 클릭된 링크에 activate 클래스 추가
+          this.classList.add("active");
+          this.classList.remove("sort-button");
+        });
       });
 
-      //카테고리리스트 페이지에서 제품클릭시 제품이름 컬러 변경▼
-      // 각 항목에 클릭 이벤트 리스너 추가
-      menuItems.forEach((item) => {
-        item.addEventListener("click", function (e) {
-          e.preventDefault(); // 기본 링크 클릭 동작 방지
-
-          // 모든 항목은 기본값으로 => 컬러적용된 항목이 기본컬러로 변경
-          menuItems.forEach((menu) => menu.classList.remove("coloractive"));
-
-          // 클릭된 항목 글자컬러 변경
-          this.classList.add("coloractive");
+      // 카테고리 텍스트 클릭 시 글자 색상 변경
+      document.querySelectorAll(".textlist").forEach((link) => {
+        link.addEventListener("click", function (event) {
+          document
+            .querySelectorAll(".textlist")
+            .forEach((lnk) => lnk.classList.remove("active"));
+          this.classList.add("active");
         });
       });
     </script>
