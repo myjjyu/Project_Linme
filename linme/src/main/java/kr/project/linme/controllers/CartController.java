@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.models.Cart;
+import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
 
 @Controller
@@ -27,10 +29,12 @@ public class CartController {
 
     @GetMapping("/cart/cart")
     public String cart(Model model,
-        @RequestParam(value = "memberId", defaultValue = "1") int memberId
+        // @RequestParam(value = "memberId", defaultValue = "1") int memberId
+        @SessionAttribute("memberInfo") Member memberInfo
     ) {
         Cart cart = new Cart();
-        cart.setMemberId(memberId);
+        // cart.setMemberId(memberId);
+        cart.setMemberId(memberInfo.getMemberId());
 
         List<Cart> output = null;
 
@@ -48,6 +52,7 @@ public class CartController {
 
         return "cart/cart";
     }
+
 
     // @GetMapping("/cart/cart")
     // public String cart(Model model,
