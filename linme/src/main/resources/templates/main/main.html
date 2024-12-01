@@ -238,22 +238,30 @@
 
             <!-- 제품 이미지 리스트 -->
             <div class="headerMenutitleimg">
-              <div class="boximg" th:each="product : ${products}">
+              <div class="boximg" th:each="product : ${vitaminProducts}">
                 <a th:href="@{'/view/view/' + ${product.productId}}">
                   <img th:src="${product.img}" class="imgbox" />
                   <p class="productName" th:text="${product.productName}">
                     내용
                   </p>
+                  <div class="priceContainer">
+                    <p
+                      class="discountRate"
+                      th:text="${product.discountRate + '%'}"
+                    >
+                      할인가
+                    </p>
+                    <p
+                      class="originalPrice"
+                      th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                    >
+                      원래가격
+                    </p>
+                  </div>
                   <p
-                    class="discountRate"
-                    th:text="${product.discountRate + '%'}"
+                    class="salePrice"
+                    th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
                   >
-                    할인가
-                  </p>
-                  <p class="originalPrice" th:text="${product.price + '원'}">
-                    원래가격
-                  </p>
-                  <p class="salePrice" th:text="${product.salePrice + '원'}">
                     세일가격
                   </p>
                   <p class="shippingInfo">무료배송</p>
@@ -276,22 +284,30 @@
 
             <!-- 제품 이미지 리스트 -->
             <div class="headerMenutitleimg">
-              <div class="boximg" th:each="product : ${products}">
+              <div class="boximg" th:each="product : ${probioticProducts}">
                 <a th:href="@{'/view/view/' + ${product.productId}}">
                   <img th:src="${product.img}" class="imgbox" />
                   <p class="productName" th:text="${product.productName}">
                     내용
                   </p>
+                  <div class="priceContainer">
+                    <p
+                      class="discountRate"
+                      th:text="${product.discountRate + '%'}"
+                    >
+                      할인가
+                    </p>
+                    <p
+                      class="originalPrice"
+                      th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                    >
+                      원래가격
+                    </p>
+                  </div>
                   <p
-                    class="discountRate"
-                    th:text="${product.discountRate + '%'}"
+                    class="salePrice"
+                    th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
                   >
-                    할인가
-                  </p>
-                  <p class="originalPrice" th:text="${product.price + '원'}">
-                    원래가격
-                  </p>
-                  <p class="salePrice" th:text="${product.salePrice + '원'}">
                     세일가격
                   </p>
                   <p class="shippingInfo">무료배송</p>
@@ -314,22 +330,30 @@
 
             <!-- 제품 이미지 리스트 -->
             <div class="headerMenutitleimg">
-              <div class="boximg" th:each="product : ${products}">
+              <div class="boximg" th:each="product : ${omegaProducts}">
                 <a th:href="@{'/view/view/' + ${product.productId}}">
                   <img th:src="${product.img}" class="imgbox" />
                   <p class="productName" th:text="${product.productName}">
                     내용
                   </p>
+                  <div class="priceContainer">
+                    <p
+                      class="discountRate"
+                      th:text="${product.discountRate + '%'}"
+                    >
+                      할인가
+                    </p>
+                    <p
+                      class="originalPrice"
+                      th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                    >
+                      원래가격
+                    </p>
+                  </div>
                   <p
-                    class="discountRate"
-                    th:text="${product.discountRate + '%'}"
+                    class="salePrice"
+                    th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
                   >
-                    할인가
-                  </p>
-                  <p class="originalPrice" th:text="${product.price + '원'}">
-                    원래가격
-                  </p>
-                  <p class="salePrice" th:text="${product.salePrice + '원'}">
                     세일가격
                   </p>
                   <p class="shippingInfo">무료배송</p>
@@ -354,22 +378,30 @@
 
             <!-- 제품 이미지 리스트 -->
             <div class="headerMenutitleimg">
-              <div class="boximg" th:each="product : ${products}">
+              <div class="boximg" th:each="product : ${kidsProducts}">
                 <a th:href="@{'/view/view/' + ${product.productId}}">
                   <img th:src="${product.img}" class="imgbox" />
                   <p class="productName" th:text="${product.productName}">
                     내용
                   </p>
+                  <div class="priceContainer">
+                    <p
+                      class="discountRate"
+                      th:text="${product.discountRate + '%'}"
+                    >
+                      할인가
+                    </p>
+                    <p
+                      class="originalPrice"
+                      th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                    >
+                      원래가격
+                    </p>
+                  </div>
                   <p
-                    class="discountRate"
-                    th:text="${product.discountRate + '%'}"
+                    class="salePrice"
+                    th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
                   >
-                    할인가
-                  </p>
-                  <p class="originalPrice" th:text="${product.price + '원'}">
-                    원래가격
-                  </p>
-                  <p class="salePrice" th:text="${product.salePrice + '원'}">
                     세일가격
                   </p>
                   <p class="shippingInfo">무료배송</p>
@@ -413,7 +445,7 @@
           <div id="productListContainer"></div>
           <div id="productList" class="all-list">
             <div class="headerMenutitleContainer">
-              <div class="headerMenutitleimg" th:each="product : ${product}">
+              <div class="headerMenutitleimg" th:each="product : ${products}">
                 <div class="boximg">
                   <a th:href="@{'/view/view/' + ${product.productId}}">
                     <img th:src="${product.img}" class="imgbox" />

@@ -42,7 +42,7 @@
   font-size: 28px;
   color: #333;
   font-weight: 700px;
-  margin-top: 180px;
+  margin-top: 200px;
   font-weight: 900;
 
 }
@@ -104,6 +104,7 @@
   padding-top: 20px;
 }
 
+
 /* 비타민충전타임 등  */
 .headerMenutitle {
   justify-content: center;
@@ -132,6 +133,7 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .headerMenutitleContainer{
@@ -220,7 +222,7 @@
 */
 .topicContainer {
   border-bottom: 12px solid #f3f3f3;
-  margin-top: 1360px;
+  margin-top: 1500px;
 
 }
 

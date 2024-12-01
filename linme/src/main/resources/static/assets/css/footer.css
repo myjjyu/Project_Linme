@@ -1,166 +1,166 @@
 .Fcontainer {
-  margin: 0;
-  position: relative;
-  padding-left: 0;
-  padding-right: 0;
+margin: 0;
+position: relative;
+padding-left: 0;
+padding-right: 0;
 }
 
 .footerContainer {
-  width: 99vw;
-  margin: 0;
-  position: relative;
-  margin-top: 1200px;
+width: 99vw;
+margin: 0;
+position: relative;
+margin-top: 1300px;
 }
 /******************************************/
 /* footer header 영역 */
 /*회사소개, 이용약관, 개인정보처리방침, 입점.제휴 문의*/
 /******************************************/
 .footerInfo {
-  display: flex;
-  height: 40px;
-  background-color: #f3f3f3;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0;
+display: flex;
+height: 40px;
+background-color: #f3f3f3;
+justify-content: center;
+align-items: center;
+margin-bottom: 0;
 
-  li {
-    position: relative;
-    padding-right: 15px;
-  }
+li {
+  position: relative;
+  padding-right: 15px;
+}
 }
 .footerInfo li::after {
-  background-color: #6b6b6b99;
-  content: "";
-  display: block;
-  height: 90%;
-  position: absolute;
-  right: 5px;
-  top: 0;
-  width: 2px;
+background-color: #6b6b6b99;
+content: "";
+display: block;
+height: 90%;
+position: absolute;
+right: 5px;
+top: 0;
+width: 2px;
 }
 
 /* 마지막 항목에서 구분선 숨김 */
 .footerInfo li:last-child::after {
-  display: none;
+display: none;
 }
 
 .footerInfo a {
-  text-decoration: none;
-  color: #606060;
-  font-size: 15px;
-  font-weight: 500;
+text-decoration: none;
+color: #606060;
+font-size: 15px;
+font-weight: 500;
 }
 
 /******************************************/
 /* footer main 영역 */
 /******************************************/
 .footerSecoend {
-  background-color: #fcfcfc;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  padding-top: 20px;
+background-color: #fcfcfc;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+position: relative;
+padding-top: 20px;
 }
 
 .footerLogo {
-  /* background-color: yellow; */
-  height: auto;
-  display: flex;
-  align-items: center;
-  width: 1200px;
-  text-align: center;
-  gap: 10px;
-  margin-left: 170px;
+/* background-color: yellow; */
+height: auto;
+display: flex;
+align-items: center;
+width: 1200px;
+text-align: center;
+gap: 10px;
+margin-left: 170px;
 
-  p {
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: -0.4px;
-    color: #b6b6b6;
-  }
+p {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: #b6b6b6;
+}
 }
 
 .footerMain {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 1200px;
+display: flex;
+justify-content: space-around;
+width: 100%;
+max-width: 1200px;
 }
 
 .footerInfo {
-  li {
-    span {
-      margin-left: 15px;
-      color: #787878;
-    }
+li {
+  span {
+    margin-left: 15px;
+    color: #787878;
   }
+}
 }
 
 .footerInfo-menu {
-  font-size: 14px;
-  font-weight: 500;
-  color: #787878;
-  letter-spacing: -0.36px;
-  margin-top: 7px;
+font-size: 14px;
+font-weight: 500;
+color: #787878;
+letter-spacing: -0.36px;
+margin-top: 7px;
 
-  span {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+span {
+  text-decoration: underline;
+  cursor: pointer;
+}
 }
 
 .name {
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: -0.36px;
-  color: #333;
-  margin-top: 10px;
+font-size: 16px;
+font-weight: bold;
+letter-spacing: -0.36px;
+color: #333;
+margin-top: 10px;
 }
 
 .snslogo {
-  display: inline-block;
-  margin-top: 10px;
-  margin-right: 10px;
+display: inline-block;
+margin-top: 10px;
+margin-right: 10px;
 }
 
 .name2 {
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: -0.36px;
-  color: #787878;
-  margin-top: 10px;
+font-size: 16px;
+font-weight: bold;
+letter-spacing: -0.36px;
+color: #787878;
+margin-top: 10px;
 
-  span {
-    font-size: 18px;
-    font-weight: 500;
-    color: #ff697b;
-    margin-left: 10px;
-  }
+span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ff697b;
+  margin-left: 10px;
+}
 }
 
 .footer-2 a {
-  color: #787878;
-  text-decoration: underline;
+color: #787878;
+text-decoration: underline;
 }
 
 .footer-3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  gap: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 10px;
+gap: 10px;
 }
 
 /******************************************/
 /* footer-end영역 */
 /******************************************/
 .footerEnd {
-  text-align: center;
-  color: #b6b6b6;
-  font-size: 12px;
-  width: 100%;
-  padding: 20px 0;
-  background-color: #fcfcfc;
+text-align: center;
+color: #b6b6b6;
+font-size: 12px;
+width: 100%;
+padding: 20px 0;
+background-color: #fcfcfc;
 }

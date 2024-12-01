@@ -40,21 +40,67 @@ public class MainController {
     public String main(Model model) {
         Product product = new Product();
 
+        List<Product> vitaminProducts = null;
+        List<Product> probioticProducts = null;
+        List<Product> omegaProducts = null;
+        List<Product> kidsProducts = null;
         List<Product> output = null;
         try {
+
+            // 비타민 (카테고리 ID 2번)
+            vitaminProducts = productService.getProductsByCategory(2);
+            for (Product item : vitaminProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+            if (vitaminProducts.size() > 5) {
+                vitaminProducts = vitaminProducts.subList(0, 5);
+            }
+
+            // 장건강 (카테고리 ID 3번)
+            probioticProducts = productService.getProductsByCategory(3);
+            for (Product item : probioticProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+            if (probioticProducts.size() > 5) {
+                probioticProducts = probioticProducts.subList(0, 5);
+            }
+
+            // 오메가3 (카테고리 ID 4번)
+            omegaProducts = productService.getProductsByCategory(4);
+            for (Product item : omegaProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+            if (omegaProducts.size() > 5) {
+                omegaProducts = omegaProducts.subList(0, 5);
+            }
+
+            // 아이영양제(카테고리 ID 1번)
+            kidsProducts = productService.getProductsByCategory(1);
+            for (Product item : kidsProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+            if (kidsProducts.size() > 5) {
+                kidsProducts = kidsProducts.subList(0, 5);
+            }
+
+            // 전체 제품 목록
             output = productService.getList(product);
             for (Product item : output) {
                 System.out.println("이미지 경로: " + item.getImg());
                 item.setImg(fileHelper.getUrl(item.getImg()));
             }
+
         } catch (Exception e) {
             webHelper.serverError(e);
         }
 
-        model.addAttribute("product", output);
+        model.addAttribute("vitaminProducts", vitaminProducts);
+        model.addAttribute("probioticProducts", probioticProducts);
+        model.addAttribute("omegaProducts", omegaProducts);
+        model.addAttribute("kidsProducts", kidsProducts);
+        model.addAttribute("products", output);
         return "main/main";
     }
-
     /**
      * 카테고리 리스트 페이지
      * 
@@ -93,21 +139,65 @@ public class MainController {
 
     @GetMapping("/main/list_no1")
     public String listNo1(Model model) {
+        List<Product> vitaminProducts = null;
+        try {
+            vitaminProducts = productService.getProductsByCategory(2);
+            for (Product item : vitaminProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+    
+        model.addAttribute("products", vitaminProducts);
         return "main/list_no1";
     }
 
     @GetMapping("/main/list_no2")
     public String listNo2(Model model) {
+        List<Product> probioticProducts = null;
+        try {
+            probioticProducts = productService.getProductsByCategory(3);
+            for (Product item : probioticProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+    
+        model.addAttribute("products", probioticProducts);
         return "main/list_no2";
     }
 
     @GetMapping("/main/list_no3")
     public String listNo3(Model model) {
+        List<Product> omegaProducts = null;
+        try {
+            omegaProducts = productService.getProductsByCategory(4);
+            for (Product item : omegaProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+    
+        model.addAttribute("products", omegaProducts);
         return "main/list_no3";
     }
 
     @GetMapping("/main/list_no4")
     public String listNo4(Model model) {
+        List<Product> kidsProducts = null;
+        try {
+            kidsProducts = productService.getProductsByCategory(1);
+            for (Product item : kidsProducts) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+    
+        model.addAttribute("products", kidsProducts);
         return "main/list_no4";
     }
 
