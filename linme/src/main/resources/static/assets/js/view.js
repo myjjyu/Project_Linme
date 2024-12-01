@@ -57,6 +57,31 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
   });
 });
 
+
+
+// 장바구니 alert창
+document.querySelector(".cart-btn").addEventListener("click", (e) => {
+  e.preventDefault(); 
+  Swal.fire({
+    title: `상품이 장바구니에 담겼습니다.<br>장바구니로 이동하시겠습니까?`, 
+    showCancelButton: true,
+    cancelButtonText: "닫기",
+    confirmButtonText: "이동",
+    customClass: {
+      cancelButton: "cartclose-button",
+      confirmButton: "cart-button",
+      title: "cart-text",
+      popup: "custom-alert-popup"
+    },
+    reverseButtons: true, // 버튼 순서 변경
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = "/cart/cart";
+    }
+  });
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
   let quantity = 1;
 

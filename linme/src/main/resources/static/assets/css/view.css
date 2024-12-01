@@ -353,7 +353,7 @@
   background-color: #fff;
   border-top: 2px solid #f3f3f3;
   border-bottom: 2px solid #f3f3f3;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .productDetailTab {
@@ -390,7 +390,7 @@
 
 .review {
   width: 100%;
-  margin-bottom: 50px; /* 섹션 간 간격 추가 */
+  margin-bottom: 50px;
 }
 
 .productReview,
@@ -617,4 +617,46 @@ td:nth-child(odd) {
   font-size: 21px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+
+/* 장바구니 버튼 alert 창 css */
+/* 닫기 버튼  */
+.cartclose-button {
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  color: #a5a5a5;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px;
+  height: 40px;
+  width: 82px;
+}
+
+/* 이동 버튼  */
+.cart-button {
+  background-color: #ffffff;
+  border: 1px solid #ff697b;
+  color: #ff697b;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px;
+  height: 40px;
+  width: 82px;
+}
+
+/* 제목 텍스트 스타일 */
+.cart-text {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px; 
+  text-align: center; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+}
+
+/* 알럿창 크기 조정 */
+.custom-alert-popup {
+  width: 300px !important;
+  padding: 20px!important;
 }
