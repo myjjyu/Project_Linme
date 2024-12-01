@@ -17,7 +17,7 @@ body {
     max-width: 800px;
     padding: 40px;
     text-align: left;
-    margin-top: 300px;
+    margin-top: 150px;
 }
 
 .profileContainer h2 {
@@ -49,7 +49,7 @@ body {
     border: 1px solid ; 
     border-radius: 10px; 
     padding: 20px; 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .profileImage {
     /* position: relative;  */
@@ -109,21 +109,21 @@ body {
     width: 100%;
 }
 
-.formGroup {
+.input-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 10px;
 }
 
-.formGroup label {
+.input-container label {
     flex: 1;
     text-align: left;
     font-size: 14px;
     margin-right: 10px;
 }
 
-.formGroup .required {
+.input-container .required {
     color: #ff697b;
 }
 
@@ -141,7 +141,7 @@ body {
     font-size: 16px;
 }
 
-.checkButton {
+.inline-btn {
     background-color: #fff;
     color: #ff697b;
     border: 1px solid #ff697b;
@@ -190,5 +190,3 @@ body {
     color: #aaa;
     cursor: not-allowed;
 }
-
-

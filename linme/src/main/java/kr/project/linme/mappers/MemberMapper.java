@@ -121,5 +121,58 @@ public interface MemberMapper {
     //로그인 시간 업데이트
     @Update("UPDATE member SET login_date = NOW() WHERE member_id = #{memberId}")
     public int updateLoginDate(Member input);
+
+
+        // 배송지 변경
+        @Update("<script> "+
+                "UPDATE member " +
+                        "SET " +
+                        "postcode=#{postcode}, " +
+                        "addr1=#{addr1}, "+
+                        "addr2=#{addr2}, "+
+                        "addr_msg=#{addrMsg}, "+
+                        // "is_out = #{isOut}, " +
+                        // "is_admin = #{isAdmin}, " +
+                        // "login_date = #{loginDate}, " +
+                        "edit_date = NOW() " +
+                        "WHERE member_id = #{memberId} "+
+                "</script> ")
+        public int updatePostcode(Member input);
+
+        // 비밀번호 변경 
+        @Update("<script> "+
+                "UPDATE member " +
+                        "SET "+
+                        "user_pw=MD5(#{newUserPw}) "+
+                        "WHERE member_id= #{memberId} AND user_pw=(#{userPw}) "+
+                "</script> ")
+        public int updatePw(Member input);
+
+        // 프로필 정보 변경
+        @Update("<script> "+
+                "Update member SET "+
+                        "nickname =#{nickname}, "+
+                        "profile = #{profile}, "+
+                        // "is_out = #{isOut}, " +
+                        // "is_admin = #{isAdmin}, " +
+                                // "login_date = #{loginDate}, " +
+                        "edit_date = NOW() " +
+                        "WHERE member_id = #{memberId} "+
+                "</script>")
+        public int updateProfile(Member input);
+        
+
+        @Select("SELECT profile FROM member \n"+ //
+                "WHERE is_out='Y' AND \n"+//
+                "edit_date<DATE_ADD(NOW(),interval -1 minute) AND \n"+ //
+                "profile IS NOT NULL ")
+        @ResultMap("memberMap")
+        public List<Member>selectOutMembersPhoto();
+
+
+        @Delete("DELETE FROM member \n"+//
+                "WHERE is_out='Y' AND \n "+//
+                "edit_date <DATE_ADD(NOW(),interval -1 minute)")
+        public int deleteOutMembers();
 }
 

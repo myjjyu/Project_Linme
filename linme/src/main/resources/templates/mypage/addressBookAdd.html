@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linme</title>
+    <title>린미 - 세상에 없던 H-커머스</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/addressBookAdd.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css"/>
     <th:block th:replace="~{/fragments/header}" />
 </head>
 <body>
@@ -24,10 +25,10 @@
                     </a>
                     <div class="userDetails">
                         <a th:href="@{/myPage/profile}">
-                            <h3 th:text="${username}"></h3>
+                            <h3><span th:text="${session.memberInfo.nickname}" /></h3>
                         </a>
-                        <p>등급: <a th:href="@{/myPage/level}"><span th:text="${grade}"></span></a></p>
-                        <p>리워드: <a th:href="@{/myPage/reward}"><span th:text="${reward}"></span></a></p>
+                        <p> <a th:href="@{/myPage/level}"><span th:text="${grade}"></span>등급:</a></p>
+                        <p> <a th:href="@{/myPage/reward}"><span th:text="${reward}"></span>리워드:</a></p>
                     </div>
                 </div>
                 <div class="userActions">
@@ -40,15 +41,15 @@
             <!-- 주요 정보 표시 -->
             <div class="mainInfo">
                 <div class="infoBox">
-                    <p>쇼핑내역</p>
+                    <p><a th:href="@{/mypage/shopping/order}">쇼핑내역</a></p>
                     <span th:text="${shoppingHistoryCount}"></span>
                 </div>
                 <div class="infoBox">
-                    <p>쿠폰</p>
+                    <p><a th:href="@{/mypage/coupon}">쿠폰</a></p>
                     <span th:text="${couponCount}"></span>
                 </div>
                 <div class="infoBox">
-                    <p>리뷰</p>
+                    <p><a th:href="@{/mypage/review}">리뷰</a></p>
                     <span th:text="${reviewCount}"></span>
                 </div>
             </div>
@@ -88,60 +89,66 @@
                 <!-- 배송지 관리 화면 -->
                 <div class="addressContainer">
                     <h2 class="addressTitle">배송지 추가</h2>
-                    <form class="addressForm">
+                    <form id="address-form" class="address-form">
+
                         <div class="formGroup">
                             <label for="addressName"><span class="required">* </span>배송지명</label>
-                            <input type="text" name="nickname" id="nickname" placeholder="배송지명" readonly>
-                            <!-- <input th:value=${session.memberinfo.nickname} type="text" name="nickname" id="nickname" placeholder="배송지명"> -->
+                            <input th:value="${session.memberInfo.nickname}" type="text" name="nickname" id="nickname" class="input-field" placeholder="배송지명" readonly>
                         </div>
                         
                         <div class="formGroup">
                             <label for="recipient"><span class="required">* </span>받는 분</label>
-
-                            <input type="text" name="userName" id="userName" placeholder="홍길동" readonly>                           
-                            <!-- <input th:value=${session.memberinfo.userName} type="text" name="userName" id="userName" placeholder="홍길동"> -->
+                            <input th:value="${session.memberInfo.userName}" type="text" name="userName" id="userName" class="input-field" placeholder="홍길동" readonly>
                         </div>
-                
+                        
                         <div class="formGroup">
                             <label for="contact"><span class="required">* </span>연락처</label>
-                            <input type="text" name="contact" id="contact" placeholder="00000000000" readonly>
-                            <!-- <input th:value=${session.memberinfo.tel} type="text" name="contact" id="contact" placeholder="00000000000"> -->
+                            <input th:value="${session.memberInfo.tel}" type="text" name="tel" id="tel" class="input-field" placeholder="00000000000" readonly>
                         </div>
-                
-                        <div class="formGroup addressLine">
-                            <label for="postCode"><span class="required">* </span>주소</label>
-                            <input type="text" name="postcode" id="postcode" class="input-field" placeholder="우편번호" readonly>
-                            <!-- <input th:value=${session.memberinfo.postcode} type="text" name="postcode" id="postcode" placeholder="우편번호" readonly> -->
-                            <button type="button" class="findPostCode" id="find-postcode">우편번호 찾기</button>
-                        </div>
+                        
+                        <!-- 우편번호 -->
                         <div class="formGroup">
-                            <input type="text" name="addr1" id="addr1" class="input-field" placeholder="주소를 검색하여 등록해 주세요" readonly>
-                            <!-- <input th:value=${session.memberinfo.addr1} type="text" name="addr1" id="addr1" placeholder="주소를 검색하여 등록해 주세요" readonly> -->
+                            <label for="postcode"><span class="required">* </span>우편번호</label>
+                            <div class="input-container">
+                                <input th:value="${session.memberInfo.postcode}" type="text" name="postcode" id="postcode" class="input-field" placeholder="우편번호" readonly />
+                                <button type="button" id="findPostcode" class="findPostcode">우편번호 찾기</button>
+                            </div>
                         </div>
+
+                        <!-- 주소 -->
                         <div class="formGroup">
-                            <input type="text" name="addr2" id="addr2" class="input-field" placeholder="나머지 주소를 입력해 주세요">
-                            <!-- <input th:value=${session.memberinfo.addr2} type="text" name="addr2" id="addr2" placeholder="나머지 주소를 입력해 주세요"> -->
+                            <label for="addr1"><span class="required">* </span>주소</label>
+                            <input th:value="${session.memberInfo.addr1}" type="text" name="addr1" id="addr1" class="input-field" placeholder="주소" readonly />
                         </div>
-                
+
+                        <div class="formGroup">
+                            <label for="addr2">상세 주소</label>
+                            <input th:value="${session.memberInfo.addr2}" type="text" name="addr2" id="addr2" class="input-field" placeholder="상세 주소" />
+                        </div>
+
+                        <!-- 배송 요청사항 -->
                         <div class="formGroup">
                             <label for="addrMsg">배송 요청사항</label>
-                            <select id="addrMsg">
-                                <!-- <select th:value=${session.memberinfo.addrMsg} id="addrMsg"></select> -->
-                                <option>부재 시 문 앞에 놓아주세요</option>
-                                <option>배송 전에 미리 연락 주세요</option>
-                                <option>부재 시 경비실에 맡겨 주세요</option>
-                                <option>부재 시 전화주시거나 문자 남겨주세요</option>
-                                <option>직접 입력</option>
+                            <select name="addrMsg" id="addrMsg" class="input-field" th:value="${session.memberInfo.addrMsg != null ? session.memberInfo.addrMsg : '문 앞에 놓아주세요'}">
+                                <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
+                                <option value="배송 전에 미리 연락 주세요">배송 전에 미리 연락 주세요</option>
+                                <option value="부재 시 경비실에 맡겨 주세요">부재 시 경비실에 맡겨 주세요</option>
+                                <option value="부재 시 경비실에 맡겨 주세요">부재 시 전화주시거나 문자 남겨주세요</option>
+                                <option value="직접 입력">직접 입력</option>
                             </select>
-                            <input type="text" id="customInput" class="customInput" placeholder="직접 입력">
-                            <!-- <input th:value=${session.memberinfo.addrMsg} type="text" id="customRequestInput" class="customInput" placeholder="직접 입력"> -->
                         </div>
-                
+
+                        <!-- 직접 입력 입력창 -->
+                        <div class="formGroup customInputContainer hidden">
+                            <label for="customInput"></label>
+                            <input name="customAddrMsg" type="text" id="customInput" class="input-field" placeholder="직접 입력">
+                        </div>
+
                         <div class="defaultAddressContainer">
                             <input type="checkbox" id="defaultAddress">
                             <label for="defaultAddress">기본 배송지 설정</label>
                         </div>
-                
+
                         <button type="submit" class="saveButton">저장</button>
                     </form>
                 </div>
@@ -154,16 +161,14 @@
         </footer>
         
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
         <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
         <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
         <script th:src="@{/assets/js/myPage/myPage.js}"></script>
-        <script th:src="@{/assets/js/myPage/addressBookAdd.js}"></script>
         <script>
             document.querySelector(".footerContainer").style.margin = "0px";
         </script>
+        <script th:src="@{/assets/js/myPage/addressBookAdd.js}"></script>
 </body>
 </html>

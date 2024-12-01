@@ -53,9 +53,9 @@ const axiosHelper = {
 
         // 백엔드에서 발생한 상세 에러 내용을 브라우저 콘솔에 출력
         // --> 이 코드는 보안에 취약할 수 있으므로 실제 서비스에서는 제거할 것
-        console.error("Error occurred in the backend server.");
-        console.error(`[${data.status}] ${data.error}`);
-        console.error(data.trace);
+        // console.error("Error occurred in the backend server.");
+        // console.error(`[${data.status}] ${data.error}`);
+        // console.error(data.trace);
       } else {
         // SpringBoot로부터 전달받은 에러 메시지가 없다면?
         // --> Axios의 에러 메시지를 그대로 사용

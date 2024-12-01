@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.getElementById("signup-form").addEventListener("submit",async(e)=>{
+document.getElementById("password-form").addEventListener("submit",async(e)=>{
     e.preventDefault();
 
     /** 입력값 유효성 검사*/
@@ -69,41 +69,37 @@ document.getElementById("signup-form").addEventListener("submit",async(e)=>{
     } catch (e) {
         await utilHelper.alertDanger(e.message);
 
-        if (e.element) {
-            setTimeout(() => e.element.focus(), 300);
-        }
+        setTimeout(()=>e.element.focus(),300);
         return;
     }
 
-    // 현재 비밀번호 DB 유효성 검증
-    try {
-        const currentPw = document.querySelector("#user_pw").value;
+    // // 현재 비밀번호 DB 유효성 검증
+    // try {
+    //     const currentPw = document.querySelector("#user_pw").value;
 
-        // 서버에 현재 비밀번호 확인 요청
-        const data = await axiosHelper.post("[[@{/api/myPage/password-check}]]", {
-            user_pw: currentPw,
-        });
+    //     // 서버에 현재 비밀번호 확인 요청
+    //     const data = await axiosHelper.post("[[@{/api/myPage/password-check}]]", {
+    //         user_pw: currentPw,
+    //     });
 
-        if (!data.valid) {
-            // 입력한 현재 비밀번호가 DB와 다를 경우
-            await utilHelper.alertDanger("현재 비밀번호가 올바르지 않습니다.");
-            return;
-        }
-    } catch (e) {
-        // 서버 통신 오류 처리
-        await utilHelper.alertDanger("비밀번호 확인 중 오류가 발생했습니다.");
-        return;
-    }
+    //     if (!data.valid) {
+    //         // 입력한 현재 비밀번호가 DB와 다를 경우
+    //         await utilHelper.alertDanger("현재 비밀번호가 올바르지 않습니다.");
+    //         return;
+    //     }
+    // } catch (e) {
+    //     // 서버 통신 오류 처리
+    //     await utilHelper.alertDanger("비밀번호 확인 중 오류가 발생했습니다.");
+    //     return;
+    // }
 
     // DB 비밀번호가 일치하면 변경 요청 진행
     const formData = new FormData(e.currentTarget);
-    try {
-        const response = await axiosHelper.putMultipart("[[@{/api/myPage/password-update}]]", formData);
-        if (response) {
-            await utilHelper.alertSuccess("비밀번호가 성공적으로 변경되었습니다.");
-        }
-    } catch (e) {
-        await utilHelper.alertDanger("비밀번호 변경 중 오류가 발생했습니다.");
+    const data=await axiosHelper.putMultipart("[[@{/api/myPage/password-update}]]", formData);
+    
+    if(data){
+        await utilHelper.alertSuccess("수정되었습니다.");
+        location.reload();
     }
 });
 

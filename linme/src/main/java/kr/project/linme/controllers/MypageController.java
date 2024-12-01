@@ -12,28 +12,16 @@ import org.springframework.ui.Model;
 public class MypageController {
 
     @GetMapping("/myPage")
-    public String myPage(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
+    public String myPage(HttpSession session, Model model) {
+        Member memberInfo = (Member) session.getAttribute("memberinfo");
+        if (memberInfo != null) {
+            // 로그인하지 않은 경우 처리
+            return "redirect:/login";
+        }
+        model.addAttribute("memberinfo", memberInfo);
         return "myPage/myPage";
     }
-    // @GetMapping("/myPage/profile")
-    // public String getProfilePage(HttpSession session, Model model) {
-    //     Member memberInfo = (Member) session.getAttribute("memberInfo");
-    //     if (memberInfo == null) {
-    //         // 세션에 memberInfo가 없을 경우 기본값 추가
-    //         memberInfo = new Member();
-    //         memberInfo.setProfile("/assets/img/profileimg.jpg"); // 기본 프로필 이미지 설정
-    //         session.setAttribute("memberInfo", memberInfo);
-    //     }
-    //     model.addAttribute("memberInfo", memberInfo);
-    //     return "myPage/profile";
-    // }
+    
     @GetMapping("/myPage/profile")
     public String getProfilePage(HttpSession session, Model model) {
         Member memberInfo = (Member) session.getAttribute("memberInfo");
@@ -94,85 +82,43 @@ public class MypageController {
 
     @GetMapping("/myPage/productInquiry")
     public String productInquiry(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
         return "myPage/productInquiry";
     }
 
     @GetMapping("/myPage/refundAccount")
     public String refundAccount(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
         return "myPage/refundAccount";
     }
 
     @GetMapping("/myPage/addressBook")
-    public String addressBook(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
+    public String addressBook() {
         return "myPage/addressBook";
     }
 
     @GetMapping("/myPage/addressBookAdd")
-    public String addressBookAdd(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
+    public String addressBookAdd() {
         return "myPage/addressBookAdd";
     }
 
     @GetMapping("/myPage/notice")
     public String notice(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
         return "myPage/notice";
     }
 
     @GetMapping("/myPage/faq")
     public String faq(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
-
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
         return "myPage/faq";
     }
 
     @GetMapping("/myPage/inquiry")
     public String injury(Model model) {
-        model.addAttribute("username", "사용자 이름");
-        model.addAttribute("grade", "등급");
-        model.addAttribute("reward", "리워드");
+        // model.addAttribute("username", "사용자 이름");
+        // model.addAttribute("grade", "등급");
+        // model.addAttribute("reward", "리워드");
 
-        model.addAttribute("shoppingHistoryCount", 0); 
-        model.addAttribute("couponCount", 0);           
-        model.addAttribute("reviewCount", 0);
+        // model.addAttribute("shoppingHistoryCount", 0); 
+        // model.addAttribute("couponCount", 0);           
+        // model.addAttribute("reviewCount", 0);
         return "myPage/inquiry";
     }
 

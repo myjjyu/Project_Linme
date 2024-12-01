@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.models.Member;
-import kr.project.linme.services.Member2Service;
+import kr.project.linme.services.MemberService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,7 +29,7 @@ public class AccountScheduler {
     private String uploadDir;
 
     @Autowired
-    private Member2Service memberService;
+    private MemberService memberService;
 
     @Autowired
     private FileHelper fileHelper;

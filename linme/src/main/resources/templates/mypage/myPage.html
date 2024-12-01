@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linme</title>
+    <title>린미 - 마이페이지</title>
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css"  th:href="@{/assets/css/myPage/myPage.css}" />
     <th:block th:replace="~{/fragments/header}" />
@@ -23,10 +23,10 @@
                     </a>
                     <div class="userDetails">
                         <a th:href="@{/myPage/profile}">
-                            <h3 th:text="${username}"></h3>
+                            <h3><span th:text="${session.memberInfo.nickname}" /></h3> 
                         </a>
-                        <p>등급: <a th:href="@{/myPage/level}"><span th:text="${grade}"></span></a></p>
-                        <p>리워드: <a th:href="@{/myPage/reward}"><span th:text="${reward}"></span></a></p>
+                        <p> <a th:href="@{/myPage/level}"><span th:text="${grade}"></span>등급:</a></p>
+                        <p> <a th:href="@{/myPage/reward}"><span th:text="${reward}"></span>리워드:</a></p>
                     </div>
                 </div>
                 <div class="userActions">
@@ -39,15 +39,15 @@
             <!-- 주요 정보 표시 -->
             <div class="mainInfo">
                 <div class="infoBox">
-                    <p>쇼핑내역</p>
+                    <p><a th:href="@{/mypage/shopping/order}">쇼핑내역</a></p>
                     <span th:text="${shoppingHistoryCount}"></span>
                 </div>
                 <div class="infoBox">
-                    <p>쿠폰</p>
+                    <p><a th:href="@{/mypage/coupon}">쿠폰</a></p>
                     <span th:text="${couponCount}"></span>
                 </div>
                 <div class="infoBox">
-                    <p>리뷰</p>
+                    <p><a th:href="@{/mypage/review}">리뷰</a></p>
                     <span th:text="${reviewCount}"></span>
                 </div>
             </div>

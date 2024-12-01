@@ -1,10 +1,10 @@
 .addressContainer {
     width: 100%;
     max-width: 960px;
-    padding: 20px;
+    padding: 0 20px;
     margin-top: -35px;
-    
 }
+
 .addressTitle {
     font-size: 18px;
     font-weight: bold;
@@ -12,7 +12,8 @@
     margin-top: 28px;
     padding: 10px;
 }
-.addressForm {
+
+.address-form {
     width: 100%;
     margin: 0 auto;
     padding: 50px;
@@ -25,65 +26,74 @@
 .formGroup {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
+
 .formGroup label {
-    width: 25%; 
+    width: 25%;
     font-size: 0.9em;
     text-align: left;
     padding-right: 5px;
 }
+
 .formGroup label::before {
     content: "*";
-    color: #ff697b; 
+    color: #ff697b;
     position: absolute;
     left: -10px;
 }
-.formGroup input[type="text"]{
-    width: 30%;
+
+.formGroup input[type="text"],
+.input-container input {
+    width: 75%;
     padding: 10px;
     margin: 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
-.formGroup select {
-    flex:1;
-    width: 70%; 
-    padding: 10px;
-    margin: 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-}
-.addressLine {
+.input-container {
     display: flex;
     align-items: center;
-    gap:2px;
-}
-
-#postcode {
-    width: 25%;
-    width: calc(75% -10px);
-}
-#addr1, #addr2 {
-    margin-left: 25%;
+    gap: 10px;
     width: 75%;
-    width: calc(75% -10px);
-    padding-left: 10px; 
-    box-sizing: border-box;
-    text-align: left; 
+    margin: 0 auto;
 }
 
-.findPostCode {
+.input-container .findPostcode {
     padding: 10px 20px;
-    border: 1px solid #ff697b;;
-    background-color: #ff697b;;
+    border: 1px solid #ff697b;
+    background-color: #ff697b;
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    
+}
+
+.select,
+.formGroup select {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.customInputContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.customInput {
+    display: none;
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
 }
 
 .defaultAddressContainer {
@@ -98,11 +108,6 @@
     font-size: 0.9em;
 }
 
-.defaultAddressContainer input[type="checkbox"]:checked {
-    background-color: #ffcccc; 
-    border: 1px solid #ff697b;; 
-    color: #ffffff; 
-}
 .saveButton {
     width: 30%;
     padding: 15px;
@@ -113,25 +118,35 @@
     border-radius: 4px;
     cursor: not-allowed;
     margin-top: 20px;
-    margin: 0 auto; 
 }
 
 .saveButton:enabled {
-    background-color: #ff697b;;
+    background-color: #ff697b;
     color: white;
     cursor: pointer;
 }
 
-
-.customInput {
-    display: none;
-    margin-top: 10px;
-}
-.hidden{
+.hidden {
     display: none;
 }
 
-.formGroup .required ,
-.addressLine .required{
+.required{
     color: #d9534f;
+}
+
+#postcode {
+    width: 50%;
+}
+
+.findPostcode {
+    padding: 10px; 
+    height: auto; 
+}
+
+.input-field {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
 }
