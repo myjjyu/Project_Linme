@@ -131,11 +131,30 @@ public class MainController {
         return "header/category_list";
     }
 
+    /**
+     * 메인 페이지 => 아이콘 클릭시 해당 카테고리 상품 조회
+     * @param categoryId
+     * @param model
+     * @return
+     */
+    @GetMapping("/main/main_ok/{categoryId}")
+    public String listByCategory(@PathVariable("categoryId") int categoryId, Model model) {
+        List<Product> products = null;
+        try {
+            // 피로활력-4번(오메가3), 피부건강-2번(비타민), 장건강-3번(장건강), 면역력-1번(아이영양제)
+            // 연결DB 없으면 화면에 메세지 출력
+            products = productService.getProductsByCategory(categoryId);
+            for (Product item : products) {
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
     
-    @GetMapping("/main/main_ok")
-    public String mainOk(Model model) {
+        model.addAttribute("products", products);
         return "main/main_ok";
     }
+
 
     @GetMapping("/main/list_no1")
     public String listNo1(Model model) {
