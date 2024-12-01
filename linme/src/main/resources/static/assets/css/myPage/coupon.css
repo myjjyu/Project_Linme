@@ -22,86 +22,89 @@ a {
 main {
   display: block;
   position: relative;
-}
+  margin-top: 150px;
 
-/* 보유 쿠폰 공통 */
-.contents {
-  height: fit-content;
-  margin: 0 auto;
-  width: 1080px;
-}
+  .couponContainer {
+    /* 보유 쿠폰 공통 */
+    .contents {
+      height: fit-content;
+      margin: 0 auto;
+      width: 1080px;
+    }
 
-.myPageDetail {
-  padding: 70px 0 70px 0;
-  display: flex;
-  flex-direction: column;
-}
+    .myPageDetail {
+      padding: 70px 0 70px 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-.shoppingCover {
-  margin: 0 auto;
-  width: 740px;
-}
+    .shoppingCover {
+      margin: 0 auto;
+      width: 740px;
+    }
 
-.statusTypeList {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
+    .statusTypeList {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
 
-/* 보유 쿠폰 */
-.couponCover {
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: 30px 0 50px;
-  padding: 30px 37px;
-  width: 100%;
-}
+    /* 보유 쿠폰 */
+    .couponCover {
+      border: 1px solid #e6e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      margin: 30px 0 50px;
+      padding: 30px 37px;
+      width: 100%;
+    }
 
-/* 쿠폰 */
-.title {
-  color: #333;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -1.05px;
-  line-height: 30px;
-  margin: 0 auto 32px;
-  padding-top: 0;
-  width: fit-content;
-}
+    /* 쿠폰 */
+    .title {
+      color: #333;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -1.05px;
+      line-height: 30px;
+      margin: 0 auto 32px;
+      padding-top: 0;
+      width: fit-content;
+    }
 
-/* 취소/교환/환불 내역 */
-.couponList {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 363px;
-  margin-top: 15px;
-  min-height: 15px;
-  overflow: hidden;
-  width: 100%;
-}
+    /* 취소/교환/환불 내역 */
+    .couponList {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 363px;
+      margin-top: 15px;
+      min-height: 15px;
+      overflow: hidden;
+      width: 100%;
+    }
 
-/* 내역 없음 */
-.noData {
-  color: #8d8d8d;
-  font-size: 18px;
-  font-weight: 400;
-  height: fit-content;
-  letter-spacing: -0.36px;
-  line-height: 2.11;
-  text-align: center;
-  width: 0 auto;
-}
+    /* 내역 없음 */
+    .noData {
+      color: #8d8d8d;
+      font-size: 18px;
+      font-weight: 400;
+      height: fit-content;
+      letter-spacing: -0.36px;
+      line-height: 2.11;
+      text-align: center;
+      width: 0 auto;
+    }
 
-/* 사용 가능한 쿠폰이 없습니다. */
-.noData:after {
-  color: #b6b6b6;
-  content: "사용 가능한 쿠폰이 없습니다.";
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  line-height: 1.44;
+    /* 사용 가능한 쿠폰이 없습니다. */
+    .noData:after {
+      color: #b6b6b6;
+      content: "사용 가능한 쿠폰이 없습니다.";
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.36px;
+      line-height: 1.44;
+    }
+  }
 }

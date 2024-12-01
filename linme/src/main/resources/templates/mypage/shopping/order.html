@@ -8,22 +8,21 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/shopping/order.css}" />
     <title>린미 - 주문/배송 내역</title>
+    <!-- Header 영역 -->
+    <th:block th:replace="~{/fragments/header}" />
   </head>
   <body>
-    <!-- Header 영역 -->
-    <!--<header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>-->
-
     <!-- Main 영역-->
     <main>
       <div class="orderContainer">
         <div class="contents">
           <div class="myPageDetail">
-            <div class="shoppingCover">
+            <section class="shoppingCover">
               <!-- 주문/배송 -->
-              <ul class="statusTypeList">
-                <li class="statusTypeItem order on">주문/배송</li>
-                <li class="statusTypeItem claim">취소/교환/환불</li>
-              </ul>
+              <div class="statusTypeList">
+                <a th:href="@{/mypage/shopping/order}" class="statusTypeItem order on">주문/배송</a>
+                <a th:href="@{/mypage/shopping/claim}" class="statusTypeItem claim">취소/교환/환불</a>
+              </div>
               <!-- 주문 내역 -->
               <ul class="orderList on noOrder">
                 <!-- 주문 내역 없을 때 -->
@@ -33,13 +32,19 @@
                   <a th:href="@{/main/main}"><div class="button clickable moveToMain">쇼핑하러 가기</div></a>
                 </li>
               </ul>
-            </div>
+            </section>
           </div>
         </div>
       </div>
     </main>
 
     <!-- Footer 영역 -->
-    <!--<footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>-->
+    <th:block th:replace="~{/fragments/footer}" />
+
+    <!-- Script 영역 -->
+    <script>
+      // Footer 영역의 margin을 0으로 설정
+      document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
   </body>
 </html>

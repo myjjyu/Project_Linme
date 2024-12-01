@@ -20,95 +20,98 @@ a {
 }
 
 main {
+  margin-top: 150px;
   display: block;
   position: relative;
-}
 
-/* 리뷰관리 공통 */
-.contents {
-  height: fit-content;
-  margin: 0 auto;
-  width: 1080px;
-}
+  .reviewContainer {
+    /* 리뷰관리 공통 */
+    .contents {
+      height: fit-content;
+      margin: 0 auto;
+      width: 1080px;
+    }
 
-.myPageDetail {
-  padding: 70px 0 70px 0;
-  display: flex;
-  flex-direction: column;
-}
+    .myPageDetail {
+      padding: 70px 0 70px 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-.shoppingCover {
-  margin: 0 auto;
-  width: 740px;
-}
+    .shoppingCover {
+      margin: 0 auto;
+      width: 740px;
+    }
 
-.statusTypeList {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
+    .statusTypeList {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
 
-/* 리뷰 관리 */
-.reviewCover {
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: 30px 0 50px;
-  padding: 30px 37px;
-  width: 100%;
-}
+    /* 리뷰 관리 */
+    .reviewCover {
+      border: 1px solid #e6e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      margin: 30px 0 50px;
+      padding: 30px 37px;
+      width: 100%;
+    }
 
-/* 나의 리뷰 */
-.title {
-  color: #333;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -1.05px;
-  line-height: 30px;
-  margin: 0 auto 32px;
-  padding-top: 0;
-  width: fit-content;
-}
+    /* 나의 리뷰 */
+    .title {
+      color: #333;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -1.05px;
+      line-height: 30px;
+      margin: 0 auto 32px;
+      padding-top: 0;
+      width: fit-content;
+    }
 
-/* 리뷰 내역 */
-.reviewList {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 363px;
-  margin-top: 15px;
-  min-height: 15px;
-  overflow: hidden;
-  width: 100%;
-}
+    /* 리뷰 내역 */
+    .reviewList {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 363px;
+      margin-top: 15px;
+      min-height: 15px;
+      overflow: hidden;
+      width: 100%;
+    }
 
-/* 내역 없음 */
-.noData {
-  color: #8d8d8d;
-  font-size: 18px;
-  font-weight: 400;
-  height: fit-content;
-  letter-spacing: -0.36px;
-  line-height: 2.11;
-  text-align: center;
-  width: 0 auto;
-}
+    /* 내역 없음 */
+    .noData {
+      color: #8d8d8d;
+      font-size: 18px;
+      font-weight: 400;
+      height: fit-content;
+      letter-spacing: -0.36px;
+      line-height: 2.11;
+      text-align: center;
+      width: 0 auto;
+    }
 
-/* 등록된 리뷰가 없습니다. */
-.noData:after {
-  color: #b6b6b6;
-  content: "등록된 리뷰가 없습니다.";
-  display: block;
-  font-size: 20px;
-  font-weight: 500;
-  height: fit-content;
-  left: 50%;
-  letter-spacing: -0.4px;
-  line-height: 2.4;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: fit-content;
+    /* 등록된 리뷰가 없습니다. */
+    .noData:after {
+      color: #b6b6b6;
+      content: "등록된 리뷰가 없습니다.";
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      height: fit-content;
+      left: 50%;
+      letter-spacing: -0.4px;
+      line-height: 2.4;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: fit-content;
+    }
+  }
 }

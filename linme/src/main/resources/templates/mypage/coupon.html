@@ -8,14 +8,13 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/myPage/coupon.css}" />
     <title>린미 - 보유 쿠폰</title>
+    <!-- Header 영역 -->
+    <th:block th:replace="~{/fragments/header}" />
   </head>
   <body>
-    <!-- Header 영역 -->
-    <header th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/header.css} /></header>
-
     <!-- Main 영역-->
     <main>
-      <div class="orderContainer">
+      <div class="couponContainer">
         <!-- 마이페이지 myPageSummary 추가해야함 -->
         <div class="myPage"></div>
         <div class="contents">
@@ -35,6 +34,12 @@
     </main>
 
     <!-- Footer 영역 -->
-    <footer th:fragment="my-header"><link rel="stylesheet" th:href=@{/assets/css/footer.css} /></footer>
+    <th:block th:replace="~{/fragments/footer}" />
+
+    <!-- Script 영역 -->
+    <script>
+      // Footer 영역의 margin을 0으로 설정
+      document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
   </body>
 </html>
