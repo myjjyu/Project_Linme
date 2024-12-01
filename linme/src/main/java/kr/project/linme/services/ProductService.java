@@ -5,6 +5,9 @@ import java.util.List;
 import kr.project.linme.models.Product;
 
 
+
+
+
 public interface ProductService {
     /**
      * 상품추가
@@ -67,6 +70,15 @@ public interface ProductService {
      * @throws Exception
      */
     public List<Product> getProductsByCategory(int categoryId) throws Exception;
+
+
+    /**
+     * 상품 ID로 상품 조회(상세페이지)
+     * @param productId
+     * @return
+     * @throws Exception
+     */
+    public Product getProductById(int productId) throws Exception;
 }
 
 

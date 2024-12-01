@@ -118,6 +118,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    /**
+     * 카테고리별 상품 조회
+     */
     @Override
     public List<Product> getProductsByCategory(int categoryId) throws Exception {
         List<Product> products = null;
@@ -134,6 +137,14 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return products;
+    }
+
+    /**
+     * 상품 상세페이지 조회
+     */
+    @Override
+    public Product getProductById(int productId) throws Exception {
+        return productMapper.selectById(productId);
     }
 
 }

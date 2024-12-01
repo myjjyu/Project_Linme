@@ -68,16 +68,17 @@ public interface ProductMapper {
          * @return
          */
         @Select("SELECT " +
-                        "p.product_id, p.product_name, p.brand_id, p.price, p.sale_price, " +
+                        "p.product_id, p.product_name, p.brand_id, b.brand_name, p.price, p.sale_price, " +
                         "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
                         "p.edit_date AS p_edit_date, i.img, i.d_img " +
                         "FROM product p " +
-                        "INNER JOIN img i ON i.product_id = p.product_id " +  
+                        "INNER JOIN img i ON i.product_id = p.product_id " +
                         "WHERE p.product_id = #{productId}")
         @Results(id = "productMapper", value = {
                         @Result(property = "productId", column = "product_id"),
                         @Result(property = "productName", column = "product_name"),
                         @Result(property = "brandId", column = "brand_id"),
+                        @Result(property = "brandName", column = "brand_name"),
                         @Result(property = "price", column = "price"),
                         @Result(property = "salePrice", column = "sale_price"),
                         @Result(property = "discountRate", column = "discount_rate"),
@@ -90,13 +91,19 @@ public interface ProductMapper {
         })
         public Product selectItem(Product input);
 
+
+        /**
+         * 상품 목록 조회
+         * @param input
+         * @return
+         */
         @Select("SELECT " +
                         "p.product_id, p.product_name, p.brand_id, p.price, p.sale_price, " +
                         "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
                         "p.edit_date AS p_edit_date, i.img, i.d_img " +
                         "FROM product p " +
                         "INNER JOIN img i ON i.product_id = p.product_id")
-                        @ResultMap("productMapper")
+        @ResultMap("productMapper")
         public List<Product> selectList(Product input);
 
         /**
@@ -107,8 +114,6 @@ public interface ProductMapper {
          */
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
         public int selectCount(Product input);
-
-
 
         /**
          * 카테고리별 상품 조회 기능
@@ -121,8 +126,25 @@ public interface ProductMapper {
                         "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
                         "p.edit_date AS p_edit_date, i.img, i.d_img " +
                         "FROM product p " +
-                        "LEFT JOIN img i ON i.product_id = p.product_id " + 
+                        "LEFT JOIN img i ON i.product_id = p.product_id " +
                         "WHERE p.category_id = #{categoryId}")
         @ResultMap("productMapper")
         public List<Product> selectByCategory(@Param("categoryId") int categoryId);
+
+        /**
+         * 상품 상세페이지 조회
+         * 
+         * @param productId
+         * @return
+         */
+        @Select("SELECT " +
+                        "p.product_id, p.product_name, p.brand_id, b.brand_name, p.price, p.sale_price, " +
+                        "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
+                        "p.edit_date AS p_edit_date, i.img, i.d_img " +
+                        "FROM product p " +
+                        "LEFT JOIN img i ON i.product_id = p.product_id " +
+                        "LEFT JOIN brand b ON p.brand_id = b.brand_id " +
+                        "WHERE p.product_id = #{productId}")
+        @ResultMap("productMapper")
+        public Product selectById(@Param("productId") int productId);
 }

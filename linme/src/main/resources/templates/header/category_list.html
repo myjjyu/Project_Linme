@@ -106,7 +106,7 @@
         <div id="productListContainer">
           <div th:each="product : ${products}">
             <div class="boximg">
-              <a th:href="@{/view/view}">
+              <a th:href="@{'/view/view/' + ${product.productId}}">
                 <img th:src="${product.img}" class="imgbox" />
                 <p class="productName" th:text="${product.productName}">내용</p>
                 <div class="priceContainer">
@@ -171,7 +171,7 @@
             const noProductsMessage =
               document.getElementById("noProductsMessage");
 
-            productListContainer.innerHTML = ""; // 기존 내용 초기화
+            productListContainer.innerHTML = "";
             if (data.length === 0) {
               noProductsMessage.style.display = "block";
             } else {
@@ -215,7 +215,6 @@
           });
       }
 
-      // 가격 포맷 함수
       function formatPrice(price) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }

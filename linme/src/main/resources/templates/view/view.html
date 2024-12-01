@@ -53,14 +53,9 @@
           <!-- 메인이미지 -->
           <div class="swiper-wrapper">
             <div class="swiper-slide main-img">
-              <img th:src="@{/assets/img/view/main-img.png}" />
+              <img th:src="${product.img}" />
             </div>
-            <div class="swiper-slide main-img">
-              <img th:src="@{/assets/img/view/side-img.png}" />
-            </div>
-            <div class="swiper-slide main-img">
-              <img th:src="@{/assets/img/view/side-img2.png}" />
-            </div>
+            <!-- 추가 이미지가 있다면 여기에 추가 -->
           </div>
           <!--화살표 버튼  -->
           <div class="swiper-button">
@@ -82,14 +77,9 @@
           <div thumbsSlider="" class="swiper mySwiper">
             <div class="swiper-wrapper side-contents">
               <div class="swiper-slide side-img">
-                <img th:src="@{/assets/img/view/main-img.png}" />
+                <img th:src="${product.img}" />
               </div>
-              <div class="swiper-slide side-img">
-                <img th:src="@{/assets/img/view/side-img.png}" />
-              </div>
-              <div class="swiper-slide side-img">
-                <img th:src="@{/assets/img/view/side-img2.png}" />
-              </div>
+              <!-- 추가 이미지가 있다면 여기에 추가 -->
             </div>
           </div>
         </div>
@@ -99,9 +89,17 @@
           <!-- /* 상품주문 디테일영역 */ -->
           <div class="product-container">
             <ul>
-              <li class="productInfoItem brandName">파파초이스</li>
-              <li class="productInfoItem productName">
-                파파초이스 유산균 장건강 프로바이오틱스 30억 CFU 1개월분
+              <li
+                class="productInfoItem brandName"
+                th:text="${product.brandName}"
+              >
+                브랜드 이름
+              </li>
+              <li
+                class="productInfoItem productName"
+                th:text="${product.productName}"
+              >
+                상품 이름
               </li>
               <li>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
@@ -120,9 +118,19 @@
                 /></a>
               </li>
               <li class="discountRate">
-                12% <span class="originalPrice">42,000</span>
+                <span th:text="${product.discountRate + '%'}">할인율</span>
+                <span
+                  class="originalPrice"
+                  th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
+                  >원래 가격</span
+                >
               </li>
-              <li class="salePrice">37,000원</li>
+              <li
+                class="salePrice"
+                th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
+              >
+                할인 가격
+              </li>
               <li class="shippingInfo">배송정보</li>
               <li class="shippingInfo shipping">
                 무료배송 <span>|</span> CJ대한통운
@@ -202,10 +210,6 @@
                   <td>소비자 상담 관련 전화번호</td>
                   <td>상품 상세페이지 참조</td>
                 </tr>
-                <tr>
-                  <td>건강기능식품 광고심의번호</td>
-                  <td>220210103</td>
-                </tr>
               </table>
             </div>
 
@@ -217,13 +221,32 @@
 
             <div class="total">
               <div class="total-text">상품금액 합계</div>
-              <div class="total-price">12,300 <span>원</span></div>
+              <div
+                class="total-price"
+                data-unit-price="${product.salePrice}"
+                th:attr="data-unit-price=${product.salePrice}"
+                th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
+              ></div>
             </div>
 
             <div class="btn">
-              <a th:href="@{#}" class="cart-btn">장바구니</a>
-              <a th:href="@{#}" class="buy-btn">바로구매</a>
+              <a th:href="@{/cart/cart}" class="cart-btn">장바구니</a>
+              <a th:href="@{/payment/payment}" class="buy-btn">바로구매</a>
             </div>
+
+            <!-- 백엔드로 데이터 전송..?? -->
+            <!-- <form th:action="@{/cart/cart}" method="post">
+              <input type="hidden" name="productId" th:value="${product.productId}" />
+              <input type="hidden" name="quantity" value="1" class="quantity-input" />
+              <button type="submit" class="cart-btn">장바구니</button>
+            </form>
+        
+            <form th:action="@{/payment/payment}" method="post">
+              <input type="hidden" name="productId" th:value="${product.productId}" />
+              <input type="hidden" name="quantity" value="1" class="quantity-input" />
+              <button type="submit" class="buy-btn">바로구매</button>
+            </form> -->
+
           </div>
         </div>
       </div>
@@ -249,11 +272,7 @@
 
       <!-- 제품이미지 -->
       <div id="mainimg">
-        <img
-          th:src="@{/assets/img/view/view-main.png}"
-          width="897"
-          height="auto"
-        />
+        <img th:src="${product.dImg}" width="897" height="auto" />
       </div>
 
       <!-- 리뷰문의 -->

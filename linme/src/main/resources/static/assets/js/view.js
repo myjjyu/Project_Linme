@@ -1,4 +1,4 @@
-// 상품이미지 
+// 상품이미지
 var swiper = new Swiper(".mySwiper", {
   loop: true,
   spaceBetween: 10,
@@ -17,7 +17,6 @@ var swiper2 = new Swiper(".mySwiper2", {
     swiper: swiper,
   },
 });
-
 
 // 상품설명, 리뷰, 상품문의 클릭시 컬러변경 이벤트
 const tabs = document.querySelectorAll(".tab-link");
@@ -46,8 +45,7 @@ document.querySelector(".button").addEventListener("click", (e) => {
 });
 
 // 필수 표기정보 alert창//
-document.querySelector(".required-Info").addEventListener
-("click", (e) => {
+document.querySelector(".required-Info").addEventListener("click", (e) => {
   Swal.fire({
     title: "상품고시정보",
     html: document.querySelector(".required-box").innerHTML,
@@ -59,47 +57,51 @@ document.querySelector(".required-Info").addEventListener
   });
 });
 
-// 수량 + 클릭시 증가 - 클릭시 감소 에 따른 함계금액 값 구하기
 document.addEventListener("DOMContentLoaded", function () {
-  // 초기 값
   let quantity = 1;
-  const unitPrice = 12300;
 
   const minusButton = document.querySelector(".minus");
   const plusButton = document.querySelector(".plus");
   const numberDisplay = document.querySelector(".number");
   const totalPriceDisplay = document.querySelector(".total-price");
+  const unitPrice = parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
 
-  // 수량과 총 금액 업데이트 함수
+  console.log("Unit Price:", unitPrice);
+
   function updateTotal() {
     numberDisplay.textContent = quantity;
     const totalPrice = unitPrice * quantity;
     totalPriceDisplay.innerHTML = `${totalPrice.toLocaleString()} <span>원</span>`;
+
+    quantityInputs.forEach(input => input.value = quantity);
   }
 
-  // - 버튼 클릭
-  minusButton.addEventListener("click", function () {
-    if (quantity > 1) {
-      quantity--;
+  if (minusButton) {
+    minusButton.addEventListener("click", function () {
+      if (quantity > 1) {
+        quantity--;
+        updateTotal();
+      } else {
+        Swal.fire({
+          title: "최저 수량 미만으로 선택할 수 없습니다.",
+          confirmButtonText: "확인",
+          width: 300,
+          height: 145,
+          customClass: {
+            confirmButton: "alert-button",
+            title: "title-text",
+          },
+        });
+      }
+    });
+  }
+
+  if (plusButton) {
+    plusButton.addEventListener("click", function () {
+      quantity++;
       updateTotal();
-    } else {
-      Swal.fire({
-        title: "최저 수량 미만으로 선택할 수 없습니다.",
-        confirmButtonText: "확인",
-        width: 300,
-        height: 145,
-        customClass: {
-          confirmButton: "alert-button",
-          title: "title-text",
-        },
-      });
-    }
-  });
-  // + 버튼 클릭
-  plusButton.addEventListener("click", function () {
-    quantity++;
-    updateTotal();
-  });
+    });
+  }
 
   updateTotal();
 });

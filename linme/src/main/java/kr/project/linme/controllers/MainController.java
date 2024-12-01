@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
+import kr.project.linme.mappers.ProductMapper;
 import kr.project.linme.models.Product;
 import kr.project.linme.services.ProductService;
 
@@ -25,6 +26,9 @@ public class MainController {
 
     @Autowired
     private FileHelper fileHelper;
+
+    @Autowired
+    private ProductMapper productMapper;
 
     /**
      * 메인 페이지
@@ -81,8 +85,7 @@ public class MainController {
         return "header/category_list";
     }
 
-
-
+    
     @GetMapping("/main/main_ok")
     public String mainOk(Model model) {
         return "main/main_ok";
@@ -123,14 +126,34 @@ public class MainController {
         return "header/spacial";
     }
 
-    /**
+      /**
      * 상세 페이지
      * 
+     * @param productId
      * @param model
      * @return
      */
-    @GetMapping("/view/view")
-    public String View(Model model) {
-        return "view/view"; // 상품 상세 페이지
+    @GetMapping("/view/view/{productId}")
+    public String view(@PathVariable("productId") int productId, Model model) {
+        Product product = null;
+        try {
+            product = productService.getProductById(productId);
+            if (product != null) {
+                // 이미지 경로 설정
+                if (product.getImg() != null) {
+                    product.setImg(fileHelper.getUrl(product.getImg()));
+                }
+                // 상세 이미지 경로 설정
+                if (product.getDImg() != null) {
+                    product.setDImg(fileHelper.getUrl(product.getDImg()));
+                }
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e.getMessage());
+            e.printStackTrace();
+        }
+    
+        model.addAttribute("product", product);
+        return "view/view"; 
     }
 }

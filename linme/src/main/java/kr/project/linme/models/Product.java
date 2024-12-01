@@ -18,9 +18,13 @@ public class Product {
   private String editDate;       // 변경일시
 
 
-  
-  private String img;  
-  private String dImg;
+
+  private String img;  // 이미지
+  private String dImg; // 상세이미지
+
+  private String brandName; // 브랜드명
+
+
 
 
 
