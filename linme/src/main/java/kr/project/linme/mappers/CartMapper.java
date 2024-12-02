@@ -74,11 +74,11 @@ public interface CartMapper {
                 "p.product_id, " + 
                 "c.reg_date, " + 
                 "c.edit_date, " + 
-                "product_name, " +
-                "price, " +
-                "sale_price " +
-                "brand_name " +
-                "i.img" +
+                "product_name, " + 
+                "price, " + 
+                "sale_price, " + 
+                "brand_name, " + 
+                "i.img " + 
             "FROM cart c " + 
             "INNER JOIN product p ON p.product_id = c.product_id " +
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
