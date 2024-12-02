@@ -39,7 +39,6 @@ public class MypageController {
     }
 
 
-
     @GetMapping("/myPage/level")
     public String level() {
         return "myPage/level";

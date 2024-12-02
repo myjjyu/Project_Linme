@@ -62,14 +62,20 @@ document.getElementById("address-form").addEventListener("submit",async(e)=>{
     e.preventDefault();
 
     const formData=new FormData(e.currentTarget);
+    const data=await axiosHelper.putMultipart(e.currentTarget.action,formData);
     const addrMsg = formData.get("addrMsg");
 
     // "직접 입력" 선택 시 customInput 값을 addrMsg에 추가
-    if (addrMsg === "직접 입력") {
-        formData.set("addrMsg", formData.get("customAddrMsg"));
+    if (formData.get("addrMsg") === "직접 입력") {
+        const customAddrMsg = formData.get("customAddrMsg")?.trim();
+        if (customAddrMsg) {
+            formData.set("addrMsg", customAddrMsg); 
+        } else {
+            alert("배송 요청사항을 입력해주세요."); 
+            return;
+        }
     }
 
-    const data=await axiosHelper.putMultipart("[[@{/api/myPage/postcode-update}]]",formData);
     if(data){
         await utilHelper.alertSuccess("수정되었습니다.");
         location.reload();

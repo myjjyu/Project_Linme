@@ -51,6 +51,57 @@ body {
     padding: 20px; 
     /* overflow: hidden; */
 }
+
+.profileImageBox {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileImageBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 1;
+    text-align: center;
+}
+
+.deleteButton {
+    margin-top: 10px;
+    background-color: #ff697b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #e05656;
+}
+
+.hidden {
+    display: none;
+}
 .profileImage {
     /* position: relative;  */
     /* width: 60%;
@@ -58,20 +109,20 @@ body {
     border-radius: 50%;
     border: 2px solid #ddd;
     object-fit: cover; */
-    width: 80%; 
+    /* width: 80%; 
     height: auto; 
     border-radius: 50%; 
     border: 2px solid #ddd; 
     object-fit: cover; 
     margin-bottom: 5px; 
-    object-fit: cover;
+    object-fit: cover; */
 }
 
 /* 수정 버튼 스타일 */
 .editButton {
     /* position: absolute; */
     /* transform: translate(-50%, -50%); */
-    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
     padding: 5px 15px;
     border: none;
@@ -79,17 +130,17 @@ body {
     cursor: pointer;
     font-size: 14px;
     z-index: 1000;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; */
 }
 
 .editButton:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
+    /* background-color: rgba(0, 0, 0, 0.9);*/
+} 
 
 
 /* 삭제 버튼 */
 .deleteButton {
-    position: absolute; 
+    /* position: absolute; 
     top: 5px;
     right: 5px; 
     background-color: #525252;
@@ -103,7 +154,7 @@ body {
     text-align: center;
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 10; 
+    z-index: 10;  */
 }
 .profileForm {
     width: 100%;

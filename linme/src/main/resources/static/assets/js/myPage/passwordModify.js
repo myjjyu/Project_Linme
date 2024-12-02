@@ -95,7 +95,7 @@ document.getElementById("password-form").addEventListener("submit",async(e)=>{
 
     // DB 비밀번호가 일치하면 변경 요청 진행
     const formData = new FormData(e.currentTarget);
-    const data=await axiosHelper.putMultipart("[[@{/api/myPage/password-update}]]", formData);
+    const data=await axiosHelper.putMultipart(e.currentTarget.action,formData);
     
     if(data){
         await utilHelper.alertSuccess("수정되었습니다.");

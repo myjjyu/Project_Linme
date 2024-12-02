@@ -302,11 +302,11 @@ document.querySelector("#nickname_unique_check").addEventListener("click",async(
         e.element.focus();
         return;
     }
-    const email=document.querySelector("#nickname").value;
-    const data=await axiosHelper.get(`/api/account/nickname_unique_check`,{
-        email:email
+    const nickname=document.querySelector("#nickname").value;
+    const da=await axiosHelper.get(`/api/myPage/nickname_unique_check`,{
+        nickname:nickname
     });
-    if(data){
+    if(da){
         await utilHelper.alertSuccess("사용 가능한 닉네임 입니다.");
         document.querySelector("#nickname_check").value="Y";
     }
@@ -349,8 +349,7 @@ document.getElementById("profile-form").addEventListener("submit",async(e)=>{
         return;
     }
     const formData=new FormData(e.currentTarget);
-
-    const data=await axiosHelper.putMultipart("[[@{/api/myPage/profile-update}]]",formData);
+    const data=await axiosHelper.putMultipart(e.currentTarget.action,formData);
     if(data){
         await utilHelper.alertSuccess("프로필 정보가 수정되었습니다.");
         location.reload();

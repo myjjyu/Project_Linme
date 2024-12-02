@@ -18,6 +18,8 @@ import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.models.UploadItem;
 import kr.project.linme.services.MemberService;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 
@@ -115,6 +117,17 @@ public class MypageRestController {
     //     return restHelper.sendJson();
     // }
 
+    /* 닉네임 중복*/
+    @GetMapping("/api/myPage/nickname_unique_check")
+    public Map<String,Object>nicknameUniqueCheck(@RequestParam("nickname") String nickname) {
+        try {
+            memberService.isUniqueNickname(nickname);
+        } catch (Exception e) {
+            return restHelper.badRequest(e);
+        }
+        return restHelper.sendJson();
+    }
+    
     /**
      * 프로필 수정
      */
