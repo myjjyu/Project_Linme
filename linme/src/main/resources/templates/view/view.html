@@ -230,11 +230,13 @@
             </div>
 
             <div class="btn">
-              <form th:action="@{/api/cart/cart/add}" method="post">
-                <input type="hidden" name="memberId" th:value="${product.memberId}"/> 
+              <form  id="cartform"  th:action="@{/api/cart/cart/add}" method="post">
+                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}"/> 
+                <!-- <input type="hidden" name="memberId" th:value="${product.memberId}"/> -->
                 <input type="hidden" name="productId" th:value="${product.productId}"/>
-                <input type="hidden" name="quantity" value="1" class="quantity-input" />
-                <input type="hidden" name="productCount" th:value="${product.productCount}"/>
+                <!-- <input type="hidden" name="quantity" value="1" class="quantity-input" /> -->
+                 <!-- 수량▼ -->
+                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
             

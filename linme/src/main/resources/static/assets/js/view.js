@@ -76,7 +76,11 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
     reverseButtons: true, // 버튼 순서 변경
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.href = "/cart/cart";
+      //window.location.href = "/cart/cart";
+
+      //폼찾아서 전송
+      document.querySelector("#cartform").submit();
+      console.log()
     }
   });
 });
