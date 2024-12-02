@@ -33,7 +33,7 @@ tabs.forEach((tab) => {
 //문의하기 alert창
 document.querySelector(".button").addEventListener("click", (e) => {
   Swal.fire({
-    title: "로그인이 필요합니다.",
+    title: "마이페이지 1:1 문의하기 에서<br>문의 가능합니다.",
     confirmButtonText: "확인",
     width: 300,
     height: 145,

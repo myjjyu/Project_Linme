@@ -230,23 +230,36 @@
             </div>
 
             <div class="btn">
-              <a th:href="@{/cart/cart}" class="cart-btn">장바구니</a>
-              <a th:href="@{/payment/payment}" class="buy-btn">바로구매</a>
+              <form th:action="@{/cart/cart}" method="post">
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
+                <input
+                  type="hidden"
+                  name="quantity"
+                  value="1"
+                  class="quantity-input"
+                />
+                <button type="submit" class="cart-btn">장바구니</button>
+              </form>
+
+              <form th:action="@{/payment/payment}" method="post">
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
+                <input
+                  type="hidden"
+                  name="quantity"
+                  value="1"
+                  class="quantity-input"
+                />
+                <button type="submit" class="buy-btn">바로구매</button>
+              </form>
             </div>
-
-            <!-- 백엔드로 데이터 전송..?? -->
-            <!-- <form th:action="@{/cart/cart}" method="post">
-              <input type="hidden" name="productId" th:value="${product.productId}" />
-              <input type="hidden" name="quantity" value="1" class="quantity-input" />
-              <button type="submit" class="cart-btn">장바구니</button>
-            </form>
-        
-            <form th:action="@{/payment/payment}" method="post">
-              <input type="hidden" name="productId" th:value="${product.productId}" />
-              <input type="hidden" name="quantity" value="1" class="quantity-input" />
-              <button type="submit" class="buy-btn">바로구매</button>
-            </form> -->
-
           </div>
         </div>
       </div>
