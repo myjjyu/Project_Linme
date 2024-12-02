@@ -16,8 +16,8 @@ public class Cart {
 
     /** 상품 */
     private String productName;     // 상품 이름
-    private String salePrice;       // 판매 가격
-    private String price;           // 정가
+    private int salePrice;       // 판매 가격
+    private int price;           // 정가
 
     /** 브랜드 */
     private String brandName;       // 브랜드 이름

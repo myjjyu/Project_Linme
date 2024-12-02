@@ -1,5 +1,6 @@
 package kr.project.linme.controllers.apis;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,10 +12,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import jakarta.servlet.http.HttpServletRequest;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Cart;
+import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @RestController
 public class CartRestController {
@@ -24,6 +30,48 @@ public class CartRestController {
 
     @Autowired
     private RestHelper restHelper;
+
+    /** 상세상품에서 장바구니로 POST */
+    @PostMapping("/api/cart/cart/add")
+    public Map<String, Object> postMethodName(
+        HttpServletRequest request,
+        @SessionAttribute("memberInfo") Member memberInfo,
+        @RequestParam("memberId") int memberId,
+        @RequestParam("productId") int productId,
+        @RequestParam("img") String img,
+        @RequestParam("brandName") String brandName,
+        @RequestParam("productName") String productName,
+        @RequestParam("productCount") int productCount,
+        @RequestParam("salePrice") int salePrice,
+        @RequestParam("price") int price,
+        @RequestParam("totalPrice") int totalPrice
+    ) {
+
+        Cart input = new Cart();
+        input.setMemberId(memberId);
+        input.setProductId(productId);
+        input.setImg(img);
+        input.setBrandName(brandName);
+        input.setProductName(productName);
+        input.setProductCount(productCount);
+        input.setSalePrice(salePrice);
+        input.setPrice(price);
+        input.setTotalPrice(totalPrice);
+
+        Cart output = null;
+
+        try {
+            output = cartService.addItem(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("cart", output);
+
+        return restHelper.sendJson(data);
+    }
+    
 
     /**
      * Cart 수정
