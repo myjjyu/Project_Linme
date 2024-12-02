@@ -134,7 +134,7 @@ main {
           }
 
           /* 배송지 정보 내용 */
-          #deliveryList {
+          .deliveryList {
             border: 1px solid #e6e6e6;
             display: flex;
             flex-direction: column;
@@ -216,7 +216,7 @@ main {
                 align-items: start;
 
                 /* 선택 옵션 */
-                #selectDeliveryMsgOption {
+                .selectDeliveryMsgOption {
                   box-sizing: border-box;
                   display: flex;
                   flex-direction: column;
@@ -237,7 +237,7 @@ main {
                 }
 
                 /** 배송요청사항 입력 영역 */
-                #inputContainer {
+                .inputContainer {
                   width: 100%;
 
                   input {
@@ -614,7 +614,7 @@ main {
         }
 
         /* 결제하기 버튼 */
-        #orderBtn {
+        .orderBtn {
           background-color: #ff8181;
           border-radius: 4px;
           display: flex;

@@ -151,7 +151,10 @@
                 <!-- <span class="totalPriceText" th:text="${cart.totalPrice} + ' 원'"></span> -->
               </div>
               <!-- 주문하기 버튼 -->
-              <a class="orderBtn" th:href="@{/payment/payment}"><span>주문하기</span></a>
+              <form th:action="@{/api/payment/order/{memberId}}" method="post">
+                <!-- <button type="submit" class="orderBtn" th:href="@{/payment/payment}"><span>주문하기</span></button> -->
+                <button type="submit" class="orderBtn"><span>주문하기</span></button>
+              </form>
             </div>
           </section>
         </section>
