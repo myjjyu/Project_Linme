@@ -230,33 +230,17 @@
             </div>
 
             <div class="btn">
-              <form th:action="@{/cart/cart}" method="post">
-                <input
-                  type="hidden"
-                  name="productId"
-                  th:value="${product.productId}"
-                />
-                <input
-                  type="hidden"
-                  name="quantity"
-                  value="1"
-                  class="quantity-input"
-                />
+              <form th:action="@{/api/cart/cart/add}" method="post">
+                <input type="hidden" name="memberId" th:value="${product.memberId}"/> 
+                <input type="hidden" name="productId" th:value="${product.productId}"/>
+                <input type="hidden" name="quantity" value="1" class="quantity-input" />
+                <input type="hidden" name="productCount" th:value="${product.productCount}"/>
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
-
-              <form th:action="@{/payment/payment}" method="post">
-                <input
-                  type="hidden"
-                  name="productId"
-                  th:value="${product.productId}"
-                />
-                <input
-                  type="hidden"
-                  name="quantity"
-                  value="1"
-                  class="quantity-input"
-                />
+            
+              <form th:action="@{/api/payment/payment}" method="post">
+                <input type="hidden" name="productId" th:value="${product.productId}"/>
+                <input type="hidden" name="quantity" value="1" class="quantity-input" />
                 <button type="submit" class="buy-btn">바로구매</button>
               </form>
             </div>

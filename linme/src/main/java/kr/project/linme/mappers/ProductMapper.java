@@ -70,9 +70,11 @@ public interface ProductMapper {
         @Select("SELECT " +
                         "p.product_id, p.product_name, p.brand_id, b.brand_name, p.price, p.sale_price, " +
                         "p.discount_rate, p.category_id, p.discount_price, p.reg_date AS p_reg_date, " +
-                        "p.edit_date AS p_edit_date, i.img, i.d_img " +
+                        "p.edit_date AS p_edit_date, i.img, i.d_img, c.product_count, m.member_id " +
                         "FROM product p " +
                         "INNER JOIN img i ON i.product_id = p.product_id " +
+                        "INNER JOIN cart c ON c.product_id = p.product_id " +
+                        "INNER JOIN member m ON m.member_id = c.member_id " +
                         "WHERE p.product_id = #{productId}")
         @Results(id = "productMapper", value = {
                         @Result(property = "productId", column = "product_id"),
@@ -87,7 +89,9 @@ public interface ProductMapper {
                         @Result(property = "regDate", column = "reg_date"),
                         @Result(property = "editDate", column = "edit_date"),
                         @Result(property = "img", column = "img"),
-                        @Result(property = "dImg", column = "d_img")
+                        @Result(property = "dImg", column = "d_img"),
+                        @Result(property = "productCount", column = "product_count"),
+                        @Result(property = "memberId", column = "member_id")
         })
         public Product selectItem(Product input);
 
@@ -144,6 +148,7 @@ public interface ProductMapper {
                         "FROM product p " +
                         "LEFT JOIN img i ON i.product_id = p.product_id " +
                         "LEFT JOIN brand b ON p.brand_id = b.brand_id " +
+                        "LEFT JOIN cart c ON c.product_id = p.product_id " +
                         "WHERE p.product_id = #{productId}")
         @ResultMap("productMapper")
         public Product selectById(@Param("productId") int productId);

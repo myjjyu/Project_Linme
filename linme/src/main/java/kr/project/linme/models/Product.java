@@ -18,13 +18,18 @@ public class Product {
   private String editDate;       // 변경일시
 
 
-
+// 이미지테이블
   private String img;  // 이미지
   private String dImg; // 상세이미지
 
+  // 브랜드테이블
   private String brandName; // 브랜드명
 
+  // 카트테이블
+  private int productCount; // 상품 총 수량
 
+  // 멤버테이블
+  private int memberId; // 회원 일련번호
 
 
 

@@ -82,6 +82,9 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
 });
 
 
+
+
+// 수량 증가, 감소 버튼 
 document.addEventListener("DOMContentLoaded", function () {
   let quantity = 1;
 
@@ -89,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const plusButton = document.querySelector(".plus");
   const numberDisplay = document.querySelector(".number");
   const totalPriceDisplay = document.querySelector(".total-price");
+  const quantityInputs = document.querySelectorAll(".quantity-input");
   const unitPrice = parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
 
   console.log("Unit Price:", unitPrice);
