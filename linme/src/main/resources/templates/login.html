@@ -130,7 +130,7 @@
                 return false;
             }
 
-            const data = await axiosHelper.post("[[@{/api/account/login}]]", new FormData(e.currentTarget));
+            const data = await axiosHelper.post("[[@{/api/member/login}]]", new FormData(e.currentTarget));
 
             if (data) {
                 window.location = "[[@{/main/main}]]";

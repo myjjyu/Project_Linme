@@ -188,7 +188,7 @@
             }
 
             const userId = document.querySelector("#user_id").value;
-            const data = await axiosHelper.get(`/api/account/id_unique_checkk`, {
+            const data = await axiosHelper.get(`/api/member/id_unique_checkk`, {
                 user_id: userId
             });
 
@@ -215,7 +215,7 @@
             }
 
             const nickname = document.querySelector("#nickname").value;
-            const data = await axiosHelper.get(`/api/account/nickname_unique_check`, {
+            const data = await axiosHelper.get(`/api/member/nickname_unique_check`, {
                 nickname: nickname
             });
 
@@ -283,7 +283,7 @@
 
             const formData = new FormData(e.currentTarget);
 
-            const data = await axiosHelper.postMultipart("[[@{/api/account/join}]]", formData);
+            const data = await axiosHelper.postMultipart("[[@{/api/member/join}]]", formData);
 
             // 나중에 경로 수정하기
             if (data) {

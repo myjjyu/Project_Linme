@@ -25,7 +25,7 @@ public class MemberRestController {
     private MemberService memberService;
 
     // 아이디 (이메일) 중복검사
-    @GetMapping("/api/account/id_unique_checkk")
+    @GetMapping("/api/member/id_unique_checkk")
     public Map<String, Object> idUniqueCheck(@RequestParam("user_id") String userId) {
         try {
             memberService.isUniqueUserId(userId);
@@ -37,7 +37,7 @@ public class MemberRestController {
     }
 
     // 닉네임 중복검사
-    @GetMapping("/api/account/nickname_unique_check")
+    @GetMapping("/api/member/nickname_unique_check")
     public Map<String, Object> nicknameUniqueCheck(@RequestParam("nickname") String nickname) {
         try {
             memberService.isUniqueNickname(nickname);
@@ -49,7 +49,7 @@ public class MemberRestController {
     }
 
     // 회원가입
-    @PostMapping("/api/account/join")
+    @PostMapping("/api/member/join")
     public Map<String, Object> join(
         @RequestParam("user_id") String userId,
         @RequestParam("nickname") String nickname,
@@ -99,7 +99,7 @@ public class MemberRestController {
     }
 
     // 로그인
-    @PostMapping("/api/account/login")
+    @PostMapping("/api/member/login")
     public Map<String, Object> login(
             // 세션을 사용해야 하므로 request 객체가 필요하다
             // --> 
@@ -136,7 +136,7 @@ public class MemberRestController {
     }
 
     // 로그아웃 기능 
-    @GetMapping("/api/account/logout")
+    @GetMapping("/api/member/logout")
     public Map<String, Object> logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
