@@ -38,25 +38,13 @@ public class CartRestController {
         @SessionAttribute("memberInfo") Member memberInfo,
         @RequestParam("memberId") int memberId,
         @RequestParam("productId") int productId,
-        @RequestParam("img") String img,
-        @RequestParam("brandName") String brandName,
-        @RequestParam("productName") String productName,
-        @RequestParam("productCount") int productCount,
-        @RequestParam("salePrice") int salePrice,
-        @RequestParam("price") int price,
-        @RequestParam("totalPrice") int totalPrice
+        @RequestParam("productCount") int productCount
     ) {
 
         Cart input = new Cart();
         input.setMemberId(memberId);
         input.setProductId(productId);
-        input.setImg(img);
-        input.setBrandName(brandName);
-        input.setProductName(productName);
         input.setProductCount(productCount);
-        input.setSalePrice(salePrice);
-        input.setPrice(price);
-        input.setTotalPrice(totalPrice);
 
         Cart output = null;
 
