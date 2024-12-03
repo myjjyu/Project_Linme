@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.RestHelper;
+import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.MemberService;
 
@@ -23,6 +25,12 @@ public class MemberRestController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private FileHelper fileHelper;
+
+    @Autowired
+    private WebHelper webHelper;
 
     // 아이디 (이메일) 중복검사
     @GetMapping("/api/member/id_unique_checkk")
@@ -105,7 +113,8 @@ public class MemberRestController {
             // --> 
             HttpServletRequest request,
             @RequestParam("userId") String userId,
-            @RequestParam("userPw") String userPw) {
+            @RequestParam("userPw") String userPw,
+            @RequestParam(value = "rememberId", defaultValue = "N") String rememberId) {
         // 1) 입력값에 대한 유효성 검사
         // --- 생략 ---
 
@@ -123,8 +132,16 @@ public class MemberRestController {
             return restHelper.serverError(e);
         }
 
-        // // 추가 내용 (프로필 사진의 경로의 URL로 변환)
-        // output.setPhoto(fileHelper.getUrl(output.getPhoto()));
+        if (rememberId.equals("Y")) {
+            try {
+                webHelper.writeCookie("rememberId", userId, 60 * 60 * 24 * 7, "localhost", "/login");
+            } catch (Exception e) {
+                return restHelper.serverError("아이디 저장 실패");
+            }
+        }
+
+        // 프로필 사진의 경로의 URL로 변환
+        output.setProfile(fileHelper.getUrl(output.getProfile()));
 
         // 4) 로그인에 성공했다면 회원 정보를 세션에 저장한다
         HttpSession session = request.getSession();
