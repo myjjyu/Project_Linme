@@ -70,6 +70,7 @@ public class CartMapperTest {
         Cart input = new Cart();
         // 조회할 데이터 일련번호
         input.setMemberId(1);
+        input.setCartId(1);
         
         Cart output = cartMapper.selectItem(input);
         log.debug("output: " + output.toString());

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -61,6 +62,45 @@ public interface CartMapper {
     @Delete("DELETE FROM cart WHERE cart_id = #{cartId}")
     public int delete(Cart input);
 
+    // /**
+    //  * 장바구니 단일 조회
+    //  * @param input - 조회할 장바구니 정보에 대한 모델 객체
+    //  * @return 조회된 데이터
+    //  */
+    // @Select("SELECT " + 
+    //             "cart_id, " + 
+    //             "product_count, " + 
+    //             "total_price, " + 
+    //             "member_id, " + 
+    //             "p.product_id, " + 
+    //             "c.reg_date, " + 
+    //             "c.edit_date, " + 
+    //             "product_name, " + 
+    //             "price, " + 
+    //             "sale_price, " + 
+    //             "brand_name, " + 
+    //             "i.img " + 
+    //         "FROM cart c " + 
+    //         "INNER JOIN product p ON p.product_id = c.product_id " +
+    //         "INNER JOIN brand b ON b.brand_id = p.brand_id " +
+    //         "INNER JOIN img i ON i.product_id = c.product_id " +
+    //         "WHERE member_id = #{memberId}")
+    // @Results(id="cartMap", value={
+    //     @Result(property="cartId", column="cart_id"),
+    //     @Result(property="productCount", column="product_count"),
+    //     @Result(property="totalPrice", column="total_price"),
+    //     @Result(property="memberId", column="member_id"),
+    //     @Result(property="productId", column="product_id"),
+    //     @Result(property="regDate", column="reg_date"),
+    //     @Result(property="editDate", column="edit_date"),
+    //     @Result(property="productName", column="product_name"),
+    //     @Result(property="price", column="price"),
+    //     @Result(property="salePrice", column="sale_price"),
+    //     @Result(property="brandName", column="brand_name"),
+    //     @Result(property="img", column="img")
+    // })
+    // public Cart selectItem(Cart input);
+
     /**
      * 장바구니 단일 조회
      * @param input - 조회할 장바구니 정보에 대한 모델 객체
@@ -83,7 +123,8 @@ public interface CartMapper {
             "INNER JOIN product p ON p.product_id = c.product_id " +
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
-            "WHERE member_id = #{memberId}")
+            "WHERE member_id = #{memberId} " +
+            "AND cart_id = #{cartId}")
     @Results(id="cartMap", value={
         @Result(property="cartId", column="cart_id"),
         @Result(property="productCount", column="product_count"),
