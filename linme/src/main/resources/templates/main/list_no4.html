@@ -17,6 +17,11 @@
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <style>
+      .footerContainer {
+        margin-top: 0px !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -183,7 +188,7 @@
         productListContainer.innerHTML = ""; // 기존 제품 목록 초기화
         products.forEach((product) =>
           productListContainer.appendChild(product)
-        ); // 정렬된 제품 다시 추가
+        );
       }
     </script>
   </body>

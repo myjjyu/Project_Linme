@@ -103,6 +103,7 @@ public class MainController {
         return "main/main";
     }
 
+
     /**
      * 카테고리 리스트 페이지
      * 
@@ -322,5 +323,4 @@ public class MainController {
 
         return "main/search";
     }
-
 }

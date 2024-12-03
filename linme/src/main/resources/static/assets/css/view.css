@@ -14,11 +14,9 @@
 
 /* 메인 이미지 설정 */
 .mySwiper2 {
-  /* border: 5px solid red; */
   height: 100%;
 }
 .main-img img {
-  /* border: 5px solid rgb(20, 2, 2); */
   width: 500px;
   height: 503px;
   object-fit: cover;
@@ -27,7 +25,6 @@
 
 /* 미리보기 이미지 설정*/
 .mySwiper {
-  /* border: 5px solid rgb(24, 239, 0); */
   height: 100%;
   position: absolute;
   left: 0;
@@ -93,7 +90,6 @@
 
 /* 컨테이너 스타일 */
 .product-container {
-  /* border: 5px solid rgb(24, 239, 0); */
   margin-right: 50px;
   width: 330px;
   margin-top: 130px;
@@ -567,7 +563,6 @@
 }
 
 table {
-  /* border: 1px solid #a5a5a5; */
   border-collapse: collapse;
   margin: 40px auto 0 auto;
   width: 100%;

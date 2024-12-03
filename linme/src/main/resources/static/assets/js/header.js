@@ -1,7 +1,6 @@
 /*****************************/
 // 고객센터 드롭다운 js///
 /*****************************/
-// DOMContentLoaded 이벤트 리스너를 추가해서 DOM이 완전히 돌아간 후에 실행됨
 document.addEventListener("DOMContentLoaded", function () {
   const customerServiceLink = document.getElementById("customerService1");
   const dropdownMenu = document.getElementById("dropdownMenu1");
@@ -65,7 +64,6 @@ document.addEventListener("click", function (event) {
 // 신상품, 베스트, 특가상품 3개의 영역은 기본상태는 deactivate (현재)이고 각 영역을 클릭하면
 // 컬러가 activate 로변함 선택되지 못한 영역은 계속 기본값
 // 다른영역을 클릭하면 기존에 선택했던 영역activate은 제거되어 기본값으로 변경
-
 // 메뉴 리스트 선택
 const menuList = document.querySelectorAll(".menuList a");
 

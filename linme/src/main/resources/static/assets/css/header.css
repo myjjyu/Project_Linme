@@ -16,7 +16,6 @@
 /* header 전체영역 */
 /*************************/
 .headerBackground {
-  /* background-color:brown; */
   position: fixed;
   width: 100%;
   background-color: #fff;
@@ -32,7 +31,6 @@
 }
 
 .headerContainer {
-  /* border: solid 1px rgb(16, 15, 15); */
   height: 160px;
   width: 1200px;
   margin: 0 auto;
@@ -130,6 +128,18 @@
     border: 1px solid #ff697b;
     border-radius: 5px;
     font-size: 15px;
+
+    /* 기본 스타일 제거 */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none; 
+    background-color: white; /* 기본 스타일 제거 하고 배경색*/
+  }
+
+  /* X 표시 제거 */
+  .searchInput::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   /* 돋보기영역 */
@@ -161,7 +171,6 @@
 /* header-bottom 영역 */
 /*************************/
 .headerBoxend {
-  /* border: 1px solid rebeccapurple; */
   height: 50px;
   position: relative;
   display: flex;
@@ -169,7 +178,6 @@
 
 /* 햄버거 버튼 */
 .navbar-toggler {
-  /* background-color: rgb(234, 170, 170); */
   border: none;
   display: flex;
   align-items: center;
@@ -270,7 +278,6 @@
 /*******************************/
 
 /*  카테고리전체 텍스트 박스 영역 */
-
 .categorylist {
   width: 1200px;
   display: flex;
@@ -300,7 +307,6 @@
   font-size: 16px;
   font-weight: 500;
   padding: 17px 25px;
- 
 }
 
 .coloractive {

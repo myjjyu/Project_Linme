@@ -225,7 +225,7 @@
       }
     </script>
     <script>
-        /*****************************************************/
+      /*****************************************************/
       /* 글자 컬러 변경 
       /*****************************************************/
       const productText = document.querySelectorAll(".productText a");
@@ -321,6 +321,17 @@
           productListContainer.appendChild(product)
         ); // 정렬된 제품 다시 추가
       }
+
+      // 카테고리 클릭 시 글씨 색깔 변경
+      const categoryLinks = document.querySelectorAll(
+        ".categorylist .textlist"
+      );
+      categoryLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          categoryLinks.forEach((link) => link.classList.remove("coloractive"));
+          this.classList.add("coloractive");
+        });
+      });
     </script>
   </body>
 </html>
