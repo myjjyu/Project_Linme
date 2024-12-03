@@ -21,7 +21,7 @@
             <div class="userInfo">
                 <div class="profile">
                     <a th:href="@{/myPage/profile}">
-                        <img th:src="@{/assets/img/myPage/profileimg.jpg}"/>
+                        <img th:src="${session.memberInfo.profile != null and session.memberInfo.profile != ''} ? ${session.memberInfo.profile} : @{/assets/img/mypage/profileimg.jpg}" alt="프로필 이미지">
                     </a>
                     <div class="userDetails">
                         <a th:href="@{/myPage/profile}">
