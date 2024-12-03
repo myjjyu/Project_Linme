@@ -20,7 +20,7 @@
   position: fixed;
   width: 100%;
   background-color: #fff;
-  height: 170px;
+  height: 180px;
   align-items: center;
   background-color: #fff;
   border-bottom: 1px solid rgb(243, 243, 243);
@@ -279,7 +279,7 @@
   margin: 0 auto;
   margin-bottom: 20px;
   height: 100px;
-  margin-top: 180px;
+  margin-top: 190px;
   text-decoration: none;
 }
 

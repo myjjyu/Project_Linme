@@ -17,6 +17,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
+
+    /**
+     * 상품 추가
+     */
     @Override
     public Product addItem(Product input) throws Exception {
         int rows = 0;
@@ -35,6 +39,9 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.selectItem(input);
     }
 
+    /**
+     * 상품 수정
+     */
     @Override
     public Product editItem(Product input) throws Exception {
         int rows = 0;
@@ -53,6 +60,9 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.selectItem(input);
     }
 
+    /**
+     * 상품 삭제
+     */
     @Override
     public int deleteItem(Product input) throws Exception {
         int rows = 0;
@@ -71,6 +81,9 @@ public class ProductServiceImpl implements ProductService {
         return rows;
     }
 
+    /**
+     * 상품 조회
+     */
     @Override
     public Product getItem(Product input) throws Exception {
         Product output = null;
@@ -89,6 +102,9 @@ public class ProductServiceImpl implements ProductService {
         return output;
     }
 
+    /**
+     * 상품 목록 조회
+     */
     @Override
     public List<Product> getList(Product input) throws Exception {
         List<Product> output = null;
@@ -103,14 +119,13 @@ public class ProductServiceImpl implements ProductService {
         return output;
     }
 
-
     /**
      * 조회 상품 개수 조회
      */
     @Override
     public int getCount(Product input) throws Exception {
         int output = 0;
-    
+
         try {
             int categoryId = input.getCategoryId();
             output = productMapper.selectCount(categoryId);
@@ -120,7 +135,6 @@ public class ProductServiceImpl implements ProductService {
         }
         return output;
     }
-
 
     /**
      * 카테고리별 상품 조회

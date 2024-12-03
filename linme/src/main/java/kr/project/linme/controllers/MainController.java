@@ -306,17 +306,21 @@ public class MainController {
      */
     @GetMapping("/main/search")
     public String search(@RequestParam("keyword") String keyword, Model model) {
-    //데이터 조회
-    List<Product> products = productMapper.searchProductsByKeyword(keyword); 
-   int count = products.size(); 
-     
-    
-    //필요한 데이터 모델에 추가
-    model.addAttribute("keyword", keyword);  // 검색 키워드 추가
-    model.addAttribute("products", products);  // 검색 결과 리스트 추가
-    model.addAttribute("categoryCount", count);  // 검색 결과 개수 추가
-       
-    return "main/search";
+        // 데이터 조회
+        List<Product> products = productMapper.searchProductsByKeyword(keyword);
+        int count = products.size();
+
+        // 이미지 URL 설정
+        for (Product item : products) {
+            item.setImg(fileHelper.getUrl(item.getImg()));
+        }
+
+        // 필요한 데이터 모델에 추가
+        model.addAttribute("keyword", keyword); // 검색 키워드 추가
+        model.addAttribute("categoryCount", count); // 검색 결과 개수 추가
+        model.addAttribute("products", products); // 검색 결과 리스트 추가
+
+        return "main/search";
     }
 
 }
