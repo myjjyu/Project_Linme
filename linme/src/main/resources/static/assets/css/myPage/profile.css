@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -10,6 +10,7 @@ body {
     height: 100vh;
     margin: 0;
     flex-direction: column;
+    padding-top: 50px;
 }
 
 .profileContainer {
@@ -17,15 +18,16 @@ body {
     max-width: 800px;
     padding: 40px;
     text-align: left;
-    margin-top: 150px;
+    margin-top: 300px;
 }
 
 .profileContainer h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
+
 .profileContent {
-    width: 100%;
+    width: 80%;
     padding: 50px 100px;
     border-radius: 20px;
     border: 1px solid #ddd;
@@ -33,23 +35,14 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 50px;
 }
-.profileImageContainer {
-    /* width: 200px; 
-    height: 250px;
-    margin-bottom: 20px; */
+
+.profileImgContainer {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    width: 200px; 
-    height: 200px; 
-    margin-bottom: 20px; 
-    border: 1px solid ; 
-    border-radius: 10px; 
-    padding: 20px; 
-    /* overflow: hidden; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .profileImageBox {
@@ -84,6 +77,10 @@ body {
     text-align: center;
 }
 
+.editButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 .deleteButton {
     margin-top: 10px;
     background-color: #ff697b;
@@ -102,69 +99,16 @@ body {
 .hidden {
     display: none;
 }
-.profileImage {
-    /* position: relative;  */
-    /* width: 60%;
-    height: 60%;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-    object-fit: cover; */
-    /* width: 80%; 
-    height: auto; 
-    border-radius: 50%; 
-    border: 2px solid #ddd; 
-    object-fit: cover; 
-    margin-bottom: 5px; 
-    object-fit: cover; */
-}
 
-/* 수정 버튼 스타일 */
-.editButton {
-    /* position: absolute; */
-    /* transform: translate(-50%, -50%); */
-    /* background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 5px 15px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    z-index: 1000;
-    transition: background-color 0.3s ease; */
-}
-
-.editButton:hover {
-    /* background-color: rgba(0, 0, 0, 0.9);*/
-} 
-
-
-/* 삭제 버튼 */
-.deleteButton {
-    /* position: absolute; 
-    top: 5px;
-    right: 5px; 
-    background-color: #525252;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-size: 14px;
-    line-height: 25px;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 10;  */
-}
-.profileForm {
+.nicknameContainer {
     width: 100%;
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    justify-content: flex-start;
+    margin-bottom: 5px;
 }
 
 .input-container label {
@@ -202,11 +146,12 @@ body {
     cursor: pointer;
 }
 
-.notice {
+
+.noticeAlarm {
+    margin-top: 5px; 
+    text-align: left;
     font-size: 12px;
     color: #bcbcbc;
-    margin-top: -10px;
-    text-align: left;
 }
 
 .buttonGroup {
@@ -240,4 +185,188 @@ body {
     background-color: #eee;
     color: #aaa;
     cursor: not-allowed;
+} */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    padding-top: 50px;
+    margin-bottom: 200px;
+}
+
+.profileContainer {
+    width: 70%;
+    max-width: 800px;
+    padding: 40px;
+    text-align: left;
+    margin-top: 200px;
+}
+
+.profileContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profileContent {
+    width: 80%;
+    padding: 50px 100px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profileImgContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profileImageBox {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileImageBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 1;
+    text-align: center;
+}
+
+.editButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.deleteButton {
+    margin-top: 10px;
+    background-color: #ff697b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #e05656;
+}
+
+.hidden {
+    display: none;
+}
+
+.nicknameContainer {
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: flex-start; 한 줄로 정렬 */
+    align-items: flex-start;
+    margin-bottom: 5px; /* 입력 필드와 공지사항 사이 간격 조정 */
+}
+
+.input-container .input-field {
+    flex: 1; /* 입력 필드가 가로로 더 길게 늘어남 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px; /* 버튼과의 간격 추가 */
+}
+
+.input-container .inline-btn {
+    background-color: #fff;
+    color: #ff697b;
+    border: 1px solid #ff697b;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.noticeAlarm {
+    margin-top: 5px; /* 공지사항 위치 조정 */
+    text-align: left;
+    font-size: 12px;
+    color: #bcbcbc;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* 버튼 위치 조정 */
+}
+
+.cancelButton,
+.confirmButton {
+    width: 120px;
+    padding: 12px;
+    border-radius: 5px;
+    border: #525252;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: white;
+    color: #666;
+    margin-right: 10px;
+}
+
+.confirmButton {
+    background-color: #ff697b;
+    color: white;
+}
+
+.confirmButton:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.input-container label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px; /* 입력 필드와 간격 */
+    color: #333;
+}
+
+.input-container .required {
+    color: #ff697b;
 }

@@ -128,7 +128,7 @@ public class MypageRestController {
         return restHelper.sendJson();
     }
     
-    /**
+ /**
      * 프로필 수정
      */
     @PutMapping("/api/myPage/profile-update")
@@ -216,6 +216,7 @@ public class MypageRestController {
     
     
     }
+
     
         
     

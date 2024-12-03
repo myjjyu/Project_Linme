@@ -15,27 +15,26 @@
         <h2>프로필 수정</h2>
         <div class="profileContent">
             <form id="profile-form" th:action="@{/api/myPage/profile-update}" method="put" enctype="multipart/form-data">
-    
                 <div class="profileImgContainer">
                     <div class="profileImageBox">
-                        <img class="user-ico" 
-                            th:src="${session.memberInfo.profile != null ? session.memberInfo.profile : '/assets/img/profileimg.jpg'}" 
-                            alt="프로필 이미지" />
+                        <!-- 기본 프로필 사진 및 등록된 사진 -->
+                        <img class="user-ico" id="profileImage" th:src="${session.memberInfo.profile != null ? session.memberInfo.profile : '/assets/img/profileimg.jpg'}" alt="프로필 이미지"/>
+                        <!-- 수정 버튼 -->
                         <label for="profile" class="editButton">수정</label>
                     </div>
                     <input type="file" id="profile" name="profile" class="input-field hidden" />
-                    <button name="delete-profile" id="delete-profile" value="Y" data-disabled="#profile" class="deleteButton">X</button>
+                    <!-- 삭제 버튼 (등록된 사진이 있을 때만 활성화) -->
+                    <button id="delete-profile" type="button" class="deleteButton" th:if="${session.memberInfo.profile != null}">
+                        X
+                    </button>
                 </div>
-
-                
-                <div class="profileForm">
+                <div class="nicknameContainer">
                     <div class="input-container">
                         <label for="nickname">닉네임 <span class="required">*</span></label>
-                        <!-- 닉네임 입력 창-->
                         <div class="nicknameContainer">
-                            <input  th:value="${session.memberInfo.nickname}" type="text" name="nickname" id="nickname" class="input-field" placeholder="닉네임을 입력해주세요.">
+                            <input th:value="${session.memberInfo.nickname}" type="text" name="nickname" id="nickname" class="input-field" placeholder="닉네임을 입력해주세요.">
                             <button type="button" class="inline-btn" id="nickname_unique_check">중복확인</button>
-                            <input type="hidden" name="nickname_check" id= "nickname_check" value="Y"/>
+                            <input type="hidden" name="nickname_check" id="nickname_check" value="Y"/>
                         </div>
                     </div>
                     <div class="noticeAlarm">
@@ -43,12 +42,12 @@
                     </div>
                     <div class="buttonGroup">
                         <button type="button" class="cancelButton">취소</button>
-                        <button type="submit" class="confirmButton" disabled>완료</button>
+                        <button type="submit" class="confirmButton">완료</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div> 
+    </div>
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
