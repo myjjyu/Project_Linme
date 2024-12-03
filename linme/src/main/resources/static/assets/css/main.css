@@ -12,7 +12,7 @@
   /* border: 1px solid red; */
   width: 87%;
   height: 360px;
-  margin-top: 140px;
+  margin-top: 170px;
 }
 .swiper-slide {
   /* border: 1px solid red; */
@@ -211,7 +211,7 @@
 */
 .topicContainer {
   border-bottom: 12px solid #f3f3f3;
-  margin-top: 1500px;
+  margin-top: 1520px;
 
 }
 
@@ -220,7 +220,7 @@
   color: #333;
   font-size: 21px;
   font-weight: 700;
-  margin-top: 30px;
+  margin-top: 70px;
 }
 
 /*추천순 / 혜택순 / 낮은 가격순 / 높은 가격순 텍스트 
@@ -235,6 +235,7 @@
   font-weight: 400;
   gap: 10px;
   justify-content: flex-end;
+  margin-bottom: 40px;
 
   /* 클릭시 해당 텍스트 컬러*/
   .sort-recommend .active {
