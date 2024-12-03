@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
@@ -101,6 +102,7 @@ public class MainController {
         model.addAttribute("products", output);
         return "main/main";
     }
+
     /**
      * 카테고리 리스트 페이지
      * 
@@ -133,6 +135,7 @@ public class MainController {
 
     /**
      * 메인 페이지 => 아이콘 클릭시 해당 카테고리 상품 조회
+     * 
      * @param categoryId
      * @param model
      * @return
@@ -150,12 +153,17 @@ public class MainController {
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-    
+
         model.addAttribute("products", products);
         return "main/main_ok";
     }
 
-
+    /**
+     * 비타민 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/main/list_no1")
     public String listNo1(Model model) {
         List<Product> vitaminProducts = null;
@@ -167,11 +175,17 @@ public class MainController {
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-    
+
         model.addAttribute("products", vitaminProducts);
         return "main/list_no1";
     }
 
+    /**
+     * 장건강 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/main/list_no2")
     public String listNo2(Model model) {
         List<Product> probioticProducts = null;
@@ -183,11 +197,17 @@ public class MainController {
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-    
+
         model.addAttribute("products", probioticProducts);
         return "main/list_no2";
     }
 
+    /**
+     * 오메가3 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/main/list_no3")
     public String listNo3(Model model) {
         List<Product> omegaProducts = null;
@@ -199,11 +219,17 @@ public class MainController {
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-    
+
         model.addAttribute("products", omegaProducts);
         return "main/list_no3";
     }
 
+    /**
+     * 아이영양제 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/main/list_no4")
     public String listNo4(Model model) {
         List<Product> kidsProducts = null;
@@ -215,11 +241,17 @@ public class MainController {
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-    
+
         model.addAttribute("products", kidsProducts);
         return "main/list_no4";
     }
 
+    /**
+     * 신상품 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/header/new")
     public String New(Model model) {
         return "header/new";
@@ -235,7 +267,7 @@ public class MainController {
         return "header/spacial";
     }
 
-      /**
+    /**
      * 상세 페이지
      * 
      * @param productId
@@ -261,8 +293,30 @@ public class MainController {
             webHelper.serverError(e.getMessage());
             e.printStackTrace();
         }
-    
+
         model.addAttribute("product", product);
-        return "view/view"; 
+        return "view/view";
     }
+
+    /**
+     * 검색바에서 검색시 이동할 페이지
+     * 
+     * @param model
+     * @return
+     */
+    @GetMapping("/main/search")
+    public String search(@RequestParam("keyword") String keyword, Model model) {
+    //데이터 조회
+    List<Product> products = productMapper.searchProductsByKeyword(keyword); 
+   int count = products.size(); 
+     
+    
+    //필요한 데이터 모델에 추가
+    model.addAttribute("keyword", keyword);  // 검색 키워드 추가
+    model.addAttribute("products", products);  // 검색 결과 리스트 추가
+    model.addAttribute("categoryCount", count);  // 검색 결과 개수 추가
+       
+    return "main/search";
+    }
+
 }

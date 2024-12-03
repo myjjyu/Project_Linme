@@ -95,9 +95,9 @@ public interface ProductMapper {
         })
         public Product selectItem(Product input);
 
-
         /**
          * 상품 목록 조회
+         * 
          * @param input
          * @return
          */
@@ -113,11 +113,30 @@ public interface ProductMapper {
         /**
          * 조건에 맞는 데이터의 개수를 반환
          * 
-         * @param input
-         * @return 데이터 개수ㅎㅎ
+         * @param categoryId
+         * @return 데이터 개수
          */
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
-        public int selectCount(Product input);
+        public int selectCount(@Param("categoryId") int categoryId);
+
+        /**
+         * 검색바 상품 검색 기능
+         * 
+         * @param keyword
+         * @return
+         */
+        @Select("SELECT p.*, i.img FROM product p " +
+                        "LEFT JOIN img i ON i.product_id = p.product_id " +
+                        "WHERE p.product_name LIKE CONCAT('%', #{keyword}, '%')")
+        @Results({
+                        @Result(property = "productId", column = "product_id"),
+                        @Result(property = "productName", column = "product_name"),
+                        @Result(property = "price", column = "price"),
+                        @Result(property = "salePrice", column = "sale_price"),
+                        @Result(property = "discountRate", column = "discount_rate"),
+                        @Result(property = "img", column = "img")
+        })
+        List<Product> searchProductsByKeyword(@Param("keyword") String keyword);
 
         /**
          * 카테고리별 상품 조회 기능

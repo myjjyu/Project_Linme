@@ -103,17 +103,21 @@ public class ProductServiceImpl implements ProductService {
         return output;
     }
 
+
+    /**
+     * 조회 상품 개수 조회
+     */
     @Override
     public int getCount(Product input) throws Exception {
         int output = 0;
-
+    
         try {
-            output = productMapper.selectCount(input);
+            int categoryId = input.getCategoryId();
+            output = productMapper.selectCount(categoryId);
         } catch (Exception e) {
             log.error("데이터 집계에 실패했습니다.", e);
             throw e;
         }
-
         return output;
     }
 

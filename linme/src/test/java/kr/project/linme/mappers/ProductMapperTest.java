@@ -93,11 +93,11 @@ public class ProductMapperTest {
   @Test
   @DisplayName("조건에 맞는 상품 개수 조회 테스트")
   void selectProductCountByCondition() {
-    Product input = new Product();
-    input.setCategoryId(3); // categoryId 값
-
-    int output = productMapper.selectCount(input);
-
-    log.debug("output: {}", output);
+      Product input = new Product();
+      input.setCategoryId(3); // categoryId 값
+  
+      int output = productMapper.selectCount(input.getCategoryId());
+  
+      log.debug("output: {}", output);
   }
 }

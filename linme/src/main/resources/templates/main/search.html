@@ -43,8 +43,8 @@
     <div class="search-container">
       <div>
         <p class="search-bar">
-          '<span th:text="${product.categoryName}"></span>' 에 대한 검색결과
-          <span th:text="${product.categoryCount}"></span>건
+          <span th:text="'\'' + ${keyword} + '\''"></span> 에 대한 검색결과
+          <span th:text="${categoryCount} + '건'"></span>
         </p>
       </div>
     </div>
