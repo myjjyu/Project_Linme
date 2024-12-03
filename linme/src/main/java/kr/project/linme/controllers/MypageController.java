@@ -87,12 +87,12 @@ public class MypageController {
 
 
     @GetMapping("/myPage/productInquiry")
-    public String productInquiry(Model model) {
+    public String productInquiry() {
         return "myPage/productInquiry";
     }
 
     @GetMapping("/myPage/refundAccount")
-    public String refundAccount(Model model) {
+    public String refundAccount() {
         return "myPage/refundAccount";
     }
 
@@ -107,24 +107,17 @@ public class MypageController {
     }
 
     @GetMapping("/myPage/notice")
-    public String notice(Model model) {
+    public String notice() {
         return "myPage/notice";
     }
 
     @GetMapping("/myPage/faq")
-    public String faq(Model model) {
+    public String faq() {
         return "myPage/faq";
     }
 
     @GetMapping("/myPage/inquiry")
-    public String injury(Model model) {
-        // model.addAttribute("username", "사용자 이름");
-        // model.addAttribute("grade", "등급");
-        // model.addAttribute("reward", "리워드");
-
-        // model.addAttribute("shoppingHistoryCount", 0); 
-        // model.addAttribute("couponCount", 0);           
-        // model.addAttribute("reviewCount", 0);
+    public String injury() {
         return "myPage/inquiry";
     }
 

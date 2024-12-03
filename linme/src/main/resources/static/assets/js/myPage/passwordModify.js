@@ -73,26 +73,6 @@ document.getElementById("password-form").addEventListener("submit",async(e)=>{
         return;
     }
 
-    // // 현재 비밀번호 DB 유효성 검증
-    // try {
-    //     const currentPw = document.querySelector("#user_pw").value;
-
-    //     // 서버에 현재 비밀번호 확인 요청
-    //     const data = await axiosHelper.post("[[@{/api/myPage/password-check}]]", {
-    //         user_pw: currentPw,
-    //     });
-
-    //     if (!data.valid) {
-    //         // 입력한 현재 비밀번호가 DB와 다를 경우
-    //         await utilHelper.alertDanger("현재 비밀번호가 올바르지 않습니다.");
-    //         return;
-    //     }
-    // } catch (e) {
-    //     // 서버 통신 오류 처리
-    //     await utilHelper.alertDanger("비밀번호 확인 중 오류가 발생했습니다.");
-    //     return;
-    // }
-
     // DB 비밀번호가 일치하면 변경 요청 진행
     const formData = new FormData(e.currentTarget);
     const data=await axiosHelper.putMultipart(e.currentTarget.action,formData);

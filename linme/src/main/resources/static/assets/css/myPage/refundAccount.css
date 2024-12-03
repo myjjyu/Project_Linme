@@ -1,4 +1,3 @@
-/* 환불 계좌 관리 */
 .refundAccountContainer {
     margin-top: 20px;
 }
@@ -58,7 +57,6 @@
     border-radius: 5px;
 }
 
-/* 등록 버튼 */
 .registerButton {
     width: 100%;
     padding: 12px;
@@ -71,13 +69,11 @@
     cursor: not-allowed;
 }
 
-/* 활성화된 버튼 */
 .registerButton.enabled {
     background-color: #ff697b;
     cursor: pointer;
 }
 
-/* 환불 안내 정보 */
 .refundInfo {
     margin-top: 30px;
     color: #666;
@@ -95,19 +91,16 @@
     align-items: left;
 }
 
-/* 마크 아이콘 */
 .mark-icon {
     width: 18px;
     height: 18px;
     margin-right: 5px;
 }
 
-/* 안내 사항 강조 */
 .redFont {
     color: red;
 }
 
-/* 안내 리스트 */
 .refundInfo ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -116,20 +109,3 @@
 .refundInfo li {
     margin-bottom: 5px;
 }
-
-
-
-
-
-/*.refundTable {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.refundInfo {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-}*/
