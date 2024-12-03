@@ -229,23 +229,88 @@
               ></div>
             </div>
 
-            <div class="btn">
-              <form  id="cartform"  th:action="@{/api/cart/cart/add}" method="post">
-                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}"/> 
-                <!-- <input type="hidden" name="memberId" th:value="${product.memberId}"/> -->
-                <input type="hidden" name="productId" th:value="${product.productId}"/>
-                <!-- <input type="hidden" name="quantity" value="1" class="quantity-input" /> -->
-                 <!-- 수량▼ -->
-                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
+            <!-- 로그인했을때 -->
+            <div class="btn" th:if="${session.memberInfo != null}">
+              <form
+                id="cartform"
+                th:action="@{/api/cart/cart/add}"
+                method="post"
+              >
+                <input
+                  type="hidden"
+                  name="memberId"
+                  th:value="${session.memberInfo.memberId}"
+                />
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
+                <!-- 수량▼ -->
+                <input
+                  type="hidden"
+                  name="productCount"
+                  th:value="${product.productCount}"
+                  class="quantity-input"
+                />
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
-            
+
               <form th:action="@{/api/payment/payment}" method="post">
-                <input type="hidden" name="productId" th:value="${product.productId}"/>
-                <input type="hidden" name="quantity" value="1" class="quantity-input" />
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
+                <input
+                  type="hidden"
+                  name="quantity"
+                  value="1"
+                  class="quantity-input"
+                />
                 <button type="submit" class="buy-btn">바로구매</button>
               </form>
             </div>
+
+            <!-- 로그인 안됐을때 -->
+            <div class="btn" th:unless="${session.memberInfo != null}">
+              <form
+                id="cartform"
+                th:action="@{/login}"
+              >
+                <input
+                  type="hidden"
+                  name="memberId"
+                />
+                <input
+                  type="hidden"
+                  name="productId"
+                />
+                <!-- 수량▼ -->
+                <input
+                  type="hidden"
+                  name="productCount"
+                  class="quantity-input"
+                />
+                <button type="submit" class="cart-btn">장바구니</button>
+              </form>
+
+              <form th:action="@{/login}">
+                <input
+                  type="hidden"
+                  name="productId"
+                />
+                <input
+                  type="hidden"
+                  name="quantity"
+                  value="1"
+                  class="quantity-input"
+                />
+                <button type="submit" class="buy-btn">바로구매</button>
+              </form>
+            </div>
+
+            
           </div>
         </div>
       </div>
