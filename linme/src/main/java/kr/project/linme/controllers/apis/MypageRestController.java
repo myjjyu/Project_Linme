@@ -128,35 +128,40 @@ public class MypageRestController {
         return restHelper.sendJson();
     }
     
- /**
+    /**
      * 프로필 수정
      */
     @PutMapping("/api/myPage/profile-update")
     public Map<String, Object> updateProfile(
             HttpServletRequest request,
             @SessionAttribute("memberInfo") Member memberInfo,
-                @RequestParam("nickname") String nickname,
-                @RequestParam(value = "delete_profile", defaultValue = "N") String deleteProfile,
+                @RequestParam(value="nickname", required = false) String nickname,
+                @RequestParam(value = "delete-profile", defaultValue = "N") String deleteProfile,
                 @RequestParam(value = "profile", required = false) MultipartFile profile) {
 
         Member input=new Member();
         input.setNickname(nickname);
         input.setMemberId(memberInfo.getMemberId());
 
-        try {
-            memberService.isUniqueNickname(nickname);
-        } catch (Exception e) {
-            return restHelper.badRequest(e);
+        if (nickname != null && !nickname.equals(memberInfo.getNickname())) {
+            input.setNickname(nickname);
+            try {
+                memberService.isUniqueNickname(nickname);
+            } catch (Exception e) {
+                return restHelper.badRequest(e);
+            }
+        } else {
+            input.setNickname(memberInfo.getNickname());
         }
 
         UploadItem uploadItem=null;
 
         try {
-            uploadItem=fileHelper.saveMultipartFile(profile);
-        } catch (NullPointerException e) {
-
-        }catch(Exception e){
-            return restHelper.serverError(e);
+            if (profile != null && !profile.isEmpty()) {
+                uploadItem = fileHelper.saveMultipartFile(profile);
+            }
+        } catch (Exception e) {
+            return restHelper.serverError(e); // 파일 저장 실패 시 에러 반환
         }
 
         Member member=new Member();

@@ -54,7 +54,14 @@ public class MypageController {
         return "myPage/reward/history";
     }
     @GetMapping("/myPage/myinfo")
-    public String myinfo() {
+    public String myinfo(HttpSession session, Model model) {
+
+        Member memberInfo = (Member) session.getAttribute("memberinfo");
+        if (memberInfo != null) {
+            // 로그인하지 않은 경우 처리
+            return "redirect:/login";
+        }
+        model.addAttribute("memberinfo", memberInfo);
         return "myPage/myinfo";
     }
 

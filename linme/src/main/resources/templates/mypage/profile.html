@@ -18,13 +18,13 @@
                 <div class="profileImgContainer">
                     <div class="profileImageBox">
                         <!-- 기본 프로필 사진 및 등록된 사진 -->
-                        <img class="user-ico" id="profileImage" th:src="${session.memberInfo.profile != null ? session.memberInfo.profile : '/assets/img/profileimg.jpg'}" alt="프로필 이미지"/>
+                        <img class="user-ico" id="profileImage" th:src="${session.memberInfo.profile != null} ? ${session.memberInfo.profile} : '@{/assets/img/mypage/profileimg.jpg}'"/>
                         <!-- 수정 버튼 -->
                         <label for="profile" class="editButton">수정</label>
                     </div>
-                    <input type="file" id="profile" name="profile" class="input-field hidden" />
-                    <!-- 삭제 버튼 (등록된 사진이 있을 때만 활성화) -->
-                    <button id="delete-profile" type="button" class="deleteButton" th:if="${session.memberInfo.profile != null}">
+                    <input type="file" id="profile" name="profile" class="input-field hidden" disabled/>
+                    <!-- 삭제 버튼  -->
+                    <button name="delete-profile" id="delete-profile" type="button" class="deleteButton" th:if="${session.memberInfo.profile != null}" data-disabled="#profile">
                         X
                     </button>
                 </div>
