@@ -51,13 +51,18 @@
 }
 
 .login .loginCover .inputList .userInput input {
-  border-radius: 3px;
+  border: 1px solid #aaa8;
+  border-radius: 5px;
   font-size: 14px;
   height: 100%;
   padding: 18px 10px 16px;
   width: 100%;
   z-index: auto;
 }
+/* 인풋태그 겹치는 선 하나 제거 */
+/* .login .loginCover .inputList .userInput input:not(:last-child) {
+  border-top: none;
+} */
 
 .login .loginCover .inputList .userInput input::placeholder {
   color: #b6b6b6;
@@ -67,19 +72,23 @@
 }
 
 .login .loginCover .inputList .userInput input:focus {
+  outline: 1px solid #ff697b;
   z-index: 1;
+  /* background-color: #cbd8ff90 ; */
+  background-color: #e1f1ff;
 }
 
-.login .loginCover .inputList .userInput .userID {
+.login .loginCover .inputList .userInput .userId {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.login .loginCover .inputList .userInput .userPW {
+.login .loginCover .inputList .userInput .userPw {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: -1px;
 }
+
 /* 비번 보였다 안보였다 이미지 */
 .login .loginCover .inputList .userInput .pwShowHide img {
   background-position: 50%;
@@ -135,6 +144,7 @@
 }
 
 .login .loginCover .buttonCover button.buttonLogin {
+  border: none;
   background-color: #ff697b;
   border-radius: 4px;
   color: #fff;
@@ -149,6 +159,8 @@
   text-align: center;
   width: 100%;
 }
+
+/* 부가적인 로그인 서비스 버튼 */
 
 .login .loginCover .snsLoginCover {
   height: fit-content;
@@ -177,12 +189,13 @@
   width: 50px;
 }
 
+/* 아이콘 버튼 간격 조정 */
 .login .loginCover .snsLoginCover .snsLogin li:first-child {
-  margin-left: 0;
+  margin-left: 2;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li:last-child {
-  margin-right: 0;
+  margin-right: 2;
 }
 
 .login .loginCover .snsLoginCover .snsLogin li img {
