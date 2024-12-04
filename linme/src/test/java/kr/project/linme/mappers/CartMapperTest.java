@@ -23,7 +23,6 @@ public class CartMapperTest {
         Cart input = new Cart();
         // 장바구니에 추가할 데이터
         input.setProductCount(1);
-        input.setTotalPrice(27000);
         input.setMemberId(1);
         input.setProductId(1);
 
@@ -36,21 +35,35 @@ public class CartMapperTest {
     }
 
     @Test
-    @DisplayName("장바구니 수정 테스트")
+    @DisplayName("장바구니 수량 증가 테스트")
+    void updateCountCart() {
+        Cart input = new Cart();
+        // 수정할 데이터 일련번호
+        input.setCartId(10);
+        // 수정할 데이터
+        input.setMemberId(1);
+        input.setProductId(2);
+        input.setProductCount(10);
+
+        int output = cartMapper.updateCount(input);
+
+        // 저장된 데이터의 수
+        log.debug("output: " + output);
+    }
+
+    @Test
+    @DisplayName("장바구니 상품 수량 변경 테스트")
     void updateCart() {
         Cart input = new Cart();
         // 수정할 데이터 일련번호
-        input.setCartId(1);
+        input.setCartId(10);
         // 수정할 데이터
-        input.setProductCount(2);
-        input.setTotalPrice(20000);
-        input.setMemberId(1);
-        input.setProductId(1);
+        input.setProductCount(7);
 
-        int ouput = cartMapper.update(input);
+        int output = cartMapper.update(input);
 
         // 저장된 데이터의 수
-        log.debug("output: " + ouput);
+        log.debug("output: " + output);
     }
 
     @Test
@@ -58,28 +71,40 @@ public class CartMapperTest {
     void deleteCart() {
         Cart input = new Cart();
         // 삭제할 데이터 일련번호
-        input.setCartId(1);
+        input.setCartId(19);
         
         int output = cartMapper.delete(input);
         log.debug("output: " + output);
     }
 
     @Test
-    @DisplayName("하나의 장바구니 목록 조회 테스트")
+    @DisplayName("장바구니 전체 삭제 테스트")
+    void deleteListCart() {
+        Cart input = new Cart();
+        
+        // 장바구니 전체 삭제
+        int output = cartMapper.deleteList(input);
+        log.debug("output: " + output);
+    }
+
+    @Test
+    @DisplayName("장바구니 단일 조회 테스트")
     void selectItemCart() {
         Cart input = new Cart();
         // 조회할 데이터 일련번호
         input.setMemberId(1);
-        input.setCartId(1);
+        input.setCartId(22);
         
         Cart output = cartMapper.selectItem(input);
         log.debug("output: " + output.toString());
     }
 
     @Test
-    @DisplayName("장바구니 목록 조회 테스트")
+    @DisplayName("장바구니 전체 목록 조회 테스트")
     void selectListCart() {
-        List<Cart> output = cartMapper.selectList(null);
+        Cart input = new Cart();
+        input.setMemberId(1);
+        List<Cart> output = cartMapper.selectList(input);
         
         // 향상된 forEach문을 사용한 목록 출력
         for (Cart item : output) {

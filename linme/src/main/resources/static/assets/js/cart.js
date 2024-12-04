@@ -10,6 +10,7 @@ const toggleSelectAll = (v) => {
 };
 
 /* 선택된 항목 삭제 함수 */
+// todo : id, class 명 변경 수정 필요
 const deleteSelected = () => {
   const selectedItems = document.querySelectorAll(".productCheckbox:checked");
   selectedItems.forEach((item) => {
@@ -57,10 +58,10 @@ const increaseQuantity = (button) => {
   alert("수량이 변경되었습니다.");
 };
 
-Swal.fire({
-  text: "수량이 변경되었습니다.",
-  footer: '<a href="#">확인</a>',
-});
+// Swal.fire({
+//   text: "수량이 변경되었습니다.",
+//   footer: '<a href="#">확인</a>',
+// });
 
 // // 수량 + 클릭시 증가 - 클릭시 감소 에 따른 함계금액 값 구하기
 // document.addEventListener("DOMContentLoaded", function () {
