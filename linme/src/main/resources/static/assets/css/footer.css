@@ -6,7 +6,7 @@ padding-right: 0;
 }
 
 .footerContainer {
-width: 99vw;
+width: 100vw;
 margin: 0;
 position: relative;
 margin-top: 1250px;
@@ -162,4 +162,34 @@ font-size: 12px;
 width: 100%;
 padding: 20px 0;
 background-color: #fcfcfc;
+}
+
+/* // 이용약관 / 개인정보처리방침 alert 창 css// */
+.required-button {
+  background-color: unset;
+  color: #ff697b;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.scrollable-content {
+  max-height: 700px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-top: 20px;
+}
+
+.custom-html p, ul {
+  margin: 10px 10px;
+  line-height: 1.5;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  padding: 0;
+}
+
+.custom-html ul li {
+  text-decoration: none;
+  text-align: left;
 }
