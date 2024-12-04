@@ -1,6 +1,8 @@
 package kr.project.linme.controllers;
 
+import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -18,7 +20,9 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model,
+        @CookieValue(value = "rememberId", required = false) String rememberId) {
+        model.addAttribute("rememberId", rememberId);
         return "login";
     }
 

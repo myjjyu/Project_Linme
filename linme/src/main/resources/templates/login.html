@@ -21,8 +21,8 @@
                     <form class="login-form">
                         <ul class="inputList">
                             <li class="userInput">
-                                <input class="userId" name="userId" id="userId" type="text"
-                                    placeholder="아이디 입력 (이메일)" />
+                                <input class="userId" name="userId" id="userId" type="text" placeholder="아이디 입력 (이메일)"
+                                    th:value="${rememberId}" />
                             </li>
                             <li class="userInput">
                                 <input class="userPw" name="userPw" id="userPw" type="password" placeholder="비밀번호 입력" />
@@ -36,9 +36,12 @@
                         <!-- 체크박스 구현 / 아이디,비밀번호,회원가입 클릭 -->
                         <div class="otherCover">
                             <span>
-                                <input class="checkSaveUserId" name="checkSaveUserId" id="checkSaveUserId"
+                                <!-- <input class="checkSaveUserId" name="checkSaveUserId" id="checkSaveUserId" value="Y"
                                     type="checkbox">
-                                <label for="checkSaveUserId">아이디 저장</label>
+                                <label for="checkSaveUserId">아이디 저장</label> -->
+                                <label for="rememberId">
+                                    <input type="checkbox" value="Y" name="rememberId" />
+                                    아이디 저장</label>
                             </span>
                             <ul class="findAndSignIn">
                                 <li class="clickable findId">
