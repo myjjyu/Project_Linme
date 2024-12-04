@@ -146,9 +146,9 @@ public class ProductServiceImpl implements ProductService {
         try {
             products = productMapper.selectByCategory(categoryId);
 
-            if (products == null || products.isEmpty()) {
-                throw new Exception("조회된 데이터가 없습니다.");
-            }
+            // if (products == null || products.isEmpty()) {
+            //     // throw new Exception("조회된 데이터가 없습니다.");
+            // }
         } catch (Exception e) {
             log.error("카테고리별 상품 조회에 실패했습니다.", e);
             throw e;

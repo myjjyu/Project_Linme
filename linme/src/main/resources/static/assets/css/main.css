@@ -84,6 +84,10 @@
       margin: 0 auto;
     }
   }
+
+  a:hover {
+    color: #ff8181;
+  }
 }
 
 #icon a.active {

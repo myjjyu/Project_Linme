@@ -257,14 +257,6 @@
   margin-right: 100px;
 }
 
-/* 신상품, 베스트, 특가상품 각각의 메뉴를 클릭했을때의 css */
-.activate {
-  color: #ff697b !important;
-  font-size: 15px;
-  font-weight: 600;
-  border-bottom: 2px solid #ff697b;
-  padding-bottom: 2px;
-}
 
 .deactivate {
   color: #707070;
@@ -307,10 +299,10 @@
   font-size: 16px;
   font-weight: 500;
   padding: 17px 25px;
-}
 
-.coloractive {
-  color: #ff8181;
+  &:hover {
+    color: #ff697b;
+  }
 }
 
 /*******************************/
@@ -318,4 +310,12 @@
 /*******************************/
 .headerNBS {
   margin-top: 200px;
+}
+
+.menuList{
+  a{
+    &:hover{
+      color: #ff697b;
+    }
+  }
 }
