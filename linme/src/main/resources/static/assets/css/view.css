@@ -647,6 +647,6 @@ td:nth-child(odd) {
 
 /* 알럿창 크기 조정 */
 .custom-alert-popup {
-  width: 300px !important;
+  width: 350px !important;
   padding: 20px !important;
 }
