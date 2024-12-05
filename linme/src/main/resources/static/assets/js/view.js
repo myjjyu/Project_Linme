@@ -15,7 +15,7 @@ var swiper2 = new Swiper(".mySwiper2", {
   },
   thumbs: {
     swiper: swiper,
-  },
+  }
 });
 
 // 상품설명, 리뷰, 상품문의 클릭시 컬러변경 이벤트
@@ -62,7 +62,7 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
 document.querySelector(".cart-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
-
+  
   if (isLoggedIn) {
     // 로그인된 경우
     Swal.fire({
@@ -77,10 +77,12 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         popup: "custom-alert-popup"
       },
       reverseButtons: true, // 버튼 순서 변경
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        document.querySelector("#cartform").submit(); 
-        window.location.href = "/cart/cart"; 
+        console.log(e.currentTarget.form);
+        // document.querySelector("#cartform").submit();
+        await axiosHelper.post(addCartApiUrl, new FormData(e.currentTarget.form));
+        window.location.href = cartUrl; 
       }
     });
   } else {
