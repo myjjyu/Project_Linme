@@ -77,16 +77,17 @@
                       <!-- 상품 상세 정보 -->
                       <div class="productInfo">
                         <!-- 상품 이미지 -->
-                        <a class="productImg" th:href="@{/view/view/{productId}}">
+                        <a class="productImg" th:href="@{/view/view/{productId}(productId=${cart.productId})}">
                           <img th:src="${cart.img}" />
                         </a>
                         <div class="productDetailInfo">
                           <!-- 브랜드명 -->
-                          <a th:href="@{/view/view/{productId}}">
+                          <a th:href="@{/view/view/{productId}(productId=${cart.productId})}">
                             <span th:text="${cart.brandName}"></span>
                           </a>
                           <!-- 상품명 -->
-                          <a th:href="@{/view/view/{cart.productId}}">
+                          <a th:href="@{/view/view/{productId}(productId=${cart.productId})}" class="view-link" data-product-id="${cart.productId}">
+                            <!-- <a th:href="@{'/view/view/' + ${product.productId}}"> -->
                             <span class="productName" th:text="${cart.productName}"></span>
                           </a>
                           <!-- 수량 조절 -->
@@ -176,18 +177,30 @@
 
     <script th:src="@{/assets/js/cart.js}"></script>
     <script>
+      /* ------ 수량 변경 이벤트 ------ */
       document.querySelectorAll(".productCount").forEach((v, i) => {
         v.addEventListener("change", async (e) => {
           e.preventDefault();
 
           const form = v.form;
 
+          // 장바구니 수량 변경
           const data = await axiosHelper.put(`[[@{/api/cart/cart/edit}]]`, new FormData(form));
-          console.log(form.data);
+          console.log("데이터 : ", data);
+          console.log(".carId의 value : ", form.querySelector(".cartId").value);
+          console.log(".carId의 data : ", data.cart.cartId);
           if (data) {
-            if (form.querySelector(".cartId").value == data.cart.cartId) {
+            if (form.querySelector(".cartId").value === data.cart.cartId) {
               form.querySelector(".cartSalePrice").innerHTML = (data.cart.salePrice * data.cart.productCount).toLocaleString() + " 원";
             }
+          }
+
+          // 전체 합계 - 전체 주문금액
+          const count = await axiosHelper.put(`[[@{/api/cart/cart/sumTotalPrice}]]`);
+          console.log("전체 합계 : ", count);
+
+          if (count) {
+            document.querySelector(".totalPriceText").innerHTML = count.sumTotalPrice.toLocaleString() + " 원";
           }
         });
       });

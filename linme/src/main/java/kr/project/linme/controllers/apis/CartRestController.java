@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,7 +19,6 @@ import kr.project.linme.models.Cart;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @CrossOrigin(origins = "*") // CORS 설정
@@ -126,7 +123,7 @@ public class CartRestController {
      * @param productId
      * @return
      */
-    @PutMapping("/api/cart/cart/cartCount/{id}")
+    @PutMapping("/api/cart/cart/cartCount")
     public Map<String, Object> cartCount(
         @RequestParam("memberId") int memberId,
         @RequestParam("productId") int productId){
@@ -180,5 +177,29 @@ public class CartRestController {
         return restHelper.sendJson();
     }
 
-    
+    /**
+     * 수량 변경 시 전체 주문 금액 합계
+     * @param memberInfo
+     * @return
+     */
+    @PutMapping("/api/cart/cart/sumTotalPrice")
+    public Map<String, Object> sumTotalPrice(
+        @SessionAttribute("memberInfo") Member memberInfo
+    ) {
+        Cart input = new Cart();
+        input.setMemberId(memberInfo.getMemberId());
+
+        int sumTotalPrice = 0;
+
+        try {
+            sumTotalPrice = cartService.sumTotalPrice(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+        
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("sumTotalPrice", sumTotalPrice);
+
+        return restHelper.sendJson(data);
+    }
 }
