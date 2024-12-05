@@ -270,7 +270,7 @@
 
             <!-- 로그인 안됐을때 -->
             <div class="btn" th:unless="${session.memberInfo != null}">
-              <form id="cartform" th:action="@{/login}">
+              <form id="cartform-not-log" th:action="@{/login}">
                 <input type="hidden" name="memberId" />
                 <input type="hidden" name="productId" />
                 <!-- 수량▼ -->

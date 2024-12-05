@@ -15,8 +15,11 @@ var swiper2 = new Swiper(".mySwiper2", {
   },
   thumbs: {
     swiper: swiper,
-  }
+  },
 });
+
+
+
 
 // 상품설명, 리뷰, 상품문의 클릭시 컬러변경 이벤트
 const tabs = document.querySelectorAll(".tab-link");
@@ -29,6 +32,8 @@ tabs.forEach((tab) => {
     this.classList.add("on");
   });
 });
+
+
 
 //문의하기 alert창
 document.querySelector(".button").addEventListener("click", (e) => {
@@ -59,10 +64,11 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
 
 
 
+// 장바구니 바로구매 alert창 
 document.querySelector(".cart-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
-  
+
   if (isLoggedIn) {
     // 로그인된 경우
     Swal.fire({
@@ -77,11 +83,9 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         popup: "custom-alert-popup"
       },
       reverseButtons: true, // 버튼 순서 변경
-    }).then(async (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        console.log(e.currentTarget.form);
-        // document.querySelector("#cartform").submit();
-        await axiosHelper.post(addCartApiUrl, new FormData(e.currentTarget.form));
+        document.querySelector("#cartform").submit(); 
         window.location.href = cartUrl; 
       }
     });
@@ -101,6 +105,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
       reverseButtons: true, // 버튼 순서 변경
     }).then((result) => {
       if (result.isConfirmed) {
+        document.querySelector("#cartform-not-log").submit();
         window.location.href = "/login"; 
       }
     });
