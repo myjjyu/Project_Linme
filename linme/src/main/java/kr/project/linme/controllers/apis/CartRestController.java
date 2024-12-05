@@ -21,6 +21,8 @@ import kr.project.linme.models.Cart;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @CrossOrigin(origins = "*") // CORS 설정
 @RestController
@@ -117,4 +119,66 @@ public class CartRestController {
 
         return restHelper.sendJson();
     }
+
+    /**
+     * 장바구니 상품의 수량 확인
+     * @param memberId
+     * @param productId
+     * @return
+     */
+    @PutMapping("/api/cart/cart/cartCount/{id}")
+    public Map<String, Object> cartCount(
+        @RequestParam("memberId") int memberId,
+        @RequestParam("productId") int productId){
+        
+        Cart input = new Cart();
+        input.setMemberId(memberId);
+        input.setProductId(productId);
+
+        int count = 0;
+
+        try {
+            // cartService.selectCount(input);
+            // selectCount 메서드가 int를 반환하므로 반환값을 사용하지 않음
+            count = cartService.selectCount(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("count", count);
+
+        return restHelper.sendJson(data);
+    }
+    
+    /**
+     * 장바구니에서 상품 중복 확인
+     * @param memberId - 확인할 Cart
+     * @return JSON 데이터
+     */
+    @PutMapping("/api/cart/cart/uniqueEdit")
+    public Map<String, Object> uniqueCartEdit(
+        @SessionAttribute("memberInfo") Member memberInfo,
+        @RequestParam("productCount") String productCountTmp,
+        @RequestParam("cartId") String cartIdTmp
+        ) {
+            
+        int productCount = Integer.parseInt(productCountTmp);
+        int cartId = Integer.parseInt(cartIdTmp);
+
+        Cart input = new Cart();
+        input.setCartId(cartId);
+        input.setProductCount(productCount);
+        input.setMemberId(memberInfo.getMemberId());
+
+        try {
+            cartService.editUniqueCart(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        return restHelper.sendJson();
+    }
+
+    
 }

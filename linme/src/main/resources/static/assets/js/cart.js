@@ -36,9 +36,29 @@ const decreaseQuantity = (button) => {
       console.error("productCount 요소를 찾을 수 없습니다.");
     }
 
-    alert("수량이 변경되었습니다.");
+    // alert("수량이 변경되었습니다.");
+    Swal.fire({
+      title: "수량이 변경되었습니다.",
+      confirmButtonText: "확인",
+      width: 300,
+      height: 145,
+      customClass: {
+        confirmButton: "alert-button",
+        title: "title-text",
+      },
+    });
   } else {
-    alert("최저 수량 미만으로 설정할 수 없습니다.");
+    // alert("최저 수량 미만으로 설정할 수 없습니다.");
+    Swal.fire({
+      title: "최저 수량 미만으로 선택할 수 없습니다.",
+      confirmButtonText: "확인",
+      width: 300,
+      height: 145,
+      customClass: {
+        confirmButton: "alert-button",
+        title: "title-text",
+      },
+    });
   }
 };
 
@@ -54,5 +74,15 @@ const increaseQuantity = (button) => {
   const eve = new Event("change");
   productCount.dispatchEvent(eve);
 
-  alert("수량이 변경되었습니다.");
+  // alert("수량이 변경되었습니다.");
+  Swal.fire({
+    title: "수량이 변경되었습니다.",
+    confirmButtonText: "확인",
+    width: 300,
+    height: 145,
+    customClass: {
+      confirmButton: "alert-button",
+      title: "title-text",
+    },
+  });
 };

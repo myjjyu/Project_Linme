@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../static/assets/css/cart.css" />-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/cart.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" rel="stylesheet" />
     <title>린미 - 장바구니</title>
     <!-- Header 영역 -->
     <th:block th:replace="~{/fragments/header}" />
@@ -56,6 +57,8 @@
               <div id="cartList">
                 <!-- 장바구니 폼 -->
                 <form class="cartId" id="cartProductItem" th:each="cart : ${cart}">
+                  <input type="hidden" name="cartId" class="cartId" th:value="${cart.cartId}" />
+                  <input type="hidden" name="memberId" class="memberId" th:value="${cart.memberId}" />
                   <!-- 상단 : 상품 / 상품금액 / 배송비 -->
                   <div class="cartTop">
                     <span>상품</span>
@@ -167,6 +170,9 @@
     <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
 
     <script th:src="@{/assets/js/cart.js}"></script>
     <script>

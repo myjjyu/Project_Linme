@@ -55,5 +55,19 @@ public interface CartService {
      */
     public List<Cart> getList(Cart params) throws Exception;
 
-    // public int getCount(Cart params) throws Exception;
+    /**
+     * 장바구니 상품 중복 확인
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    public int editUniqueCart(Cart params) throws Exception;
+
+    /**
+     * 장바구니 상품의 수량 확인
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    public int selectCount(Cart params) throws Exception;
 }

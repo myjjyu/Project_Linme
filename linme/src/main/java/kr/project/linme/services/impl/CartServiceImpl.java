@@ -32,7 +32,7 @@ public class CartServiceImpl implements CartService {
                 throw new Exception("저장된 데이터가 없습니다.");
             }
         } catch (Exception e) {
-            log.error("데이터 저장에 실패했습니다.", e);
+            log.error("장바구니 상품 추가에 실패했습니다.", e);
             throw e;
         }
 
@@ -50,10 +50,10 @@ public class CartServiceImpl implements CartService {
             rows = cartMapper.update(input);
 
             if (rows == 0) {
-                throw new Exception("수정된 데이터가 없습니다.");
+                throw new Exception("변경할 데이터가 없습니다.");
             }
         } catch (Exception e) {
-            log.error("데이터 수정에 실패했습니다.", e);
+            log.error("장바구니 상품 수량 변경에 실패했습니다.", e);
             throw e;
         }
 
@@ -71,10 +71,10 @@ public class CartServiceImpl implements CartService {
             output = cartMapper.selectItem(input);
 
             if (output == null) {
-                throw new Exception("조회된 데이터가 없습니다.");
+                throw new Exception("장바구니 데이터가 없습니다.");
             }
         } catch (Exception e) {
-            log.error("데이터 조회에 실패했습니다.", e);
+            log.error("장바구니 상품품 조회에 실패했습니다.", e);
             throw e;
         }
 
@@ -91,7 +91,7 @@ public class CartServiceImpl implements CartService {
         try {
             output = cartMapper.selectList(input);
         } catch (Exception e) {
-            log.error("데이터 목록 조회에 실패했습니다.", e);
+            log.error("장바구니 목록 조회에 실패했습니다.", e);
             throw e;
         }
 
@@ -109,10 +109,10 @@ public class CartServiceImpl implements CartService {
             rows = cartMapper.delete(input);
 
             if (rows == 0) {
-                throw new Exception("삭제된 데이터가 없습니다.");
+                throw new Exception("삭제된 장바구니 상품이 없습니다.");
             }
         } catch (Exception e) {
-            log.error("데이터 삭제에 실패했습니다.", e);
+            log.error("장바구니 상품 단일 삭제에 실패했습니다.", e);
             throw e;
         }
 
@@ -130,30 +130,47 @@ public class CartServiceImpl implements CartService {
             rows = cartMapper.deleteList(input);
 
             if (rows == 0) {
-                throw new Exception("삭제된 데이터가 없습니다.");
+                throw new Exception("삭제된 장바구니 목록이 없습니다.");
             }
         } catch (Exception e) {
-            log.error("데이터 삭제에 실패했습니다.", e);
+            log.error("장바구니 상품 전체 삭제에 실패했습니다.", e);
             throw e;
         }
 
         return rows;
     }
-    
 
-    // @Override
-    // public int getCount(Cart input) throws Exception {
-    //     int output = 0;
+    /**
+     * 장바구니 상품 중복 확인
+     */
+    @Override
+    public int editUniqueCart(Cart input) throws Exception {
+        try {
+            cartMapper.updateByUnique(input);
+        } catch (Exception e) {
+            log.error("장바구니 추가에 실패했습니다.");
+            throw e;
+        }
 
-    //     try {
-    //         output = cartMapper.selectCount(input);
-    //     } catch (Exception e) {
-    //         log.error("데이터 집계에 실패했습니다.", e);
-    //         throw e;
-    //     }
+        return cartMapper.updateByUnique(input);  
+    }
 
-    //     return output;
-    // }
+    /**
+     * 장바구니 상품 수량 확인
+     */
+    @Override
+    public int selectCount(Cart input) throws Exception {
+        int rows = 0;
+
+        try {
+            rows = cartMapper.selectCount(input);
+        } catch (Exception e) {
+            log.error("장바구니 상품 수량 조회에 실패했습니다.", e);
+            throw e;
+        }
+
+        return rows;
+    }
 
     
 }

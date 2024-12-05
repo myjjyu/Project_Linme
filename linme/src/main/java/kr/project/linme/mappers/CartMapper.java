@@ -136,10 +136,16 @@ public interface CartMapper {
      * @param input 
      * @return 조회된 데이터 수
      */
-    @Select("SELECT COUNT(*) FROM carts " + 
+    @Select("SELECT COUNT(*) FROM cart " + 
             "WHERE member_id = #{memberId} AND product_id = #{productId}"
             )
     public int selectCount(Cart input);
+
+    @Update("UPDATE cart c SET " +
+            "product_count = product_count + #{productCount}, " +
+            "c.add_date = NOW() " +
+            "WHERE member_id = #{memberId} AND cart_id = #{cartId}")
+    public int updateByUnique(Cart input);
 
     /**
      * 장바구니 단일 상품 삭제
