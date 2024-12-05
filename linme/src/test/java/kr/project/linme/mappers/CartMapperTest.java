@@ -81,6 +81,7 @@ public class CartMapperTest {
     @DisplayName("장바구니 전체 삭제 테스트")
     void deleteListCart() {
         Cart input = new Cart();
+        input.setMemberId(2);
         
         // 장바구니 전체 삭제
         int output = cartMapper.deleteList(input);

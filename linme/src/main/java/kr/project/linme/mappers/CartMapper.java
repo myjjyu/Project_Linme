@@ -113,18 +113,6 @@ public interface CartMapper {
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE c.member_id = #{memberId} " +
-            // "GROUP BY " + 
-            //     "c.cart_id, " + 
-            //     "c.product_count, " + 
-            //     "c.member_id, " + 
-            //     "p.product_id, " + 
-            //     "c.reg_date, " + 
-            //     "c.edit_date, " + 
-            //     "p.product_name, " + 
-            //     "p.price, " + 
-            //     "p.sale_price, " + 
-            //     "b.brand_name, " + 
-            //     "i.img " +
             "ORDER BY cart_id"
             )
     @Results(id="cartMap", value={
@@ -166,6 +154,6 @@ public interface CartMapper {
      * @param cartidList - 삭제할 장바구니 번호를 담고 있는 리스트
      * @return 삭제된 데이터 수
      */
-    @Delete ("DELETE FROM cart")
+    @Delete ("DELETE FROM cart WHERE member_id = #{memberId}")
     public int deleteList(Cart input);
 }

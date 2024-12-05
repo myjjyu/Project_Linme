@@ -74,16 +74,16 @@
                       <!-- 상품 상세 정보 -->
                       <div class="productInfo">
                         <!-- 상품 이미지 -->
-                        <a class="productImg" th:href="@{/view/view}">
+                        <a class="productImg" th:href="@{/view/view/{productId}}">
                           <img th:src="${cart.img}" />
                         </a>
                         <div class="productDetailInfo">
                           <!-- 브랜드명 -->
-                          <a th:href="@{/view/view}">
+                          <a th:href="@{/view/view/{productId}}">
                             <span th:text="${cart.brandName}"></span>
                           </a>
                           <!-- 상품명 -->
-                          <a th:href="@{/view/view}">
+                          <a th:href="@{/view/view/{cart.productId}}">
                             <span class="productName" th:text="${cart.productName}"></span>
                           </a>
                           <!-- 수량 조절 -->
@@ -102,13 +102,13 @@
                     <!-- 상품 금액-->
                     <div class="productPriceBox">
                       <!-- 판매가 -->
-                      <span class="cartSalePrice" th:text="${#numbers.formatInteger(cart.salePrice, 3, 'COMMA') + ' 원'}"></span>
+                      <span class="cartSalePrice" th:text="${#numbers.formatInteger(cart.totalPrice, 3, 'COMMA') + ' 원'}"></span>
 
                       <!-- 정가 -->
-                      <span class="lineThroughPrice" th:text="${#numbers.formatInteger(cart.price, 3, 'COMMA') + ' 원'}"></span>
+                      <!-- <span class="lineThroughPrice" th:text="${#numbers.formatInteger(cart.price, 3, 'COMMA') + ' 원'}"></span> -->
 
                       <!-- 주문하기 링크 -->
-                      <a class="goPayment" th:href="@{/payment/payment}">주문하기</a>
+                      <!-- <a class="goPayment" th:href="@{/payment/payment}">주문하기</a> -->
                     </div>
 
                     <!-- 배송비 -->
@@ -148,7 +148,6 @@
               <div class="totalPrice">
                 <span>전체 주문금액</span>
                 <!-- <span class="totalPriceText" th:text="${#numbers.formatInteger(cart.totalPrice ?: 0, 3, 'COMMA') + ' 원'}"></span> -->
-                <!-- <span class="totalPriceText" th:text="${cart.totalPrice} + ' 원'"></span> -->
               </div>
               <!-- 주문하기 버튼 -->
               <form th:action="@{/api/payment/order/{memberId}}" method="post">

@@ -271,7 +271,7 @@ main {
 
                   /* 상품 이미지 */
                   .productImg {
-                    border: 1px solid #b6b6b6;
+                    /* border: 1px solid #b6b6b6; */
                     width: 120px;
                     height: 120px;
                     cursor: pointer;
@@ -547,6 +547,7 @@ main {
 
   /* 주문하기 버튼 */
   .orderBtn {
+    border: none;
     background-color: #ff8181;
     border-radius: 4px;
     display: flex;
@@ -568,4 +569,47 @@ main {
       width: fit-content;
     }
   }
+}
+
+/* sweetalert 스윗알럿 */
+
+/* 장바구니 수량 변경 버튼 alert 창 css */
+/* 닫기 버튼  */
+.cartclose-button {
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  color: #a5a5a5;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px;
+  height: 40px;
+  width: 82px;
+}
+
+/* 이동 버튼  */
+.cart-button {
+  background-color: #ffffff;
+  border: 1px solid #ff697b;
+  color: #ff697b;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px;
+  height: 40px;
+  width: 82px;
+}
+
+/* 제목 텍스트 스타일 */
+.cart-text {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* 알럿창 크기 조정 */
+.custom-alert-popup {
+  width: 300px !important;
+  padding: 20px !important;
 }

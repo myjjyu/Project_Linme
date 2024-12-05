@@ -63,7 +63,7 @@ public class CartRestController {
     
 
     /**
-     * Cart 수정
+     * Cart 수량 변경
      * @param cartId - 수정할 Cart
      * @param productCount - 수정할 제품 수량
      * @return 수정된 Cart 객체를 포함한 JSON 데이터
@@ -98,7 +98,11 @@ public class CartRestController {
         return restHelper.sendJson(data);
     }
 
-
+    /**
+     * 장바구니에서 상품 삭제
+     * @param cartId - 삭제할 Cart
+     * @return JSON 데이터
+     */
     @DeleteMapping("/api/cart/deleteItem/{cartid}")
     public Map<String,Object> deleteItem ( @PathVariable("cartId") int cartId ) {
 
