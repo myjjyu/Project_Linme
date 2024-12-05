@@ -34,11 +34,11 @@
                 <table>
                     <tr>
                         <td>이름</td>
-                        <td><input type="text" value="name" readonly></td>
+                        <td><input<span th:text="${session.memberInfo.userName}"readonly/></td>
                     </tr>
                     <tr>
                         <td>이메일</td>
-                        <td><input type="text" value="email" readonly></td>
+                        <td><input<span th:text="${session.memberInfo.userId}" readonly/></td>
                     </tr>
                     <tr>
                         <td>휴대폰</td>
