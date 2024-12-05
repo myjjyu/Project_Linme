@@ -86,7 +86,7 @@
                             <span th:text="${cart.brandName}"></span>
                           </a>
                           <!-- 상품명 -->
-                          <a th:href="@{/view/view/{productId}(productId=${cart.productId})}" class="view-link" data-product-id="${cart.productId}">
+                          <a th:href="@{/view/view/{productId}(productId=${cart.productId})}">
                             <!-- <a th:href="@{'/view/view/' + ${product.productId}}"> -->
                             <span class="productName" th:text="${cart.productName}"></span>
                           </a>
