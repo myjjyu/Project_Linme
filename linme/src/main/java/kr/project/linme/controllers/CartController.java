@@ -47,7 +47,15 @@ public class CartController {
             webHelper.serverError(e);
         }
 
+        int output2 = 0;
+        try {
+            output2 = cartService.sumTotalPrice(cart);
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+
         model.addAttribute("cart", output);
+        model.addAttribute("totalPrice", output2);
 
         return "cart/cart";
     }

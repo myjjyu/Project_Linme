@@ -140,7 +140,7 @@
                 <span class="totalPriceText">0 원</span>
               </div>
               <!-- 주문하기 버튼 -->
-              <a class="orderBtn"><span>주문하기</span></a>
+              <a class="orderBtn noData"><span>주문하기</span></a>
             </div>
 
             <!-- 장바구니에 상품이 있을 때 -->
@@ -150,7 +150,7 @@
               <!-- 전체 주문금액 -->
               <div class="totalPrice">
                 <span>전체 주문금액</span>
-                <!-- <span class="totalPriceText" th:text="${#numbers.formatInteger(cart.totalPrice ?: 0, 3, 'COMMA') + ' 원'}"></span> -->
+                <span class="totalPriceText" th:text="${#numbers.formatInteger(totalPrice, 3, 'COMMA') + ' 원'}"></span>
               </div>
               <!-- 주문하기 버튼 -->
               <form th:action="@{/api/payment/order/{memberId}}" method="post">

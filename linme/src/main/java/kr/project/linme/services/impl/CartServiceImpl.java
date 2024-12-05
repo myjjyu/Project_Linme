@@ -172,5 +172,22 @@ public class CartServiceImpl implements CartService {
         return rows;
     }
 
+    /**
+     * 장바구니에 담긴 상품의 총 금액을 조회
+     */
+    @Override
+    public int sumTotalPrice(Cart input) throws Exception {
+        int output = 0;
+
+        try {
+            output = cartMapper.sumTotalPrice(input);
+        } catch (Exception e) {
+            log.error("장바구니에 담긴 상품의 총 금액을 조회하는데 실패했습니다.", e);
+            throw e;
+        }
+
+        return output;
+    }
+
     
 }

@@ -86,3 +86,18 @@ const increaseQuantity = (button) => {
     },
   });
 };
+
+/** 장바구니에 담긴 상품이 없을 때 주문하기 버튼 클릭 시 스윗알럿 */
+const orderBtn = document.querySelector(".orderBtn.noData");
+orderBtn.addEventListener("click", () => {
+  Swal.fire({
+    title: "장바구니에 담긴 상품이 없습니다.",
+    confirmButtonText: "확인",
+    width: 300,
+    height: 145,
+    customClass: {
+      confirmButton: "alert-button",
+      title: "title-text",
+    },
+  });
+});

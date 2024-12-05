@@ -70,4 +70,12 @@ public interface CartService {
      * @throws Exception
      */
     public int selectCount(Cart params) throws Exception;
+
+    /**
+     * 장바구니에 담긴 상품의 총 금액을 조회
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    public int sumTotalPrice(Cart params) throws Exception;
 }

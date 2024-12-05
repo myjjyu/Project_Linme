@@ -104,12 +104,22 @@ public class CartMapperTest {
     @DisplayName("장바구니 전체 목록 조회 테스트")
     void selectListCart() {
         Cart input = new Cart();
-        input.setMemberId(1);
+        input.setMemberId(2);
         List<Cart> output = cartMapper.selectList(input);
         
         // 향상된 forEach문을 사용한 목록 출력
         for (Cart item : output) {
             log.debug("output: " + item.toString());
         }
+    }
+
+    @Test
+    @DisplayName("장바구니에 담긴 상품의 총 금액을 조회")
+    void sumTotalPriceCart() {
+        Cart input = new Cart();
+        input.setMemberId(2);
+        
+        int output = cartMapper.sumTotalPrice(input);
+        log.debug("output: " + output);
     }
 }

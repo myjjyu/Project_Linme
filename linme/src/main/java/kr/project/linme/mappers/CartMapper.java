@@ -99,6 +99,7 @@ public interface CartMapper {
                 "c.cart_id, " + 
                 "c.product_count, " + 
                 "p.sale_price * c.product_count AS total_price, " + 
+                "SUM(p.sale_price * c.product_count) AS sum_total_price, " +
                 "c.member_id, " + 
                 "p.product_id, " + 
                 "c.reg_date, " + 
@@ -113,6 +114,18 @@ public interface CartMapper {
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE c.member_id = #{memberId} " +
+            "GROUP BY " + 
+                "c.cart_id, " + 
+                "c.product_count, " + 
+                "c.member_id, " + 
+                "p.product_id, " + 
+                "c.reg_date, " + 
+                "c.edit_date, " + 
+                "p.product_name, " + 
+                "p.price, " + 
+                "p.sale_price, " + 
+                "b.brand_name, " + 
+                "i.img " + 
             "ORDER BY cart_id"
             )
     @Results(id="cartMap", value={
@@ -120,6 +133,8 @@ public interface CartMapper {
         @Result(property="memberId", column="member_id"),
         @Result(property="productId", column="product_id"),
         @Result(property="productCount", column="product_count"),
+        @Result(property="totalPrice", column="total_price"),
+        @Result(property="sumTotalPrice", column="sum_total_price"),
         @Result(property="totalPrice", column="total_price"),
         @Result(property="regDate", column="reg_date"),
         @Result(property="editDate", column="edit_date"),
@@ -130,6 +145,18 @@ public interface CartMapper {
         @Result(property="img", column="img")
     })
     public List<Cart> selectList(Cart input);
+
+    /**
+     * 장바구니에 담긴 상품의 총 금액을 조회
+     * @param input
+     * @return
+     */
+    @Select("SELECT " + 
+                "SUM(p.sale_price * c.product_count) AS sum_total_price " +
+            "FROM cart c " +
+            "INNER JOIN product p ON p.product_id = c.product_id " +
+            "WHERE c.member_id = #{memberId}")
+    public int sumTotalPrice(Cart input);
 
     /**
      * 장바구니에 중복된 상품이 있는지 조회
