@@ -13,18 +13,21 @@ const toggleSelectAll = (v) => {
 const deleteSelected = () => {
   const selectedItems = document.querySelectorAll(".productCheckbox:checked");
   selectedItems.forEach((v, i) => {
-    v.closest("form").remove();
+    v.closest("li").remove();
   });
 };
 
 /* 수량 감소 함수 */
 const decreaseQuantity = (button) => {
   const quantityInput = button.nextElementSibling;
+  // console.log(quantityInput);
+  const quantityControl = quantityInput.closest(".quantityControl");
   let currentQuantity = parseInt(quantityInput.value);
   if (currentQuantity > 1) {
     quantityInput.value = currentQuantity - 1;
 
-    const productCount = document.querySelector(".productCount");
+    const productCount = quantityControl.querySelector(".productCount");
+    console.log(productCount);
 
     // 수량 변경 이벤트 발생 . 강제 이벤트 발생
     const eve = new Event("change");
@@ -65,10 +68,12 @@ const decreaseQuantity = (button) => {
 /* 수량 증가 함수 */
 const increaseQuantity = (button) => {
   const quantityInput = button.previousElementSibling;
+  const quantityControl = quantityInput.closest(".quantityControl");
+
   let currentQuantity = parseInt(quantityInput.value);
   quantityInput.value = currentQuantity + 1;
 
-  const productCount = document.querySelector(".productCount");
+  const productCount = quantityControl.querySelector(".productCount");
 
   // 수량 변경 이벤트 발생 . 강제 이벤트 발생
   const eve = new Event("change");

@@ -190,7 +190,9 @@
           console.log(".carId의 value : ", form.querySelector(".cartId").value);
           console.log(".carId의 data : ", data.cart.cartId);
           if (data) {
-            if (form.querySelector(".cartId").value === data.cart.cartId) {
+            console.log(typeof data.cart.cartId);
+            console.log(typeof form.querySelector(".cartId").value);
+            if (form.querySelector(".cartId").value == data.cart.cartId) {
               form.querySelector(".cartSalePrice").innerHTML = (data.cart.salePrice * data.cart.productCount).toLocaleString() + " 원";
             }
           }
