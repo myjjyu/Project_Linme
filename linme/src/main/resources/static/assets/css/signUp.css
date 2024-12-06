@@ -100,6 +100,16 @@
   padding: 15px 0;
   width: 444px;
 }
+
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input:focus {
+  outline: 1px solid #ff697b;
+  z-index: 1;
+  background-color: #e1f1ff;
+}
+
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput input:valid {
+  background-color: #e1f1ff;
+}
 /* 인풋 사이즈 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="password"],
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="email"],
@@ -108,6 +118,9 @@
   height: 30px;
   min-width: 222px;
   padding: 7px 10px 5px;
+  border: 1px solid #aaa8;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 /* placeholder 글씨 조정 */
@@ -117,18 +130,12 @@ input::placeholder {
 }
 
 /* 비번 보였다 안보였다 */
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .pwShowHide {
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  content: "";
-  cursor: pointer;
-  display: block;
-  height: 14px;
-  left: 216px;
+.signUp .signUpCover .inputDataCover .inputDataItem .userInput .pwShowHide img {
   position: absolute;
-  top: 24px;
+  transform: translateY(-150%);
   width: 20px;
+  height: 14px;
+  margin-left: 195px;
 }
 /* 버튼 색상 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput button {
@@ -215,6 +222,7 @@ input::placeholder {
 
 /* 가입하기 버튼 */
 .signUp button.inputCompleted {
+  border: none;
   background-color: #ff697b;
   border-radius: 4px;
   color: #fff;
