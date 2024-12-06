@@ -66,7 +66,7 @@ document.querySelector("#nickname_unique_check").addEventListener("click",async(
         // 닉네임 유효성 검사
         regexHelper.value("#nickname","닉네임을 입력하세요");
         checkspace("#nickname", "공백은 사용할 수 없습니다.");
-        regexHelper.minLength("#nickname", 2, "닉네임은 2자 이상 입력해주세요.");
+        regexHelper.minLength("#nickname", 1, "닉네임은 2자 이상 입력해주세요.");
         regexHelper.maxLength("#nickname", 13, "닉네임은 12자 이하로 입력해주세요.");
         regexHelper.nickName("#nickname", "닉네임은 한글, 영문, 숫자로만 구성되어야 합니다.");
 
@@ -95,6 +95,14 @@ document.querySelector("#nickname").addEventListener("change",e=>{
  
 document.getElementById("profile-form").addEventListener("submit", async (e) => {
     e.preventDefault();
+
+
+    // 중복검사 여부 확인
+    const nicknameCheck = document.querySelector("#nickname_check").value;
+    if (nicknameCheck !== "Y") {
+        await utilHelper.alertDanger("닉네임 중복 검사를 진행해주세요.");
+        return; 
+    }
 
     const formData = new FormData(e.currentTarget);
 
