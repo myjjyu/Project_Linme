@@ -144,7 +144,7 @@ public interface MemberMapper {
                 "UPDATE member " +
                         "SET "+
                         "user_pw=MD5(#{newUserPw}) "+
-                        "WHERE member_id= #{memberId} AND user_pw=(#{userPw}) "+
+                        "WHERE member_id= #{memberId} AND user_pw=MD5(#{userPw}) "+
                 "</script> ")
         public int updatePw(Member input);
 
