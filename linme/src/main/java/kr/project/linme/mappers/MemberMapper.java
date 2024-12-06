@@ -25,7 +25,7 @@ public interface MemberMapper {
             "tel, postcode, addr1, addr2, " +
             "addr_msg, profile, is_out, is_admin, login_date, " +
             "reg_date, edit_date) " +
-            "VALUES (#{userId}, #{userPw}, #{userName}, #{nickname}, " +
+            "VALUES (#{userId}, MD5(#{userPw}), #{userName}, #{nickname}, " +
             "#{tel}, #{postcode}, #{addr1}, #{addr2}, " +
             "'N', null, 'N', 'N', null, " +
             "now(), now())")
@@ -49,7 +49,7 @@ public interface MemberMapper {
     // user_id = 이메일
     @Update("UPDATE member SET " +
             "user_id = #{userId}, " +
-            "user_pw = #{userPw}, " +
+            "user_pw = MD5(#{userPw}), " +
             "user_name = #{userName}, " +
             "nickname = #{nickname}, " +
             "tel = #{tel}, " +
@@ -98,12 +98,12 @@ public interface MemberMapper {
 
     // 회원가입 아이디(이메일) , 닉네임 중복 체크
     @Select("<script>" + //
-            "SELECT COUNT(*) FROM member\n" + //
+            "SELECT COUNT(*) FROM member" + //
             "<where>\n" + //
-            "<if test='userId != null'>user_id = #{userId}</if>\n" + // 사용할수없는 이메일 입니다
-            "<if test='nickname != null'>nickname = #{nickname}</if>\n" + // 사용할수없는 닉네임 입니다
-        //     "<if test='member_id != 0'>AND member_id != #{memberId}</if>\n" +
-            "</where>\n" +
+            "<if test='userId != null'>user_id = #{userId}</if>" + // 사용할수없는 이메일 입니다
+            "<if test='nickname != null'>nickname = #{nickname}</if>" + // 사용할수없는 닉네임 입니다
+        //     "<if test='member_id != 0'>AND member_id != #{memberId}</if>" +
+            "</where>" +
             "</script>")
     public int selectCount(Member input);
 
@@ -114,7 +114,7 @@ public interface MemberMapper {
             "addr_msg, is_out, is_admin, login_date, " +
             "reg_date, edit_date " +
             "FROM member " +
-            "WHERE user_id = #{userId} AND user_pw = #{userPw}")
+            "WHERE user_id = #{userId} AND user_pw = MD5(#{userPw})")
     @ResultMap("memberMap")
     public Member login(Member input);
 
