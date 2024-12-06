@@ -184,7 +184,7 @@ public interface CartMapper {
      * @param input - 삭제할 장바구니 정보에 대한 모델 객체
      * @return 삭제된 데이터 수
      */
-    @Delete("DELETE FROM cart WHERE cart_id = #{cartId}")
+    @Delete("DELETE FROM cart WHERE cart_id = #{cartId} AND member_id = #{memberId}")
     public int delete(Cart input);
 
      /**

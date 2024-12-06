@@ -116,10 +116,15 @@ public class CartRestController {
      * @return JSON 데이터
      */
     @DeleteMapping("/api/cart/deleteItem/{cartid}")
-    public Map<String,Object> deleteItem ( @PathVariable("cartId") int cartId ) {
+    public Map<String,Object> deleteItem (
+        @SessionAttribute("memberInfo") Member memberInfo,
+        @RequestParam("cartId") int cartId,
+        @RequestParam("memberId") int memberId
+        ) {
 
         Cart input = new Cart();
         input.setCartId(cartId);
+        input.setMemberId(memberId);
 
         try {
             cartService.deleteItem(input);

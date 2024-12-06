@@ -9,14 +9,6 @@ const toggleSelectAll = (v) => {
   }
 };
 
-/* 선택된 항목 삭제 함수 */
-const deleteSelected = () => {
-  const selectedItems = document.querySelectorAll(".productCheckbox:checked");
-  selectedItems.forEach((v, i) => {
-    v.closest("li").remove();
-  });
-};
-
 /* 수량 감소 함수 */
 const decreaseQuantity = (button) => {
   const quantityInput = button.nextElementSibling;

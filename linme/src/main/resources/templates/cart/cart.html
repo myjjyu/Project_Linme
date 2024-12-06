@@ -207,6 +207,20 @@
           }
         });
       });
+
+      /** ------ 상품 단일 삭제 이벤트 ------ */
+      /* 선택된 항목 삭제 함수 */
+      const deleteSelected = () => {
+        const selectedItems = document.querySelectorAll(".productCheckbox:checked");
+
+        selectedItems.forEach(async (v, i) => {
+          v.closest("form").remove();
+
+          // 삭제할때 체크된 항목을 Ajax로 삭제 요청
+          await axiosHelper.delete(`[[@{/api/cart/deleteItem/{cartid}}]]`, new FormData(v.closest("form")));
+          console.log("삭제할때 체크된 항목을 Ajax로 삭제 요청 : ", v.closest("form"));
+        });
+      };
     </script>
   </body>
 </html>
