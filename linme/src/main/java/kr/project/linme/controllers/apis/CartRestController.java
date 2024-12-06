@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
+// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ import kr.project.linme.services.CartService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-@CrossOrigin(origins = "*") // CORS 설정
+// @CrossOrigin(origins = "*") // CORS 설정
 @RestController
 public class CartRestController {
 
@@ -41,6 +41,7 @@ public class CartRestController {
         @RequestParam("productCount") int productCount
     ) {
 
+        // Cart 객체 생성 및 요청 파라미터 설정
         Cart input = new Cart();
         input.setMemberId(memberId);
         input.setProductId(productId);
@@ -49,14 +50,18 @@ public class CartRestController {
         Cart output = null;
 
         try {
+            // CartService를 사용하여 아이템을 장바구니에 추가
             output = cartService.addItem(input);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
+        // 응답 데이터 맵 생성
         Map<String, Object> data = new HashMap<>();
-        data.put("cart", output);
+        data.put("cart", output); // 추가된 장바구니 아이템 정보
+        data.put("redirectUrl", "/cart/cart"); // 리디렉션 URL
 
+        // JSON 형식으로 응답 반환
         return restHelper.sendJson(data);
     }
     

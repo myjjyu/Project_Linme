@@ -18,9 +18,6 @@ var swiper2 = new Swiper(".mySwiper2", {
   },
 });
 
-
-
-
 // 상품설명, 리뷰, 상품문의 클릭시 컬러변경 이벤트
 const tabs = document.querySelectorAll(".tab-link");
 
@@ -32,8 +29,6 @@ tabs.forEach((tab) => {
     this.classList.add("on");
   });
 });
-
-
 
 //문의하기 alert창
 document.querySelector(".button").addEventListener("click", (e) => {
@@ -62,9 +57,7 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
   });
 });
 
-
-
-// 장바구니 바로구매 alert창 
+// 장바구니 바로구매 alert창
 document.querySelector(".cart-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
@@ -72,7 +65,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
   if (isLoggedIn) {
     // 로그인된 경우
     Swal.fire({
-      title: `상품이 장바구니에 담겼습니다.<br>장바구니로 이동하시겠습니까?`, 
+      title: `상품이 장바구니에 담겼습니다.<br>장바구니로 이동하시겠습니까?`,
       showCancelButton: true,
       cancelButtonText: "닫기",
       confirmButtonText: "이동",
@@ -80,19 +73,19 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         cancelButton: "cartclose-button",
         confirmButton: "cart-button",
         title: "cart-text",
-        popup: "custom-alert-popup"
+        popup: "custom-alert-popup",
       },
       reverseButtons: true, // 버튼 순서 변경
     }).then((result) => {
       if (result.isConfirmed) {
-        document.querySelector("#cartform").submit(); 
-        window.location.href = cartUrl; 
+        document.querySelector("#cartform").submit();
+        window.location.href = cartUrl;
       }
     });
   } else {
     // 로그인 안 된 경우
     Swal.fire({
-      title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`, 
+      title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,
       showCancelButton: true,
       cancelButtonText: "닫기",
       confirmButtonText: "이동",
@@ -100,23 +93,19 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         cancelButton: "cartclose-button",
         confirmButton: "cart-button",
         title: "cart-text",
-        popup: "custom-alert-popup"
+        popup: "custom-alert-popup",
       },
       reverseButtons: true, // 버튼 순서 변경
     }).then((result) => {
       if (result.isConfirmed) {
         document.querySelector("#cartform-not-log").submit();
-        window.location.href = "/login"; 
+        window.location.href = "/login";
       }
     });
   }
 });
 
-
-
-
-
-// 수량 증가, 감소 버튼 
+// 수량 증가, 감소 버튼
 document.addEventListener("DOMContentLoaded", function () {
   let quantity = 1;
 
@@ -134,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPrice = unitPrice * quantity;
     totalPriceDisplay.innerHTML = `${totalPrice.toLocaleString()} <span>원</span>`;
 
-    quantityInputs.forEach(input => input.value = quantity);
+    quantityInputs.forEach((input) => (input.value = quantity));
   }
 
   if (minusButton) {
