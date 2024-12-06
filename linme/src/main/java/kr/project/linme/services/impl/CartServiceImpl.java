@@ -148,6 +148,9 @@ public class CartServiceImpl implements CartService {
         int rows = 0;
         try {
             rows = cartMapper.updateByUnique(input);
+            if (rows == 0) {
+                log.warn("장바구니 추가된 행이 없습니다.");
+            }
         } catch (Exception e) {
             log.error("장바구니 추가에 실패했습니다.");
             throw e;
