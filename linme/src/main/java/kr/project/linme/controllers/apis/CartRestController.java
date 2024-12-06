@@ -50,8 +50,14 @@ public class CartRestController {
         Cart output = null;
 
         try {
-            // CartService를 사용하여 아이템을 장바구니에 추가
-            output = cartService.addItem(input);
+            int count = cartService.selectCount(input);
+            if (count > 0) {
+
+                output = cartService.editUniqueCart(input);
+            } else {
+                // CartService를 사용하여 아이템을 장바구니에 추가
+                output = cartService.addItem(input);
+            }
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
@@ -76,12 +82,14 @@ public class CartRestController {
     public Map<String,Object> editCart ( 
         @RequestParam("cartId") int cartId,
         @RequestParam("productCount") int productCount,
-        @RequestParam("memberId") int memberId
+        @RequestParam("memberId") int memberId,
+        @RequestParam("productId") int productId
      ) {
         Cart input = new Cart();
         input.setCartId(cartId);
         input.setProductCount(productCount);
         input.setMemberId(memberId);
+        input.setProductId(productId);
 
         // 수정된 Cart 객체를 저장할 변수
         Cart output = null;

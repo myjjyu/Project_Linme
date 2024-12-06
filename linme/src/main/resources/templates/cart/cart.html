@@ -59,6 +59,7 @@
                 <form class="cartId" id="cartProductItem" th:each="cart : ${cart}">
                   <input type="hidden" name="cartId" class="cartId" th:value="${cart.cartId}" />
                   <input type="hidden" name="memberId" class="memberId" th:value="${cart.memberId}" />
+                  <input type="hidden" name="productId" class="productId" th:value="${cart.productId}" />
                   <!-- 상단 : 상품 / 상품금액 / 배송비 -->
                   <div class="cartTop">
                     <span>상품</span>
@@ -188,7 +189,7 @@
           const data = await axiosHelper.put(`[[@{/api/cart/cart/edit}]]`, new FormData(form));
           console.log("데이터 : ", data);
           console.log(".carId의 value : ", form.querySelector(".cartId").value);
-          console.log(".carId의 data : ", data.cart.cartId);
+          console.log(".carId의 data : ", data.cartId);
           if (data) {
             console.log(typeof data.cart.cartId);
             console.log(typeof form.querySelector(".cartId").value);

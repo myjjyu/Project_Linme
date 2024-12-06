@@ -35,6 +35,21 @@ public class CartMapperTest {
     }
 
     @Test
+    @DisplayName("장바구니 updateByUnique 테스트")
+    void updateByUniqueCart() {
+        Cart input = new Cart();
+        // 장바구니에 추가할 데이터
+        input.setProductCount(1);
+        input.setMemberId(2);
+        input.setProductId(2);
+
+        int ouput = cartMapper.updateByUnique(input);
+
+        // 저장된 데이터의 수
+        log.debug("output: " + ouput);
+    }
+
+    @Test
     @DisplayName("장바구니 수량 증가 테스트")
     void updateCountCart() {
         Cart input = new Cart();

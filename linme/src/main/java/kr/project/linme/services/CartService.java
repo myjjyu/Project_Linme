@@ -61,7 +61,7 @@ public interface CartService {
      * @return
      * @throws Exception
      */
-    public int editUniqueCart(Cart params) throws Exception;
+    public Cart editUniqueCart(Cart params) throws Exception;
 
     /**
      * 장바구니 상품의 수량 확인

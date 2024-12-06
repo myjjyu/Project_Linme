@@ -85,7 +85,8 @@ public interface CartMapper {
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE c.member_id = #{memberId} " +
-            "AND c.cart_id = #{cartId} " +
+            // "AND c.cart_id = #{cartId} " +
+            "AND c.product_id = #{productId} " +
             "ORDER BY c.cart_id")
     @ResultMap("cartMap")
     public Cart selectItem(Cart input);
@@ -168,10 +169,14 @@ public interface CartMapper {
             )
     public int selectCount(Cart input);
 
+    /**
+     * 장바구니에 중복된 상품이 있을 경우 수량을 변경
+     * @param input
+     * @return
+     */
     @Update("UPDATE cart c SET " +
-            "product_count = product_count + #{productCount}, " +
-            "c.add_date = NOW() " +
-            "WHERE member_id = #{memberId} AND cart_id = #{cartId}")
+                "product_count = product_count + #{productCount} " +
+            "WHERE member_id = #{memberId} AND product_id = #{productId}")
     public int updateByUnique(Cart input);
 
     /**

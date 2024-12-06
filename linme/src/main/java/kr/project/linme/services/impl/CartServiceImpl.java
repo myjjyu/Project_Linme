@@ -144,15 +144,16 @@ public class CartServiceImpl implements CartService {
      * 장바구니 상품 중복 확인
      */
     @Override
-    public int editUniqueCart(Cart input) throws Exception {
+    public Cart editUniqueCart(Cart input) throws Exception {
+        int rows = 0;
         try {
-            cartMapper.updateByUnique(input);
+            rows = cartMapper.updateByUnique(input);
         } catch (Exception e) {
             log.error("장바구니 추가에 실패했습니다.");
             throw e;
         }
 
-        return cartMapper.updateByUnique(input);  
+        return cartMapper.selectItem(input);
     }
 
     /**
