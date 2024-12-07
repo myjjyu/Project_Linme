@@ -186,7 +186,7 @@
 
             try {
                 regexHelper.value("#user_id", "아이디(이메일)를 입력하세요");
-                regexHelper.email("#user_id", "아이디(이메일)가 잘못되었습니다.");
+                regexHelper.email("#user_id", "아이디(이메일)형식이 올바르지 않습니다.");
             } catch (e) {
                 await utilHelper.alertDanger(e.message);
                 e.element.focus();
@@ -256,19 +256,19 @@
 
                 regexHelper.value("#pw", "비밀번호를 입력하세요");
                 regexHelper.pwLinme("#pw", "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상으로 입력하세요.")
-                regexHelper.minLength("#pw", 8, "비밀번호는 8자 이상 20자 이하로 입력하세요");
-                regexHelper.maxLength("#pw", 20, "비밀번호는 8자 이상 20자 이하로 입력하세요");
-                regexHelper.compareTo("#pw", "#pwCheck", "비밀번호 확인이 잘못되었습니다");
+                regexHelper.minLength("#pw", 8, "비밀번호는 8자 이상 20자 이하로 입력하세요.");
+                regexHelper.maxLength("#pw", 20, "비밀번호는 8자 이상 20자 이하로 입력하세요.");
+                regexHelper.compareTo("#pw", "#pwCheck", "비밀번호 확인이 잘못되었습니다.");
 
                 regexHelper.value("#userName", "회원이름을 입력하세요.");
                 regexHelper.kor("#userName", "회원이름은 한글로만 입력하세요.");
                 regexHelper.minLength("#userName", 2, "회원이름은 2자 이상으로 입력하세요.");
 
-                regexHelper.value("#tel", "전화번호를 입력하세요");
-                regexHelper.cellphone("#tel", "전화번호가 잘못되었습니다");
+                regexHelper.value("#tel", "전화번호를 입력하세요.");
+                regexHelper.cellphone("#tel", "전화번호가 잘못되었습니다.");
 
-                regexHelper.value("#addr1", "주소를 입력하세요");
-                regexHelper.value("#addr2", "상세주소를 입력하세요")
+                regexHelper.value("#addr1", "주소를 입력하세요.");
+                regexHelper.value("#addr2", "상세주소를 입력하세요.")
 
             } catch (e) {
                 await utilHelper.alertDanger(e.message);
@@ -281,12 +281,12 @@
             const nicknameCheck = document.querySelector("#nickname_check").value;
 
             if (idCheck === "N") {
-                utilHelper.alertWarning("이메일 중복 검사를 진행해주세요.");
+                utilHelper.alertWarning("아이디(이메일) 중복 여부를 확인해주세요.");
                 return;
             }
 
             if (nicknameCheck === "N") {
-                utilHelper.alertWarning("닉네임 중복 검사를 진행해주세요.");
+                utilHelper.alertWarning("닉네임 중복 여부를 확인해주세요.");
                 return;
             }
 
@@ -296,7 +296,7 @@
 
             // 나중에 경로 수정하기
             if (data) {
-                window.location = "[[@{/main/main}]]";
+                window.location = "[[@{/login}]]";
             }
 
             // alert("회원가입 처리 기능이 실행됩니다.");
