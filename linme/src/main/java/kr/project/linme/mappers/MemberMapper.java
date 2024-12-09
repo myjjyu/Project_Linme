@@ -114,12 +114,12 @@ public interface MemberMapper {
             "addr_msg, is_out, is_admin, login_date, " +
             "reg_date, edit_date " +
             "FROM member " +
-            "WHERE user_id = #{userId} AND user_pw = MD5(#{userPw})")
+            "WHERE user_id = #{userId} AND user_pw = MD5(#{userPw}) AND is_out='N'")
     @ResultMap("memberMap")
     public Member login(Member input);
 
     //로그인 시간 업데이트
-    @Update("UPDATE member SET login_date = NOW() WHERE member_id = #{memberId}")
+    @Update("UPDATE member SET login_date = NOW() WHERE member_id = #{memberId} AND is_out='N'")
     public int updateLoginDate(Member input);
 
 
