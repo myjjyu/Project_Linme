@@ -149,7 +149,28 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.selectItem(input);
     }
 
-    // 탈퇴회원 
+    //회원 탈퇴
+    @Override
+    public int out(Member input) throws Exception {
+        int rows = 0;
+
+        try {
+            // 단순히 회원 삭제를 위한 Mapper 호출
+            rows = memberMapper.out(input);
+
+            if (rows == 0) {
+                throw new Exception("존재하지 않는 회원에 대한 요청입니다.");
+            }
+        } catch (Exception e) {
+            log.error("Member 데이터 삭제에 실패했습니다.", e);
+            throw e;
+        }
+
+        return rows;
+    }
+
+
+    // 탈퇴회원관리 
     @Override
     public List<Member>processOutMembers()throws Exception{
         List<Member>output=null;

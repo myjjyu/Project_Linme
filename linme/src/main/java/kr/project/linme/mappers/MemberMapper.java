@@ -174,5 +174,13 @@ public interface MemberMapper {
                 "WHERE is_out='Y' AND \n "+//
                 "edit_date <DATE_ADD(NOW(),interval -1 minute)")
         public int deleteOutMembers();
+
+
+
+        //회원 탈퇴
+        @Update("UPDATE member\n "+//
+                "SET is_out='Y', edit_date=NOW()\n "+//
+                "WHERE member_id = #{memberId} AND is_out='N'")
+        public int out(Member input);
 }
 

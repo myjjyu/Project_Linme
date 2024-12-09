@@ -30,9 +30,9 @@
             </div>
         </div>     
 
-        <div class="formSection">
+        <form class="delete-form" id="delete-form" th:action="@{/api/myPage/out}" method="delete" enctype="multipart/form-data">
             <h1>회원탈퇴</h1>
-            <p>아이디님, 린미를 떠나신다니 아쉬워요.</p>
+            <p><span th:text="${session.memberInfo.nickname}" />님, 린미를 떠나신다니 아쉬워요.</p>
             <p>회원탈퇴 전, 아래 유의사항을 확인해 주세요.</p>
 
             <div class="noticeBox">
@@ -62,13 +62,17 @@
                 <label for="confirmWithdrawal">린미의 회원 탈퇴 유의사항을 확인했어요.</label>
             </div>
 
-            <button class="withdrawalButton" disabled>탈퇴하기</button>
-        </div>
+            <button id="withdrawalButton" class="withdrawalButton" type="submit">탈퇴하기</button>
+        </form>
     </div>
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
     <script th:src="@{/assets/js/myPage/myPage.js}"></script>
+    <script th:src="@{/assets/js/myPage/withdrawal.js}"></script>
     <script>
         document.querySelector(".footerContainer").style.margin = "0px";
     </script>

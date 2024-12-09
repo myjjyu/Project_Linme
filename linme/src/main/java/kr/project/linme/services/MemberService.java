@@ -25,6 +25,9 @@ public interface MemberService {
     //프로필 정보 변경
     public Member updateProfile(Member input) throws Exception;
 
+    //회원 탈퇴
+    public int out(Member input) throws Exception;
+
     // 탈퇴회원 관리
     public List<Member> processOutMembers() throws Exception;
 

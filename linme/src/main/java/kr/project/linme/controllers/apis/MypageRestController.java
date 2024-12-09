@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.models.UploadItem;
 import kr.project.linme.services.MemberService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -202,5 +205,27 @@ public class MypageRestController {
         return restHelper.sendJson();
 
         }
+
+        /** 회원 탈퇴 */
+        @DeleteMapping("/api/myPage/out")
+        public Map<String, Object> out(
+            HttpServletRequest request, 
+            @SessionAttribute("memberInfo") Member memberInfo) {
+            try {
+                // 탈퇴 서비스 호출
+                memberService.out(memberInfo);
+            } catch (Exception e) {
+                // 오류 발생 시 에러 반환
+                return restHelper.serverError(e);
+            }
+
+            // 로그아웃 처리를 위해 세션 무효화
+            HttpSession session = request.getSession();
+            session.invalidate();
+
+            // 성공 응답 반환
+            return restHelper.sendJson();
+        }
+
     
 }
