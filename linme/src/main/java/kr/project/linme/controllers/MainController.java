@@ -103,7 +103,6 @@ public class MainController {
         return "main/main";
     }
 
-
     /**
      * 카테고리 리스트 페이지
      * 
@@ -255,8 +254,41 @@ public class MainController {
      */
     @GetMapping("/header/new")
     public String New(Model model) {
+        Product product = new Product();
+        List<Product> output = null;
+        try {
+            // 전체 제품 목록
+            output = productService.getList(product);
+    
+            // 최신등록순으로 정렬
+            output.sort((a, b) -> {
+                if (a.getRegDate() == null && b.getRegDate() == null) {
+                    return 0;
+                } else if (a.getRegDate() == null) {
+                    return 1;
+                } else if (b.getRegDate() == null) {
+                    return -1;
+                } else {
+                    return b.getRegDate().compareTo(a.getRegDate());
+                }
+            });
+    
+            // 제품 3개만 출력
+            if (output.size() > 3) {
+                // 마지막 3개만 출력(최신등록순)
+                output = output.subList(output.size() - 3, output.size());
+            }
+            for (Product item : output) {
+                System.out.println("이미지 경로: " + item.getImg());
+                item.setImg(fileHelper.getUrl(item.getImg()));
+            }
+        } catch (Exception e) {
+            webHelper.serverError(e);
+        }
+        model.addAttribute("products", output);
         return "header/new";
     }
+    
 
     @GetMapping("/header/best")
     public String Best(Model model) {

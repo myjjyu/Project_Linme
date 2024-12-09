@@ -182,15 +182,38 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
         // var data = new URLSearchParams(formData).toString();
         // xhr.send(data);
 
+        // var form = document.querySelector("#paymentform");
+        // var formData = new FormData(form);
+        // var data = new URLSearchParams();
+
+        // formData.forEach((value, key) => {
+        //   data.append(key, value);
+        // });
+
+        // xhr.send(data.toString());
+
+
         var form = document.querySelector("#paymentform");
-        var formData = new FormData(form);
-        var data = new URLSearchParams();
-
-        formData.forEach((value, key) => {
-          data.append(key, value);
-        });
-
-        xhr.send(data.toString());
+        if (!form) {
+          console.error("폼 요소를 찾을수없음: #paymentform");
+        } else {
+          var formData = new FormData(form);
+          var data = new URLSearchParams();
+        
+          formData.forEach((value, key) => {
+            data.append(key, value);
+          });
+        
+          console.log("폼 데이터:", data.toString()); 
+        
+          // xhr 객체가 올바르게 초기화되었는지 확인
+          if (xhr) {
+            console.log("XHR 객체 초기화 완료");
+            xhr.send(data.toString());
+          } else {
+            console.error("XHR 객체 초기화 실패");
+          }
+        }
 
         
       }
