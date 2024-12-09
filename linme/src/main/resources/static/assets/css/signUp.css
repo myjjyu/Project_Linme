@@ -102,14 +102,14 @@
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input:focus {
-  outline: 1px solid #ff697b;
+  outline: 1px solid #ff8181;
   z-index: 1;
-  background-color: #e1f1ff;
 }
 
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input:valid {
   background-color: #e1f1ff;
 }
+
 /* 인풋 사이즈 */
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="password"],
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput input[type="email"],
@@ -199,26 +199,6 @@ input::placeholder {
 .signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuide:first-child {
   margin-top: 0;
 }
-/* 글씨 온 오프 */
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuide.off {
-  display: none;
-}
-/* 경고 글씨 색 */
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideWarn {
-  color: #ff6969;
-}
-
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideWarn.off {
-  display: none;
-}
-
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideChecked {
-  color: #69a5ff;
-}
-
-.signUp .signUpCover .inputDataCover .inputDataItem .userInput .guide .inputGuideChecked.off {
-  display: none;
-}
 
 /* 가입하기 버튼 */
 .signUp button.inputCompleted {
@@ -243,14 +223,28 @@ input::placeholder {
 }
 
 /* 주소 입력란 */
+/*주소 입력란 길이 늘리기 */
 .address1,
 .address2 {
-  width: 350px; /*주소 입력란 길이 늘리기 */
+  width: 350px;
   padding: 10px;
   font-size: 14px;
 }
 
 /* 각 입력칸 간의 간격 */
+/* 아래쪽 간격 추가 */
 .userInput div {
-  margin-bottom: 5px; /* 아래쪽 간격 추가 */
+  margin-bottom: 5px;
+}
+
+/* 자동입력 배경색 제거 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: #000;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
 }
