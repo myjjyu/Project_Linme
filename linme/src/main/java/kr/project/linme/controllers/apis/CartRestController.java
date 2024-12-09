@@ -132,6 +132,9 @@ public class CartRestController {
             return restHelper.serverError(e);
         }
 
+        Map<String, Object> data = new HashMap<>();
+        data.put("cart", input);
+
         return restHelper.sendJson();
     }
 

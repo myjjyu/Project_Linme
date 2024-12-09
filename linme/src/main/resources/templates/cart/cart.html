@@ -52,7 +52,7 @@
             </div>
 
             <!-- 장바구니에 상품이 있을 때 -->
-            <div th:unless="${cart.size() == 0 or cart.size() == 0}">
+            <div th:unless="${cart == null or cart.size() == 0}">
               <!-- 장바구니 상품 정보 -->
               <div id="cartList">
                 <!-- 장바구니 폼 -->

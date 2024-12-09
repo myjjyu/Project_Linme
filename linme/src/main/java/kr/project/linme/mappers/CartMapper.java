@@ -153,7 +153,7 @@ public interface CartMapper {
      * @return
      */
     @Select("SELECT " + 
-                "SUM(p.sale_price * c.product_count) AS sum_total_price " +
+                "COALESCE(SUM(p.sale_price * c.product_count), 0) AS sum_total_price " +
             "FROM cart c " +
             "INNER JOIN product p ON p.product_id = c.product_id " +
             "WHERE c.member_id = #{memberId}")
