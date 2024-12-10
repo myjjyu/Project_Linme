@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>린미 - 아이디 찾기</title>
+    <th:block th:replace="~{/fragments/header}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" />
+    <style>
+        /* .findIdIn {
+            display: flex;
+            flex: 1 1;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+        }
+
+        .findIdIn .contents {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .findIdIn .loginCover {
+            max-width: 550px;
+            padding: 40px 20px;
+            width: 100%;
+            margin-top: 200px;
+        }
+
+        .findIdIn .title {
+            color: #333;
+            font-size: 30px;
+            font-weight: 700;
+            height: fit-content;
+            padding-top: 112px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #ff697b;
+            padding-top: 5px;
+            text-align: center;
+            border-radius: 4px;
+            width: 310px;
+            height: 40px;
+        } */
+
+        .findIdIn {
+            display: flex;
+            flex: 1 1;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .findIdIn .contents {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .findIdIn .loginCover {
+            max-width: 550px;
+            padding: 40px 20px;
+            width: 100%;
+            margin-top: 200px;
+            margin-bottom: 200px;
+        }
+
+        .findIdIn .title {
+            color: #333;
+            font-size: 30px;
+            font-weight: 700;
+            height: fit-content;
+            padding-top: 112px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #ff697b;
+            padding-top: 5px;
+            text-align: center;
+            border-radius: 4px;
+            width: 310px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #ff5c6a;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            text-decoration: none;
+            color: #ff697b;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="findIdIn">
+            <div class="contents">
+                <div class="findIdInCover">
+                    <div class="title">아이디 찾기</div>
+                    <form id="find-id-form">
+                        <!-- 이름 -->
+                        <div class="input-container">
+                            <input type="text" name="user_name" id="user_name" class="input-field" placeholder="이름" />
+                        </div>
+
+                        <!-- 이메일 -->
+                        <div class="input-container">
+                            <input type="tel" name="tel" id="tel" class="input-field" placeholder="전화번호" />
+                        </div>
+
+                        <p class="find-result">
+                            <span class='user-name'>OO</span>님의 아이디는
+                            <span class='user-id'>OO</span>입니다
+                        </p>
+
+                        <!-- 아이디 찾기 버튼 -->
+                        <button type="submit" class="btn">아이디 찾기</button>
+                    </form>
+
+                    <div class="form-footer">
+                        <p>로그인이 필요하신가요? <a th:href="@{/login}">로그인</a></p>
+                        <p>계정이 없으신가요? <a th:href="@{/signUp}">회원가입</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <th:block th:replace="~{/fragments/footer}" />
+    </footer>
+    <!-- 푸터 0px로 붙게 -->
+    <script>
+        document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
+    <!-- 스크립트추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
+    <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
+
+    <script>
+        document.getElementById('find-id-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            try {
+                regexHelper.value("#user_name", "이름을 입력하세요");
+                regexHelper.value("#tel", "전화번호를 입력하세요");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                setTimeout(() => err.element.focus(), 300);
+                return;
+            }
+
+            const data = await axiosHelper.post('[[@{/api/member/findId}]]', new FormData(e.currentTarget));
+
+            if (data) {
+                const userName = document.querySelector("#user_name").value;
+                const userId = data.item;
+
+                document.querySelector(".user-name").innerHTML = userName;
+                document.querySelector(".user-id").innerHTML = userId;
+
+                document.querySelector(".find-result").style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

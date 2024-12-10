@@ -182,5 +182,11 @@ public interface MemberMapper {
                 "SET is_out='Y', edit_date=NOW()\n "+//
                 "WHERE member_id = #{memberId} AND is_out='N'")
         public int out(Member input);
+
+        // 아이디 찾기
+        @Select("SELECT user_id FROM member " + //
+            "WHERE user_name = #{userName} AND tel = #{tel} AND is_out ='N'")
+        @ResultMap("memberMap")
+        public Member findId(Member input);
 }
 

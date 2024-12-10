@@ -13,6 +13,11 @@ public class UserController {
     public String findId() {
         return "member/findId";
     }
+
+    @GetMapping("/member/findIdIn")
+    public String findIdIn() {
+        return "member/findIdIn";
+    }
     
     @GetMapping("/member/findPw")
     public String findPw() {
@@ -30,4 +35,6 @@ public class UserController {
     public String signUp() {
         return "signUp";
     }
+
+    
 }

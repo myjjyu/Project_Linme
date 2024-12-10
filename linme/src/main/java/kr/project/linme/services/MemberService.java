@@ -31,4 +31,7 @@ public interface MemberService {
     // 탈퇴회원 관리
     public List<Member> processOutMembers() throws Exception;
 
+    // 아이디 찾기
+    public Member findId(Member input) throws Exception;
+
 }

@@ -1,5 +1,6 @@
 package kr.project.linme.controllers.apis;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,5 +159,29 @@ public class MemberRestController {
         HttpSession session = request.getSession();
         session.invalidate();
         return restHelper.sendJson();
+    }
+
+    // 아이디 찾기 
+    @PostMapping("/api/member/findId")
+    public Map<String, Object> findId(
+        @RequestParam("user_name") String userName,
+        @RequestParam("tel") String tel) {
+        
+        Member input = new Member();
+        input.setUserName(userName);
+        input.setTel(tel);
+
+        Member output = null;
+
+        try {
+            output = memberService.findId(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("item", output.getUserId());
+
+        return restHelper.sendJson(data);
     }
 }

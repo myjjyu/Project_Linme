@@ -186,5 +186,24 @@ public class MemberServiceImpl implements MemberService {
         }
         return output;
     }
+
+    // 아이디 찾기
+    @Override
+    public Member findId(Member input) throws Exception {
+        Member output = null;
+
+        try {
+            output = memberMapper.findId(input);
+
+            if (output == null) {
+                throw new Exception("Member 조회된 데이터가 없습니다.");
+            }
+        } catch (Exception e) {
+            log.error("아이디 검색에 실패했습니다", e);
+            throw e;
+        }
+
+        return output;
+    }
 }
    
