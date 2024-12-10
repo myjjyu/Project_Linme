@@ -4,8 +4,34 @@ document.querySelector(".footerContainer").style.margin = "0px";
 /* 전체 선택/해제 함수 */
 const toggleSelectAll = (v) => {
   const checkboxes = document.getElementsByClassName("productCheckbox");
+
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = v.checked;
+  }
+
+  // sweatalert2
+  if (v.checked) {
+    Swal.fire({
+      title: "전체 상품이 선택되었습니다.",
+      confirmButtonText: "확인",
+      width: 300,
+      height: 145,
+      customClass: {
+        confirmButton: "alert-button",
+        title: "title-text",
+      },
+    });
+  } else {
+    Swal.fire({
+      title: "전체 상품이 해제되었습니다.",
+      confirmButtonText: "확인",
+      width: 300,
+      height: 145,
+      customClass: {
+        confirmButton: "alert-button",
+        title: "title-text",
+      },
+    });
   }
 };
 
