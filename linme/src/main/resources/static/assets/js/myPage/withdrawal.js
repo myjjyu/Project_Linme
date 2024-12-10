@@ -14,21 +14,6 @@ document.getElementById("delete-form").addEventListener('submit', async e =>{
         return;
     }
 
-    // try {
-    //     const result = await utilHelper.confirmWarning("탈퇴 확인","정말로 탈퇴하시겠습니까? 탈퇴 후에는 복구할 수 없습니다.");
-
-    //     if (result.value) {
-    //         const data = await axiosHelper.delete("[[@{/api/myPage/out}]]");
-
-    //         if (data) {
-    //             await utilHelper.alertSuccess("탈퇴가 완료되었습니다.");
-    //             window.location = "[[@{/main}]]";
-    //         }
-    //     }
-    // } catch (e) {
-    //     console.error("탈퇴 처리 중 오류 발생:", e);
-    //     alert("탈퇴 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
-    // }
     const formData = new FormData(e.currentTarget);
     const data = await axiosHelper.deleteMultipart(e.currentTarget.action, formData);
     try {
@@ -43,12 +28,5 @@ document.getElementById("delete-form").addEventListener('submit', async e =>{
         if (data) {
             await utilHelper.alertSuccess("탈퇴가 완료되었습니다.");
             window.location = "/main/main";
-        }
-
-    // } catch (error) {
-    //     console.error("탈퇴 처리 중 오류 발생:", error);
-    //     alert("탈퇴 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
-    // }
-
-    
+        }    
 });
