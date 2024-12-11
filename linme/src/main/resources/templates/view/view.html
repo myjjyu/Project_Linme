@@ -38,10 +38,11 @@
       </a>
     </div>
 
+    <!--****************************************************-->
     <!-- 메인 상세페이지 영역 -->
+    <!--*****************************************************-->
     <main>
       <div class="view-top">
-        <!-- 메뉴 메인이미지 & 미리보기 -->
         <div
           style="
             --swiper-navigation-color: #fff;
@@ -53,21 +54,6 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide main-img">
               <img th:src="${product.img}" />
-            </div>
-          </div>
-          <!--화살표 버튼  -->
-          <div class="swiper-button">
-            <div class="swiper-button-next">
-              <img
-                th:src="@{/assets/img/view/swiper-button2.png}"
-                alt="img-button"
-              />
-            </div>
-            <div class="swiper-button-prev">
-              <img
-                th:src="@{/assets/img/view/swiper-button.png}"
-                alt="img-button"
-              />
             </div>
           </div>
 
@@ -133,6 +119,7 @@
               </li>
             </ul>
 
+            <!-- 필수표기정보 alert 창 -->
             <button class="required-Info">필수 표기 정보</button>
             <div class="required-box" style="display: none">
               <table>
@@ -225,29 +212,64 @@
               ></div>
             </div>
 
-            <!-- 로그인했을때 -->
+            <!-- **************************** -->
+            <!-- 로그인 상태 -->
+            <!-- **************************** -->
             <div class="btn" th:if="${session.memberInfo != null}">
-              <form id="cartform" th:action="@{/api/cart/cart/add}" method="post">
-                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}"/>
-                <input type="hidden" name="productId" th:value="${product.productId}" />
+              <form
+                id="cartform"
+                th:action="@{/api/cart/cart/add}"
+                method="post"
+              >
+                <input
+                  type="hidden"
+                  name="memberId"
+                  th:value="${session.memberInfo.memberId}"
+                />
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
                 <!-- 수량▼ -->
-                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input"
+                <input
+                  type="hidden"
+                  name="productCount"
+                  th:value="${product.productCount}"
+                  class="quantity-input"
                 />
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
 
-              <form id="paymentform" th:action="@{/api/payment/payment/add}" method="post">
-                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}"/>
-                <input type="hidden" name="productId" th:value="${product.productId}" />
+              <form
+                id="paymentform"
+                th:action="@{/api/payment/payment/add}"
+                method="post"
+              >
+                <input
+                  type="hidden"
+                  name="memberId"
+                  th:value="${session.memberInfo.memberId}"
+                />
+                <input
+                  type="hidden"
+                  name="productId"
+                  th:value="${product.productId}"
+                />
                 <!-- 수량▼ -->
-                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input"
+                <input
+                  type="hidden"
+                  name="productCount"
+                  th:value="${product.productCount}"
+                  class="quantity-input"
                 />
                 <button type="submit" class="buy-btn">바로구매</button>
               </form>
-
             </div>
 
-            <!-- 로그인 안됐을때 -->
+            <!-- **************************** -->
+            <!-- 로그아웃 상태 -->
+            <!-- **************************** -->
             <div class="btn" th:unless="${session.memberInfo != null}">
               <form id="cartform-not-log" th:action="@{/login}">
                 <input type="hidden" name="memberId" />
@@ -278,7 +300,9 @@
 
       <div class="endsolid solid"></div>
 
+      <!-- **************************** -->
       <!-- 상품설명/리뷰/상품문의 -->
+      <!-- **************************** -->
       <div class="sticky">
         <div class="productDetailTab">
           <ul class="imgtext">
@@ -295,7 +319,7 @@
         </div>
       </div>
 
-      <!-- 제품이미지 -->
+      <!--메인 제품 설명 이미지 -->
       <div id="mainimg">
         <img th:src="${product.dImg}" width="897" height="auto" />
       </div>
@@ -359,6 +383,7 @@
     <footer>
       <th:block th:replace="~{/fragments/footer}" />
     </footer>
+    
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script
@@ -399,10 +424,10 @@
     </script>
     <script th:inline="javascript">
       const isLoggedIn = /*[[${session.memberInfo != null}]]*/ false;
-     // const addCartApiUrl = /*[[@{/api/cart/cart/add}]]*/ ""; // 장바구니 백엔드
-     // const cartUrl = /*[[@{/cart/cart}]]*/ ""; // 장바구니 페이지
-     // const paymentApiUrl = /*[[@{/api/payment/payment}]]*/ ""; // 바로구매 백엔드
-     // const paymentUrl = /*[[@{/payment/payment}]]*/ ""; //바로구매 페이지
+      // const addCartApiUrl = /*[[@{/api/cart/cart/add}]]*/ ""; // 장바구니 백엔드
+      // const cartUrl = /*[[@{/cart/cart}]]*/ ""; // 장바구니 페이지
+      // const paymentApiUrl = /*[[@{/api/payment/payment}]]*/ ""; // 바로구매 백엔드
+      // const paymentUrl = /*[[@{/payment/payment}]]*/ ""; //바로구매 페이지
     </script>
   </body>
 </html>

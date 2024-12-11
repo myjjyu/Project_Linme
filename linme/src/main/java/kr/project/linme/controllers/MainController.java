@@ -16,18 +16,33 @@ import kr.project.linme.mappers.ProductMapper;
 import kr.project.linme.models.Product;
 import kr.project.linme.services.ProductService;
 
+/**
+ * 메인 페이지 컨트롤러
+ */
 @Controller
 public class MainController {
 
+    /**
+     * 상품 서비스 객체 주입
+     */
     @Autowired
     private ProductService productService;
 
+    /**
+     * WebHelper 주입
+     */
     @Autowired
     private WebHelper webHelper;
 
+    /**
+     * FileHelper 주입
+     */
     @Autowired
     private FileHelper fileHelper;
 
+    /**
+     * ProductMapper 주입
+     */
     @Autowired
     private ProductMapper productMapper;
 
@@ -259,7 +274,7 @@ public class MainController {
         try {
             // 전체 제품 목록
             output = productService.getList(product);
-    
+
             // 최신등록순으로 정렬
             output.sort((a, b) -> {
                 if (a.getRegDate() == null && b.getRegDate() == null) {
@@ -272,7 +287,7 @@ public class MainController {
                     return b.getRegDate().compareTo(a.getRegDate());
                 }
             });
-    
+
             // 제품 3개만 출력
             if (output.size() > 3) {
                 // 마지막 3개만 출력(최신등록순)
@@ -288,13 +303,23 @@ public class MainController {
         model.addAttribute("products", output);
         return "header/new";
     }
-    
 
+    /**
+     * 베스트 상품 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/header/best")
     public String Best(Model model) {
         return "header/best";
     }
 
+    /**
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/header/spacial")
     public String Spacial(Model model) {
         return "header/spacial";

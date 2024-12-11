@@ -17,7 +17,6 @@ import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.MemberService;
 
-
 @RestController
 public class MemberRestController {
 
