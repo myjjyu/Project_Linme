@@ -7,105 +7,9 @@
     <title>린미 - 아이디 찾기</title>
     <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/findIdIn.css}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" />
-    <style>
-        /* .findIdIn {
-            display: flex;
-            flex: 1 1;
-            flex-direction: column;
-            height: auto;
-            justify-content: center;
-        }
 
-        .findIdIn .contents {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .findIdIn .loginCover {
-            max-width: 550px;
-            padding: 40px 20px;
-            width: 100%;
-            margin-top: 200px;
-        }
-
-        .findIdIn .title {
-            color: #333;
-            font-size: 30px;
-            font-weight: 700;
-            height: fit-content;
-            padding-top: 112px;
-            text-align: center;
-        }
-
-        .btn {
-            background-color: #ff697b;
-            padding-top: 5px;
-            text-align: center;
-            border-radius: 4px;
-            width: 310px;
-            height: 40px;
-        } */
-
-        .findIdIn {
-            display: flex;
-            flex: 1 1;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .findIdIn .contents {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .findIdIn .loginCover {
-            max-width: 550px;
-            padding: 40px 20px;
-            width: 100%;
-            margin-top: 200px;
-            margin-bottom: 200px;
-        }
-
-        .findIdIn .title {
-            color: #333;
-            font-size: 30px;
-            font-weight: 700;
-            height: fit-content;
-            padding-top: 112px;
-            text-align: center;
-        }
-
-        .btn {
-            background-color: #ff697b;
-            padding-top: 5px;
-            text-align: center;
-            border-radius: 4px;
-            width: 310px;
-            height: 40px;
-            font-size: 16px;
-        }
-
-        .btn:hover {
-            background-color: #ff5c6a;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .form-footer a {
-            text-decoration: none;
-            color: #ff697b;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -117,21 +21,26 @@
                     <form id="find-id-form">
                         <!-- 이름 -->
                         <div class="input-container">
-                            <input type="text" name="user_name" id="user_name" class="input-field" placeholder="이름" />
+                            <input type="text" name="user_name" id="user_name" class="input-field"
+                                placeholder="이름을 입력해주세요" />
                         </div>
 
                         <!-- 이메일 -->
                         <div class="input-container">
-                            <input type="tel" name="tel" id="tel" class="input-field" placeholder="전화번호" />
+                            <input type="tel" name="tel" id="tel" class="input-field" placeholder="전화번호를 입력해주세요" />
                         </div>
 
                         <p class="find-result">
-                            <span class='user-name'>OO</span>님의 아이디는
-                            <span class='user-id'>OO</span>입니다
+                            <span class='user-name' style="color: hsl(352, 91%, 79%);">린미</span>님의 아이디는
+                            <span class='user-id' style="color: hsl(352, 91%, 79%);">linme@linme.com</span>입니다
                         </p>
 
                         <!-- 아이디 찾기 버튼 -->
-                        <button type="submit" class="btn">아이디 찾기</button>
+                        <div class="find-id-btn">
+                            <button type="submit" class="btn">
+                                <p>아이디 찾기</p>
+                            </button>
+                        </div>
                     </form>
 
                     <div class="form-footer">

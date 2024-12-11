@@ -1,0 +1,89 @@
+.findIdIn {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.findIdIn .contents {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.findIdIn .findIdInCover {
+  max-width: 550px;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.findIdIn .title {
+  color: #333;
+  font-size: 30px;
+  font-weight: 700;
+  height: fit-content;
+  padding-top: 112px;
+  text-align: center;
+  margin: 20px;
+}
+
+.btn {
+  background-color: #ff697b;
+  padding-top: 5px;
+  border-radius: 4px;
+  width: 380px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  margin: auto;
+  position: relative;
+}
+
+.btn:hover {
+  background-color: #ff697b;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.form-footer a {
+  text-decoration: none;
+  color: #ff697b;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+input {
+  border: 1px solid #aaa8;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 75%;
+  padding: 18px 10px 16px;
+  width: 75%;
+  z-index: auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.find-result {
+  text-align: center;
+}
+
+.find-id-btn {
+  text-align: center;
+}
+
+p {
+  color: #787878;
+}
+
+.btn p {
+  color: #fff;
+  text-align: center;
+}
