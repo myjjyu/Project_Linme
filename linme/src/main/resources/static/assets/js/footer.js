@@ -1,3 +1,7 @@
+/**
+ * Footer 이용약관, 개인정보처리방침 모달
+ */
+
 document.querySelectorAll(".guideItem").forEach((item) => {
   item.addEventListener("click", (e) => {
     e.preventDefault();

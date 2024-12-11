@@ -16,18 +16,33 @@ import kr.project.linme.mappers.ProductMapper;
 import kr.project.linme.models.Product;
 import kr.project.linme.services.ProductService;
 
+/**
+ * 메인 페이지 컨트롤러
+ */
 @Controller
 public class MainController {
 
+    /**
+     * 상품 서비스 객체 주입
+     */
     @Autowired
     private ProductService productService;
 
+    /**
+     * WebHelper 주입
+     */
     @Autowired
     private WebHelper webHelper;
 
+    /**
+     * FileHelper 주입
+     */
     @Autowired
     private FileHelper fileHelper;
 
+    /**
+     * ProductMapper 주입
+     */
     @Autowired
     private ProductMapper productMapper;
 
@@ -136,24 +151,28 @@ public class MainController {
     /**
      * 메인 페이지 => 아이콘 클릭시 해당 카테고리 상품 조회
      * 
-     * @param categoryId
-     * @param model
-     * @return
+     * @param categoryId 카테고리 ID
+     * @param model      뷰에 데이터를 전달하기 위한 모델 객체
+     * @return 카테고리별 상품 목록을 보여줄 뷰의 이름
      */
     @GetMapping("/main/main_ok/{categoryId}")
     public String listByCategory(@PathVariable("categoryId") int categoryId, Model model) {
         List<Product> products = null;
         try {
+            // 카테고리 ID에 해당하는 제품 목록을 조회
             // 피로활력-4번(오메가3), 피부건강-2번(비타민), 장건강-3번(장건강), 면역력-1번(아이영양제)
-            // 연결DB 없으면 화면에 메세지 출력
+            // 연결DB 없으면 화면에 메세지 출력 (해당상품이 존재하지 않습니다)
             products = productService.getProductsByCategory(categoryId);
             for (Product item : products) {
+                // 각 제품의 이미지 URL을 설정
                 item.setImg(fileHelper.getUrl(item.getImg()));
             }
         } catch (Exception e) {
+            // 예외 발생 시 서버 에러 메시지를 출력
             webHelper.serverError(e);
         }
 
+        // 조회된 제품 목록을 모델에 추가하여 main_ok뷰에 전달
         model.addAttribute("products", products);
         return "main/main_ok";
     }
@@ -259,7 +278,7 @@ public class MainController {
         try {
             // 전체 제품 목록
             output = productService.getList(product);
-    
+
             // 최신등록순으로 정렬
             output.sort((a, b) -> {
                 if (a.getRegDate() == null && b.getRegDate() == null) {
@@ -272,7 +291,7 @@ public class MainController {
                     return b.getRegDate().compareTo(a.getRegDate());
                 }
             });
-    
+
             // 제품 3개만 출력
             if (output.size() > 3) {
                 // 마지막 3개만 출력(최신등록순)
@@ -288,13 +307,23 @@ public class MainController {
         model.addAttribute("products", output);
         return "header/new";
     }
-    
 
+    /**
+     * 베스트 상품 페이지
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/header/best")
     public String Best(Model model) {
         return "header/best";
     }
 
+    /**
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping("/header/spacial")
     public String Spacial(Model model) {
         return "header/spacial";
@@ -334,21 +363,25 @@ public class MainController {
     /**
      * 검색바에서 검색시 이동할 페이지
      * 
-     * @param model
-     * @return
+     * @param keyword 검색 키워드
+     * @param model   뷰에 데이터를 전달하기 위한 모델 객체
+     * @return 검색 결과를 보여줄 뷰의 이름
      */
     @GetMapping("/main/search")
     public String search(@RequestParam("keyword") String keyword, Model model) {
         // 데이터 조회
+        // 검색 키워드를 이용하여 상품 목록을 조회
         List<Product> products = productMapper.searchProductsByKeyword(keyword);
         int count = products.size();
 
         // 이미지 URL 설정
+        // 조회된 각 제품의 이미지 URL설정
         for (Product item : products) {
             item.setImg(fileHelper.getUrl(item.getImg()));
         }
 
         // 필요한 데이터 모델에 추가
+        // 검색, 키워드, 검색결과 개수, 검색결과 리스트를 모델에 추가 => 뷰에 전달
         model.addAttribute("keyword", keyword); // 검색 키워드 추가
         model.addAttribute("categoryCount", count); // 검색 결과 개수 추가
         model.addAttribute("products", products); // 검색 결과 리스트 추가
