@@ -600,14 +600,14 @@
               a.querySelector(".discountRate").textContent.replace("%", "")
             ) || 0;
 
-            // 두번째 할인율 가져와서 정수로 변환 (할인율 없으면 0)
+          // 두번째 할인율 가져와서 정수로 변환 (할인율 없으면 0)
           const discountB =
             parseInt(
               b.querySelector(".discountRate").textContent.replace("%", "")
             ) || 0;
 
-          if (type === "low-price") return priceA - priceB;     // 낮은 가격순
-          if (type === "high-price") return priceB - priceA;    // 높은 가격순
+          if (type === "low-price") return priceA - priceB; // 낮은 가격순
+          if (type === "high-price") return priceB - priceA; // 높은 가격순
           if (type === "benefit") return discountB - discountA; // 혜택순
           return 0;
         });
