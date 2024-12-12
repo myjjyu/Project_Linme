@@ -1,63 +1,22 @@
 // Footer 영역의 margin을 0으로 설정
 document.querySelector(".footerContainer").style.margin = "0px";
 
-/* 전체 선택/해제 함수 */
-const toggleSelectAll = (v) => {
-  const checkboxes = document.getElementsByClassName("productCheckbox");
+const formData = new FormData();
 
-  for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].checked = v.checked;
-  }
+// ============ '+' 버튼 클릭시 수량 증가 ====================
+document.querySelectorAll(".plus").forEach((v, i) => {
+  v.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  // sweatalert2
-  if (v.checked) {
-    Swal.fire({
-      title: "전체 상품이 선택되었습니다.",
-      confirmButtonText: "확인",
-      width: 300,
-      height: 145,
-      customClass: {
-        confirmButton: "alert-button",
-        title: "title-text",
-      },
-    });
-  } else {
-    Swal.fire({
-      title: "전체 상품이 해제되었습니다.",
-      confirmButtonText: "확인",
-      width: 300,
-      height: 145,
-      customClass: {
-        confirmButton: "alert-button",
-        title: "title-text",
-      },
-    });
-  }
-};
+    const current = e.currentTarget;
+    const parent = current.closest(".productCountBox");
+    const qty = parent.querySelector(".productCount");
 
-/* 수량 감소 함수 */
-const decreaseQuantity = (button) => {
-  const quantityInput = button.nextElementSibling;
-  // console.log(quantityInput);
-  const quantityControl = quantityInput.closest(".quantityControl");
-  let currentQuantity = parseInt(quantityInput.value);
-  if (currentQuantity > 1) {
-    quantityInput.value = currentQuantity - 1;
+    qty.value++;
 
-    const productCount = quantityControl.querySelector(".productCount");
-    console.log(productCount);
-
-    // 수량 변경 이벤트 발생 . 강제 이벤트 발생
     const eve = new Event("change");
+    qty.dispatchEvent(eve);
 
-    if (productCount) {
-      const eve = new Event("change");
-      productCount.dispatchEvent(eve);
-    } else {
-      console.error("productCount 요소를 찾을 수 없습니다.");
-    }
-
-    // alert("수량이 변경되었습니다.");
     Swal.fire({
       title: "수량이 변경되었습니다.",
       confirmButtonText: "확인",
@@ -68,59 +27,64 @@ const decreaseQuantity = (button) => {
         title: "title-text",
       },
     });
-  } else {
-    // alert("최저 수량 미만으로 설정할 수 없습니다.");
-    Swal.fire({
-      title: "최저 수량 미만으로 선택할 수 없습니다.",
-      confirmButtonText: "확인",
-      width: 300,
-      height: 145,
-      customClass: {
-        confirmButton: "alert-button",
-        title: "title-text",
-      },
-    });
-  }
-};
-
-/* 수량 증가 함수 */
-const increaseQuantity = (button) => {
-  const quantityInput = button.previousElementSibling;
-  const quantityControl = quantityInput.closest(".quantityControl");
-
-  let currentQuantity = parseInt(quantityInput.value);
-  quantityInput.value = currentQuantity + 1;
-
-  const productCount = quantityControl.querySelector(".productCount");
-
-  // 수량 변경 이벤트 발생 . 강제 이벤트 발생
-  const eve = new Event("change");
-  productCount.dispatchEvent(eve);
-
-  // alert("수량이 변경되었습니다.");
-  Swal.fire({
-    title: "수량이 변경되었습니다.",
-    confirmButtonText: "확인",
-    width: 300,
-    height: 145,
-    customClass: {
-      confirmButton: "alert-button",
-      title: "title-text",
-    },
   });
-};
+});
 
-/** 장바구니에 담긴 상품이 없을 때 주문하기 버튼 클릭 시 스윗알럿 */
-const orderBtn = document.querySelector(".noData");
-orderBtn.addEventListener("click", () => {
-  Swal.fire({
-    title: "장바구니에 담긴 상품이 없습니다.",
-    confirmButtonText: "확인",
-    width: 300,
-    height: 145,
-    customClass: {
-      confirmButton: "alert-button",
-      title: "title-text",
-    },
+// =============== '-' 버튼 클릭시 수량 감소 =======================
+document.querySelectorAll(".minus").forEach((v, i) => {
+  v.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const current = e.currentTarget;
+    const parent = current.closest(".productCountBox");
+    const qty = parent.querySelector(".productCount");
+
+    if (qty.value > 1) {
+      qty.value--;
+
+      const eve = new Event("change");
+      qty.dispatchEvent(eve);
+
+      Swal.fire({
+        title: "수량이 변경되었습니다.",
+        confirmButtonText: "확인",
+        width: 300,
+        height: 145,
+        customClass: {
+          confirmButton: "alert-button",
+          title: "title-text",
+        },
+      });
+    } else {
+      Swal.fire({
+        title: "최저 수량 미만으로 선택할 수 없습니다.",
+        confirmButtonText: "확인",
+        width: 300,
+        height: 145,
+        customClass: {
+          confirmButton: "alert-button",
+          title: "title-text",
+        },
+      });
+    }
+  });
+});
+
+/* =================== Checkbox 전체 체크 제어 =================== */
+const checkAll = document.querySelector(".cartSelectAll");
+
+checkAll.addEventListener("click", (e) => {
+  // 전체 체크시, 모든 체크박스 체크
+  document.querySelectorAll(".productCheckbox").forEach((v) => (v.checked = checkAll.checked));
+});
+
+const checkboxes = document.querySelectorAll(".productCheckbox");
+
+checkboxes.forEach((v, i) => {
+  v.addEventListener("click", (e) => {
+    const totalCnt = checkboxes.length;
+    const checkedCnt = document.querySelectorAll(".productCheckbox:checked").length;
+    // 체크박스수와 체크된 체크박스수가 같으면 전체체크박스 체크
+    checkAll.checked = totalCnt == checkedCnt ? true : false;
   });
 });
