@@ -1,14 +1,15 @@
 package kr.project.linme.controllers.apis;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -18,7 +19,6 @@ import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Cart;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 // @CrossOrigin(origins = "*") // CORS 설정
@@ -31,9 +31,9 @@ public class CartRestController {
     @Autowired
     private RestHelper restHelper;
 
-    /** 상세상품에서 장바구니로 POST */
+    /** 상세상품에서 장바구니 추가 */
     @PostMapping("/api/cart/cart/add")
-    public Map<String, Object> postMethodName(
+    public Map<String, Object> cartAdd(
         HttpServletRequest request,
         @SessionAttribute("memberInfo") Member memberInfo,
         @RequestParam("memberId") int memberId,
@@ -50,7 +50,7 @@ public class CartRestController {
         Cart output = null;
 
         try {
-            int count = cartService.selectCount(input);
+            int count = cartService.getCount(input);
             if (count > 0) {
 
                 output = cartService.editUniqueCart(input);
@@ -63,130 +63,74 @@ public class CartRestController {
         }
 
         // 응답 데이터 맵 생성
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("cart", output); // 추가된 장바구니 아이템 정보
         data.put("redirectUrl", "/cart/cart"); // 리디렉션 URL
 
         // JSON 형식으로 응답 반환
         return restHelper.sendJson(data);
     }
-    
+
+
 
     /**
-     * Cart 수량 변경
-     * @param cartId - 수정할 Cart
-     * @param productCount - 수정할 제품 수량
-     * @return 수정된 Cart 객체를 포함한 JSON 데이터
+     * 장바구니 수량(개수) 표시
      */
-    @PutMapping("/api/cart/cart/edit")
-    public Map<String,Object> editCart ( 
-        @RequestParam("cartId") int cartId,
-        @RequestParam("productCount") int productCount,
-        @RequestParam("memberId") int memberId,
-        @RequestParam("productId") int productId
-     ) {
-        Cart input = new Cart();
-        input.setCartId(cartId);
-        input.setProductCount(productCount);
-        input.setMemberId(memberId);
-        input.setProductId(productId);
-
-        // 수정된 Cart 객체를 저장할 변수
-        Cart output = null;
-
-        try {
-            output = cartService.editItem(input);
-        } catch (Exception e) {
-            return restHelper.serverError(e);
-        }
-
-        // JSON 데이터를 저장할 맵 생성
-        Map<String, Object> data = new LinkedHashMap<String, Object>();
-        data.put("cart", output);
-
-        // 콘솔에 출력
-        System.out.println(data);
-
-        return restHelper.sendJson(data);
-    }
-
-    /**
-     * 장바구니에서 상품 삭제
-     * @param cartId - 삭제할 Cart
-     * @return JSON 데이터
-     */
-    @DeleteMapping("/api/cart/deleteItem/{cartid}")
-    public Map<String,Object> deleteItem (
-        @SessionAttribute("memberInfo") Member memberInfo,
-        @RequestParam("cartId") int cartId,
-        @RequestParam("memberId") int memberId
-        ) {
-
-        Cart input = new Cart();
-        input.setCartId(cartId);
-        input.setMemberId(memberId);
-
-        try {
-            cartService.deleteItem(input);
-        } catch (Exception e) {
-            return restHelper.serverError(e);
-        }
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("cart", input);
-
-        return restHelper.sendJson();
-    }
-
-    /**
-     * 장바구니 상품의 수량 확인
-     * @param memberId
-     * @param productId
-     * @return
-     */
-    @PutMapping("/api/cart/cart/cartCount")
+    @GetMapping("/api/cart/count")
     public Map<String, Object> cartCount(
-        @RequestParam("memberId") int memberId,
-        @RequestParam("productId") int productId){
-        
+            @RequestParam("memberId") int memberId) {
         Cart input = new Cart();
         input.setMemberId(memberId);
-        input.setProductId(productId);
 
-        int count = 0;
+        int cartCount = 0;
 
         try {
-            // cartService.selectCount(input);
-            // selectCount 메서드가 int를 반환하므로 반환값을 사용하지 않음
-            count = cartService.selectCount(input);
+            cartCount = cartService.getCount(input);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
         Map<String, Object> data = new LinkedHashMap<String, Object>();
-        data.put("count", count);
+        data.put("cartCount", cartCount);
 
         return restHelper.sendJson(data);
     }
-    
-    /**
-     * 장바구니에서 상품 중복 확인
-     * @param memberId - 확인할 Cart
-     * @return JSON 데이터
-     */
-    @PutMapping("/api/cart/cart/uniqueEdit")
+
+    @GetMapping("/api/cart/unique_count")
+    public Map<String, Object> uniqueCart(
+            HttpServletRequest request,
+            @SessionAttribute("memberInfo") Member memberInfo,
+            @RequestParam("productId") Integer productId) {
+
+        Cart input = new Cart();
+        input.setMemberId(memberInfo.getMemberId());
+        input.setProductId(productId);
+
+        Cart uniqueCart = null;
+
+        try {
+            uniqueCart = cartService.uniqueCartCount(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("uniqueCart", uniqueCart);
+
+        return restHelper.sendJson(data);
+    }
+
+    @PutMapping("/api/cart/unique_edit")
     public Map<String, Object> uniqueCartEdit(
-        @SessionAttribute("memberInfo") Member memberInfo,
-        @RequestParam("productCount") String productCountTmp,
-        @RequestParam("cartId") String cartIdTmp
-        ) {
-            
-        int productCount = Integer.parseInt(productCountTmp);
+            @RequestParam("productCount") String productCount,
+            @RequestParam("cartId") String cartIdTmp,
+            @SessionAttribute("memberInfo") Member memberInfo) {
+        int productCountTmp = Integer.parseInt(productCount);
         int cartId = Integer.parseInt(cartIdTmp);
 
         Cart input = new Cart();
         input.setCartId(cartId);
-        input.setProductCount(productCount);
+        input.setProductCount(productCountTmp);
         input.setMemberId(memberInfo.getMemberId());
 
         try {
@@ -199,28 +143,94 @@ public class CartRestController {
     }
 
     /**
-     * 수량 변경 시 전체 주문 금액 합계
-     * @param memberInfo
+     * 장바구니 수량 수정
+     * 
+     * @param quantity   - 장바구니 수량
+     * @param cartId   - 장바구니 일련번호
+     * @param memberInfo - 회원 번호
      * @return
      */
-    @PutMapping("/api/cart/cart/sumTotalPrice")
-    public Map<String, Object> sumTotalPrice(
-        @SessionAttribute("memberInfo") Member memberInfo
-    ) {
+    @PutMapping("/api/cart/cart/edit")
+    public Map<String, Object> cartEdit(
+            @RequestParam("cartIdTmp") String cartIdTmp,
+            @RequestParam("productCountTmp") String productCountTmp,
+            @SessionAttribute("memberInfo") Member memberInfo) {
+
+        int cartId = Integer.parseInt(cartIdTmp);
+        int productCount = Integer.parseInt(productCountTmp);
+
         Cart input = new Cart();
+        input.setCartId(cartId);
+        input.setProductCount(productCount);
         input.setMemberId(memberInfo.getMemberId());
 
-        int sumTotalPrice = 0;
+        Cart output = null;
 
         try {
-            sumTotalPrice = cartService.sumTotalPrice(input);
+            output = cartService.editItem(input);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
-        
+
         Map<String, Object> data = new LinkedHashMap<String, Object>();
-        data.put("sumTotalPrice", sumTotalPrice);
+        data.put("cart", output);
 
         return restHelper.sendJson(data);
     }
+
+    /**
+     * 장바구니 삭제
+     * 
+     * @param cartId   - 장바구니 번호
+     * @param memberInfo - 회원 번호
+     * @return
+     */
+    @DeleteMapping("/api/cart/cart/delete")
+    public Map<String, Object> cartDelete(
+            @RequestParam("cartIdTmp") String cartIdTmp,
+            @SessionAttribute("memberInfo") Member memberInfo) {
+
+        int cartId = Integer.parseInt(cartIdTmp);
+
+        Cart input = new Cart();
+        input.setCartId(cartId);
+        input.setMemberId(memberInfo.getMemberId());
+
+        try {
+            cartService.deleteItem(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        return restHelper.sendJson();
+    }
+
+    /**
+     * 장바구니 리스트 삭제
+     */
+    @DeleteMapping("/api/cart/cart/deleteList")
+    public Map<String, Object> cartListDelete(
+            @RequestParam("cartIdTmp") List<Integer> cartIdTmp,
+            @SessionAttribute("memberInfo") Member memberInfo) {
+
+                
+
+        List<Cart> output = new ArrayList<>();
+        for (int i = 0; i < cartIdTmp.size(); i++) {
+            Cart input = new Cart();
+            input.setCartId(cartIdTmp.get(i));
+            input.setMemberId(memberInfo.getMemberId());
+
+            output.add(input);
+            try {
+                cartService.deleteItem(input);
+            } catch (Exception e) {
+                return restHelper.serverError(e);
+            }
+        }
+
+        return restHelper.sendJson();
+    }
+
+    
 }

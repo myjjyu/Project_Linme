@@ -17,11 +17,12 @@ import kr.project.linme.models.Cart;
 @Mapper
 public interface CartMapper {
     /**
-     * 장바구니 저장
+     * 장바구니 등록
      * @param input 입력할 장바구니 정보에 대한 모델 객체
      * @return 입력된 데이터 수
      */
-    @Insert("INSERT INTO cart (" + 
+    @Insert(
+            "INSERT INTO cart (" + 
                 "product_count, " + 
                 "member_id, " + 
                 "product_id, " + 
@@ -35,21 +36,10 @@ public interface CartMapper {
                 "(SELECT sale_price * #{productCount} FROM product WHERE product_id = #{productId}), " + // 계산된 값 삽입
                 "NOW(), " + 
                 "NOW()" + 
-            ")")
+            ")"
+            )
     @Options(useGeneratedKeys = true, keyProperty = "cartId", keyColumn = "cart_id")
     public int insert(Cart input);
-
-    /**
-     * 장바구니 상품의 수량을 입력한 만큼 증가
-     * @param input
-     * @return
-     */
-    @Update("UPDATE cart SET " + 
-                "member_id = #{memberId}, " +
-                "product_id = #{productId}, " +
-                "product_count = #{productCount} " +
-            "WHERE cart_id = #{cartId}")
-    public int updateCount(Cart input);
 
     /**
      * 장바구니 상품의 수량을 변경
@@ -57,10 +47,40 @@ public interface CartMapper {
      * @return 수정된 데이터 수
      */
     @Update("UPDATE cart SET " + 
-                "product_count = #{productCount} " + 
+                "product_count = #{productCount} " +
             "WHERE cart_id = #{cartId}")
     public int update(Cart input);
 
+    /**
+     * 장바구니 수량 중복 검사
+     * @param input
+     * @return
+     */
+    @Update(
+            "UPDATE " + 
+                "cart c " + 
+            "SET " +
+                "product_count = product_count + #{productCount} " +
+            "WHERE " + 
+                "member_id = #{memberId} AND " + 
+                "product_id = #{productId}"
+            )
+    public int updateByUnique(Cart input);
+
+     /**
+     * 장바구니 단일 상품 삭제
+     * @param input - 삭제할 장바구니 정보에 대한 모델 객체
+     * @return 삭제된 데이터 수
+     */
+    @Delete(
+            "<script> " +
+                "DELETE FROM cart " + 
+                "<where> " +
+                    "member_id = #{memberId} " + 
+                    "<if test= 'cartId != 0'>AND cart_id = #{cartId}</if> " +
+                "</where>" +
+            "</script>")
+    public int delete(Cart input);
 
     /**
      * 장바구니 단일 조회
@@ -85,9 +105,8 @@ public interface CartMapper {
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
             "WHERE c.member_id = #{memberId} " +
-            // "AND c.cart_id = #{cartId} " +
-            "AND c.product_id = #{productId} " +
-            "ORDER BY c.cart_id")
+            "AND c.cart_id = #{cartId}"
+            )
     @ResultMap("cartMap")
     public Cart selectItem(Cart input);
 
@@ -147,18 +166,7 @@ public interface CartMapper {
     })
     public List<Cart> selectList(Cart input);
 
-    /**
-     * 장바구니에 담긴 상품의 총 금액을 조회
-     * @param input
-     * @return
-     */
-    @Select("SELECT " + 
-                "COALESCE(SUM(p.sale_price * c.product_count), 0) AS sum_total_price " +
-            "FROM cart c " +
-            "INNER JOIN product p ON p.product_id = c.product_id " +
-            "WHERE c.member_id = #{memberId}")
-    public int sumTotalPrice(Cart input);
-
+    
     /**
      * 장바구니에 중복된 상품이 있는지 조회
      * @param input 
@@ -170,28 +178,64 @@ public interface CartMapper {
     public int selectCount(Cart input);
 
     /**
-     * 장바구니에 중복된 상품이 있을 경우 수량을 변경
+     * 장바구니 중복 확인
      * @param input
      * @return
      */
-    @Update("UPDATE cart c SET " +
-                "product_count = product_count + #{productCount} " +
-            "WHERE member_id = #{memberId} AND product_id = #{productId}")
-    public int updateByUnique(Cart input);
+    @Select(
+            "SELECT " +
+                "count(*) AS cnt " +
+            "FROM " + 
+                "cart " +
+            "WHERE " + 
+                "member_id = #{memberId} AND " + 
+                "product_id = #{productId}"
+            )
+    public int cartCheck(Cart input);
+
+    @Select(
+            "SELECT " +
+                "cart_id, " + 
+                "p.product_id, " + 
+                "member_id, " + 
+                "product_count, " +
+                "p.product_name, " + 
+                "p.price, " + 
+                "p.sale_price, " + 
+                "p.product_count, " + 
+                "add_date " +
+            "FROM " + 
+                "cart c " +
+            "INNER JOIN product p ON b.product_id = p.product_id " +
+            "WHERE " + 
+                "member_id = #{memberId} AND " + 
+                "c.product_id = #{productId}"
+            )
+    @ResultMap("cartMap")
+    public Cart selectUniqueCart(Cart input);
 
     /**
-     * 장바구니 단일 상품 삭제
-     * @param input - 삭제할 장바구니 정보에 대한 모델 객체
-     * @return 삭제된 데이터 수
+     * 7일 이상 담겨있는 장바구니 삭제
+     * @return
      */
-    @Delete("DELETE FROM cart WHERE cart_id = #{cartId} AND member_id = #{memberId}")
-    public int delete(Cart input);
+    @Delete("DELETE FROM cart " +
+            "WHERE add_date < DATE_ADD(NOW(), INTERVAL -7 day)")
+    public int deleteByOverDays();
+    
+    /**
+     * 장바구니에 담긴 상품의 총 금액을 조회
+     * @param input
+     * @return
+     */
+    @Select(
+            "SELECT " + 
+                "COALESCE(SUM(p.sale_price * c.product_count), 0) AS sum_total_price " +
+            "FROM " + 
+                "cart c " +
+            "INNER JOIN product p ON p.product_id = c.product_id " +
+            "WHERE " + 
+                "c.member_id = #{memberId}"
+            )
+    public int sumTotalPrice(Cart input);
 
-     /**
-     * 장바구니에서 다중 상품을 삭제한다
-     * @param cartidList - 삭제할 장바구니 번호를 담고 있는 리스트
-     * @return 삭제된 데이터 수
-     */
-    @Delete ("DELETE FROM cart WHERE member_id = #{memberId}")
-    public int deleteList(Cart input);
 }

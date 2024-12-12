@@ -26,38 +26,43 @@ public class CartController {
     @Autowired
     private FileHelper fileHelper;
 
+    /**
+     * 장바구니 첫화면 불러오기
+     * 
+     * @param memberInfo - 회원 번호
+     * @return
+     */
     @GetMapping("/cart/cart")
-    public String cart(Model model,
-        // @RequestParam(value = "memberId", defaultValue = "1") int memberId
-        @SessionAttribute("memberInfo") Member memberInfo
-    ) {
-        Cart cart = new Cart();
-        // cart.setMemberId(memberId);
-        cart.setMemberId(memberInfo.getMemberId());
+    public String orderCart(Model model,
+            @SessionAttribute("memberInfo") Member memberInfo) {
+        Cart input = new Cart();
+        input.setMemberId(memberInfo.getMemberId());
+
+        // 주문상품 카운트
+        Cart input2 = new Cart();
+        input2.setMemberId(memberInfo.getMemberId());
 
         List<Cart> output = null;
 
-        try {
-            output = cartService.getList(cart);
+        int count = 0;
 
-            for ( Cart item : output) {
+        try {
+            output = cartService.getList(input);
+
+            count = cartService.getCount(input2);
+
+            // 이미지 경로 설정
+            for (Cart item : output) {
                 item.setImg(fileHelper.getUrl(item.getImg()));
             }
-        } catch (Exception e) {
-            webHelper.serverError(e);
-        }
 
-        int output2 = 0;
-        try {
-            output2 = cartService.sumTotalPrice(cart);
         } catch (Exception e) {
             webHelper.serverError(e);
         }
 
         model.addAttribute("cart", output);
-        model.addAttribute("totalPrice", output2);
+        model.addAttribute("counts", count);
 
         return "cart/cart";
     }
-
 }
