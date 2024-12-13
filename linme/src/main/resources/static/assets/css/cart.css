@@ -457,6 +457,8 @@ main {
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
+  position: sticky;
+  top: 220px;
 
   /* 전체 주문금액 타이틀 */
   .cartTotalTitle {

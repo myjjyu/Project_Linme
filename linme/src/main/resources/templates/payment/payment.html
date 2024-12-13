@@ -46,25 +46,25 @@
                 <!-- 배송지명 -->
                 <li class="addrName">
                   <span>배송지명</span>
-                  <a>jinju</a>
+                  <a th:text="${session.memberInfo.nickname}">jinju</a>
                 </li>
 
                 <!-- 받는 분 -->
                 <li class="receiver">
                   <span>받는 분</span>
-                  <a>김진주</a>
+                  <a th:text="${session.memberInfo.userName}">김진주</a>
                 </li>
 
                 <!-- 연락처 -->
                 <li class="tel">
                   <span>연락처</span>
-                  <a>01012345678</a>
+                  <a th:text="${session.memberInfo.tel}">01012345678</a>
                 </li>
 
                 <!-- 배송지 -->
                 <li class="addr">
                   <span>배송지</span>
-                  <a>서울시 강남구 역삼동 123-45</a>
+                  <a th:text="${session.memberInfo.addr1} + ' ' + ${session.memberInfo.addr2}">서울시 강남구 역삼동 123-45</a>
                 </li>
 
                 <!-- 배송요청사항 -->
@@ -74,6 +74,7 @@
                   <a class="selectDeliveryMsg">
                     <!-- 선택 옵션 -->
                     <select class="selectDeliveryMsgOption">
+                      <option value="0"><a th:text="${session.memberInfo.addrMsg}"></a></option>
                       <option value="1">부재 시 문 앞에 놓아주세요</option>
                       <option value="2">배송 전에 미리 연락 주세요</option>
                       <option value="3">부재 시 경비실에 맡겨 주세요</option>
@@ -93,11 +94,10 @@
               <!-- 주문상품 확인 : 상품-->
               <ul class="OrderCheckList">
                 <!-- 상품 ListItem-->
-                <li class="OrderCheckItem">
+                <li class="OrderCheckItem" th:each="item : ${items}">
                   <!-- 상단 -->
                   <div class="OrderCheckItemTop">
                     <span>상품정보</span>
-                    <span>판매가</span>
                     <span>구매가</span>
                     <span>배송비</span>
                   </div>
@@ -109,30 +109,27 @@
                       <!-- 상품 상세 정보 -->
                       <div class="OrderCheckItemInfo">
                         <!-- 상품 이미지 -->
-                        <a class="OrderCheckItemImg" th:href="@{/main/main}">
-                          <img src="https://placehold.co/120" alt="상품 이미지" />
+                        <a class="OrderCheckItemImg" th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                          <!-- <img th:src="${item.orderImg}" alt="상품 이미지" /> -->
                         </a>
                         <div class="OrderCheckItemDetailInfo">
                           <!-- 브랜드명 -->
-                          <a th:href="@{/main/main}">
-                            <span>주식회사 에프디랩</span>
+                          <a th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                            <!-- <span th:text="${item.orderBname}">주식회사 에프디랩</span> -->
                           </a>
                           <!-- 상품명 -->
-                          <a th:href="@{/main/main}">
-                            <span>[네츄럴메이드]멀티비타민 앤 미네랄 선물세트_1박스(1,445mg*90정 X 2개입)(6개월분)</span>
+                          <a th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                            <!-- <span th:text="${item.orderPname}">[네츄럴메이드]멀티비타민 앤 미네랄 선물세트_1박스(1,445mg*90정 X 2개입)(6개월분)</span> -->
                           </a>
                           <!-- 선택 수량 -->
-                          <div class="selectedQuantity"><span>1</span>개</div>
+                          <!-- <div class="selectedQuantity"><span th:text="${item.orderCount}">1</span>개</div> -->
                         </div>
                       </div>
                     </div>
 
-                    <!-- 정가 -->
-                    <span class="price">72,000원</span>
                     <!-- 판매가 -->
                     <div class="salePriceBox">
-                      <span class="lineThrough">72,000원</span>
-                      <span class="salePrice">36,000원</span>
+                      <!-- <span class="salePrice" th:text="${item.salePrice}">36,000원</span> -->
                     </div>
                     <!-- 배송비 -->
                     <span class="deliveryPriceBox">0원</span>
@@ -176,7 +173,10 @@
             <!-- 전체 주문금액 -->
             <div class="totalPrice">
               <span>전체 주문금액</span>
-              <span class="totalPriceText">0원</span>
+              <span class="totalPriceText">
+                <!-- <span th:text="${item.salePrice}"></span> -->
+                &nbsp;원</span
+              >
             </div>
             <!-- 결제하기 버튼 -->
             <a class="orderBtn"><span>결제하기</span></a>

@@ -277,10 +277,12 @@ main {
           /* 주문상품 확인 내용 */
           .OrderCheckList {
             display: flex;
-            width: 100%;
+            flex-direction: column;
+            margin-bottom: 10px;
 
             .OrderCheckItem {
               width: 100%;
+              margin-bottom: 20px;
 
               /* 상단 */
               .OrderCheckItemTop {
@@ -319,17 +321,12 @@ main {
                   }
 
                   &:nth-child(2) {
-                    width: 100px;
+                    width: 150px;
                     border-right: 1px solid #b2b2b266;
                   }
 
                   &:nth-child(3) {
-                    width: 100px;
-                    border-right: 1px solid #b2b2b266;
-                  }
-
-                  &:nth-child(4) {
-                    width: 100px;
+                    width: 150px;
                   }
                 }
               }
@@ -338,6 +335,7 @@ main {
               .OrderCheckItemCenter {
                 display: flex;
                 border: 1px solid #e6e6e6;
+                height: 150px;
 
                 /* 첫번째 박스 : 이미지/상품상세 */
                 .OrderCheckItemBox {
@@ -399,7 +397,7 @@ main {
 
                 /* 세번째 박스 : 수량 */
                 .salePriceBox {
-                  width: 100px;
+                  width: 150px;
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
@@ -428,12 +426,12 @@ main {
 
                 /* 네번째 박스 : 배송비 */
                 .deliveryPriceBox {
-                  width: 100px;
+                  width: 150px;
                   display: flex;
                   justify-content: center;
                   align-items: center;
                   font-size: 15px;
-                  font-weight: 400;
+                  font-weight: 700;
                   letter-spacing: -0.3px;
                   line-height: 1.33;
                 }
@@ -443,7 +441,7 @@ main {
               .OrderCheckItemBottom {
                 display: flex;
                 justify-content: space-between;
-                padding: 20px;
+                padding: 15px 25px;
                 background-color: #f5f5f5;
                 border-bottom-left-radius: 10px; /* 하단 왼쪽 모서리를 둥글게 설정 */
                 border-bottom-right-radius: 10px; /* 하단 오른쪽 모서리를 둥글게 설정 */
@@ -582,6 +580,8 @@ main {
         padding: 30px;
         border-radius: 10px;
         background-color: #fff;
+        position: sticky;
+        top: 200px;
 
         /* 전체 주문금액 타이틀 */
         .paymentTotalTitle {
