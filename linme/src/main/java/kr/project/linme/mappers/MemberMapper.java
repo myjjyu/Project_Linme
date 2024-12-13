@@ -188,5 +188,10 @@ public interface MemberMapper {
             "WHERE user_name = #{userName} AND tel = #{tel} AND is_out ='N'")
         @ResultMap("memberMap")
         public Member findId(Member input);
-}
 
+        // 비밀번호 재발급
+        @Update("UPDATE member SET " +
+            "user_pw = MD5(#{userPw}) " +
+            "WHERE user_name = #{userName} AND tel = #{tel} AND user_id = #{userId} AND is_out='N'")
+        public int resetPw(Member input);
+}

@@ -205,5 +205,21 @@ public class MemberServiceImpl implements MemberService {
 
         return output;
     }
+
+    @Override
+    public void resetPw(Member input) throws Exception {
+        int rows = 0;
+
+        try {
+            rows = memberMapper.resetPw(input);
+
+            if (rows == 0) {
+                throw new Exception("존재하지 않는 회원에 대한 요청입니다.");
+            }
+        } catch (Exception e) {
+            log.error("비밀번호 업데이트 실패", e);
+            throw e;
+        }
+    }
 }
    

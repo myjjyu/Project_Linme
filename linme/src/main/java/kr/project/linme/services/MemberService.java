@@ -34,4 +34,7 @@ public interface MemberService {
     // 아이디 찾기
     public Member findId(Member input) throws Exception;
 
+    // 비밀번호 재발급
+    public void resetPw(Member params) throws Exception;
+
 }
