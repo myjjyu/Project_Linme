@@ -1,36 +1,42 @@
-
 .findPw .title {
-    color: #333;
-    font-size: 30px;
-    font-weight: 700;
-    height: fit-content;
-    padding-top: 112px;
-    text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 700;
+  height: fit-content;
+  padding-top: 112px;
+  text-align: center;
 }
 
 .findPw .button {
-    border: 1px solid #ff697b;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    font-size: 22px;
-    font-weight: 500;
-    height: 46px;
-    padding-top: 5px;
-    text-align: center;
-    width: 309px;
+  border: 1px solid #ff697b;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  font-size: 22px;
+  font-weight: 500;
+  height: 46px;
+  padding-top: 5px;
+  text-align: center;
+  width: 309px;
 }
 .findPw .button.certification {
-    background-color: #ff697b;
-    color: #fff;
-    margin: 40px auto;
+  background-color: #ff697b;
+  color: #fff;
+  margin: 40px auto;
+  cursor: pointer;
 }
 
 .findPw .findOn .description {
-    color: #787878;
-    font-size: 16px;
-    font-weight: 400;
-    height: fit-content;
-    margin-top: 40px;
-    text-align: center;
+  color: #787878;
+  font-size: 16px;
+  font-weight: 400;
+  height: fit-content;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 색상변경 */
+a {
+  color: #fff;
+  text-decoration: underline;
 }
