@@ -16,25 +16,41 @@ import kr.project.linme.models.Payment;
 
 @Mapper
 public interface PaymentMapper {
-    @Insert("INSERT INTO payment (" + 
+
+    /**
+     * 주문/결제 데이터를 저장하기 위한 메서드 정의
+     * @param input - 주문/결제 데이터
+     * @return
+     */
+    @Insert(
+            "INSERT INTO payment (" + 
+                // 주문 번호
+                "order_no, " +
+                // 주문자
                 "order_name, " + 
                 "order_tel, " + 
                 "addr1, " + 
                 "addr2, " +
-                "addr_name, " + 
+                "nickname, " + 
                 "addr_msg, " + 
+                // 상품
                 "discount_price, " +
                 "total_price, " + 
                 "reg_date, " + 
                 "edit_date" + 
             ") " +
-                "VALUES (" + 
+            "VALUES (" + 
+                // 주문 번호
+                // ex : 20241213-14420001
+                "(SELECT CONCAT(DATE_FORMAT(NOW(), '%Y%m%d-%H%i'), LPAD(IFNULL(SUBSTRING(MAX(order_no), 14), 0) + 1, 4, '0')) FROM payment AS p), " + 
+                // 주문자
                 "#{orderName}, " + 
                 "#{orderTel}, " + 
                 "#{addr1}, " +
                 "#{addr2}, " + 
-                "#{addrName}, " + 
+                "#{nickname}, " + 
                 "#{addrMsg}, " + 
+                // 상품
                 "#{discountPrice}, " +
                 "#{totalPrice}, " + 
                 "NOW(), " + 
@@ -43,12 +59,17 @@ public interface PaymentMapper {
     @Options(useGeneratedKeys = true, keyProperty = "paymentId", keyColumn = "payment_id")
     public int insert(Payment input);
 
+    /**
+     * 주문/결제 데이터를 수정하기 위한 메서드 정의
+     * @param input
+     * @return
+     */
     @Update("UPDATE payment SET " +
                 "order_name = #{orderName}, " + 
                 "order_tel = #{orderTel}, "+
                 "addr1 = #{addr1}, " + 
                 "addr2 = #{addr2}, " + 
-                "addr_name = #{addrName},"+ 
+                "nickname = #{nickname},"+ 
                 "addr_msg = #{addrMsg}, " + 
                 "discount_price = #{discountPrice}, "+
                 "total_price = #{totalPrice}, " + 
@@ -83,7 +104,7 @@ public interface PaymentMapper {
         @Result(property = "orderTel", column = "order_tel"),
         @Result(property = "addr1", column = "addr1"),
         @Result(property = "addr2", column = "addr2"),
-        @Result(property = "addrName", column = "addr_name"),
+        @Result(property = "nickname", column = "nickname"),
         @Result(property = "addrMsg", column = "addr_msg"),
         @Result(property = "discountPrice", column = "discount_price"),
         @Result(property = "totalPrice", column = "total_price"),
@@ -98,7 +119,7 @@ public interface PaymentMapper {
                 "order_tel, " + 
                 "addr1, " + 
                 "addr2, " + 
-                "addr_name, " + 
+                "nickname, " + 
                 "addr_msg, " + 
                 "discount_price," + 
                 "total_price, " + 
@@ -109,6 +130,24 @@ public interface PaymentMapper {
     @ResultMap("PaymentMap")
     public List<Payment> selectList(Payment input);
 
-    @Select("SELECT COUNT(*) FROM payment")
+    @Select("...")
     public int selectCount(Payment input);
+
+    /**
+     * 주문서 중복 확인용 카운트
+     */
+    @Select("SELECT " +
+                "count(*) " +
+            "FROM payment " +
+            "WHERE member_id = #{memberId} ")
+    public int overCount(Payment input);
+
+    /**
+     * 주문 중에 취소한 경우 남아있는 데이터 삭제
+     * 
+     * @return
+     */
+    @Delete("DELETE FROM payment " +
+            "reg_date < DATE_ADD(NOW(), INTERVAL -1 hour)")
+    public int deleteByCancelOrder();
 }

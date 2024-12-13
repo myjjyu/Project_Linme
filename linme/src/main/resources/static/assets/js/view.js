@@ -32,7 +32,6 @@ tabs.forEach((tab) => {
   });
 });
 
-
 /**
  * 문의하기 alert창
  */
@@ -49,7 +48,6 @@ document.querySelector(".button").addEventListener("click", (e) => {
   });
 });
 
-
 /**
  * 필수 표기정보 alert창
  */
@@ -64,7 +62,6 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
     },
   });
 });
-
 
 /**
  * 장바구니 버튼 클릭 이벤트
@@ -92,21 +89,19 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         // AJAX 요청을 통해 장바구니에 아이템을 추가
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/cart/cart/add", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
-
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        console.log(xhr);
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
               var response = JSON.parse(xhr.responseText);
-              if (response.cart) {
-                // 성공 시 리디렉션
-                window.location.href = response.redirectUrl;
-              } else {
-                console.error("Error adding item to cart:", response.message);
-              }
+              // if (response.cart) {
+              //   // 성공 시 리디렉션
+              //   window.location.href = response.redirectUrl;
+              // } else {
+              //   console.error("Error adding item to cart:", response.message);
+              // }
+              window.location.href = response.redirectUrl;
             } else {
               console.error("Error adding item to cart:", xhr.statusText);
             }
@@ -168,10 +163,7 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
         // AJAX 요청을 통해 바로구매에 아이템을 추가
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/payment/payment/", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -198,13 +190,13 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
         } else {
           var formData = new FormData(form);
           var data = new URLSearchParams();
-        
+
           formData.forEach((value, key) => {
             data.append(key, value);
           });
-        
-          console.log("폼 데이터:", data.toString()); 
-        
+
+          console.log("폼 데이터:", data.toString());
+
           // xhr 객체가 올바르게 초기화되었는지 확인
           if (xhr) {
             console.log("XHR 객체 초기화 완료");
@@ -213,8 +205,6 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
             console.error("XHR 객체 초기화 실패");
           }
         }
-
-        
       }
     });
   } else {
@@ -238,7 +228,6 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
   }
 });
 
-
 /**
  * 수량 증감 버튼 이벤트
  */
@@ -250,8 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const numberDisplay = document.querySelector(".number");
   const totalPriceDisplay = document.querySelector(".total-price");
   const quantityInputs = document.querySelectorAll(".quantity-input");
-  const unitPrice =
-    parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0; 
+  const unitPrice = parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
 
   console.log("Unit Price:", unitPrice);
 

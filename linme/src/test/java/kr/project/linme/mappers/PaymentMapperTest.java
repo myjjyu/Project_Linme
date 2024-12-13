@@ -21,17 +21,14 @@ public class PaymentMapperTest {
     @DisplayName("결제 테스트")
     void insertPayment(){
         Payment input=new Payment();
-        input.setPaymentId(2);
-        input.setOrderName("린미");
+        input.setOrderName("심진주");
         input.setOrderTel("010-1234-5678");
         input.setAddr1("서울특별시 성동구 성수로 19");
         input.setAddr2("집");
-        input.setAddrName("집");
+        input.setNickname("jinju");
         input.setAddrMsg("도착 시 연락부탁드립니다.");
         input.setDiscountPrice(3000);
         input.setTotalPrice(45000);
-        // DB에 img 컬럼 추가 후 주석 해제
-        // input.setImg("/product/vitamin/vitamin1.jpg");
 
         int output=paymentMapper.insert(input);
 
@@ -51,12 +48,10 @@ public class PaymentMapperTest {
         input.setOrderTel("010-5678-1234");
         input.setAddr1("서울특별시 서초구 강남대로 10");
         input.setAddr2("직장");
-        input.setAddrName("직장");
+        input.setNickname("jinju2");
         input.setAddrMsg("도착 시 연락부탁드립니다.");
         input.setDiscountPrice(8000);
         input.setTotalPrice(40000);
-        // DB에 img 컬럼 추가 후 주석 해제
-        // input.setImg("/product/vitamin/vitamin1.jpg");
         
 
         int output=paymentMapper.update(input);

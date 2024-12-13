@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link rel="stylesheet" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../static/assets/css/cart.css" />-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/cart.css}" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" rel="stylesheet" />
@@ -51,7 +49,7 @@
           </div>
 
           <!-- 장바구니 폼-->
-          <form name="cartForm" id="cartForm" class="cartProductList" method="post" th:action="@{/payment/payment}">
+          <form name="cartForm" id="cartForm" class="cartProductList" method="get" th:action="@{/payment/payment}">
             <!-- 상품 내역 -->
             <section class="ProductInCart">
               <!-- 장바구니 상품 정보 -->
@@ -71,7 +69,8 @@
                     <div class="productBox">
                       <!-- 체크 박스 -->
                       <div class="productCheckboxContainer">
-                        <input type="checkbox" class="productCheckbox" th:data-cartId="${cart.cartId}" />
+                        <!-- cart_id form get -->
+                        <input type="checkbox" class="productCheckbox" name="cart_id" th:data-cartId="${cart.cartId}" th:value="${cart.cartId}" />
                       </div>
                       <!-- 상품 상세 정보 -->
                       <div class="productInfo">

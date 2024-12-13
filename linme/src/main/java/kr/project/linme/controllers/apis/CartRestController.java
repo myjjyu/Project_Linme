@@ -50,6 +50,7 @@ public class CartRestController {
         Cart output = null;
 
         try {
+            // Cart count = cartService.uniqueCartCount(input);
             int count = cartService.getCount(input);
             if (count > 0) {
 

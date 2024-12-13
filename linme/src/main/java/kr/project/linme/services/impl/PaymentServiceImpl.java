@@ -116,4 +116,34 @@ public class PaymentServiceImpl implements PaymentService {
 
         return output;
     }
+
+    @Override
+    public int overCount(Payment input) throws Exception {
+        int output = 0;
+
+        try {
+            output = paymentMapper.overCount(input);
+
+        } catch (Exception e) {
+            log.error("중복여부 확인에 실패했습니다.", e);
+            throw e;
+        }
+
+        return output;
+    }
+
+    @Override
+    public int deleteByCancelOrder() throws Exception {
+        int rows = 0;
+
+        try {
+            rows = paymentMapper.deleteByCancelOrder();
+        } catch (Exception e) {
+            log.error("삭제 실패", e);
+            throw e;
+        }
+
+        return rows;
+    }
+    
 }

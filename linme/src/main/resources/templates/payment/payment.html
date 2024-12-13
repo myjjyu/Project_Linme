@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link rel="stylesheet" type="text/css" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/assets/css/payment.css" />-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/payment.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" rel="stylesheet" />
     <title>린미 - 주문/결제</title>
     <!-- Header 영역 -->
     <th:block th:replace="~{/fragments/header}" />
@@ -32,7 +31,7 @@
         </nav>
 
         <!-- 주문결제 및 전체합계 -->
-        <div class="paymentMainContainer">
+        <form class="paymentMainContainer" method="post" th:action="@{/mypage/shopping/order}">
           <!-- 주문 결제 -->
           <section class="paymentInfo">
             <!-- 주문 결제 타이틀 -->
@@ -182,13 +181,26 @@
             <!-- 결제하기 버튼 -->
             <a class="orderBtn"><span>결제하기</span></a>
           </section>
-        </div>
+        </form>
       </div>
     </main>
 
     <!-- Footer 영역 -->
     <th:block th:replace="~{/fragments/footer}" />
 
+    <!-- Script 영역 -->
+    <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
+    <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
+
     <script th:src="@{/assets/js/payment.js}"></script>
+
+    <script>
+      // Footer 영역의 margin을 0으로 설정
+      document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
   </body>
 </html>

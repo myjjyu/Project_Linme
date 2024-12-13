@@ -27,7 +27,7 @@ public class OrderItemMapperTest {
         input.setOrderPname("[카카홀릭]키즈 멀티바이오자임 효소 초코맛_1박스(3g*30포, 총 90g)(1개월분)");
         input.setOrderCount(1);
         input.setOrderSprice(30000);
-        input.setOrderPrice(24900);
+        input.setOrderImg("/product/vitamin/vitamin1.jpg");
         input.setPaymentId(1);
 
         int output=orderItemMapper.insert(input);
@@ -48,7 +48,7 @@ public class OrderItemMapperTest {
         input.setOrderPname("[아이튼]퓨어 프로폴리스_1박스(20g*15포, 총 300g)(1개월분)");
         input.setOrderCount(1);
         input.setOrderSprice(30000);
-        input.setOrderPrice(19900);
+        input.setOrderImg("/product/vitamin/vitamin1.jpg");
 
         int output=orderItemMapper.update(input);
 

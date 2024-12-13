@@ -195,18 +195,16 @@ public interface CartMapper {
 
     @Select(
             "SELECT " +
-                "cart_id, " + 
+                "c.cart_id, " + 
                 "p.product_id, " + 
                 "member_id, " + 
                 "product_count, " +
                 "p.product_name, " + 
                 "p.price, " + 
-                "p.sale_price, " + 
-                "p.product_count, " + 
-                "add_date " +
+                "p.sale_price " +                 
             "FROM " + 
                 "cart c " +
-            "INNER JOIN product p ON b.product_id = p.product_id " +
+            "INNER JOIN product p ON c.product_id = p.product_id " +
             "WHERE " + 
                 "member_id = #{memberId} AND " + 
                 "c.product_id = #{productId}"
