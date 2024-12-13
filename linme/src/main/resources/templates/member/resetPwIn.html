@@ -4,35 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>린미 - 비밀번호 찾기</title>
+    <title>린미 - 아이디 찾기</title>
     <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/findPw.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/findIdIn.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" />
+
 </head>
 
 <body>
     <main>
-        <div class="findPw">
+        <div class="findIdIn">
             <div class="contents">
-                <div class="title">비밀번호 임시발급</div>
-                <div class="findOn">
-                    <div class="description">회원가입 시 인증하신 휴대폰 번호로 본인인증을 진행해 주세요.</div>
-                    <div class="button certification">
-                        <a th:href="@{/member/resetPw}">본인인증</a>
+                <div class="findIdInCover">
+                    <div class="join-body">
+                        <div class="head-title">
+                            <p>비밀번호 임시발급</p>
+                        </div>
+                        <div class="id-result">
+                            <h3><span th:text="${item.userName}"></span>님의 임시 비밀번호입니다.</h3>
+                            <p>
+                                <span th:text="${password}" class="id-txt"></span>
+                                <span>입니다.</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
-
     <!-- 푸터 0px로 붙게 -->
     <script>
         document.querySelector(".footerContainer").style.margin = "0px";
     </script>
-
     <!-- 스크립트추가 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
