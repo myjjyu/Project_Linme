@@ -2,8 +2,11 @@ package kr.project.linme.helpers;
 
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
+
 import kr.project.linme.exceptions.StringFormatException;
 
+@Component
 public class RegexHelper {
 
     /**
