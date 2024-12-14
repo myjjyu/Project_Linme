@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.project.linme.exceptions.StringFormatException;
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.helpers.WebHelper;
+import kr.project.linme.helpers.RegexHelper;
 import kr.project.linme.models.Member;
 import kr.project.linme.services.MemberService;
 
 @RestController
 public class MemberRestController {
+
+    @Autowired
+    private RegexHelper regexHelper;
 
     @Autowired
     private RestHelper restHelper;
@@ -33,7 +38,7 @@ public class MemberRestController {
     private WebHelper webHelper;
 
     // 아이디 (이메일) 중복검사
-    @GetMapping("/api/member/id_unique_checkk")
+    @GetMapping("/api/member/id_unique_check")
     public Map<String, Object> idUniqueCheck(@RequestParam("user_id") String userId) {
         try {
             memberService.isUniqueUserId(userId);
@@ -62,6 +67,7 @@ public class MemberRestController {
         @RequestParam("user_id") String userId,
         @RequestParam("nickname") String nickname,
         @RequestParam("pw") String userPw,
+        @RequestParam("pwCheck") String pwCheck,
         @RequestParam("userName") String userName,
         @RequestParam("tel") String tel,
         @RequestParam("postcode") String postcode,
@@ -69,7 +75,30 @@ public class MemberRestController {
         @RequestParam("addr2") String addr2
     ) {
 
-        // 1) 유효성 검사 생략
+        // 1) 유효성 검사 
+        try {
+        regexHelper.isValue(userId, "아이디(이메일)를 입력하세요.");
+        regexHelper.isEmail(userId, "아이디(이메일)가 잘못되었습니다.");
+
+        regexHelper.isValue(nickname, "닉네임을 입력하세요.");
+        regexHelper.isnickName(nickname, "닉네임은 한글, 영문, 숫자로 입력하세요.");
+
+        regexHelper.isValue(userPw, "비밀번호를 입력하세요");
+        regexHelper.ispwLinme(userPw, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상으로 입력하세요.");
+        regexHelper.isMatch(userPw, pwCheck, "비밀번호 확인이 잘못되었습니다.");
+
+        regexHelper.isValue(userName, "회원이름을 입력하세요.");
+        regexHelper.isKor(userName, "회원이름은 한글로만 입력하세요.");
+
+        regexHelper.isValue(tel, "전화번호를 입력하세요.");
+        regexHelper.isPhone(tel, "전화번호가 잘못되었습니다.");
+
+        regexHelper.isValue(addr1, "주소를 입력하세요.");
+        regexHelper.isValue(addr2, "상세주소를 입력하세요.");
+        
+    } catch (StringFormatException e) {
+        return restHelper.badRequest(e);
+    }
 
         // 2) 아이디(이메일) 중복 검사
         try {
@@ -115,8 +144,18 @@ public class MemberRestController {
             @RequestParam("userId") String userId,
             @RequestParam("userPw") String userPw,
             @RequestParam(value = "rememberId", defaultValue = "N") String rememberId) {
+                
         // 1) 입력값에 대한 유효성 검사
-        // --- 생략 ---
+        try {
+            regexHelper.isValue(userId, "아이디(이메일)를 입력하세요.");
+            regexHelper.isEmail(userId, "아이디(이메일) 형식이 올바르지 않습니다.");
+
+            regexHelper.isValue(userPw, "비밀번호를 입력하세요.");
+            regexHelper.ispwLinme(userPw, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상으로 입력하세요.");
+
+        } catch (StringFormatException e) {
+            return restHelper.badRequest(e);
+        }
 
         // 2) 입력값을 Beans 객체레 저장
         Member input = new Member();
