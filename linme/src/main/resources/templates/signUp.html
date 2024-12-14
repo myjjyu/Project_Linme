@@ -33,7 +33,7 @@
                                         placeholder="linme@linme.com" />
                                     <input type="hidden" name="checkEmail" id="id_check" value="N" />
                                     <button class="button duplicateCheck duplicateCheckID"
-                                        id="id_unique_checkk">중복확인</button>
+                                        id="id_unique_check">중복확인</button>
                                     <!-- 자바스크립트 구현 예정 -->
                                     <div class="guide">
                                         <!-- <div class="inputGuideWarn">필수 입력 항목입니다.</div> -->
@@ -181,7 +181,7 @@
 
     <script>
         // 아이디(이메일) / 닉네임 유효성 검사
-        document.querySelector("#id_unique_checkk").addEventListener("click", async (e) => {
+        document.querySelector("#id_unique_check").addEventListener("click", async (e) => {
             e.preventDefault();
 
             try {
@@ -194,7 +194,7 @@
             }
 
             const userId = document.querySelector("#user_id").value;
-            const data = await axiosHelper.get(`/api/member/id_unique_checkk`, {
+            const data = await axiosHelper.get(`/api/member/id_unique_check`, {
                 user_id: userId
             });
 

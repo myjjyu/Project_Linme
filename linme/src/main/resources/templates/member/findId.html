@@ -11,17 +11,6 @@
 </head>
 
 <body>
-    <!-- <main>
-        <div class="findId">
-            <div class="contents">
-                <div class="title">아이디 찾기</div>
-                <div class="findOn">
-                    <div class="description">회원가입 시 인증하신 휴대폰 번호로 본인인증을 진행해 주세요.</div>
-                    <div class="button certification" th:onclick="'handleClick()'">본인인증</div>
-                </div>
-            </div>
-        </div>
-    </main> -->
     <main>
         <div class="findId">
             <div class="contents">
@@ -38,11 +27,7 @@
     <footer>
         <th:block th:replace="~{/fragments/footer}" />
     </footer>
-    <!-- <script th:inline="javascript">
-        function handleClick() {
-            alert("본인인증 버튼이 클릭되었습니다");
-        }
-    </script> -->
+
     <!-- 푸터 0px로 붙게 -->
     <script>
         document.querySelector(".footerContainer").style.margin = "0px";
