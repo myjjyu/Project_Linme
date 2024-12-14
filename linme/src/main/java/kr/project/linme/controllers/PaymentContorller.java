@@ -84,7 +84,8 @@ public class PaymentContorller {
         input.setAddr1(memberInfo.getAddr1());
         input.setAddr2(memberInfo.getAddr2());
         input.setNickname(memberInfo.getNickname());
-        input.setAddrMsg(memberInfo.getAddrMsg());        
+        input.setAddrMsg(memberInfo.getAddrMsg());
+        input.setTotalPrice(totalPrice);
 
         Payment payment = null;
 
@@ -98,7 +99,7 @@ public class PaymentContorller {
         
         // 모델에 결제 정보와 장바구니 항목 추가
         model.addAttribute("payment", payment);
-        model.addAttribute("items", carts);
+        model.addAttribute("item", carts);
 
         // 결제 페이지로 이동
         return "payment/payment";

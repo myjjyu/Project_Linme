@@ -28,8 +28,8 @@ public interface CartMapper {
                 "product_id, " + 
                 "total_price, " + 
                 "reg_date, " + 
-                "edit_date) " + 
-            "VALUES (" + 
+                "edit_date" + 
+            ") VALUES (" + 
                 "#{productCount}, " + 
                 "#{memberId}, " + 
                 "#{productId}, " + 

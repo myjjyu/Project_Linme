@@ -23,7 +23,7 @@ public class CartMapperTest {
         Cart input = new Cart();
         // 장바구니에 추가할 데이터
         input.setMemberId(4);
-        input.setProductId(1);
+        input.setProductId(6);
         input.setProductCount(2);
 
         int ouput = cartMapper.insert(input);

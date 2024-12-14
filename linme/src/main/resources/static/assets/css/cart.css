@@ -459,6 +459,7 @@ main {
   background-color: #fff;
   position: sticky;
   top: 220px;
+  margin-bottom: 30px;
 
   /* 전체 주문금액 타이틀 */
   .cartTotalTitle {
