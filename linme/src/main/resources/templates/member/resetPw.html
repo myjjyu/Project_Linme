@@ -7,16 +7,16 @@
     <title>린미 - 아이디 찾기</title>
     <th:block th:replace="~{/fragments/header}" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/findIdIn.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/resetPw.css}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" />
 
 </head>
 
 <body>
     <main>
-        <div class="findIdIn">
+        <div class="resetPw">
             <div class="contents">
-                <div class="findIdInCover">
+                <div class="resetPwCover">
                     <div class="title">비밀번호 재발급</div>
                     <form id="find-id-form" method="post" th:action="@{/member/resetPwIn}">
                         <!-- 이름 -->
