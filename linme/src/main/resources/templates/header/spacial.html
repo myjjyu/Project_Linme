@@ -30,8 +30,8 @@
         font-size: 20px;
         color: #909090;
 
-        P{
-          margin-bottom: 350PX;
+        P {
+          margin-bottom: 350px;
         }
       }
     </style>
@@ -64,9 +64,6 @@
           </li>
         </ul>
 
-        <div class="not-product">
-          <p>해당 상품이 존재하지 않습니다.</p>
-        </div>
         <!-- 상품 리스트 -->
         <div id="productList" class="all-list">
           <div id="headerMenutitleimg" class="headerMenutitleimg">
@@ -110,7 +107,7 @@
     <script>
       /*****************************************************/
       /* 글자 컬러 변경 및 정렬 기능 
-      /*****************************************************/
+     /*****************************************************/
       const productText = document.querySelectorAll(".productText a");
 
       // 기본 컬러 설정 (추천순 글자컬러)
@@ -133,7 +130,90 @@
           this.classList.remove("sort-button");
         });
       });
-    </script>
 
+      // 정렬 기능 추가
+      // 초기 정렬 상태를 저장할 배열 선언
+      let originalOrder = [];
+
+      // 페이지 로드 시 제품의 초기 순서 저장
+      window.onload = function () {
+        originalOrder = [
+          ...document.querySelectorAll("#headerMenutitleimg .boximg"),
+        ];
+      };
+
+      productText.forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          productText.forEach((link) => link.classList.remove("active"));
+          this.classList.add("active");
+
+          // 정렬 함수 호출
+          const sortType = this.id; // 추천순, 혜택순 등 ID 가져오기
+          sortProducts(sortType);
+        });
+      });
+
+      function sortProducts(type) {
+        const productListContainer =
+          document.getElementById("headerMenutitleimg");
+
+        // 추천순 정렬
+        if (type === "recommended") {
+          productListContainer.innerHTML = "";
+          originalOrder.forEach((product) =>
+            productListContainer.appendChild(product)
+          );
+          return;
+        }
+
+        // 가격, 혜택 순 정렬
+        let products = [
+          ...document.querySelectorAll("#headerMenutitleimg .boximg"),
+        ];
+
+        products.sort((a, b) => {
+          const priceA = parseInt(
+            a.querySelector(".salePrice").textContent.replace(/,/g, "")
+          );
+          const priceB = parseInt(
+            b.querySelector(".salePrice").textContent.replace(/,/g, "")
+          );
+
+          const discountA =
+            parseInt(
+              a.querySelector(".discountRate").textContent.replace("%", "")
+            ) || 0;
+          const discountB =
+            parseInt(
+              b.querySelector(".discountRate").textContent.replace("%", "")
+            ) || 0;
+
+          if (type === "low-price") return priceA - priceB; // 낮은 가격순
+          if (type === "high-price") return priceB - priceA; // 높은 가격순
+          if (type === "benefit") return discountB - discountA; // 혜택순
+          return 0;
+        });
+
+        productListContainer.innerHTML = ""; // 기존 제품 목록 초기화
+        products.forEach((product) =>
+          productListContainer.appendChild(product)
+        );
+      }
+
+      // 제품 목록이 비어 있는지 확인 후 없으면 메세지!!
+      document.addEventListener("DOMContentLoaded", function () {
+        var productList = document.getElementById("productList");
+        var noProductsMessage = document.getElementById("noProductsMessage");
+
+        var productBoxes = productList.querySelectorAll(".boximg");
+
+        // 제품 목록이 비어 있는지 확인
+        if (productList.children.length === 0) {
+          noProductsMessage.style.display = "block";
+        }
+      });
+    </script>
   </body>
 </html>

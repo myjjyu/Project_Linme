@@ -33,6 +33,8 @@ public interface ProductMapper {
         @Options(useGeneratedKeys = true, keyProperty = "productId", keyColumn = "product_id")
         public int insert(Product input);
 
+        // =================================================================================================//
+
         /**
          * 상품 수정
          * discountPrice : 모델에서 자동계산 만들어서 생략가능
@@ -52,6 +54,8 @@ public interface ProductMapper {
                         "WHERE product_id = #{productId}")
         public int update(Product input);
 
+        // =================================================================================================//
+
         /**
          * 상품 삭제
          * 
@@ -60,6 +64,8 @@ public interface ProductMapper {
          */
         @Delete("DELETE FROM product WHERE product_id = #{productId}")
         public int delete(Product input);
+
+        // =================================================================================================//
 
         /**
          * 상품 단일 조회
@@ -95,6 +101,8 @@ public interface ProductMapper {
         })
         public Product selectItem(Product input);
 
+        // =================================================================================================//
+
         /**
          * 상품 목록 조회
          * 
@@ -110,6 +118,8 @@ public interface ProductMapper {
         @ResultMap("productMapper")
         public List<Product> selectList(Product input);
 
+        // =================================================================================================//
+
         /**
          * 조건에 맞는 데이터의 개수를 반환
          * 
@@ -118,6 +128,8 @@ public interface ProductMapper {
          */
         @Select("SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}")
         public int selectCount(@Param("categoryId") int categoryId);
+
+        // =================================================================================================//
 
         /**
          * 검색바 상품 검색 기능
@@ -138,6 +150,8 @@ public interface ProductMapper {
         })
         List<Product> searchProductsByKeyword(@Param("keyword") String keyword);
 
+        // =================================================================================================//
+
         /**
          * 카테고리별 상품 조회 기능
          * 
@@ -153,6 +167,8 @@ public interface ProductMapper {
                         "WHERE p.category_id = #{categoryId}")
         @ResultMap("productMapper")
         public List<Product> selectByCategory(@Param("categoryId") int categoryId);
+
+        // =================================================================================================//
 
         /**
          * 상품 상세페이지 조회

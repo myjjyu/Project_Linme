@@ -29,6 +29,8 @@ public interface CategoryMapper {
         @Options(useGeneratedKeys = true, keyProperty = "categoryId", keyColumn = "category_id")
         public int insert(Category input);
 
+        // =================================================================================================//
+
         /**
          * 카테고리 수정
          * 수정하기 부분에서는 등록일시가 필요하지 않기때문에 제거
@@ -42,6 +44,8 @@ public interface CategoryMapper {
                         "WHERE category_id = #{categoryId}")
         public int update(Category input);
 
+        // =================================================================================================//
+
         /**
          * 카테고리 삭제
          * 
@@ -50,6 +54,8 @@ public interface CategoryMapper {
          */
         @Delete("DELETE FROM category WHERE category_id = #{categoryId}")
         public int delete(Category input);
+
+        // =================================================================================================//
 
         /**
          * 카테고리 단일 조회
@@ -66,6 +72,8 @@ public interface CategoryMapper {
         })
         public Category selectItem(Category input);
 
+        // =================================================================================================//
+
         /**
          * 카테고리 다중 조회
          * 
@@ -77,6 +85,8 @@ public interface CategoryMapper {
                         "FROM category")
         @ResultMap("categoryMap")
         public List<Category> selectList(Category input);
+
+        // =================================================================================================//
 
         /**
          * 조건에 맞는 데이터의 개수를 반환
