@@ -56,6 +56,7 @@ public class MainController {
     public String main(Model model) {
         Product product = new Product();
 
+        // 각 카테고리별 제품 목록을 저장할 리스트 선언
         List<Product> vitaminProducts = null;
         List<Product> probioticProducts = null;
         List<Product> omegaProducts = null;
@@ -66,8 +67,10 @@ public class MainController {
             // 비타민 (카테고리 ID 2번)
             vitaminProducts = productService.getProductsByCategory(2);
             for (Product item : vitaminProducts) {
+                // 각 제품의 이미지 URL 설정
                 item.setImg(fileHelper.getUrl(item.getImg()));
             }
+            // 최대 5개의 제품만 리스트에 포함
             if (vitaminProducts.size() > 5) {
                 vitaminProducts = vitaminProducts.subList(0, 5);
             }
@@ -110,6 +113,7 @@ public class MainController {
             webHelper.serverError(e);
         }
 
+        // 모델에 각 카테고리별 제품 목록과 전체 제품 목록 추가 후 main뷰로 전달
         model.addAttribute("vitaminProducts", vitaminProducts);
         model.addAttribute("probioticProducts", probioticProducts);
         model.addAttribute("omegaProducts", omegaProducts);
@@ -329,17 +333,19 @@ public class MainController {
         return "header/spacial";
     }
 
-    /**
-     * 상세 페이지
+/**
+     * 상세 페이지를 반환하는 메서드입니다.
      * 
-     * @param productId
-     * @param model
-     * @return
+     * @param productId 조회할 제품의 ID
+     * @param model 뷰에 데이터를 전달하기 위한 모델 객체
+     * @return 상세 페이지 뷰의 이름
      */
     @GetMapping("/view/view/{productId}")
     public String view(@PathVariable("productId") int productId, Model model) {
+        // 제품 정보를 저장할 객체선언 
         Product product = null;
         try {
+            // 제품 id로 제품 정보 조회
             product = productService.getProductById(productId);
             if (product != null) {
                 // 이미지 경로 설정
@@ -356,6 +362,7 @@ public class MainController {
             e.printStackTrace();
         }
 
+        // 모댈에 제품 정보 추가 및 view로 뷰 반환
         model.addAttribute("product", product);
         return "view/view";
     }

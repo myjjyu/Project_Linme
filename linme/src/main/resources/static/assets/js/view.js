@@ -35,16 +35,26 @@ tabs.forEach((tab) => {
 /**
  * 문의하기 alert창
  */
-document.querySelector(".button").addEventListener("click", (e) => {
+document.querySelector("#inquiry-alert").addEventListener("click", (e) => {
   Swal.fire({
-    title: "마이페이지 1:1 문의하기 에서<br>문의 가능합니다.",
-    confirmButtonText: "확인",
-    width: 300,
-    height: 145,
+    title: `1:1 문의하기에서 가능합니다. <br>마이페이지로 이동하시겠습니까?`,
+    showCancelButton: true, // 취소 버튼 표시
+    cancelButtonText: "닫기",
+    confirmButtonText: "이동",
+    width: 350,
+    // height: 145,
     customClass: {
-      confirmButton: "alert-button",
-      title: "title-text",
+      cancelButton: "cartclose-button",
+      confirmButton: "cart-button",
+      title: "cart-text",
+      popup: "custom-alert-popup",
     },
+    reverseButtons: true, // 버튼 순서 변경
+  }).then((result) => {
+    if (result.isConfirmed) {
+// "이동" 버튼 클릭시 마이페이지로 
+      window.location.href = "/myPage/inquiry";
+    }
   });
 });
 
@@ -89,7 +99,10 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         // AJAX 요청을 통해 장바구니에 아이템을 추가
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/cart/cart/add", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
         console.log(xhr);
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -163,20 +176,26 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
         // AJAX 요청을 통해 바로구매에 아이템을 추가
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/payment/payment/", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
 
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
               var response = JSON.parse(xhr.responseText);
-              if (response.cart) {
-                // 성공 시 리디렉션
-                window.location.href = response.redirectUrl;
-              } else {
-                console.error("Error adding item to cart:", response.message);
-              }
-            } else {
-              console.error("Error adding item to cart:", xhr.statusText);
+              //   if (response.cart) {
+              //     // 성공 시 리디렉션
+              //     window.location.href = response.redirectUrl;
+              //   } else {
+              //     console.error("Error adding item to cart:", response.message);
+              //   }
+              // } else {
+              //   console.error("Error adding item to cart:", xhr.statusText);
+              // }
+
+              window.location.href = response.redirectUrl;
             }
           }
         };
@@ -239,7 +258,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const numberDisplay = document.querySelector(".number");
   const totalPriceDisplay = document.querySelector(".total-price");
   const quantityInputs = document.querySelectorAll(".quantity-input");
-  const unitPrice = parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
+  const unitPrice =
+    parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
 
   console.log("Unit Price:", unitPrice);
 
