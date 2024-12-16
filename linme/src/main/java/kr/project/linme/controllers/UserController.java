@@ -68,8 +68,10 @@ public class UserController {
         @RequestParam("tel") String tel
         
     ) {
-
+        // 새로운 비밀번호 생성
         String newPw = utilHelper.randomPassword(10);
+
+        // 입력된 사용자 정보를 기반으로 Member 객체 생성
         Member input = new Member();
         input.setUserName(userName);
         input.setUserId(userId);
@@ -77,15 +79,18 @@ public class UserController {
         input.setUserPw(newPw);
 
         try {
+            // 비밀번호 재설정 서비스 호출
             memberService.resetPw(input);
         } catch (Exception e) {
+            // 서버 오류 처리
             webHelper.serverError(e);
             return null;
         }
-
+        // 모델에 사용자 정보와 새 비밀번호 추가
         model.addAttribute("item", input);
         model.addAttribute("password", newPw);
 
+        // 비밀번호 재설정 완료 페이지로 이동
         return "member/resetPwIn";
     }
 }

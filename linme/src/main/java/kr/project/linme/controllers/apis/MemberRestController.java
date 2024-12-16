@@ -75,46 +75,54 @@ public class MemberRestController {
         @RequestParam("addr2") String addr2
     ) {
 
-        // 1) 유효성 검사 
         try {
+        // 아이디(이메일) 유효성 검사
         regexHelper.isValue(userId, "아이디(이메일)를 입력하세요.");
         regexHelper.isEmail(userId, "아이디(이메일)가 잘못되었습니다.");
 
+        // 닉네임 유효성 검사
         regexHelper.isValue(nickname, "닉네임을 입력하세요.");
         regexHelper.isnickName(nickname, "닉네임은 한글, 영문, 숫자로 입력하세요.");
 
+        // 비밀번호 유효성 검사
         regexHelper.isValue(userPw, "비밀번호를 입력하세요");
         regexHelper.ispwLinme(userPw, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상으로 입력하세요.");
         regexHelper.isMatch(userPw, pwCheck, "비밀번호 확인이 잘못되었습니다.");
 
+        // 회원이름 유효성 검사
         regexHelper.isValue(userName, "회원이름을 입력하세요.");
         regexHelper.isKor(userName, "회원이름은 한글로만 입력하세요.");
 
+        // 전화번호 유효성 검사
         regexHelper.isValue(tel, "전화번호를 입력하세요.");
         regexHelper.isPhone(tel, "전화번호가 잘못되었습니다.");
 
+        // 우편번호 유효성 검사
         regexHelper.isValue(addr1, "주소를 입력하세요.");
         regexHelper.isValue(addr2, "상세주소를 입력하세요.");
         
     } catch (StringFormatException e) {
+        // 유효성 검사 실패 시 에러 응답 반환
         return restHelper.badRequest(e);
     }
 
-        // 2) 아이디(이메일) 중복 검사
         try {
+            // 아이디 중복 검사
             memberService.isUniqueUserId(userId);
         } catch (Exception e) {
+            // 아이디 중복 시 에러 응답 반환
             return restHelper.badRequest(e);
         }
 
-        // 3) 닉네임 중복 검사
         try {
+            // 닉네임 중복 검사
             memberService.isUniqueNickname(nickname);
         } catch (Exception e) {
+            // 닉네임 중복 시 에러 응답 반환
             return restHelper.badRequest(e);
         }
 
-        // 정보를 서비스에 전달하기 위한 객체
+        // 회원 정보 설정
         Member member = new Member();
         member.setUserId(userId);
         member.setNickname(nickname);
@@ -125,56 +133,64 @@ public class MemberRestController {
         member.setAddr1(addr1);
         member.setAddr2(addr2);
 
-        // DB에 저장
         try {
+            // 회원 정보 저장
             memberService.addItem(member);
         } catch (Exception e) {
+            // 회원 정보 저장 실패 시 서버 에러 응답 반환
             return restHelper.serverError(e);
         }
 
+        // 성공 응답 반환
         return restHelper.sendJson();
     }
 
     // 로그인
     @PostMapping("/api/member/login")
     public Map<String, Object> login(
-            // 세션을 사용해야 하므로 request 객체가 필요하다
-            // --> 
+
             HttpServletRequest request,
             @RequestParam("userId") String userId,
             @RequestParam("userPw") String userPw,
             @RequestParam(value = "rememberId", defaultValue = "N") String rememberId) {
                 
-        // 1) 입력값에 대한 유효성 검사
+
         try {
+            // 아이디(이메일) 유효성 검사
             regexHelper.isValue(userId, "아이디(이메일)를 입력하세요.");
             regexHelper.isEmail(userId, "아이디(이메일) 형식이 올바르지 않습니다.");
 
+            // 비밀번호 유효성 검사
             regexHelper.isValue(userPw, "비밀번호를 입력하세요.");
             regexHelper.ispwLinme(userPw, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상으로 입력하세요.");
 
         } catch (StringFormatException e) {
+            // 유효성 검사 실패 시 에러 응답 반환
             return restHelper.badRequest(e);
         }
 
-        // 2) 입력값을 Beans 객체레 저장
+        // 로그인 시도할 회원 정보 설정
         Member input = new Member();
         input.setUserId(userId);
         input.setUserPw(userPw);
 
-        // 3) 로그인 시도
         Member output = null;
 
         try {
+            // 로그인 처리
             output = memberService.login(input);
         } catch (Exception e) {
+            // 로그인 실패 시 에러 응답 반환
             return restHelper.serverError(e);
         }
 
+        // 아이디 저장을 위한 쿠키 설정
         if (rememberId.equals("Y")) {
             try {
+                // 쿠키에 아이디 저장 (유효기간: 7일)
                 webHelper.writeCookie("rememberId", userId, 60 * 60 * 24 * 7, "localhost", "/login");
             } catch (Exception e) {
+                // 쿠키 저장 실패 시 서버 에러 응답 반환
                 return restHelper.serverError("아이디 저장 실패");
             }
         }
@@ -182,12 +198,11 @@ public class MemberRestController {
         // 프로필 사진의 경로의 URL로 변환
         output.setProfile(fileHelper.getUrl(output.getProfile()));
 
-        // 4) 로그인에 성공했다면 회원 정보를 세션에 저장한다
+        // 세션에 회원 정보 저장
         HttpSession session = request.getSession();
         session.setAttribute("memberInfo", output);
 
-        // 5) 로그인이 처리되었음을 응답한다
-
+        // 로그인 성공 응답 반환
         return restHelper.sendJson();
     }
 
@@ -205,6 +220,7 @@ public class MemberRestController {
         @RequestParam("user_name") String userName,
         @RequestParam("tel") String tel) {
         
+        // Member 객체 생성 
         Member input = new Member();
         input.setUserName(userName);
         input.setTel(tel);
@@ -212,14 +228,18 @@ public class MemberRestController {
         Member output = null;
 
         try {
+            // 입력된 정보로 아이디 찾기
             output = memberService.findId(input);
         } catch (Exception e) {
+            // 아이디 찾기 실패 시 서버 에러 응답 반환
             return restHelper.serverError(e);
         }
 
+        // 응답할 데이터 설정
         Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("item", output.getUserId());
 
+        //성공 응답 반환
         return restHelper.sendJson(data);
     }
 }
