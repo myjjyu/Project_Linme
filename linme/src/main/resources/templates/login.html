@@ -36,9 +36,6 @@
                         <!-- 체크박스 구현 / 아이디,비밀번호,회원가입 클릭 -->
                         <div class="otherCover">
                             <span>
-                                <!-- <input class="checkSaveUserId" name="checkSaveUserId" id="checkSaveUserId" value="Y"
-                                    type="checkbox">
-                                <label for="checkSaveUserId">아이디 저장</label> -->
                                 <label for="rememberId">
                                     <input type="checkbox" value="Y" name="rememberId" />
                                     아이디 저장</label>
@@ -116,25 +113,35 @@
     <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
 
     <script>
+        // 로그인 폼 제출 이벤트 리스너 추가
         document.querySelector(".login-form").addEventListener("submit", async (e) => {
+            // 폼의 기본 제출 동작을 막음
             e.preventDefault();
 
             try {
+                // 아이디 입력값 유효성 검사
                 regexHelper.value("#userId", "아이디를 입력하세요.");
                 regexHelper.email("#userId", "이메일 형식이 올바르지 않습니다.");
 
+                // 비밀번호 입력값 유효성 검사
                 regexHelper.value("#userPw", "비밀번호를 입력하세요.");
                 regexHelper.minLength("#userPw", 7, "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
                 regexHelper.pwLinme("#userPw", "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+
+                // 유효성 검사 중 예외 발생 시 처리
             } catch (err) {
+                // 에러 메시지를 경고로 표시
                 await utilHelper.alertDanger(err.message);
 
+                // 에러가 발생한 요소에 포커스를 맞춤
                 setTimeout(() => err.element.focus(), 300);
                 return false;
             }
 
+            // 폼 데이터를 서버로 전송
             const data = await axiosHelper.post("[[@{/api/member/login}]]", new FormData(e.currentTarget));
 
+            // 응답 데이터가 있으면 메인 페이지로 리디렉션
             if (data) {
                 window.location = "[[@{/main/main}]]";
             }

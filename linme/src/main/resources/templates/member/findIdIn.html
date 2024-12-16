@@ -30,6 +30,7 @@
                             <input type="tel" name="tel" id="tel" class="input-field" placeholder="전화번호를 입력해주세요" />
                         </div>
 
+                        <!-- 결과 출력 -->
                         <p class="find-result">
                             <span class='user-name' style="color: hsl(352, 91%, 79%);">린미</span>님의 아이디는
                             <span class='user-id' style="color: hsl(352, 91%, 79%);">linme@linme.com</span>입니다
@@ -67,10 +68,12 @@
     <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
 
     <script>
+        // 'find-id-form' 폼의 제출 이벤트 리스너 추가
         document.getElementById('find-id-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
             try {
+                // 유효성 검사
                 regexHelper.value("#user_name", "이름을 입력하세요");
                 regexHelper.value("#tel", "전화번호를 입력하세요");
             } catch (err) {
@@ -80,15 +83,19 @@
                 return;
             }
 
+            // 유효성 검사를 통과하면 서버에 데이터 전송
             const data = await axiosHelper.post('[[@{/api/member/findId}]]', new FormData(e.currentTarget));
 
             if (data) {
+                // 서버로부터 받은 데이터 처리
                 const userName = document.querySelector("#user_name").value;
                 const userId = data.item;
 
+                // 결과를 화면에 표시
                 document.querySelector(".user-name").innerHTML = userName;
                 document.querySelector(".user-id").innerHTML = userId;
 
+                // 결과 영역을 표시
                 document.querySelector(".find-result").style.display = 'block';
             }
         });
