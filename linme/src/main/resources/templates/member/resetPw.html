@@ -18,7 +18,7 @@
             <div class="contents">
                 <div class="resetPwCover">
                     <div class="title">비밀번호 재발급</div>
-                    <form id="find-id-form" method="post" th:action="@{/member/resetPwIn}">
+                    <form id="reset-form" method="post" th:action="@{/member/resetPwIn}">
                         <!-- 이름 -->
                         <div class="input-container">
                             <input type="text" name="user_name" id="user_name" class="input-field"
@@ -36,8 +36,8 @@
                                 placeholder="아이디(이메일)를 입력해주세요" />
                         </div>
 
-                        <!-- 아이디 찾기 버튼 -->
-                        <div class="find-id-btn">
+                        <!-- 비밀번호 재발급 버튼 -->
+                        <div class="reset-btn">
                             <button type="submit" class="btn">
                                 <p>비밀번호 재발급</p>
                             </button>
@@ -67,6 +67,33 @@
     <script th:src="@{/assets/js/helperJs/AxiosHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/RegexHelper.js}"></script>
     <script th:src="@{/assets/js/helperJs/UtilHelper.js}"></script>
+
+    <script>
+        document.getElementById('reset-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            try {
+                // 이름 유효성 검사
+                regexHelper.value("#user_name", "이름을 입력하세요.");
+                // 전화번호 유효성 검사
+                regexHelper.value("#tel", "전화번호를 입력하세요.");
+                // 아이디 유효성 검사
+                regexHelper.value("#user_id", "아이디(이메일)를 입력하세요.");
+                regexHelper.email("#user_id", "아이디(이메일) 형식이 올바르지 않습니다.");
+
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                setTimeout(() => err.element.focus(), 300);
+                return;
+            }
+
+            // 유효성 검사를 통과하면 폼 제출
+            e.currentTarget.submit();
+        });
+    </script>
+    </script>
+
 </body>
 
 </html>
