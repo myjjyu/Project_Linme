@@ -32,30 +32,53 @@ tabs.forEach((tab) => {
   });
 });
 
+
 /**
  * 문의하기 alert창
  */
 document.querySelector("#inquiry-alert").addEventListener("click", (e) => {
-  Swal.fire({
-    title: `1:1 문의하기에서 가능합니다. <br>마이페이지로 이동하시겠습니까?`,
-    showCancelButton: true, // 취소 버튼 표시
-    cancelButtonText: "닫기",
-    confirmButtonText: "이동",
-    width: 350,
-    // height: 145,
-    customClass: {
-      cancelButton: "cartclose-button",
-      confirmButton: "cart-button",
-      title: "cart-text",
-      popup: "custom-alert-popup",
-    },
-    reverseButtons: true, // 버튼 순서 변경
-  }).then((result) => {
-    if (result.isConfirmed) {
-// "이동" 버튼 클릭시 마이페이지로 
-      window.location.href = "/myPage/inquiry";
-    }
-  });
+  if (isLoggedIn) {
+    Swal.fire({
+      title: `1:1 문의하기에서 가능합니다. <br>마이페이지로 이동하시겠습니까?`,
+      showCancelButton: true, // 취소 버튼 표시
+      cancelButtonText: "닫기",
+      confirmButtonText: "이동",
+      width: 350,
+      // height: 145,
+      customClass: {
+        cancelButton: "cartclose-button",
+        confirmButton: "cart-button",
+        title: "cart-text",
+        popup: "custom-alert-popup",
+      },
+      reverseButtons: true, // 버튼 순서 변경
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // "이동" 버튼 클릭시 마이페이지로
+        window.location.href = "/myPage/inquiry";
+      }
+    });
+  } else {
+    /** 로그아웃 상태일때 */
+    Swal.fire({
+      title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,
+      showCancelButton: true,
+      cancelButtonText: "닫기",
+      confirmButtonText: "이동",
+      customClass: {
+        cancelButton: "cartclose-button",
+        confirmButton: "cart-button",
+        title: "cart-text",
+        popup: "custom-alert-popup",
+      },
+      reverseButtons: true, // 버튼 순서 변경
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.querySelector("#cartform-not-log").submit();
+        window.location.href = "/login";
+      }
+    });
+  }
 });
 
 /**
@@ -159,73 +182,62 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
   console.log("isLoggedIn:", isLoggedIn);
 
   if (isLoggedIn) {
-    Swal.fire({
-      title: `바로 구매하시겠습니까?`,
-      showCancelButton: true,
-      cancelButtonText: "닫기",
-      confirmButtonText: "구매",
-      customClass: {
-        cancelButton: "cartclose-button",
-        confirmButton: "cart-button",
-        title: "cart-text",
-        popup: "custom-alert-popup",
-      },
-      reverseButtons: true, // 버튼 순서 변경
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // AJAX 요청을 통해 바로구매에 아이템을 추가
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/payment/payment/", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
+    // Swal.fire({
+    //   title: `바로 구매하시겠습니까?`,
+    //   showCancelButton: true,
+    //   cancelButtonText: "닫기",
+    //   confirmButtonText: "구매",
+    //   customClass: {
+    //     cancelButton: "cartclose-button",
+    //     confirmButton: "cart-button",
+    //     title: "cart-text",
+    //     popup: "custom-alert-popup",
+    //   },
+    //   reverseButtons: true, // 버튼 순서 변경
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
 
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              var response = JSON.parse(xhr.responseText);
-              //   if (response.cart) {
-              //     // 성공 시 리디렉션
-              //     window.location.href = response.redirectUrl;
-              //   } else {
-              //     console.error("Error adding item to cart:", response.message);
-              //   }
-              // } else {
-              //   console.error("Error adding item to cart:", xhr.statusText);
-              // }
+    // 로그인 상태일 때 바로 결제 페이지로 이동
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/payment/payment/", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-              window.location.href = response.redirectUrl;
-            }
-          }
-        };
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
 
-        /**
-         * 폼 데이터를 수집하여 URL 인코딩된 문자열로 변환
-         */
-        var form = document.querySelector("#paymentform");
-        if (!form) {
-          console.error("폼 요소를 찾을수없음: #paymentform");
-        } else {
-          var formData = new FormData(form);
-          var data = new URLSearchParams();
-
-          formData.forEach((value, key) => {
-            data.append(key, value);
-          });
-
-          console.log("폼 데이터:", data.toString());
-
-          // xhr 객체가 올바르게 초기화되었는지 확인
-          if (xhr) {
-            console.log("XHR 객체 초기화 완료");
-            xhr.send(data.toString());
-          } else {
-            console.error("XHR 객체 초기화 실패");
-          }
+          window.location.href = response.redirectUrl;
         }
       }
-    });
+    };
+
+    /**
+     * 폼 데이터를 수집하여 URL 인코딩된 문자열로 변환
+     */
+    var form = document.querySelector("#paymentform");
+    if (!form) {
+      console.error("폼 요소를 찾을수없음: #paymentform");
+    } else {
+      var formData = new FormData(form);
+      var data = new URLSearchParams();
+
+      formData.forEach((value, key) => {
+        data.append(key, value);
+      });
+
+      console.log("폼 데이터:", data.toString());
+
+      // xhr 객체가 올바르게 초기화되었는지 확인
+      if (xhr) {
+        console.log("XHR 객체 초기화 완료");
+        xhr.send(data.toString());
+      } else {
+        console.error("XHR 객체 초기화 실패");
+      }
+    }
+    //}
+    //});
   } else {
     Swal.fire({
       title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,

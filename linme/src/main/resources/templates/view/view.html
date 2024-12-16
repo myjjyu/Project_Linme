@@ -243,7 +243,7 @@
 
               <form
                 id="paymentform"
-                th:action="@{/api/payment/payment/add}"
+                th:action="@{/payment/payment}"
                 method="post"
               >
                 <input
@@ -426,8 +426,8 @@
       const isLoggedIn = /*[[${session.memberInfo != null}]]*/ false;
       const addCartApiUrl = /*[[@{/api/cart/cart/add}]]*/ ""; // 장바구니 백엔드
       const cartUrl = /*[[@{/cart/cart}]]*/ ""; // 장바구니 페이지
-      const paymentApiUrl = /*[[@{/api/payment/payment}]]*/ ""; // 바로구매 백엔드
-      const paymentUrl = /*[[@{/payment/payment}]]*/ ""; //바로구매 페이지
+      //const paymentApiUrl = /*[[@{/api/payment/payment}]]*/ ""; // 바로구매 백엔드
+      //const paymentUrl = /*[[@{/payment/payment}]]*/ ""; //바로구매 페이지
     </script>
   </body>
 </html>
