@@ -182,22 +182,7 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
   console.log("isLoggedIn:", isLoggedIn);
 
   if (isLoggedIn) {
-    // Swal.fire({
-    //   title: `바로 구매하시겠습니까?`,
-    //   showCancelButton: true,
-    //   cancelButtonText: "닫기",
-    //   confirmButtonText: "구매",
-    //   customClass: {
-    //     cancelButton: "cartclose-button",
-    //     confirmButton: "cart-button",
-    //     title: "cart-text",
-    //     popup: "custom-alert-popup",
-    //   },
-    //   reverseButtons: true, // 버튼 순서 변경
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-
-    // 로그인 상태일 때 바로 결제 페이지로 이동
+    // 로그인 상태일 때 바로 결제 페이지로 바로이동
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/api/payment/payment/", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -236,8 +221,6 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
         console.error("XHR 객체 초기화 실패");
       }
     }
-    //}
-    //});
   } else {
     Swal.fire({
       title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,
