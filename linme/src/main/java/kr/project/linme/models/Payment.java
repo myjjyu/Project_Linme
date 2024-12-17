@@ -7,6 +7,7 @@ import lombok.Setter;
 @Data
 public class Payment {
     private int paymentId;      // 주문/결제 일련번호
+    private int memberId;       // 회원 일련번호
     private String orderNo;     // 주문 번호
     private String orderName;   // 주문자 이름
     private String orderTel;    // 주문자 연락처
@@ -26,6 +27,18 @@ public class Payment {
     private int orderCount;     // 주문 상품 확인 수량
     private int orderSprice;    // 주문 상품 판매가
     private String orderImg;    // 주문 상품 이미지
+
+    @Getter
+    @Setter
+    private static int count;
+
+    public static void orderCountReset() {
+        count = 0;
+    }
+
+    public static void orderCount() {
+        count++;
+    }
     
     @Getter
     @Setter

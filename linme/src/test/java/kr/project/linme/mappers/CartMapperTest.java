@@ -23,7 +23,7 @@ public class CartMapperTest {
         Cart input = new Cart();
         // 장바구니에 추가할 데이터
         input.setMemberId(4);
-        input.setProductId(6);
+        input.setProductId(16);
         input.setProductCount(2);
 
         int ouput = cartMapper.insert(input);
@@ -109,8 +109,8 @@ public class CartMapperTest {
     void selectItemCart() {
         Cart input = new Cart();
         // 조회할 데이터 일련번호
-        input.setMemberId(1);
-        input.setCartId(22);
+        input.setMemberId(4);
+        input.setCartId(158);
         
         Cart output = cartMapper.selectItem(input);
         log.debug("output: " + output.toString());

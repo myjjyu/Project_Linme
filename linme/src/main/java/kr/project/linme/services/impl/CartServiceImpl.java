@@ -79,7 +79,8 @@ public class CartServiceImpl implements CartService {
             output = cartMapper.selectItem(input);
 
             if (output == null) {
-                throw new Exception("조회된 데이터가 없습니다.");
+                // 수정된 데이터가 없을 경우에도 insert를 수행하도록 수정
+                cartMapper.insert(input);
             }
         } catch (Exception e) {
             log.error("데이터 조회에 실패했습니다.", e);

@@ -3,6 +3,8 @@ package kr.project.linme.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Mypage2Controller {
@@ -16,7 +18,7 @@ public class Mypage2Controller {
         return "mypage/review";
     }
 
-    @GetMapping("/mypage/shopping/order")
+    @RequestMapping(value = "/mypage/shopping/order", method = {RequestMethod.GET, RequestMethod.POST})
     public String order(Model model) {
         return "mypage/shopping/order";
     }

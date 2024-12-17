@@ -224,7 +224,26 @@ public class WebHelper {
      *                   Exception으로 선언했으므로 어떤 하위 객체가 전달되더라도 형변환되어 받는다.
      */
     public void serverError(Exception e) {
-        String message = e.getMessage().trim().replace("'", "\\'").split(System.lineSeparator())[0];
+        String message = e.getMessage();
+        
+        // if (message != null) {
+        //     message = "Unknown Error";
+        // }
+
+        // message = message.trim().replace("'", "\\'").split(System.lineSeparator())[0];
+        // this.redirect(500, null, message);
+
+        if (message == null || message.trim().isEmpty()) {
+            message = "Unknown error occurred";
+        } else {
+            message = message.trim().replace("'", "\\'");
+            String[] lines = message.split(System.lineSeparator());
+            if (lines.length > 0) {
+                message = lines[0];
+            } else {
+                message = "Unknown error occurred";
+            }
+        }
         this.redirect(500, null, message);
     }
 

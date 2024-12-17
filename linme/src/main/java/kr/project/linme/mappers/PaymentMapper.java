@@ -24,6 +24,7 @@ public interface PaymentMapper {
      */
     @Insert(
             "INSERT INTO payment (" + 
+                "member_id, " +
                 "order_no, " +
                 "order_name, " + 
                 "order_tel, " + 
@@ -39,6 +40,7 @@ public interface PaymentMapper {
                 "edit_date" + 
             ") " +
             "VALUES (" + 
+                "#{memberId}, " +
                 // 주문 번호
                 // ex : 20241213-14420001
                 "(SELECT CONCAT(DATE_FORMAT(NOW(), '%Y%m%d-%H%i'), LPAD(IFNULL(SUBSTRING(MAX(order_no), 14), 0) + 1, 4, '0')) FROM payment AS p), " + 
@@ -63,13 +65,15 @@ public interface PaymentMapper {
      * @return
      */
     @Update("UPDATE payment SET " +
+                "member_id = #{memberId}, " +
+                "order_no = #{orderNo}, " +
                 "order_name = #{orderName}, " + 
                 "order_tel = #{orderTel}, "+
                 "addr1 = #{addr1}, " + 
                 "addr2 = #{addr2}, " + 
                 "nickname = #{nickname},"+ 
                 "addr_msg = #{addrMsg}, " + 
-                "discount_price = #{discountPrice}, "+
+                // "discount_price = #{discountPrice}, "+
                 "total_price = #{totalPrice}, " + 
                 "edit_date = NOW() " +
             "WHERE payment_id = #{paymentId}")
@@ -84,6 +88,9 @@ public interface PaymentMapper {
      * @return
      */
     @Select("SELECT " +
+                "payment_id, " +
+                "member_id, " +
+                "order_no, " +
                 "order_name, " + 
                 "order_tel, " + 
                 "addr1, " + 
@@ -98,6 +105,7 @@ public interface PaymentMapper {
             "WHERE payment_id = #{paymentId}")
     @Results(id="PaymentMap", value={
         @Result(property = "paymentId", column = "payment_id"),
+        @Result(property = "memberId", column = "member_id"),
         @Result(property = "orderNo", column = "order_no"),
         @Result(property = "orderName", column = "order_name"),
         @Result(property = "orderTel", column = "order_tel"),
@@ -113,7 +121,8 @@ public interface PaymentMapper {
     public Payment selectItem(Payment input);
 
     @Select("SELECT "+
-                "payment_id, " + 
+                "payment_id, " +
+                "member_id, " + 
                 "order_no, " +
                 "order_name, " + 
                 "order_tel, " + 

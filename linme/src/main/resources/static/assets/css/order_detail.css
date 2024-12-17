@@ -34,7 +34,7 @@ main {
     margin: 0 auto;
     width: 1200px;
 
-    /* 단계 : 주문/결제 */
+    /* 단계 : 주문완료료 */
     .paymentProgress {
       display: flex;
       justify-content: space-between;
@@ -53,7 +53,8 @@ main {
           content: "";
           height: 3px;
           top: 20px;
-          width: 1080px;
+          width: 1150px;
+          right: 17px;
         }
 
         /* 단계 원 */
@@ -69,8 +70,9 @@ main {
           font-size: 24px;
           font-weight: bold;
           margin-bottom: 10px;
+          z-index: 1;
 
-          /* 장바구니 */
+          /* 주문 상세 */
           &.on {
             background-color: #ff8181;
             color: #fff;
@@ -87,6 +89,7 @@ main {
           letter-spacing: -0.44px;
           width: 80px;
           text-align: center;
+          z-index: 1;
 
           /* 장바구니 */
           &.on {
@@ -117,6 +120,13 @@ main {
           color: #333;
           font-size: 30px;
           font-weight: 700;
+          margin-bottom: 20px;
+        }
+
+        .paymentSubTitle {
+          color: #333;
+          font-size: 15px;
+          font-weight: 400;
           margin-bottom: 20px;
         }
 
@@ -169,8 +179,7 @@ main {
                 text-align: left;
 
                 &::before {
-                  content: "*";
-                  color: #ff8181;
+                  content: "";
                   margin-right: 10px;
                 }
 
@@ -214,6 +223,7 @@ main {
                 flex-direction: column;
                 padding: 20px 30px;
                 align-items: start;
+                color: #333;
 
                 /* 선택 옵션 */
                 .selectDeliveryMsgOption {
@@ -483,182 +493,6 @@ main {
                 }
               }
             }
-          }
-        }
-
-        /* 쿠폰 할인 적용 */
-        .couponInfo {
-          margin-bottom: 20px;
-          /* 쿠폰 할인 적용 타이틀 */
-          .couponTitle {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 10px;
-          }
-
-          /* 쿠폰 할인 내용 */
-          .couponContent {
-            display: flex;
-            width: auto;
-            height: auto;
-            border: 1px solid #e6e6e6;
-            border-bottom: 1px solid #8d8d8d;
-            border-top: 1px solid #8d8d8d;
-
-            span {
-              display: flex;
-              align-items: center;
-              width: 170px;
-              height: auto;
-              background-color: #f3f3f3;
-              font-size: 16px;
-              font-weight: 700;
-              padding-left: 30px;
-              text-align: left;
-            }
-
-            .noCoupon {
-              display: flex;
-              align-items: center;
-              padding: 10px;
-              .couponText {
-                width: 292px;
-              }
-
-              input[type="text"] {
-                color: #e6e6e6;
-                font-weight: 400;
-                height: 30px;
-                letter-spacing: -0.32px;
-                padding: 7px 10px;
-                text-align: left;
-                border-radius: 5px;
-                border: 1px solid #e6e6e6;
-                background-color: #f3f3f3;
-
-                /* 포커스 시 스타일 */
-                &:focus {
-                  border-color: #ff8181;
-                  outline: none;
-                }
-              }
-            }
-          }
-        }
-
-        /** 결제수단 선택 */
-        .paymentMethodInfo {
-          .paymentMethodTitle {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 10px;
-          }
-
-          .paymentMethod {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #8d8d8d;
-            border-top: 1px solid #8d8d8d;
-            display: flex;
-            height: fit-content;
-            margin-top: 15px;
-            width: 100%;
-            display: flex;
-            width: 100%;
-            height: 50px;
-            align-items: center;
-            padding: 0 50px;
-
-            input[type="radio"] {
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              appearance: none;
-              width: 13px;
-              height: 13px;
-              border: 1px solid #ccc;
-              border-radius: 50%;
-              outline: none;
-              cursor: pointer;
-            }
-
-            input[type="radio"]:checked {
-              background-color: #ff8181;
-              border: 3px solid white;
-              box-shadow: 0 0 0 1.6px #ff8181;
-            }
-
-            .methodCard {
-              padding: 10px;
-            }
-          }
-        }
-      }
-
-      /* 전체합계 */
-      .paymentTotal {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 320px;
-        height: 220px;
-        padding: 30px;
-        border-radius: 10px;
-        background-color: #fff;
-        position: sticky;
-        top: 200px;
-
-        /* 전체 주문금액 타이틀 */
-        .paymentTotalTitle {
-          color: #333;
-          font-size: 25px;
-          font-weight: 700;
-          height: fit-content;
-          letter-spacing: -0.5px;
-          line-height: 0.8;
-          margin-bottom: 20px;
-        }
-
-        /* 전체 주문금액 */
-        .totalPrice {
-          display: flex;
-          justify-content: space-between;
-          padding: 10px;
-          background-color: #f8f8f8;
-          margin-bottom: 20px;
-          align-items: center;
-
-          span {
-            font-size: 15px;
-          }
-
-          /* 금액 텍스트 */
-          .totalPriceText {
-            font-size: 20px;
-            font-weight: 600;
-          }
-        }
-
-        /* 결제하기 버튼 */
-        .orderBtn {
-          background-color: #ff8181;
-          border-radius: 4px;
-          display: flex;
-          height: 49px;
-          margin: 0 auto;
-          width: 209px;
-          justify-content: center;
-          cursor: pointer;
-          border: none;
-
-          span {
-            color: #fff;
-            display: block;
-            font-size: 28px;
-            font-weight: 500;
-            height: fit-content;
-            letter-spacing: -0.56px;
-            line-height: 1.43;
-            margin-top: 5px;
-            width: fit-content;
           }
         }
       }

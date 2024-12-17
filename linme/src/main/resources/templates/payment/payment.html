@@ -31,7 +31,24 @@
         </nav>
 
         <!-- 주문결제 및 전체합계 -->
-        <form class="paymentMainContainer" method="post" th:action="@{/mypage/shopping/order}">
+        <form class="paymentMainContainer" id="paymentForm" method="get" th:action="@{/payment/order_detail}">
+          <!-- 주문 결제 정보 -->
+          <input type="hidden" name="paymentId" th:value="${payment.paymentId}" />
+          <input type="hidden" name="memberId" th:value="${memberInfo.memberId}" />
+          <input type="hidden" name="order_no" th:value="${payment.orderNo}" />
+          <input type="hidden" name="order_name" th:value="${payment.orderName}" />
+          <input type="hidden" name="order_tel" th:value="${payment.orderTel}" />
+          <input type="hidden" name="addr1" th:value="${payment.addr1}" />
+          <input type="hidden" name="addr2" th:value="${payment.addr2}" />
+          <input type="hidden" name="nickname" th:value="${payment.nickname}" />
+          <input type="hidden" name="addr_msg" th:value="${payment.addrMsg}" />
+          <input type="hidden" name="total_price" th:value="${payment.totalPrice}" />
+          <div th:each="product : ${item}">
+            <input type="hidden" name="cart_id" th:value="${product.cartId}" />
+            <input type="hidden" name="productCount" th:value="${product.productCount}" />
+            <input type="hidden" name="productId" th:value="${product.productId}" />
+          </div>
+
           <!-- 주문 결제 -->
           <section class="paymentInfo">
             <!-- 주문 결제 타이틀 -->
@@ -74,12 +91,15 @@
                   <a class="selectDeliveryMsg">
                     <!-- 선택 옵션 -->
                     <select class="selectDeliveryMsgOption">
+                      <option value="N" th:selected="${session.memberInfo.addrMsg == 'N' or session.memberInfo.addrMsg == 'Null'}" disabled selected>
+                        배송지 요청사항을 선택해주세요.
+                      </option>
                       <option value="0"><a th:text="${session.memberInfo.addrMsg}"></a></option>
                       <option value="1">부재 시 문 앞에 놓아주세요</option>
                       <option value="2">배송 전에 미리 연락 주세요</option>
                       <option value="3">부재 시 경비실에 맡겨 주세요</option>
                       <option value="4">부재 시 전화 주시거나 문자 남겨주세요</option>
-                      <option value="directInput">직접입력</option>
+                      <!-- <option value="directInput">직접입력</option> -->
                     </select>
                     <div class="inputContainer"></div
                   ></a>
@@ -129,7 +149,7 @@
 
                     <!-- 구매가 -->
                     <div class="salePriceBox">
-                      <span class="salePrice" th:text="${#numbers.formatInteger(item .totalPrice, 3, 'COMMA') + ' 원'}">36,000원</span>
+                      <span class="salePrice" th:text="${#numbers.formatInteger(item.totalPrice, 3, 'COMMA') + ' 원'}">36,000원</span>
                     </div>
                     <!-- 배송비 -->
                     <span class="deliveryPriceBox">0원</span>
@@ -176,7 +196,9 @@
               <span class="totalPriceText" th:text="${#numbers.formatInteger(payment.totalPrice, 3, 'COMMA') + ' 원'}"></span>
             </div>
             <!-- 결제하기 버튼 -->
-            <a class="orderBtn"><span>결제하기</span></a>
+            <button class="orderBtn" id="orderBtn" type="submit">
+              <span>결제하기</span>
+            </button>
           </section>
         </form>
       </div>
@@ -194,10 +216,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
 
     <script th:src="@{/assets/js/payment.js}"></script>
+    <script th:inline="javascript">
+      const orderForm = /*[[@{/mypage/shopping/order}]]*/ "";
+    </script>
 
     <script>
       // Footer 영역의 margin을 0으로 설정
       document.querySelector(".footerContainer").style.margin = "0px";
+
+      // 결제하기 버튼 form 요소가 submit 이벤트 발생 시
+      document.querySelector("#paymentForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log(FormData);
+
+        e.currentTarget.submit();
+      });
     </script>
   </body>
 </html>

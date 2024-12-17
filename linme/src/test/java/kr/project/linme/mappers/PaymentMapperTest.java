@@ -21,6 +21,7 @@ public class PaymentMapperTest {
     @DisplayName("결제 테스트")
     void insertPayment(){
         Payment input=new Payment();
+        input.setMemberId(4);
         input.setOrderName("심진주");
         input.setOrderTel("010-1234-5678");
         input.setAddr1("서울특별시 성동구 성수로 19");
@@ -42,7 +43,7 @@ public class PaymentMapperTest {
     void updatePayment(){
         Payment input=new Payment();
         
-        input.setPaymentId(1);
+        input.setPaymentId(272);
 
         input.setOrderName("프로젝트");
         input.setOrderTel("010-5678-1234");
@@ -50,7 +51,7 @@ public class PaymentMapperTest {
         input.setAddr2("직장");
         input.setNickname("jinju2");
         input.setAddrMsg("도착 시 연락부탁드립니다.");
-        input.setDiscountPrice(8000);
+        // input.setDiscountPrice(8000);
         input.setTotalPrice(40000);
         
 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<link rel="stylesheet" href="../../../static/assets/css/common.css" />
+    <link rel="stylesheet" href="../../../static/assets/css/myPage/shopping/order.css" />-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/order_detail.css}" />
+    <title>린미 - 주문/배송 내역</title>
+    <!-- Header 영역 -->
+    <th:block th:replace="~{/fragments/header}" />
+  </head>
+  <body>
+    <!-- Main 영역-->
+    <main>
+      <div class="paymentContainer">
+        <!-- 장바구니 단계 -->
+        <nav class="paymentProgress">
+          <div class="progressStep">
+            <div class="circle">1</div>
+            <span class="progressStepText">장바구니</span>
+          </div>
+          <div class="progressStep">
+            <div class="circle">2</div>
+            <span class="progressStepText">주문/결제</span>
+          </div>
+          <div class="progressStep on">
+            <div class="circle on">3</div>
+            <span class="progressStepText on">주문완료</span>
+          </div>
+        </nav>
+
+        <!-- 주문결제 및 전체합계 -->
+        <form class="paymentMainContainer" id="paymentForm" method="get" th:action="@{/payment/order_detail}">
+          <!-- 주문 결제 -->
+          <section class="paymentInfo">
+            <!-- 주문 결제 타이틀 -->
+            <span class="paymentTitle">주문완료</span>
+            <span class="paymentSubTitle">주문이 완료되었습니다.<br />주문해주셔서 감사합니다.</span>
+
+            <!-- 배송지 정보 -->
+            <div class="deliveryInfo">
+              <!-- 배송지 타이틀 -->
+              <span class="deliveryTitle">배송지 정보</span>
+
+              <ul class="deliveryList">
+                <!-- 배송지명 -->
+                <li class="addrName">
+                  <span>배송지명</span>
+                  <a th:text="${session.memberInfo.nickname}"></a>
+                </li>
+
+                <!-- 받는 분 -->
+                <li class="receiver">
+                  <span>받는 분</span>
+                  <a th:text="${session.memberInfo.userName}"></a>
+                </li>
+
+                <!-- 연락처 -->
+                <li class="tel">
+                  <span>연락처</span>
+                  <a th:text="${session.memberInfo.tel}"></a>
+                </li>
+
+                <!-- 배송지 -->
+                <li class="addr">
+                  <span>배송지</span>
+                  <a th:text="${session.memberInfo.addr1} + ' ' + ${session.memberInfo.addr2}"></a>
+                </li>
+
+                <!-- 배송요청사항 -->
+                <li class="deliveryRequest">
+                  <span class="noRequired">배송요청사항</span>
+                  <!-- 배송요청사항 선택 영역 -->
+                  <a class="selectDeliveryMsg" th:text="${session.memberInfo.addrMsg}"></a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 주문상품 확인 -->
+            <div class="OrderCheckInfo">
+              <!-- 주문상품 확인 타이틀 -->
+              <span class="OrderCheckTitle">주문상품 확인</span>
+              <!-- 주문상품 확인 : 상품-->
+              <ul class="OrderCheckList">
+                <!-- 상품 ListItem-->
+                <li class="OrderCheckItem" th:each="item : ${item}">
+                  <!-- 상단 -->
+                  <div class="OrderCheckItemTop">
+                    <span>상품정보</span>
+                    <span>구매가</span>
+                    <span>배송비</span>
+                  </div>
+
+                  <!-- 상품 정보 -->
+                  <div class="OrderCheckItemCenter">
+                    <!-- 상품 -->
+                    <div class="OrderCheckItemBox">
+                      <!-- 상품 상세 정보 -->
+                      <div class="OrderCheckItemInfo">
+                        <!-- 상품 이미지 -->
+                        <a class="OrderCheckItemImg" th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                          <img th:src="${item.Img}" />
+                        </a>
+                        <div class="OrderCheckItemDetailInfo">
+                          <!-- 브랜드명 -->
+                          <a th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                            <span class="brandName" th:text="${item.brandName}"></span>
+                          </a>
+                          <!-- 상품명 -->
+                          <a th:href="@{/view/view/{productId}(productId=${item.productId})}">
+                            <span class="productName" th:text="${item.productName}"></span>
+                          </a>
+                          <!-- 선택 수량 -->
+                          <div class="selectedQuantity"><span th:text="${item.productCount + '개'}"></span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 구매가 -->
+                    <div class="salePriceBox">
+                      <span class="salePrice" th:text="${#numbers.formatInteger(item.totalPrice, 3, 'COMMA') + ' 원'}">36,000원</span>
+                    </div>
+                    <!-- 배송비 -->
+                    <span class="deliveryPriceBox">0원</span>
+                  </div>
+
+                  <!-- 배송비 정보-->
+                  <div class="OrderCheckItemBottom">
+                    <span>총 배송비</span>
+                    <span>0원</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer 영역 -->
+    <th:block th:replace="~{/fragments/footer}" />
+
+    <!-- Script 영역 -->
+    <script>
+      // Footer 영역의 margin을 0으로 설정
+      document.querySelector(".footerContainer").style.margin = "0px";
+    </script>
+  </body>
+</html>

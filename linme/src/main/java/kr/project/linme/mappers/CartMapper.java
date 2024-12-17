@@ -48,6 +48,8 @@ public interface CartMapper {
      */
     @Update("UPDATE cart SET " + 
                 "product_count = #{productCount} " +
+                "total_price = (SELECT sale_price * #{productCount} FROM product WHERE product_id = #{productId}), " +
+                "edit_date = NOW() " +  
             "WHERE cart_id = #{cartId}")
     public int update(Cart input);
 
@@ -104,6 +106,7 @@ public interface CartMapper {
             "INNER JOIN product p ON p.product_id = c.product_id " +
             "INNER JOIN brand b ON b.brand_id = p.brand_id " +
             "INNER JOIN img i ON i.product_id = c.product_id " +
+            "INNER JOIN member m ON m.member_id = c.member_id " +
             "WHERE c.member_id = #{memberId} " +
             "AND c.cart_id = #{cartId}"
             )
