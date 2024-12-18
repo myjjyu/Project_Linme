@@ -16,20 +16,41 @@ import kr.project.linme.models.OrderItem;
 
 @Mapper
 public interface OrderItemMapper {
-    @Insert("INSERT INTO order_item "+
-            "(order_bname, order_pname, "+
-            "order_count, order_sprice, order_price, payment_id, "+
-            "reg_date, edit_date) " +
-            "VALUES (#{orderBname}, #{orderPname}, "+
-            "#{orderCount}, #{orderSprice}, #{orderPrice}, #{paymentId}, "+
-            "NOW(), NOW())")
+    /**
+     * 주문/결제 데이터를 저장하기 위한 메서드 정의
+     * @param input - 주문/결제 데이터
+     * @return
+     */
+    @Insert("INSERT INTO order_item (" +
+                "payment_id, " +
+                "order_bname, " + 
+                "order_pname, " +
+                "order_count, " + 
+                "order_sprice, " + 
+                "order_img, " + 
+                "reg_date, " + 
+                "edit_date" +
+            ") VALUES (" + 
+                "#{paymentId}, " +
+                "#{orderBname}, " + 
+                "#{orderPname}, " +
+                "#{orderCount}, " + 
+                "#{orderSprice}, " + 
+                "#{orderImg}, " + 
+                "NOW(), " + 
+                "NOW()" +
+            ")"
+            )
     @Options(useGeneratedKeys = true, keyProperty = "orderItemId", keyColumn = "order_item_id")
     public int insert(OrderItem input);
 
     @Update("UPDATE order_item SET " +
-            "order_bname = #{orderBname}, order_pname = #{orderPname}, "+
-            "order_count = #{orderCount}, order_sprice = #{orderSprice}, "+
-            "order_price = #{orderPrice}, edit_date = NOW() " +
+                "order_bname = #{orderBname}, " + 
+                "order_pname = #{orderPname}, "+
+                "order_count = #{orderCount}, " + 
+                "order_sprice = #{orderSprice}, "+
+                "order_img = #{orderImg}, " + 
+                "edit_date = NOW() " +
             "WHERE order_item_id = #{orderItemId}")
     public int update(OrderItem input);
 
@@ -41,31 +62,43 @@ public interface OrderItemMapper {
      * @param input
      * @return
      */
-    @Select("SELECT "+
-                "order_item_id, order_bname, order_pname, "+
-                "order_count, order_sprice, order_price, payment_id, " + 
-                "reg_date, edit_date "+
+    @Select("SELECT " + 
+                "order_item_id, " + 
+                "payment_id, " +
+                "order_bname, " + 
+                "order_pname, "+
+                "order_count, " + 
+                "order_sprice, " + 
+                "order_img, " + 
+                "reg_date, " + 
+                "edit_date "+
             "FROM order_item "+
             "WHERE order_item_id = #{orderItemId}")
     @Results(id="OrderItemMap", value={
         @Result(property = "orderItemId", column = "order_item_id"),
+        @Result(property = "paymentId", column = "payment_id"),
         @Result(property = "orderBname", column = "order_bname"),
         @Result(property = "orderPname", column = "order_pname"),
         @Result(property = "orderCount", column = "order_count"),
         @Result(property = "orderSprice", column = "order_sprice"),
-        @Result(property = "orderPrice", column = "order_price"),
-        @Result(property = "paymentId", column = "payment_id"),
+        @Result(property = "orderImg", column = "order_img"),
         @Result(property = "regDate", column = "reg_date"),
         @Result(property = "editDate", column = "edit_date")
     })
     public OrderItem selectItem(OrderItem input);
 
-    @Select("SELECT "+
-                "order_item_id, order_bname, order_pname, "+
-                "order_count, order_sprice, order_price, "+
-                "payment_id, reg_date, edit_date "+ 
+    @Select("SELECT " + 
+                "order_item_id, " + 
+                "payment_id, " +
+                "order_bname, " + 
+                "order_pname, " +
+                "order_count, " + 
+                "order_sprice, " + 
+                "order_img, "+ 
+                "reg_date, " + 
+                "edit_date " + 
             "FROM order_item "+
-            "WHERE order_item_id = #{orderItemId}")
+            "WHERE payment_id = #{paymentId}")
     @ResultMap("OrderItemMap")
     public List<OrderItem> selectList(OrderItem input);
 

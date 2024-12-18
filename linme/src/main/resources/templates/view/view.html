@@ -5,18 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>린미 - 세상에 없던 H-커머스</title>
     <th:block th:replace="~{/fragments/header}" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
@@ -43,13 +34,7 @@
     <!--*****************************************************-->
     <main>
       <div class="view-top">
-        <div
-          style="
-            --swiper-navigation-color: #fff;
-            --swiper-pagination-color: #fff;
-          "
-          class="swiper mySwiper2"
-        >
+        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
           <!-- 메인이미지 -->
           <div class="swiper-wrapper">
             <div class="swiper-slide main-img">
@@ -71,52 +56,24 @@
         <div class="product-contents">
           <div class="product-container">
             <ul>
-              <li
-                class="productInfoItem brandName"
-                th:text="${product.brandName}"
-              >
-                브랜드 이름
-              </li>
-              <li
-                class="productInfoItem productName"
-                th:text="${product.productName}"
-              >
-                상품 이름
-              </li>
+              <li class="productInfoItem brandName" th:text="${product.brandName}">브랜드 이름</li>
+              <li class="productInfoItem productName" th:text="${product.productName}">상품 이름</li>
               <li>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
-                <span class="span-out"
-                  >0 <span class="span-in">/ 5</span>
-                  <span class="span-in">후기</span> 0</span
-                >
-                <a th:href="@{#review}"
-                  ><img
-                    class="arrow"
-                    th:src="@{/assets/img/view/arrow_showMore.png}"
-                /></a>
+                <span class="span-out">0 <span class="span-in">/ 5</span> <span class="span-in">후기</span> 0</span>
+                <a th:href="@{#review}"><img class="arrow" th:src="@{/assets/img/view/arrow_showMore.png}" /></a>
               </li>
               <li class="discountRate">
                 <span th:text="${product.discountRate + '%'}">할인율</span>
-                <span
-                  class="originalPrice"
-                  th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"
-                  >원래 가격</span
-                >
+                <span class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래 가격</span>
               </li>
-              <li
-                class="salePrice"
-                th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
-              >
-                할인 가격
-              </li>
+              <li class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">할인 가격</li>
               <li class="shippingInfo">배송정보</li>
-              <li class="shippingInfo shipping">
-                무료배송 <span>|</span> CJ대한통운
-              </li>
+              <li class="shippingInfo shipping">무료배송 <span>|</span> CJ대한통운</li>
             </ul>
 
             <!-- 필수표기정보 alert 창 -->
@@ -172,9 +129,7 @@
                   <td>상품 상세페이지 참조</td>
                 </tr>
                 <tr>
-                  <td>
-                    질병의 예방 및 치료를 위한 의약품이 아니라는 내용의 문구
-                  </td>
+                  <td>질병의 예방 및 치료를 위한 의약품이 아니라는 내용의 문구</td>
                   <td>상품 상세페이지 참조</td>
                 </tr>
                 <tr>
@@ -208,61 +163,26 @@
                 class="total-price"
                 data-unit-price="${product.salePrice}"
                 th:attr="data-unit-price=${product.salePrice}"
-                th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"
-              ></div>
+                th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}"></div>
             </div>
 
             <!-- **************************** -->
             <!-- 로그인 상태 -->
             <!-- **************************** -->
             <div class="btn" th:if="${session.memberInfo != null}">
-              <form
-                id="cartform"
-                th:action="@{/api/cart/cart/add}"
-                method="post"
-              >
-                <input
-                  type="hidden"
-                  name="memberId"
-                  th:value="${session.memberInfo.memberId}"
-                />
-                <input
-                  type="hidden"
-                  name="productId"
-                  th:value="${product.productId}"
-                />
+              <form id="cartform" th:action="@{/api/cart/cart/add}" method="post">
+                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}" />
+                <input type="hidden" name="productId" th:value="${product.productId}" />
                 <!-- 수량▼ -->
-                <input
-                  type="hidden"
-                  name="productCount"
-                  th:value="${product.productCount}"
-                  class="quantity-input"
-                />
+                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
 
-              <form
-                id="paymentform"
-                th:action="@{/payment/payment}"
-                method="post"
-              >
-                <input
-                  type="hidden"
-                  name="memberId"
-                  th:value="${session.memberInfo.memberId}"
-                />
-                <input
-                  type="hidden"
-                  name="productId"
-                  th:value="${product.productId}"
-                />
+              <form id="paymentform" th:action="@{/payment/payment_by_detail}" method="post">
+                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}" />
+                <input type="hidden" name="productId" th:value="${product.productId}" />
                 <!-- 수량▼ -->
-                <input
-                  type="hidden"
-                  name="productCount"
-                  th:value="${product.productCount}"
-                  class="quantity-input"
-                />
+                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
                 <button type="submit" class="buy-btn">바로구매</button>
               </form>
             </div>
@@ -275,22 +195,13 @@
                 <input type="hidden" name="memberId" />
                 <input type="hidden" name="productId" />
                 <!-- 수량▼ -->
-                <input
-                  type="hidden"
-                  name="productCount"
-                  class="quantity-input"
-                />
+                <input type="hidden" name="productCount" class="quantity-input" />
                 <button type="submit" class="cart-btn">장바구니</button>
               </form>
 
               <form id="paymentform-not-log" th:action="@{/login}">
                 <input type="hidden" name="productId" />
-                <input
-                  type="hidden"
-                  name="quantity"
-                  value="1"
-                  class="quantity-input"
-                />
+                <input type="hidden" name="quantity" value="1" class="quantity-input" />
                 <button type="submit" class="buy-btn">바로구매</button>
               </form>
             </div>
@@ -330,11 +241,7 @@
         <div class="productReview">
           <div class="title">리뷰<span class="reviewCount">0</span></div>
           <div class="reviewInfo">
-            <div class="scoreStatus">
-              <span class="nowScore">0</span>/<span class="perfectScore"
-                >5</span
-              >
-            </div>
+            <div class="scoreStatus"><span class="nowScore">0</span>/<span class="perfectScore">5</span></div>
             <div class="starScoreCover">
               <ul class="starScore">
                 <i class="fa-regular fa-star" style="color: #ffd43b"></i>
@@ -357,9 +264,7 @@
         <div class="division"></div>
         <div class="productInquiry">
           <div class="flex">
-            <div class="title">
-              상품 문의<span class="inquiryCount">0</span>
-            </div>
+            <div class="title">상품 문의<span class="inquiryCount">0</span></div>
             <!-- 문의하기 버튼 -->
             <div class="button inquiry productInquiry" id="inquiry-alert">문의하기</div>
           </div>
@@ -383,13 +288,10 @@
     <footer>
       <th:block th:replace="~{/fragments/footer}" />
     </footer>
-    
+
     <!-- 스크립트 영역 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/2c827c8cca.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/2c827c8cca.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.13.1/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

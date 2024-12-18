@@ -48,8 +48,6 @@ public interface CartMapper {
      */
     @Update("UPDATE cart SET " + 
                 "product_count = #{productCount} " +
-                "total_price = (SELECT sale_price * #{productCount} FROM product WHERE product_id = #{productId}), " +
-                "edit_date = NOW() " +  
             "WHERE cart_id = #{cartId}")
     public int update(Cart input);
 
@@ -83,6 +81,7 @@ public interface CartMapper {
                 "</where>" +
             "</script>")
     public int delete(Cart input);
+
 
     /**
      * 장바구니 단일 조회

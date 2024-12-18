@@ -34,7 +34,6 @@ public interface PaymentMapper {
                 "addr_msg, " + 
                 "discount_price, " +
                 "total_price, " + 
-                // OrderItem
                 
                 "reg_date, " + 
                 "edit_date" + 
@@ -52,7 +51,6 @@ public interface PaymentMapper {
                 "#{addrMsg}, " + 
                 "#{discountPrice}, " +
                 "#{totalPrice}, " + 
-                // OrderItem
                 "NOW(), " + 
                 "NOW()" + 
             ")")
@@ -120,22 +118,27 @@ public interface PaymentMapper {
     })
     public Payment selectItem(Payment input);
 
+    /**
+     *  주문 완료 후 주문서 확인을 위한 리스트 조회
+     * @param input
+     * @return
+     */
     @Select("SELECT "+
-                "payment_id, " +
-                "member_id, " + 
-                "order_no, " +
-                "order_name, " + 
-                "order_tel, " + 
-                "addr1, " + 
-                "addr2, " + 
-                "nickname, " + 
-                "addr_msg, " + 
-                "discount_price," + 
-                "total_price, " + 
-                "reg_date, " + 
-                "edit_date " +
-            "FROM payment "+
-            "WHERE payment_id = #{paymentId}")
+                "p.payment_id, " +
+                "p.member_id, " + 
+                "p.order_no, " +
+                "p.order_name, " + 
+                "p.total_price, " + 
+                "o.order_bname, " +
+                "o.order_pname, " +
+                "o.order_count, " +
+                "o.order_sprice, " +
+                "o.order_img, " + 
+                "p.reg_date, " +
+                "p.edit_date " +
+            "FROM payment p " +
+            "INNER JOIN order_item o ON o.payment_id = p.payment_id " +
+            "WHERE p.member_id = #{memberId}")  
     @ResultMap("PaymentMap")
     public List<Payment> selectList(Payment input);
 

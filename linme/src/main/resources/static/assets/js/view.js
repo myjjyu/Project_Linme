@@ -32,7 +32,6 @@ tabs.forEach((tab) => {
   });
 });
 
-
 /**
  * 문의하기 alert창
  */
@@ -122,10 +121,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         // AJAX 요청을 통해 장바구니에 아이템을 추가
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/cart/cart/add", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         console.log(xhr);
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -180,11 +176,12 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
 document.querySelector(".buy-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
+  e.currentTarget.form.submit();
 
   if (isLoggedIn) {
     // 로그인 상태일 때 바로 결제 페이지로 바로이동
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/api/payment/payment/", true);
+    xhr.open("POST", "/payment/payment_by_detail", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
@@ -197,30 +194,30 @@ document.querySelector(".buy-btn").addEventListener("click", (e) => {
       }
     };
 
-    /**
-     * 폼 데이터를 수집하여 URL 인코딩된 문자열로 변환
-     */
-    var form = document.querySelector("#paymentform");
-    if (!form) {
-      console.error("폼 요소를 찾을수없음: #paymentform");
-    } else {
-      var formData = new FormData(form);
-      var data = new URLSearchParams();
+    // /**
+    //  * 폼 데이터를 수집하여 URL 인코딩된 문자열로 변환
+    //  */
+    // var form = document.querySelector("#paymentform");
+    // if (!form) {
+    //   console.error("폼 요소를 찾을수없음: #paymentform");
+    // } else {
+    //   var formData = new FormData(form);
+    //   var data = new URLSearchParams();
 
-      formData.forEach((value, key) => {
-        data.append(key, value);
-      });
+    //   formData.forEach((value, key) => {
+    //     data.append(key, value);
+    //   });
 
-      console.log("폼 데이터:", data.toString());
+    //   console.log("폼 데이터:", data.toString());
 
-      // xhr 객체가 올바르게 초기화되었는지 확인
-      if (xhr) {
-        console.log("XHR 객체 초기화 완료");
-        xhr.send(data.toString());
-      } else {
-        console.error("XHR 객체 초기화 실패");
-      }
-    }
+    //   // xhr 객체가 올바르게 초기화되었는지 확인
+    //   if (xhr) {
+    //     console.log("XHR 객체 초기화 완료");
+    //     xhr.send(data.toString());
+    //   } else {
+    //     console.error("XHR 객체 초기화 실패");
+    //   }
+    // }
   } else {
     Swal.fire({
       title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,
@@ -253,8 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const numberDisplay = document.querySelector(".number");
   const totalPriceDisplay = document.querySelector(".total-price");
   const quantityInputs = document.querySelectorAll(".quantity-input");
-  const unitPrice =
-    parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
+  const unitPrice = parseInt(totalPriceDisplay.getAttribute("data-unit-price")) || 0;
 
   console.log("Unit Price:", unitPrice);
 

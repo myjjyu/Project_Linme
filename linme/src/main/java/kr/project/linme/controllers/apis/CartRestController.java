@@ -47,16 +47,17 @@ public class CartRestController {
         input.setProductId(productId);
         input.setProductCount(productCount);
 
+        // 결과를 저장할 Cart 객체
         Cart output = null;
 
         try {
-            // Cart count = cartService.uniqueCartCount(input);
+            // 장바구니에 동일한 상품이 있는지 확인
             int count = cartService.getCount(input);
             if (count > 0) {
-
+                // 동일한 상품이 있다면 수량만 변경
                 output = cartService.editUniqueCart(input);
             } else {
-                // CartService를 사용하여 아이템을 장바구니에 추가
+                // 동일한 상품이 없다면, 장바구니에 추가
                 output = cartService.addItem(input);
             }
         } catch (Exception e) {
@@ -214,16 +215,19 @@ public class CartRestController {
             @RequestParam("cartIdTmp") List<Integer> cartIdTmp,
             @SessionAttribute("memberInfo") Member memberInfo) {
 
-                
-
+        // 장바구니 번호를 저장하기 위한 객체
         List<Cart> output = new ArrayList<>();
+
+        // 장바구니 번호를 하나씩 꺼내서 처리
         for (int i = 0; i < cartIdTmp.size(); i++) {
             Cart input = new Cart();
-            input.setCartId(cartIdTmp.get(i));
-            input.setMemberId(memberInfo.getMemberId());
+            input.setCartId(cartIdTmp.get(i)); // 장바구니 번호
+            input.setMemberId(memberInfo.getMemberId()); // 회원 번호
 
+            // 장바구니 번호를 삭제하기 위한 처리
             output.add(input);
             try {
+                // 장바구니 번호를 삭제
                 cartService.deleteItem(input);
             } catch (Exception e) {
                 return restHelper.serverError(e);

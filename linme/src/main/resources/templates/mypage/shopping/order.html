@@ -17,22 +17,48 @@
       <div class="orderContainer">
         <div class="contents">
           <div class="myPageDetail">
-            <section class="shoppingCover">
+            <article class="shoppingCover">
               <!-- 주문/배송 -->
-              <div class="statusTypeList">
+              <header class="statusTypeList">
                 <a th:href="@{/mypage/shopping/order}" class="statusTypeItem order on">주문/배송</a>
                 <a th:href="@{/mypage/shopping/claim}" class="statusTypeItem claim">취소/교환/환불</a>
-              </div>
-              <!-- 주문 내역 -->
-              <ul class="orderList on noOrder">
-                <!-- 주문 내역 없을 때 -->
-                <li class="noData">
+              </header>
+              <section class="orderList" th:if="${payments.size() == 0}">
+                <div class="noData">
                   <div class="noOrderList">주문/배송 내역이 없습니다.</div>
-                  <!-- 메인페이지 이동 -->
                   <a th:href="@{/main/main}"><div class="button clickable moveToMain">쇼핑하러 가기</div></a>
-                </li>
-              </ul>
-            </section>
+                </div>
+              </section>
+
+              <section class="orderList" th:unless="${payments.size() == 0}">
+                <ul>
+                  <!-- 주문/배송 내역 -->
+                  <li class="payments" th:each="payments : ${payments}">
+                    <ul class="orderInfo">
+                      <!-- 주문 정보 -->
+                      <span class="orderNo">주문번호 : <span class="orderNo" th:text="${payments.orderNo}"></span></span>
+                      <span class="orderOk">결제완료</span>
+                      <!-- 주문 상품 정보 -->
+                      <li class="orderItems" th:each="orderItems : ${orderItems}">
+                        <div class="orderItemInfo" th:if="${orderItems.paymentId == payments.paymentId}">
+                          <img th:src="${orderItems.orderImg}" alt="Product Image" />
+                          <div class="orderItemDetail">
+                            <span class="orderPname"><span th:text="${orderItems.orderPname}"></span></span>
+                            <span class="orderCount"><span th:text="${orderItems.orderCount} + '개'"></span></span>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- 주문 금액 -->
+                      <div class="orderPrice">
+                        <span class="orderPriceText"
+                          >총 상품금액 : <span th:text="${#numbers.formatInteger(payments.totalPrice, 3, 'COMMA')} + ' 원'"></span
+                        ></span>
+                      </div>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </article>
           </div>
         </div>
       </div>

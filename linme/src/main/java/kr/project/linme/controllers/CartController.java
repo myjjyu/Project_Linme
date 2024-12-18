@@ -35,6 +35,7 @@ public class CartController {
     @GetMapping("/cart/cart")
     public String orderCart(Model model,
             @SessionAttribute("memberInfo") Member memberInfo) {
+                
         Cart input = new Cart();
         input.setMemberId(memberInfo.getMemberId());
 

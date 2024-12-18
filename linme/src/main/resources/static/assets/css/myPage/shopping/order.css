@@ -10,12 +10,17 @@
   color: #333;
 }
 
-ul {
+ul,
+li {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+}
+
+p {
+  margin-bottom: 0px;
 }
 
 main {
@@ -82,11 +87,14 @@ main {
       align-items: center;
       display: flex;
       justify-content: center;
-      height: fit-content;
       margin-top: 50px;
-      min-height: 600px;
+      padding: 10px;
       overflow: hidden;
       width: 100%;
+
+      .noData {
+        height: 300px;
+      }
     }
 
     /* 내역 없음 */
@@ -94,7 +102,6 @@ main {
       color: #8d8d8d;
       font-size: 18px;
       font-weight: 400;
-      height: fit-content;
       letter-spacing: -0.36px;
       line-height: 2.11;
       text-align: center;
@@ -117,6 +124,102 @@ main {
       margin: 48px auto 0;
       padding: 8px 20px;
       width: fit-content;
+    }
+  }
+}
+
+/** 주문/배송 내역 */
+.payments {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  .orderInfo {
+    display: flex;
+    flex-direction: column;
+
+    .orderNo {
+      color: #333;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .orderOk {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ff697b17;
+      color: #ff697b;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2px;
+      margin: 10px 0;
+      width: 70px;
+      padding: 2px;
+    }
+
+    /* 주문 상품 정보 */
+    .orderItems {
+      list-style-type: none;
+
+      /* 주문 상품 정보 박스 */
+      .orderItemInfo {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+
+        /* 상품 이미지 */
+        img {
+          max-width: 60px;
+          margin-right: 20px;
+        }
+
+        /* 상품 정보 상세 */
+        .orderItemDetail {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 100%;
+
+          p {
+            margin-bottom: 0px;
+          }
+
+          /* 상품이름 */
+          .orderPname {
+            font-size: 15px;
+            font-weight: 500;
+          }
+
+          /* 상품 수량 */
+          .orderCount {
+            font-size: 13px;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+
+    /* 주문 상품 가격 */
+    .orderPrice {
+      margin-top: 10px;
+      font-weight: bold;
+      background-color: #f5f5f5;
+      color: #333;
+      padding: 10px 30px;
+
+      .orderPriceText {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 500;
+      }
     }
   }
 }
