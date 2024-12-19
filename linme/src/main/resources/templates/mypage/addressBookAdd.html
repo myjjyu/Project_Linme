@@ -134,14 +134,7 @@
                                 <option value="배송 전에 미리 연락 주세요" th:selected="${session.memberInfo.addrMsg == '배송 전에 미리 연락 주세요'}">배송 전에 미리 연락 주세요</option>
                                 <option value="부재 시 경비실에 맡겨 주세요" th:selected="${session.memberInfo.addrMsg == '부재 시 경비실에 맡겨 주세요'}">부재 시 경비실에 맡겨 주세요</option>
                                 <option value="부재 시 전화주시거나 문자 남겨주세요" th:selected="${session.memberInfo.addrMsg == '부재 시 전화주시거나 문자 남겨주세요'}">부재 시 전화주시거나 문자 남겨주세요</option>
-                                <option value="직접 입력" th:selected="${session.memberInfo.addrMsg == '직접 입력'}">직접 입력</option>
                             </select>
-                        </div>
-
-                        <!-- 직접 입력 입력창 -->
-                        <div class="formGroup customInputContainer hidden">
-                            <label for="customInput"></label>
-                            <input name="customAddrMsg" type="text" id="customInput" class="input-field" placeholder="직접 입력">
                         </div>
 
                         <div class="defaultAddressContainer">
