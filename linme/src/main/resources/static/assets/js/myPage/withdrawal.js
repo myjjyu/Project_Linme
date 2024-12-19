@@ -1,7 +1,22 @@
 // 체크박스를 클릭했을 때 탈퇴 버튼 활성화/비활성화
-document.getElementById("confirmWithdrawal").addEventListener("change", function () {
-    const withdrawalButton = document.getElementById("withdrawalButton");
-    withdrawalButton.disabled = !this.checked; // 체크박스가 체크되었는지 확인
+// document.getElementById("confirmWithdrawal").addEventListener("change", function () {
+//     const withdrawalButton = document.getElementById("withdrawalButton");
+//     withdrawalButton.disabled = !this.checked; // 체크박스가 체크되었는지 확인
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const checkbox = document.getElementById("confirmWithdrawal");
+    const button = document.getElementById("withdrawalButton");
+
+    checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            button.classList.add("enabled");
+            button.disabled = false;
+        } else {
+            button.classList.remove("enabled");
+            button.disabled = true;
+        }
+    });
 });
 
 // 탈퇴 버튼 클릭 시 회원 탈퇴 처리
