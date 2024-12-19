@@ -175,16 +175,9 @@
                 <input type="hidden" name="productId" th:value="${product.productId}" />
                 <!-- 수량▼ -->
                 <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
-                <button type="submit" class="cart-btn">장바구니</button>
+                <button type="submit" class="cart-btn">구매하기</button>
               </form>
 
-              <form id="paymentform" th:action="@{/payment/payment_by_detail}" method="post">
-                <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}" />
-                <input type="hidden" name="productId" th:value="${product.productId}" />
-                <!-- 수량▼ -->
-                <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
-                <button type="submit" class="buy-btn">바로구매</button>
-              </form>
             </div>
 
             <!-- **************************** -->
@@ -195,15 +188,10 @@
                 <input type="hidden" name="memberId" />
                 <input type="hidden" name="productId" />
                 <!-- 수량▼ -->
-                <input type="hidden" name="productCount" class="quantity-input" />
-                <button type="submit" class="cart-btn">장바구니</button>
+                <input type="hidden" name="productCount" value="1" class="quantity-input" />
+                <button type="submit" class="cart-btn">구매하기</button>
               </form>
 
-              <form id="paymentform-not-log" th:action="@{/login}">
-                <input type="hidden" name="productId" />
-                <input type="hidden" name="quantity" value="1" class="quantity-input" />
-                <button type="submit" class="buy-btn">바로구매</button>
-              </form>
             </div>
           </div>
         </div>
@@ -328,8 +316,6 @@
       const isLoggedIn = /*[[${session.memberInfo != null}]]*/ false;
       const addCartApiUrl = /*[[@{/api/cart/cart/add}]]*/ ""; // 장바구니 백엔드
       const cartUrl = /*[[@{/cart/cart}]]*/ ""; // 장바구니 페이지
-      //const paymentApiUrl = /*[[@{/api/payment/payment}]]*/ ""; // 바로구매 백엔드
-      //const paymentUrl = /*[[@{/payment/payment}]]*/ ""; //바로구매 페이지
     </script>
   </body>
 </html>

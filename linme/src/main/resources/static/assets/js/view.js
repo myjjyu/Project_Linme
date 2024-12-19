@@ -105,7 +105,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
   if (isLoggedIn) {
     /** 로그인 했을때 */
     Swal.fire({
-      title: `상품이 장바구니에 담겼습니다.<br>장바구니로 이동하시겠습니까?`,
+      title: `구매하시겠습니까?<br>장바구니로 이동합니다`,
       showCancelButton: true,
       cancelButtonText: "닫기",
       confirmButtonText: "이동",
@@ -127,12 +127,6 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
               var response = JSON.parse(xhr.responseText);
-              // if (response.cart) {
-              //   // 성공 시 리디렉션
-              //   window.location.href = response.redirectUrl;
-              // } else {
-              //   console.error("Error adding item to cart:", response.message);
-              // }
               window.location.href = response.redirectUrl;
             } else {
               console.error("Error adding item to cart:", xhr.statusText);
@@ -164,75 +158,6 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
     }).then((result) => {
       if (result.isConfirmed) {
         document.querySelector("#cartform-not-log").submit();
-        window.location.href = "/login";
-      }
-    });
-  }
-});
-
-/**
- * 바로구매 버튼 클릭 이벤트
- */
-document.querySelector(".buy-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("isLoggedIn:", isLoggedIn);
-  e.currentTarget.form.submit();
-
-  if (isLoggedIn) {
-    // 로그인 상태일 때 바로 결제 페이지로 바로이동
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/payment/payment_by_detail", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          var response = JSON.parse(xhr.responseText);
-
-          window.location.href = response.redirectUrl;
-        }
-      }
-    };
-
-    // /**
-    //  * 폼 데이터를 수집하여 URL 인코딩된 문자열로 변환
-    //  */
-    // var form = document.querySelector("#paymentform");
-    // if (!form) {
-    //   console.error("폼 요소를 찾을수없음: #paymentform");
-    // } else {
-    //   var formData = new FormData(form);
-    //   var data = new URLSearchParams();
-
-    //   formData.forEach((value, key) => {
-    //     data.append(key, value);
-    //   });
-
-    //   console.log("폼 데이터:", data.toString());
-
-    //   // xhr 객체가 올바르게 초기화되었는지 확인
-    //   if (xhr) {
-    //     console.log("XHR 객체 초기화 완료");
-    //     xhr.send(data.toString());
-    //   } else {
-    //     console.error("XHR 객체 초기화 실패");
-    //   }
-    // }
-  } else {
-    Swal.fire({
-      title: `로그인이 필요합니다.<br>로그인 페이지로 이동하시겠습니까?`,
-      showCancelButton: true,
-      cancelButtonText: "닫기",
-      confirmButtonText: "이동",
-      customClass: {
-        cancelButton: "cartclose-button",
-        confirmButton: "cart-button",
-        title: "cart-text",
-        popup: "custom-alert-popup",
-      },
-      reverseButtons: true, // 버튼 순서 변경
-    }).then((result) => {
-      if (result.isConfirmed) {
         window.location.href = "/login";
       }
     });

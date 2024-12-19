@@ -9,7 +9,6 @@
   display: flex;
   width: 1200px;
   margin-top: 70px;
-  /* border: 2px solid palevioletred; */
 }
 
 /* 메인 이미지 설정 */
@@ -238,7 +237,6 @@
 .plus {
   width: 45px;
   height: 100%;
-  /* background-color: #d77777; */
   padding-left: 7px;
   padding-right: 7px;
   border: none;
@@ -262,7 +260,6 @@
 }
 
 .number {
-  /* background-color: #c41818; */
   width: 40px;
   text-align: center;
   font-size: 15px;
@@ -287,21 +284,18 @@
   font-weight: 600;
 }
 
-/* 장바구니와 바로구매 버튼 컨테이너 */
+/* 구매하기 버튼  컨테이너 */
 .btn {
   display: flex;
-  justify-content: space-between;
-  gap: 15px;
   margin-top: 10px;
   padding: 0;
   outline: none;
   border: none;
 }
 
-/* 장바구니와 바로구매 버튼 스타일 */
-.cart-btn,
-.buy-btn {
-  width: 155px;
+/* 구매하기 버튼 스타일 */
+.cart-btn{
+  width: 330px;
   height: 40px;
   text-align: center;
   line-height: 40px;
@@ -313,16 +307,9 @@
 }
 
 .cart-btn {
-  background-color: white;
-  border: 1px solid #ff697b;
-  color: #ff697b;
   font-weight: 900;
-}
-
-.buy-btn {
   background-color: #ff697b;
   color: white;
-  font-weight: 900;
 }
 
 .endsolid {
