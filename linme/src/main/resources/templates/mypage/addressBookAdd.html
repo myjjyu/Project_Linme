@@ -129,8 +129,8 @@
                         <!-- 배송 요청사항 -->
                         <div class="formGroup">
                             <label for="addrMsg">배송 요청사항</label>
-                            <select name="addrMsg" id="addrMsg" class="input-field" th:value="${session.memberInfo.addrMsg != null ? session.memberInfo.addrMsg : '문 앞에 놓아주세요'}">
-                                <option value="문 앞에 놓아주세요" th:selected="${session.memberInfo.addrMsg == '문 앞에 놓아주세요'}">문 앞에 놓아주세요</option>
+                            <select name="addrMsg" id="addrMsg" class="input-field" th:value="${session.memberInfo.addrMsg != null ? session.memberInfo.addrMsg : '부재 시 문 앞에 놓아주세요'}">
+                                <option value="부재 시 문 앞에 놓아주세요" th:selected="${session.memberInfo.addrMsg == '부재 시 문 앞에 놓아주세요'}">부재 시 문 앞에 놓아주세요</option>
                                 <option value="배송 전에 미리 연락 주세요" th:selected="${session.memberInfo.addrMsg == '배송 전에 미리 연락 주세요'}">배송 전에 미리 연락 주세요</option>
                                 <option value="부재 시 경비실에 맡겨 주세요" th:selected="${session.memberInfo.addrMsg == '부재 시 경비실에 맡겨 주세요'}">부재 시 경비실에 맡겨 주세요</option>
                                 <option value="부재 시 전화주시거나 문자 남겨주세요" th:selected="${session.memberInfo.addrMsg == '부재 시 전화주시거나 문자 남겨주세요'}">부재 시 전화주시거나 문자 남겨주세요</option>
