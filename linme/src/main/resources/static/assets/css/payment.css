@@ -207,13 +207,15 @@ main {
 
               /* 배송요청사항 선택 영역 */
               .selectDeliveryMsg {
-                font-size: 15px;
+                font-size: 14px;
                 width: 618px;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 padding: 20px 30px;
                 align-items: start;
+                color: #333;
+                letter-spacing: -0.7px;
 
                 /* 선택 옵션 */
                 .selectDeliveryMsgOption {

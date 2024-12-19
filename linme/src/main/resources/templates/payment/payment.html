@@ -88,19 +88,17 @@
                 <li class="deliveryRequest">
                   <span class="noRequired">배송요청사항</span>
                   <!-- 배송요청사항 선택 영역 -->
-                  <a class="selectDeliveryMsg">
+                  <a class="selectDeliveryMsg" th:text="${session.memberInfo.addrMsg}">
                     <!-- 선택 옵션 -->
-                    <select class="selectDeliveryMsgOption">
-                      <option value="N" th:selected="${session.memberInfo.addrMsg == 'N' or session.memberInfo.addrMsg == 'Null'}" disabled selected>
-                        배송지 요청사항을 선택해주세요.
-                      </option>
-                      <option value="0"><a th:text="${session.memberInfo.addrMsg}"></a></option>
-                      <option value="1">부재 시 문 앞에 놓아주세요</option>
+                    <!-- <select class="selectDeliveryMsgOption"> -->
+                    <!-- <option value="N" th:selected="${session.memberInfo.addrMsg == 'N' or session.memberInfo.addrMsg == 'Null'}" disabled selected>배송지 요청사항을 선택해주세요.</option> -->
+                    <!-- <option value="0" disabled selected><a th:text="${session.memberInfo.addrMsg}"></a></option> -->
+                    <!-- <option value="1">부재 시 문 앞에 놓아주세요</option>
                       <option value="2">배송 전에 미리 연락 주세요</option>
                       <option value="3">부재 시 경비실에 맡겨 주세요</option>
-                      <option value="4">부재 시 전화 주시거나 문자 남겨주세요</option>
-                      <!-- <option value="directInput">직접입력</option> -->
-                    </select>
+                      <option value="4">부재 시 전화 주시거나 문자 남겨주세요</option> -->
+                    <!-- <option value="directInput">직접입력</option> -->
+                    <!-- </select> -->
                     <div class="inputContainer"></div
                   ></a>
                 </li>
