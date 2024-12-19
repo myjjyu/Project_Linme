@@ -1,0 +1,42 @@
+@startuml
+skinparam dpi 200
+
+class PaymentContorller {
+    +PaymentContorller()
+    +String paymentAdd(Model model, HttpServletRequest request, Member memberInfo, List<Integer> cartIdTmp)
+    +String orderDetail(Model model, HttpServletRequest request, Member memberInfo, Integer paymentId, List<Integer> cartIds, List<Integer> productCounts, List<Integer> productIds)
+    +String order(Model model, Member memberInfo)
+}
+
+class ProductService {
+    +ProductService()
+}
+
+class PaymentService {
+    +PaymentService()
+}
+
+class CartService {
+    +CartService()
+}
+
+class OrderItemService {
+    +OrderItemService()
+}
+
+class WebHelper {
+    +WebHelper()
+}
+
+class FileHelper {
+    +FileHelper()
+}
+
+PaymentContorller --> ProductService : HasA
+PaymentContorller --> PaymentService : HasA
+PaymentContorller --> CartService : HasA
+PaymentContorller --> OrderItemService : HasA
+PaymentContorller --> WebHelper : HasA
+PaymentContorller --> FileHelper : HasA
+
+@enduml

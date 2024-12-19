@@ -124,91 +124,6 @@ public class PaymentContorller {
         return "payment/payment";
     }
 
-    /** 상세 상품에서 주문/결제 폼 */
-    @SuppressWarnings("null")
-    @PostMapping("/payment/payment_by_detail")
-    public String paymentByDetail(
-        Model model,
-        HttpServletRequest request,
-        @SessionAttribute("memberInfo") Member memberInfo,
-        @RequestParam("productId") String productIdTmp,
-        @RequestParam("productCount") int productCount
-    ) {
-        int productId = Integer.parseInt(productIdTmp);
-
-        // 장바구니 항목을 저장할 리스트 생성
-        Cart cart = new Cart();
-        cart.setProductId(productId);
-        cart.setProductCount(productCount);
-        cart.setMemberId(memberInfo.getMemberId());
-
-        // 장바구니 항목을 저장할 변수
-        Cart c = null;
-
-        try {
-            // 장바구니 항목을 서비스에서 추가
-            c = cartService.addItem(cart);
-        } catch (Exception e) {
-            webHelper.serverError(e);
-        }
-        
-        Product product = new Product();
-
-        // 총 가격을 저장할 변수 초기화
-        int totalPrice = 0;
-
-        // 상품 정보를 서비스에서 가져옴
-        try {
-            Product p = new Product();
-            p.setProductId(productId);
-            product = productService.getItem(p);
-        } catch (Exception e) {
-            webHelper.serverError(e);
-            return null;
-        }
-
-        // 이미지 URL 설정
-        product.setImg(fileHelper.getUrl(product.getImg()));
-
-        // 총 가격 계산
-        totalPrice = product.getSalePrice() * productCount;
-
-        // 결제 정보를 저장할 Payment 객체 생성 및 설정
-        Payment input = new Payment();
-        input.setMemberId(memberInfo.getMemberId());
-        input.setOrderName(memberInfo.getUserName());
-        input.setOrderTel(memberInfo.getTel());
-        input.setAddr1(memberInfo.getAddr1());
-        input.setAddr2(memberInfo.getAddr2());
-        input.setNickname(memberInfo.getNickname());
-        input.setAddrMsg(memberInfo.getAddrMsg());
-        input.setTotalPrice(totalPrice);
-
-        Payment payment = null;
-
-        try {
-            // 주문/결제 정보를 서비스에 추가
-            payment = paymentService.addItem(input);
-        } catch (Exception e) {
-            webHelper.serverError(e);
-            return null;
-        }
-
-        // 세션에 payment_id 저장
-        HttpSession session = request.getSession();
-        session.setAttribute("paymentId", payment.getPaymentId());
-
-        // 모델에 결제 정보와 상품 정보 추가
-        model.addAttribute("payment", input);
-        model.addAttribute("product", product);
-        model.addAttribute("productCount", productCount);
-        model.addAttribute("memberInfo", memberInfo);
-
-
-        // 결제 페이지로 이동
-        return "payment/payment";
-    }
-
     /** 주문 상세 */
     @GetMapping("/payment/order_detail")
     public String orderDetail(
@@ -269,15 +184,23 @@ public class PaymentContorller {
         model.addAttribute("item", items);
 
         // memberId로 장바구니 항목 가져오기
-        Cart carts = new Cart();
-        carts.setMemberId(memberInfo.getMemberId());
+        List<Cart> cartItems = new ArrayList<>();
 
-        List<Cart> cartItems = null;
-        try {
-            cartItems = cartService.getList(carts);
-        } catch (Exception e) {
-            webHelper.serverError(e);
+        for (int i=0; i<cartIds.size(); i++) {
+            Cart cartItem = new Cart();
+            cartItem.setMemberId(memberInfo.getMemberId());
+            cartItem.setCartId(cartIds.get(i));
+
+            // 선택한 상품 장바구니에서 select
+            try {
+                cartItem = cartService.getItem(cartItem);
+            } catch (Exception e) {
+                webHelper.serverError(e);
+            }
+
+            cartItems.add(cartItem);
         }
+
 
         // 장바구니 항목을 order_item으로 옮기기
         for (Cart cartItem : cartItems) {
@@ -323,35 +246,32 @@ public class PaymentContorller {
         @SessionAttribute("memberInfo") Member memberInfo
         ) {
         List<Payment> payments = null;
-        Set<OrderItem> orderItems = new HashSet<>();
-
+    
         Payment paymentInput = new Payment();
         paymentInput.setMemberId(memberInfo.getMemberId()); // memberId 설정
-
+    
         try {
+            // order_no를 기준으로 내림차순 정렬하여 조회
             payments = paymentService.getList(paymentInput);
             // 중복 된 값을 제거하기 위해 Set 사용
             payments = new ArrayList<>(new HashSet<>(payments));
-
-            // 각 paymentId로 orderItems 조회
+    
+            // 각 paymentId로 orderItems 조회 및 설정
             for (Payment payment : payments) {
                 OrderItem orderItemInput = new OrderItem();
                 orderItemInput.setPaymentId(payment.getPaymentId()); // paymentId 설정
                 List<OrderItem> items = orderItemService.getList(orderItemInput);
-                orderItems.addAll(items); // orderItems에 추가
+                for (OrderItem item : items) {
+                    item.setOrderImg(fileHelper.getUrl(item.getOrderImg())); // 이미지 경로 설정
+                }
+                payment.setOrderItems(items); // Payment 객체에 orderItems 설정
             }
         } catch (Exception e) {
             webHelper.serverError(e);
         }
-
-        // 이미지 경로 설정
-        for (OrderItem orderItem : orderItems) {
-            orderItem.setOrderImg(fileHelper.getUrl(orderItem.getOrderImg()));
-        }
-
+    
         model.addAttribute("payments", payments);
-        model.addAttribute("orderItems", new ArrayList<>(orderItems));
-
+    
         // 주문 페이지로 이동
         return "mypage/shopping/order";
     }

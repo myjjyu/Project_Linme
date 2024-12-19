@@ -1,5 +1,7 @@
 package kr.project.linme.models;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,8 @@ public class Payment {
     private int orderCount;     // 주문 상품 확인 수량
     private int orderSprice;    // 주문 상품 판매가
     private String orderImg;    // 주문 상품 이미지
+
+    private List<OrderItem> orderItems; // 주문 상품 확인 정보를 담을 객체
 
     @Getter
     @Setter

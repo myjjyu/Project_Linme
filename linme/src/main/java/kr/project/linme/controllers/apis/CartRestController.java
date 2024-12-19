@@ -21,7 +21,6 @@ import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
 
 
-// @CrossOrigin(origins = "*") // CORS 설정
 @RestController
 public class CartRestController {
 

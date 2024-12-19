@@ -138,7 +138,8 @@ public interface PaymentMapper {
                 "p.edit_date " +
             "FROM payment p " +
             "INNER JOIN order_item o ON o.payment_id = p.payment_id " +
-            "WHERE p.member_id = #{memberId}")  
+            "WHERE p.member_id = #{memberId} " +
+            "ORDER BY p.order_no DESC")  
     @ResultMap("PaymentMap")
     public List<Payment> selectList(Payment input);
 
