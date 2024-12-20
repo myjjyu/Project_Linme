@@ -1,10 +1,12 @@
 package kr.project.linme.services.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.project.linme.mappers.OrderItemMapper;
 import kr.project.linme.mappers.PaymentMapper;
 import kr.project.linme.models.Payment;
 import kr.project.linme.services.PaymentService;
@@ -16,6 +18,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     private PaymentMapper paymentMapper;
+
+    @Autowired
+    private OrderItemMapper orderItemMapper;
 
     @Override
     public Payment addItem(Payment input) throws Exception {
@@ -119,26 +124,22 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public int overCount(Payment input) throws Exception {
-        int output = 0;
-
-        try {
-            output = paymentMapper.overCount(input);
-
-        } catch (Exception e) {
-            log.error("중복여부 확인에 실패했습니다.", e);
-            throw e;
-        }
-
-        return output;
-    }
-
-    @Override
     public int deleteByCancelOrder() throws Exception {
         int rows = 0;
 
         try {
-            rows = paymentMapper.deleteByCancelOrder();
+            // 삭제할 payment_id 목록을 조회합니다
+            List<Integer> paymentIds = paymentMapper.selectPaymentId();
+
+            // paymentIds가 null인 경우 빈 리스트로 초기화합니다
+            if (paymentIds == null) {
+                paymentIds = Collections.emptyList();
+            }
+
+            if (!paymentIds.isEmpty()) {
+                // payment 레코드를 삭제합니다
+                rows = paymentMapper.deleteByCancelOrder(paymentIds);
+            }
         } catch (Exception e) {
             log.error("삭제 실패", e);
             throw e;

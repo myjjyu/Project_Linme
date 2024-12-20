@@ -2,10 +2,7 @@ package kr.project.linme.controllers;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,17 +20,13 @@ import kr.project.linme.models.Cart;
 import kr.project.linme.models.Member;
 import kr.project.linme.models.OrderItem;
 import kr.project.linme.models.Payment;
-import kr.project.linme.models.Product;
 import kr.project.linme.services.CartService;
 import kr.project.linme.services.OrderItemService;
 import kr.project.linme.services.PaymentService;
-import kr.project.linme.services.ProductService;
 
 
 @Controller
 public class PaymentContorller {
-    @Autowired
-    private ProductService productService;
 
     @Autowired
     private PaymentService paymentService;
@@ -186,8 +179,10 @@ public class PaymentContorller {
         // memberId로 장바구니 항목 가져오기
         List<Cart> cartItems = new ArrayList<>();
 
+        // 장바구니 항목을 가져오기 위한 Cart 객체 생성 및 설정
         for (int i=0; i<cartIds.size(); i++) {
             Cart cartItem = new Cart();
+            // memberId, cartId 설정
             cartItem.setMemberId(memberInfo.getMemberId());
             cartItem.setCartId(cartIds.get(i));
 
@@ -246,7 +241,7 @@ public class PaymentContorller {
         @SessionAttribute("memberInfo") Member memberInfo
         ) {
         List<Payment> payments = null;
-    
+
         Payment paymentInput = new Payment();
         paymentInput.setMemberId(memberInfo.getMemberId()); // memberId 설정
     
@@ -261,9 +256,12 @@ public class PaymentContorller {
                 OrderItem orderItemInput = new OrderItem();
                 orderItemInput.setPaymentId(payment.getPaymentId()); // paymentId 설정
                 List<OrderItem> items = orderItemService.getList(orderItemInput);
+
+                // 이미지 경로 설정
                 for (OrderItem item : items) {
-                    item.setOrderImg(fileHelper.getUrl(item.getOrderImg())); // 이미지 경로 설정
+                    item.setOrderImg(fileHelper.getUrl(item.getOrderImg())); 
                 }
+
                 payment.setOrderItems(items); // Payment 객체에 orderItems 설정
             }
         } catch (Exception e) {

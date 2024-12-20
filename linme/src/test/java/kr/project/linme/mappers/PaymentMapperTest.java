@@ -92,5 +92,16 @@ public class PaymentMapperTest {
             log.debug("output: " + item.toString());
         }
     }
+
+    // reg_date가 현재 시간에서 1시간 전인 모든 payment_id 조회
+    @Test
+    @DisplayName("reg_date가 현재 시간에서 1시간 전인 모든 payment_id 조회")
+    void selectPaymentId(){
+        List<Integer> output=paymentMapper.selectPaymentId();
+
+        for (Integer item : output) {
+            log.debug("output: " + item);
+        }
+    }
  
 }

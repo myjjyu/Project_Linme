@@ -17,7 +17,5 @@ public interface PaymentService {
 
     public int getCount(Payment params) throws Exception;
 
-    public int overCount(Payment params) throws Exception;
-
     public int deleteByCancelOrder() throws Exception;
 }

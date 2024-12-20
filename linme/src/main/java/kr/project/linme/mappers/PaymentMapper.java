@@ -147,20 +147,23 @@ public interface PaymentMapper {
     public int selectCount(Payment input);
 
     /**
-     * 주문서 중복 확인용 카운트
+     * 주문 중에 취소한 경우 남아있는 데이터 삭제를 위한 payment_id 조회
+     * @return
      */
-    @Select("SELECT " +
-                "count(*) " +
-            "FROM payment " +
-            "WHERE member_id = #{memberId} ")
-    public int overCount(Payment input);
+    @Select("SELECT payment_id FROM payment WHERE reg_date < DATE_ADD(NOW(), INTERVAL -1 hour) AND payment_id NOT IN (SELECT payment_id FROM order_item)")
+    
+    public List<Integer> selectPaymentId();
 
     /**
      * 주문 중에 취소한 경우 남아있는 데이터 삭제
      * 
      * @return
      */
-    @Delete("DELETE FROM payment " +
-            "reg_date < DATE_ADD(NOW(), INTERVAL -1 hour)")
-    public int deleteByCancelOrder();
+    @Delete("<script>" +
+            "DELETE FROM payment WHERE payment_id IN " +
+            "<foreach item='paymentId' collection='paymentIds' open='(' separator=',' close=')'>" +
+            "#{paymentId}" +
+            "</foreach>" +
+            "</script>")
+    public int deleteByCancelOrder(List<Integer> paymentIds);
 }

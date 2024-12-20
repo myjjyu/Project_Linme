@@ -40,8 +40,8 @@
                       <span class="orderOk">결제완료</span>
                       <!-- 주문 상품 정보 -->
                       <li class="orderItems" th:each="orderItems : ${payments.orderItems}">
-                        <div class="orderItemInfo" th:if="${orderItems.paymentId == payments.paymentId}">
-                          <img th:src="${orderItems.orderImg}" alt="Product Image" />
+                        <div class="orderItemInfo">
+                          <img th:src="${orderItems.orderImg}" />
                           <div class="orderItemDetail">
                             <span class="orderPname"><span th:text="${orderItems.orderPname}"></span></span>
                             <span class="orderCount"><span th:text="${orderItems.orderCount} + '개'"></span></span>

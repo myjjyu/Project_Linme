@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -56,6 +57,19 @@ public interface OrderItemMapper {
 
     @Delete("DELETE FROM order_item WHERE order_item_id = #{orderItemId}")
     public int delete(OrderItem input);
+
+    /**
+     * 주문 상품 정보를 삭제하는 메서드 정의
+     * @param paymentId
+     * @return
+     */
+    @Delete("<script>" +
+        "DELETE FROM order_item WHERE payment_id IN " +
+        "<foreach item='paymentId' collection='paymentIds' open='(' separator=',' close=')'>" +
+        "#{paymentId}" +
+        "</foreach>" +
+        "</script>")
+    public int deleteByPaymentId(@Param("paymentIds") List<Integer> paymentIds);
 
     /**
      * 단일행 조회를 수행하는 메서드 정의
