@@ -136,7 +136,7 @@ public class PaymentContorller {
         Payment payment = null;
 
         try {
-            // selectItem 메서드를 사용하여 주문 정보를 가져옴
+            // 주문 정보를 가져옴
             payment = paymentService.getItem(input);
         } catch (Exception e) {
             webHelper.serverError(e);
@@ -157,7 +157,7 @@ public class PaymentContorller {
             Cart cart = null;
 
             try {
-                // 주문 상품 정보를 서비스에서 가져옴
+                // 주문 상품 정보를 가져옴
                 cart = cartService.getItem(item);
             } catch (Exception e) {
                 webHelper.serverError(e);
@@ -186,8 +186,8 @@ public class PaymentContorller {
             cartItem.setMemberId(memberInfo.getMemberId());
             cartItem.setCartId(cartIds.get(i));
 
-            // 선택한 상품 장바구니에서 select
             try {
+                // 장바구니 항목을 가져옴
                 cartItem = cartService.getItem(cartItem);
             } catch (Exception e) {
                 webHelper.serverError(e);
@@ -210,6 +210,7 @@ public class PaymentContorller {
             orderItem.setEditDate(cartItem.getEditDate());
 
             try {
+                // order_item에 추가하고 장바구니에서 삭제
                 orderItemService.addItem(orderItem);
                 cartService.deleteItem(cartItem);
             } catch (Exception e) {
@@ -217,7 +218,7 @@ public class PaymentContorller {
             }
         }
 
-        // 주문 완료된 항목을 가져오기
+        // 주문 완료된 항목을 가져오기 위한 OrderItem 객체 생성 및 설정
         OrderItem orderItem = new OrderItem();
         orderItem.setPaymentId(paymentId);
 
@@ -248,8 +249,6 @@ public class PaymentContorller {
         try {
             // order_no를 기준으로 내림차순 정렬하여 조회
             payments = paymentService.getList(paymentInput);
-            // 중복 된 값을 제거하기 위해 Set 사용
-            payments = new ArrayList<>(new HashSet<>(payments));
     
             // 각 paymentId로 orderItems 조회 및 설정
             for (Payment payment : payments) {

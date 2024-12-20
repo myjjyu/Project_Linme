@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -147,11 +148,10 @@ public interface PaymentMapper {
     public int selectCount(Payment input);
 
     /**
-     * 주문 중에 취소한 경우 남아있는 데이터 삭제를 위한 payment_id 조회
+     * order_item 테이블에 존재하는 payment_id를 제외한 payment 테이블의 payment_id 조회
      * @return
      */
-    @Select("SELECT payment_id FROM payment WHERE reg_date < DATE_ADD(NOW(), INTERVAL -1 hour) AND payment_id NOT IN (SELECT payment_id FROM order_item)")
-    
+    @Select("SELECT payment_id FROM payment WHERE payment_id NOT IN (SELECT payment_id FROM order_item)")
     public List<Integer> selectPaymentId();
 
     /**
@@ -165,5 +165,5 @@ public interface PaymentMapper {
             "#{paymentId}" +
             "</foreach>" +
             "</script>")
-    public int deleteByCancelOrder(List<Integer> paymentIds);
+    int deleteByCancelOrder(@Param("paymentIds") List<Integer> paymentIds);
 }
