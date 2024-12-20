@@ -96,11 +96,12 @@ document.querySelector(".required-Info").addEventListener("click", (e) => {
 });
 
 /**
- * 장바구니 버튼 클릭 이벤트
+ * 구매하기 버튼 클릭 이벤트
  */
 document.querySelector(".cart-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
+
 
   if (isLoggedIn) {
     /** 로그인 했을때 */
@@ -138,6 +139,8 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         var form = document.querySelector("#cartform");
         var formData = new FormData(form);
         var data = new URLSearchParams(formData).toString();
+        console.log("data:", data);
+        //debugger; 
         xhr.send(data);
       }
     });

@@ -65,7 +65,6 @@ public class MainController {
         List<Product> kidsProducts = null;
         List<Product> output = null;
         try {
-
             // 비타민 (카테고리 ID 2번)
             vitaminProducts = productService.getProductsByCategory(2);
             for (Product item : vitaminProducts) {
