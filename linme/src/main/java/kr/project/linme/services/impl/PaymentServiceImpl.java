@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.project.linme.mappers.OrderItemMapper;
 import kr.project.linme.mappers.PaymentMapper;
 import kr.project.linme.models.Payment;
 import kr.project.linme.services.PaymentService;
@@ -18,9 +17,6 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     private PaymentMapper paymentMapper;
-
-    @Autowired
-    private OrderItemMapper orderItemMapper;
 
     @Override
     public Payment addItem(Payment input) throws Exception {
