@@ -242,30 +242,35 @@ public class PaymentContorller {
         ) {
         List<Payment> payments = null;
 
+        // 새로운 Payment 객체를 생성하고 회원 ID를 설정
         Payment paymentInput = new Payment();
         paymentInput.setMemberId(memberInfo.getMemberId()); // memberId 설정
     
         try {
-            // order_no를 기준으로 내림차순 정렬하여 조회
+            // 회원 ID를 기준으로 결제 목록을 조회 (order_no를 기준으로 내림차순 정렬)
             payments = paymentService.getList(paymentInput);
     
-            // 각 paymentId로 orderItems 조회 및 설정
+            // 각 결제 정보에 대해 주문 항목을 조회하고 설정
             for (Payment payment : payments) {
+                // 새로운 OrderItem 객체를 생성하고 결제 ID를 설정
                 OrderItem orderItemInput = new OrderItem();
                 orderItemInput.setPaymentId(payment.getPaymentId()); // paymentId 설정
+                // 결제 ID를 기준으로 주문 항목 목록을 조회
                 List<OrderItem> items = orderItemService.getList(orderItemInput);
 
-                // 이미지 경로 설정
+                // 각 주문 항목의 이미지 경로를 설정
                 for (OrderItem item : items) {
                     item.setOrderImg(fileHelper.getUrl(item.getOrderImg())); 
                 }
 
+                // 결제 정보에 주문 항목 목록을 설정
                 payment.setOrderItems(items); // Payment 객체에 orderItems 설정
             }
         } catch (Exception e) {
             webHelper.serverError(e);
         }
     
+        // 모델에 결제 목록을 추가
         model.addAttribute("payments", payments);
     
         // 주문 페이지로 이동
