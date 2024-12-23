@@ -22,7 +22,7 @@ public class PaymentScheduler {
     private PaymentService paymentService;
     
     // @Scheduled(cron= "0 0 4 * * ?") // 매일 오전 4시에 자동 실행
-    @Scheduled(cron= "0 0 4 * * ?") // 30분마다 자동 실행
+    @Scheduled(cron= "0 */30 * * * ?") // 30분마다 자동 실행
     public void deleteByCancelOrder() throws InterruptedException {
         log.debug("주문/결제 중 결제하지 않은 주문 내역 삭제");
         

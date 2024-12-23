@@ -28,6 +28,7 @@ public class SalesRestController {
 
         List<Sales> salesList;
         try {
+            // SalesService를 사용하여 판매 목록을 가져옴
             salesList = salesService.getList(new Sales());
         } catch (Exception e) {
             return restHelper.serverError(e);
@@ -36,6 +37,7 @@ public class SalesRestController {
         Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("salesList", salesList);
 
+        // JSON 응답으로 반환
         return restHelper.sendJson(data);
     }
 }
