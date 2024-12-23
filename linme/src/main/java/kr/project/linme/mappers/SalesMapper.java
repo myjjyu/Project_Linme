@@ -47,7 +47,12 @@ public interface SalesMapper {
     })
     public Sales selectItem(Sales input);
 
-    @Select("...")
+    @Select("SELECT " + 
+                "sales_id, " + 
+                "sales_total, " + 
+                "sales_date " + 
+            "FROM sales " + 
+            "ORDER BY sales_date DESC")
     @ResultMap("resultMap")
     public List<Sales> selectList(Sales input);
 
