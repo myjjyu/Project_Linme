@@ -119,6 +119,9 @@ public class PaymentServiceImpl implements PaymentService {
         return output;
     }
 
+    /**
+     * 주문 취소로 인한 결제 데이터 삭제
+     */
     @Override
     public int deleteByCancelOrder() throws Exception {
         int rows = 0;

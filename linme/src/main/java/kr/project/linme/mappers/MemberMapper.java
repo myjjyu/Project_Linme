@@ -27,7 +27,7 @@ public interface MemberMapper {
             "reg_date, edit_date) " +
             "VALUES (#{userId}, MD5(#{userPw}), #{userName}, #{nickname}, " +
             "#{tel}, #{postcode}, #{addr1}, #{addr2}, " +
-            "'N', null, 'N', 'N', null, " +
+            "'부재 시 문 앞에 놓아주세요', null, 'N', 'N', null, " +
             "now(), now())")
     @Options(useGeneratedKeys = true, keyProperty = "memberId", keyColumn = "member_id")
     public int insert(Member input);

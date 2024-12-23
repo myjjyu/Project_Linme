@@ -118,31 +118,31 @@ public class CartServiceImpl implements CartService {
         return output;
     }
 
-    @Override
-    public Cart uniqueCartCount(Cart input) throws Exception {
-        try {
-            cartMapper.cartCheck(input);
-        } catch (Exception e) {
-            log.error("장바구니를 불러오는 데 실패했습니다.", e);
-            throw e;
-        }
+    // @Override
+    // public Cart uniqueCartCount(Cart input) throws Exception {
+    //     try {
+    //         cartMapper.cartCheck(input);
+    //     } catch (Exception e) {
+    //         log.error("장바구니를 불러오는 데 실패했습니다.", e);
+    //         throw e;
+    //     }
 
-        return cartMapper.selectUniqueCart(input);
-    }
+    //     return cartMapper.selectUniqueCart(input);
+    // }
 
-    @Override
-    public int deleteByOverDays() throws Exception {
-        int output = 0;
+    // @Override
+    // public int deleteByOverDays() throws Exception {
+    //     int output = 0;
 
-        try {
-            output = cartMapper.deleteByOverDays();
-        } catch (Exception e) {
-            log.error("장바구니 삭제 처리 실패", e);
-            throw e;
-        }
+    //     try {
+    //         output = cartMapper.deleteByOverDays();
+    //     } catch (Exception e) {
+    //         log.error("장바구니 삭제 처리 실패", e);
+    //         throw e;
+    //     }
 
-        return output;
-    }
+    //     return output;
+    // }
 
     @Override
     public Cart editUniqueCart(Cart input) throws Exception {

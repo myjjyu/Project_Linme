@@ -17,9 +17,9 @@ public interface CartService {
 
     public int getCount(Cart params) throws Exception;
 
-    public Cart uniqueCartCount(Cart parmas) throws Exception;
+    // public Cart uniqueCartCount(Cart parmas) throws Exception;
 
     public Cart editUniqueCart(Cart params) throws Exception;
 
-    public int deleteByOverDays() throws Exception;
+    // public int deleteByOverDays() throws Exception;
 }

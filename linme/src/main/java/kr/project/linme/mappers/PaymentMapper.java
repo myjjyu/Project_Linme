@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -165,5 +164,5 @@ public interface PaymentMapper {
             "#{paymentId}" +
             "</foreach>" +
             "</script>")
-    int deleteByCancelOrder(@Param("paymentIds") List<Integer> paymentIds);
+    public int deleteByCancelOrder(List<Integer> paymentIds);
 }
