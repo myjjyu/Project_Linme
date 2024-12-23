@@ -18,21 +18,14 @@ public class SalesServiceImpl implements SalesService {
     private SalesMapper salesMapper;
 
     @Override
-    public Sales addItem(Sales input) throws Exception {
-        int rows = 0;
+    public void addItem() throws Exception {
 
         try {
-            rows = salesMapper.insert();
-
-            if (rows == 0) {
-                throw new Exception("저장된 데이터가 없습니다.");
-            }
+            salesMapper.insert();
         } catch (Exception e) {
             log.error("데이터 저장에 실패했습니다.", e);
             throw e;
         }
-
-        return salesMapper.selectItem(input);
     }
 
     @Override
