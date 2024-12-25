@@ -17,7 +17,7 @@ import kr.project.linme.models.BestProd;
 @Mapper
 public interface BestProdMapper {
 
-        // 인기 상품 데이터 10개 집계해서 Best_prod 테이블에 삽입
+        // 인기 상품 데이터 추가
         @Insert("INSERT INTO best_prod (order_count, order_item_id, product_name, reg_date) " +
                         "SELECT " +
                         "SUM(oi.order_count) AS order_count, " + // 주문된 상품 수량 집계
@@ -29,7 +29,7 @@ public interface BestProdMapper {
                         "WHERE oi.reg_date >= NOW() - INTERVAL 1 MONTH " + // 최근 1개월간 주문된 상품만 집계
                         "GROUP BY p.product_id, p.product_name " + // 상품별로 그룹화
                         "ORDER BY order_count DESC " +
-                        "LIMIT 10")
+                        "LIMIT 28")
         @Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
         public int insert();
 
@@ -65,8 +65,8 @@ public interface BestProdMapper {
         // 인기 상품 데이터 10개를 조회
         @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
                         "FROM best_prod " +
-                        "ORDER BY reg_date DESC " +
-                        "LIMIT 10")
+                        "WHERE reg_date >= NOW() - INTERVAL 28 DAY " + // 최근 28일 데이터만 조회
+                        "ORDER BY order_count DESC " )
         @ResultMap("BestProdMap")
         public List<BestProd> selectList();
 
