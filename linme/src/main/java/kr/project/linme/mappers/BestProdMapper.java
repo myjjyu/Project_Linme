@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -29,13 +30,19 @@ public interface BestProdMapper {
                         "GROUP BY p.product_id, p.product_name " + // 상품별로 그룹화
                         "ORDER BY order_count DESC " +
                         "LIMIT 10")
-        public int insertBestProds();
+        @Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
+        public int insert();
 
-       
-        @Update("...")
+        // 인기 상품 데이터 업데이트
+        @Update("UPDATE best_prod " +
+                        "SET order_count = #{orderCount}, " +
+                        "order_item_id = #{orderItemId}, " +
+                        "product_name = #{productName}, " +
+                        "reg_date = #{regDate} " +
+                        "WHERE best_prod_id = #{bestProdId}")
         public int update(BestProd input);
 
-        @Delete("...")
+        @Delete("DELETE FROM best_prod WHERE best_prod_id = #{bestProdId}")
         public int delete(BestProd input);
 
         // 인기 상품 데이터 단일 조회
@@ -58,12 +65,13 @@ public interface BestProdMapper {
         // 인기 상품 데이터 10개를 조회
         @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
                         "FROM best_prod " +
-                        "WHERE reg_date <= CURDATE() - INTERVAL 1 DAY " + // 현재 날짜에서 1일을 빼는 방식으로 수정
                         "ORDER BY reg_date DESC " +
                         "LIMIT 10")
         @ResultMap("BestProdMap")
-        public List<BestProd> selectList(BestProd input);
+        public List<BestProd> selectList();
 
-        @Select("...")
-        public int selectCount(BestProd input);
+        // 인기 상품 데이터 개수 조회
+        @Select("SELECT COUNT(*) FROM best_prod")
+        int selectCount();
+
 }
