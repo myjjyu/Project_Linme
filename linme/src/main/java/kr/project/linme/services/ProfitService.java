@@ -1,13 +1,19 @@
 package kr.project.linme.services;
 
 import java.util.List;
+
 import kr.project.linme.models.Profit;
 
 public interface ProfitService {
+    public int addItem(Profit input) throws Exception; // 반환 타입 수정
 
-    public List<Profit> CategorySale() throws Exception; // 카테고리별 판매량, 판매액 조회
+    public Profit editItem(Profit input) throws Exception;
 
-    public void CategoryProfit() throws Exception; // CategoryProfit 테이블 생성
+    public int deleteItem(Profit input) throws Exception;
 
-    public void insertCategoryProfit() throws Exception; // CategoryProfit 데이터 삽입
+    public Profit getItem(Profit input) throws Exception;
+
+    public List<Profit> getList(Profit input) throws Exception;
+
+    public int getCount(Profit input) throws Exception;
 }

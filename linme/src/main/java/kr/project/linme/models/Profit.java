@@ -4,13 +4,11 @@ import lombok.Data;
 
 @Data
 public class Profit {
-    
-    public int saleId;
-    public int categoryId;
-    public String productName;
-    public int orderCount;
-    public int salePrice;
-    public String regDate;
 
+    private int ProfitId;           // 수익 ID
+    private int categoryId;          // 카테고리 ID    
+    private int totalCount;          // 카테고리 총 판매량
+    private String regDate;          // 판매 날짜
 }
+
 
