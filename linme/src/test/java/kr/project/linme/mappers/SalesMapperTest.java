@@ -36,11 +36,11 @@ public class SalesMapperTest {
 
     // 전체 상품 조회 테스트
     @Test
-    @DisplayName("매출 집계 목록 조회 테스트")
+    @DisplayName("매출 집계 월간 목록 조회 테스트")
     void selectListSales() {
         Sales input = new Sales();
 
-        List<Sales> output = salesMapper.selectList(input);
+        List<Sales> output = salesMapper.selectListM(input);
         
         // 향상된 forEach문을 사용한 목록 출력
         for (Sales item : output) {

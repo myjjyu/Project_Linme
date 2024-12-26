@@ -24,7 +24,7 @@ public class SalesScheduler {
     // @Scheduled(cron= "0 0 4 * * ?") // 매일 오전 4시에 자동 실행
     @Scheduled(cron= "0 0 1 * * ?") // 매일 오전 1시에 자동 실행
     public void deleteByCancelOrder() throws InterruptedException {
-        log.debug("판매 집계 시작");
+        log.debug("========= 판매 집계 시작 =========");
 
         try {
             log.debug("판매 집계 데이터 추가");
@@ -33,5 +33,15 @@ public class SalesScheduler {
             log.error("판매 집계 데이터 추가 실패");
             return;
         }
+
+        try {
+            log.debug("30일이 지난 매출 집계 데이터 삭제");
+            salesService.deleteItem();
+        } catch (Exception e) {
+            log.error("30일이 지난 매출 집계 데이터 삭제 실패");
+            return;
+        }
+
+        log.debug("========= 판매 집계 끝 =========");
     }
 }

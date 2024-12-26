@@ -9,11 +9,13 @@ public interface SalesService {
 
     public Sales editItem(Sales params) throws Exception;
 
-    public int deleteItem(Sales params) throws Exception;
+    public int deleteItem() throws Exception;
 
     public Sales getItem(Sales params) throws Exception;
 
-    public List<Sales> getList(Sales params) throws Exception;
+    public List<Sales> getListW(Sales params) throws Exception;
+
+    public List<Sales> getListM(Sales params) throws Exception;
 
     public int getCount(Sales params) throws Exception;
 }

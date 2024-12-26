@@ -16,23 +16,32 @@ import kr.project.linme.models.Sales;
 
 @Mapper
 public interface SalesMapper {
-    @Insert(
-            "INSERT INTO sales (sales_total, sales_date) "+      
-            "SELECT " + 
-                "SUM(p.total_price) AS total_price, " +
-                "DATE(p.reg_date) AS dt " + 
-            "FROM payment p "+
-            "WHERE DATE(p.reg_date) = DATE(DATE_ADD(NOW(), INTERVAL -1 DAY))"+
-            "GROUP BY dt"
-        )
+    /**
+     * 매출 집계 데이터 추가
+     * @return
+     */
+    @Insert("INSERT INTO sales (sales_total, sales_date) " +
+            "SELECT " +
+                "COALESCE(SUM(oi.order_count * oi.order_sprice), 0) AS total_price, " +
+                "DATE_FORMAT(oi.reg_date, '%Y-%m-%d') AS dt " +
+            "FROM order_item oi " +
+            "WHERE DATE(oi.reg_date) = DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) " +
+            "GROUP BY dt")
     @Options(useGeneratedKeys = true, keyProperty = "salesId", keyColumn = "sales_id")
     public int insert();
 
     @Update("...")
     public int update(Sales input);
 
-    @Delete("...")
-    public int delete(Sales input);
+    /**
+     * 31일이 지난 매출 집계 데이터 삭제
+     * @param input
+     * @return
+     */
+    @Delete("DELETE FROM sales " +
+            "WHERE DATE(sales_date) < DATE(DATE_ADD(NOW(), INTERVAL -31 DAY))")
+    public int delete();
+
 
     @Select("SELECT " + 
                 "sales_id, " + 
@@ -46,15 +55,36 @@ public interface SalesMapper {
         @Result(property="salesDate", column="sales_date")
     })
     public Sales selectItem(Sales input);
+    
+    /**
+     * 주간 매출 집계 데이터 조회
+     * @param input
+     * @return
+     */
+    @Select("SELECT " + 
+            "sales_id, " + 
+            "sales_total, " + 
+            "sales_date " + 
+        "FROM sales " + 
+        "ORDER BY sales_date DESC " + 
+        "LIMIT 7")
+        @ResultMap("resultMap")
+        public List<Sales> selectListW(Sales input);
 
+    /**
+     * 월간 매출 집계 데이터 조회
+     * @param input
+     * @return
+     */
     @Select("SELECT " + 
                 "sales_id, " + 
                 "sales_total, " + 
                 "sales_date " + 
-            "FROM sales " + 
+            "FROM sales " +
+            "WHERE DATE_FORMAT(sales_date, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m') " +
             "ORDER BY sales_date DESC")
     @ResultMap("resultMap")
-    public List<Sales> selectList(Sales input);
+    public List<Sales> selectListM(Sales input);
 
     @Select("...")
     public int selectCount(Sales input);

@@ -46,12 +46,15 @@ public class SalesServiceImpl implements SalesService {
         return salesMapper.selectItem(input);
     }
 
+    /**
+     * 31일이 지난 데이터 삭제
+     */
     @Override
-    public int deleteItem(Sales input) throws Exception {
+    public int deleteItem() throws Exception {
         int rows = 0;
 
         try {
-            rows = salesMapper.delete(input);
+            rows = salesMapper.delete();
 
             if (rows == 0) {
                 throw new Exception("삭제된 데이터가 없습니다.");
@@ -81,13 +84,33 @@ public class SalesServiceImpl implements SalesService {
 
         return output;
     }
-
+    
+    /**
+     * 주간 매출 집계 데이터 조회
+     */
     @Override
-    public List<Sales> getList(Sales input) throws Exception {
+    public List<Sales> getListW(Sales input) throws Exception {
         List<Sales> output = null;
 
         try {
-            output = salesMapper.selectList(input);
+            output = salesMapper.selectListW(input);
+        } catch (Exception e) {
+            log.error("데이터 목록 조회에 실패했습니다.", e);
+            throw e;
+        }
+
+        return output;
+    }
+
+    /**
+     * 월간 매출 집계 데이터 조회
+     */
+    @Override
+    public List<Sales> getListM(Sales input) throws Exception {
+        List<Sales> output = null;
+
+        try {
+            output = salesMapper.selectListM(input);
         } catch (Exception e) {
             log.error("데이터 목록 조회에 실패했습니다.", e);
             throw e;
