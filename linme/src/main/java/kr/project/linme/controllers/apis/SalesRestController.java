@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Sales;
 import kr.project.linme.services.SalesService;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
+@Tag(name = "Sales API", description = "총 매출 집계 API")
 public class SalesRestController {
     
     @Autowired
@@ -28,6 +31,10 @@ public class SalesRestController {
      * @return 주간 및 월간 매출 집계 데이터를 포함한 JSON 응답
      */
     @GetMapping("/api/sales")
+    @Operation(
+        summary = "주간/월간 매출 집계 목록 조회",
+        description = "주간/월간 매출 집계 데이터를 조회하여 JSON으로 반환합니다."
+    )
     public Map<String, Object> salesList() {
 
         List<Sales> salesListW;
