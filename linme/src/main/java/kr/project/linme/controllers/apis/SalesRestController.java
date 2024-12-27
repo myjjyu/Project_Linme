@@ -25,7 +25,7 @@ public class SalesRestController {
 
     /**
      * 월간 매출 집계 목록 조회 API
-     * @return
+     * @return 주간 및 월간 매출 집계 데이터를 포함한 JSON 응답
      */
     @GetMapping("/api/sales")
     public Map<String, Object> salesList() {
@@ -34,16 +34,18 @@ public class SalesRestController {
         List<Sales> salesListM;
 
         try {
-            // SalesService를 사용하여 주간/월간 판매 집계 데이터를 가져옴
-            salesListW = salesService.getListW(new Sales());
-            salesListM = salesService.getListM(new Sales());
+            // SalesService를 사용하여 주간 판매 집계 데이터를 가져옴
+            salesListW = salesService.getListW();
+            // SalesService를 사용하여 월간 판매 집계 데이터를 가져옴
+            salesListM = salesService.getListM();
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
+        // 데이터를 담을 Map 객체 생성
         Map<String, Object> data = new LinkedHashMap<String, Object>();
 
-        // 데이터를 Map에 담아서 반환
+        // 주간 및 월간 매출 집계 데이터를 Map에 추가
         data.put("weekly", salesListW);
         data.put("monthly", salesListM);
 

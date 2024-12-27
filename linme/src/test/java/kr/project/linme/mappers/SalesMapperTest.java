@@ -34,13 +34,30 @@ public class SalesMapperTest {
         log.debug("output : ", output);
     }
 
-    // 전체 상품 조회 테스트
+    @Test
+    @DisplayName("매출 집계 삭제 테스트")
+    void deleteSales() {
+        int output = salesMapper.delete();
+        log.debug("output: " + output);
+    }
+
     @Test
     @DisplayName("매출 집계 월간 목록 조회 테스트")
-    void selectListSales() {
-        Sales input = new Sales();
+    void selectListSalesW() {
 
-        List<Sales> output = salesMapper.selectListM(input);
+        List<Sales> output = salesMapper.selectListW();
+        
+        // 향상된 forEach문을 사용한 목록 출력
+        for (Sales item : output) {
+            log.debug("output: " + item.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("매출 집계 월간 목록 조회 테스트")
+    void selectListSalesM() {
+
+        List<Sales> output = salesMapper.selectListM();
         
         // 향상된 forEach문을 사용한 목록 출력
         for (Sales item : output) {

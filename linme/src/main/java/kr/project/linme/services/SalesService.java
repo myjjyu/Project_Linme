@@ -13,9 +13,9 @@ public interface SalesService {
 
     public Sales getItem(Sales params) throws Exception;
 
-    public List<Sales> getListW(Sales params) throws Exception;
+    public List<Sales> getListW() throws Exception;
 
-    public List<Sales> getListM(Sales params) throws Exception;
+    public List<Sales> getListM() throws Exception;
 
     public int getCount(Sales params) throws Exception;
 }

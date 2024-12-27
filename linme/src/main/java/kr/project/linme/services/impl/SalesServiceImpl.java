@@ -89,11 +89,11 @@ public class SalesServiceImpl implements SalesService {
      * 주간 매출 집계 데이터 조회
      */
     @Override
-    public List<Sales> getListW(Sales input) throws Exception {
+    public List<Sales> getListW() throws Exception {
         List<Sales> output = null;
 
         try {
-            output = salesMapper.selectListW(input);
+            output = salesMapper.selectListW();
         } catch (Exception e) {
             log.error("데이터 목록 조회에 실패했습니다.", e);
             throw e;
@@ -106,11 +106,11 @@ public class SalesServiceImpl implements SalesService {
      * 월간 매출 집계 데이터 조회
      */
     @Override
-    public List<Sales> getListM(Sales input) throws Exception {
+    public List<Sales> getListM() throws Exception {
         List<Sales> output = null;
 
         try {
-            output = salesMapper.selectListM(input);
+            output = salesMapper.selectListM();
         } catch (Exception e) {
             log.error("데이터 목록 조회에 실패했습니다.", e);
             throw e;

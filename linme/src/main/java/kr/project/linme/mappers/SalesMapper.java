@@ -69,22 +69,24 @@ public interface SalesMapper {
         "ORDER BY sales_date DESC " + 
         "LIMIT 7")
         @ResultMap("resultMap")
-        public List<Sales> selectListW(Sales input);
+        public List<Sales> selectListW();
 
     /**
-     * 월간 매출 집계 데이터 조회
+     * 월간 매출 집계 데이터 조회 (주 단위로 최근 4주)
      * @param input
      * @return
      */
     @Select("SELECT " + 
-                "sales_id, " + 
-                "sales_total, " + 
-                "sales_date " + 
+                "CONCAT(DATE_FORMAT(MIN(sales_date), '%Y-%m-%d'), ' ~ ', DATE_FORMAT(MAX(sales_date), '%Y-%m-%d')) AS sales_date, " +
+                "SUM(sales_total) AS sales_total " +
             "FROM sales " +
-            "WHERE DATE_FORMAT(sales_date, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m') " +
-            "ORDER BY sales_date DESC")
+            "GROUP BY FLOOR(DATEDIFF(DATE_ADD(NOW(), INTERVAL -1 DAY), sales_date) / 7) " + // 주 단위로 그룹화화
+            "ORDER BY MIN(sales_date) DESC " +
+            "LIMIT 0, 4")   // 최근 4주 데이터만 조회
     @ResultMap("resultMap")
-    public List<Sales> selectListM(Sales input);
+    public List<Sales> selectListM();
+
+
 
     @Select("...")
     public int selectCount(Sales input);
