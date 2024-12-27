@@ -11,6 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.project.linme.helpers.FileHelper;
@@ -25,6 +33,7 @@ import kr.project.linme.services.PaymentService;
 
 
 @Controller
+@Tag(name = "Payment API", description = "주문/결제 API")
 public class PaymentContorller {
 
     @Autowired
@@ -44,6 +53,14 @@ public class PaymentContorller {
 
     /** 장바구니에서 주문/결제 폼 */
     @PostMapping("/payment/payment")
+    @Operation(summary = "주문/결제 폼", description = "장바구니에서 주문/결제 폼을 불러옵니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "주문/결제 폼 불러오기 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class))),
+        @ApiResponse(responseCode = "400", description = "주문/결제 폼 불러오기 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class)))
+    })
+    @Parameters({
+        @Parameter(name = "cart_id", required = true, description = "장바구니 항목 ID 리스트", schema = @Schema(type = "integer")),
+    })
     public String paymentAdd(
         Model model,
         HttpServletRequest request,
@@ -118,6 +135,16 @@ public class PaymentContorller {
 
     /** 주문 상세 */
     @GetMapping("/payment/order_detail")
+    @Operation(summary = "주문 상세", description = "주문 상세 페이지를 불러옵니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "주문 상세 페이지 불러오기 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class))),
+        @ApiResponse(responseCode = "400", description = "주문 상세 페이지 불러오기 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class)))
+    })
+    @Parameters({
+        @Parameter(name = "cart_id", required = true, description = "장바구니 항목 ID 리스트", schema = @Schema(type = "integer")),
+        @Parameter(name = "productCount", required = true, description = "상품 수량 리스트", schema = @Schema(type = "integer")),
+        @Parameter(name = "productId", required = true, description = "상품 ID 리스트", schema = @Schema(type = "integer"))
+    })
     public String orderDetail(
         Model model,
         HttpServletRequest request,
@@ -236,7 +263,12 @@ public class PaymentContorller {
         return "payment/order_detail";
     }
 
- @GetMapping("/mypage/shopping/order")
+    @GetMapping("/mypage/shopping/order")
+    @Operation(summary = "주문 목록", description = "주문 목록 페이지를 불러옵니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "주문 목록 페이지 불러오기 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class))),
+        @ApiResponse(responseCode = "400", description = "주문 목록 페이지 불러오기 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class)))
+    })
     public String order(Model model,
         @SessionAttribute("memberInfo") Member memberInfo
         ) {
