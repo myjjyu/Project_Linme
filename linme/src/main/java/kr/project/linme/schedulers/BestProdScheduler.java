@@ -21,7 +21,7 @@ public class BestProdScheduler {
     public void scheduleInsert() {
         log.debug("====인기상품 집계 시작====");
         try {
-            log.debug("====인기상품 집계====");
+            log.debug("인기상품 집계");
             BestProd input = new BestProd();
             bestProdService.insert(input);
         } catch (Exception e) {

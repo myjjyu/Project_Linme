@@ -2,6 +2,7 @@ package kr.project.linme.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.mappers.ProductMapper;
@@ -20,6 +27,7 @@ import kr.project.linme.services.ProductService;
  * 메인 페이지 컨트롤러
  */
 @Controller
+@Tag(name = "Main API", description = "상품조회 관련 API")
 public class MainController {
 
     /**
@@ -55,6 +63,11 @@ public class MainController {
      * @return 메인페이지의 뷰 이름
      */
     @GetMapping("/main/main")
+     @Operation(summary="전체상품 조회", description = "전체상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String main(Model model) {
         Product product = new Product();
 
@@ -133,6 +146,11 @@ public class MainController {
      * @return 카테고리 리스트 페이지의 뷰 이름
      */
     @GetMapping("/header/categoryList/{categoryId}")
+    @Operation(summary="카테고리 리스트", description = "카테고리 ID에 해당하는 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String categoryList(@PathVariable("categoryId") int categoryId, Model model) {
         // 카테고리 id에 해당하는 제품 목록을 조회
         List<Product> products = new ArrayList<>();
@@ -172,6 +190,11 @@ public class MainController {
      * @return 카테고리별 상품 목록을 보여줄 뷰의 이름
      */
     @GetMapping("/main/main_ok/{categoryId}")
+    @Operation(summary="카테고리별 상품 조회", description = "카테고리 ID에 해당하는 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String listByCategory(@PathVariable("categoryId") int categoryId, Model model) {
         List<Product> products = null;
         try {
@@ -202,6 +225,11 @@ public class MainController {
      * @return 비타민 페이지의 뷰 이름
      */
     @GetMapping("/main/list_no1")
+    @Operation(summary="비타민 페이지", description = "비타민 카테고리의 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String listNo1(Model model) {
         List<Product> vitaminProducts = null;
         try {
@@ -229,6 +257,11 @@ public class MainController {
      * @return 장건강 페이지의 뷰 이름
      */
     @GetMapping("/main/list_no2")
+    @Operation(summary="장건강 페이지", description = "장건강 카테고리의 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String listNo2(Model model) {
         List<Product> probioticProducts = null;
         try {
@@ -254,6 +287,11 @@ public class MainController {
      * @return 오메가3 페이지의 뷰 이름
      */
     @GetMapping("/main/list_no3")
+    @Operation(summary="오메가3 페이지", description = "오메가3 카테고리의 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String listNo3(Model model) {
         List<Product> omegaProducts = null;
         try {
@@ -279,6 +317,11 @@ public class MainController {
      * @return 아이영양제 페이지의 뷰 이름
      */
     @GetMapping("/main/list_no4")
+    @Operation(summary="아이영양제 페이지", description = "아이영양제 카테고리의 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String listNo4(Model model) {
         List<Product> kidsProducts = null;
         try {
@@ -305,6 +348,11 @@ public class MainController {
      * @return 신상품 페이지의 뷰 이름
      */
     @GetMapping("/header/new")
+    @Operation(summary="신상품 페이지", description = "최신 등록된 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String New(Model model) {
         // 제품 정보를 저장할 객체 선언
         Product product = new Product();
@@ -360,6 +408,11 @@ public class MainController {
      * @return
      */
     @GetMapping("/header/best")
+    @Operation(summary="베스트 상품 페이지", description = "베스트 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json")),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json"))
+    })
     public String Best(Model model) {
         return "header/best";
     }
@@ -374,6 +427,11 @@ public class MainController {
      * @return
      */
     @GetMapping("/header/spacial")
+    @Operation(summary="특가상품 페이지", description = "할인율이 높은 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String Spacial(Model model) {
         // 제품 정보를 저장할 객체 선언
         Product product = new Product();
@@ -426,6 +484,11 @@ public class MainController {
      * @return 상세 페이지 뷰의 이름
      */
     @GetMapping("/view/view/{productId}")
+    @Operation(summary="상세 페이지", description = "제품 ID에 해당하는 상세 정보를 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Product.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String view(@PathVariable("productId") int productId, Model model) {
         // 제품 정보를 저장할 객체선언
         Product product = null;
@@ -462,6 +525,11 @@ public class MainController {
      * @return 검색 결과를 보여줄 뷰의 이름
      */
     @GetMapping("/main/search")
+    @Operation(summary="검색 결과 페이지", description = "검색 키워드에 해당하는 상품 목록을 조회합니다")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))),
+        @ApiResponse(responseCode = "500", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String search(@RequestParam("keyword") String keyword, Model model) {
         // 데이터 조회
         // 검색 키워드를 이용하여 상품 목록을 조회

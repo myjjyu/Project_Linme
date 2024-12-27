@@ -30,10 +30,10 @@ public interface BestProdMapper {
         @Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
         public int insert();
 
-        // 월별인기상품
+        // 월간 인기상품
         @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
                         "FROM best_prod " +
-                        "WHERE reg_date >= NOW() - INTERVAL 28 DAY " + // 최근 28일 데이터만 조회
+                        "WHERE reg_date >= NOW() - INTERVAL 1 MONTH " + // 최근 1개월 데이터만 조회
                         "ORDER BY order_count DESC " +
                         "LIMIT 10")
         @Results(id = "BestProdMap", value = {
@@ -45,7 +45,7 @@ public interface BestProdMapper {
         })
         public List<BestProd> selectMList();
 
-        // 주별인기상품
+        // 주간 인기상품
         @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
                         "FROM best_prod " +
                         "WHERE reg_date >= NOW() - INTERVAL 7 DAY " + // 최근 7일 데이터만 조회
