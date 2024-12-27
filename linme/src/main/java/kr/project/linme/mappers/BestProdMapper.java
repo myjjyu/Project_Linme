@@ -2,7 +2,6 @@ package kr.project.linme.mappers;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -10,7 +9,6 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import kr.project.linme.models.BestProd;
 
@@ -28,31 +26,16 @@ public interface BestProdMapper {
                         "INNER JOIN product p ON oi.order_item_id = p.product_id " + // 상품 테이블과 조인
                         "WHERE oi.reg_date >= NOW() - INTERVAL 1 MONTH " + // 최근 1개월간 주문된 상품만 집계
                         "GROUP BY p.product_id, p.product_name " + // 상품별로 그룹화
-                        "ORDER BY order_count DESC " +
-                        "LIMIT 28")
+                        "ORDER BY order_count DESC ")
         @Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
         public int insert();
 
-        // 인기 상품 데이터 업데이트
-        @Update("UPDATE best_prod " +
-                        "SET order_count = #{orderCount}, " +
-                        "order_item_id = #{orderItemId}, " +
-                        "product_name = #{productName}, " +
-                        "reg_date = #{regDate} " +
-                        "WHERE best_prod_id = #{bestProdId}")
-        public int update(BestProd input);
-
-        @Delete("DELETE FROM best_prod WHERE best_prod_id = #{bestProdId}")
-        public int delete(BestProd input);
-
-        // 인기 상품 데이터 단일 조회
-        @Select("SELECT " +
-                        "best_prod_id, " +
-                        "order_count, " +
-                        "order_item_id, " +
-                        "product_name, " +
-                        "reg_date " +
-                        "FROM best_prod WHERE best_prod_id = #{bestProdId}")
+        // 월별인기상품
+        @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
+                        "FROM best_prod " +
+                        "WHERE reg_date >= NOW() - INTERVAL 28 DAY " + // 최근 28일 데이터만 조회
+                        "ORDER BY order_count DESC " +
+                        "LIMIT 10")
         @Results(id = "BestProdMap", value = {
                         @Result(property = "bestProdId", column = "best_prod_id"),
                         @Result(property = "orderCount", column = "order_count"),
@@ -60,18 +43,14 @@ public interface BestProdMapper {
                         @Result(property = "productName", column = "product_name"),
                         @Result(property = "regDate", column = "reg_date")
         })
-        public BestProd selectItem(BestProd input);
+        public List<BestProd> selectMList();
 
-        // 인기 상품 데이터 10개를 조회
+        // 주별인기상품
         @Select("SELECT best_prod_id, order_count, order_item_id, product_name, reg_date " +
                         "FROM best_prod " +
-                        "WHERE reg_date >= NOW() - INTERVAL 28 DAY " + // 최근 28일 데이터만 조회
-                        "ORDER BY order_count DESC " )
+                        "WHERE reg_date >= NOW() - INTERVAL 7 DAY " + // 최근 7일 데이터만 조회
+                        "ORDER BY order_count DESC " +
+                        "LIMIT 5")
         @ResultMap("BestProdMap")
-        public List<BestProd> selectList();
-
-        // 인기 상품 데이터 개수 조회
-        @Select("SELECT COUNT(*) FROM best_prod")
-        int selectCount();
-
+        public List<BestProd> selectWList();
 }

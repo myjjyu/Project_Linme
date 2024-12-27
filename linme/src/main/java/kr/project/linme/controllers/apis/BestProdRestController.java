@@ -25,16 +25,19 @@ public class BestProdRestController {
     public Map<String, Object> getBestProdList() throws Exception {
 
         BestProd input = new BestProd();
-        List<BestProd> output = null;
+        List<BestProd> output1 = null;
+        List<BestProd> output2 = null;
 
         try {
-            output = bestProdService.getList();
+            output1 = bestProdService.selectMList();
+            output2 = bestProdService.selectWList();
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("bestProdList", output);
+        data.put("monthly", output1);
+        data.put("weekly", output2);
         return restHelper.sendJson(data);
     }
 }
