@@ -1,6 +1,7 @@
 package kr.project.linme.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.project.linme.helpers.FileHelper;
 import kr.project.linme.helpers.WebHelper;
 import kr.project.linme.models.Cart;
@@ -15,6 +22,7 @@ import kr.project.linme.models.Member;
 import kr.project.linme.services.CartService;
 
 @Controller
+@Tag(name = "Cart API", description = "장바구니 API")
 public class CartController {
 
     @Autowired
@@ -33,6 +41,11 @@ public class CartController {
      * @return
      */
     @GetMapping("/cart/cart")
+    @Operation(summary = "장바구니 화면 불러오기")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "장바구니 화면 불러오기 성공입니다.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+        @ApiResponse(responseCode = "400", description = "장바구니 화면 불러오기 실패입니다.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
     public String orderCart(Model model,
             @SessionAttribute("memberInfo") Member memberInfo) {
                 

@@ -13,6 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Cart;
@@ -21,6 +29,7 @@ import kr.project.linme.services.CartService;
 
 
 @RestController
+@Tag(name = "Cart API", description = "장바구니 관련 API")
 public class CartRestController {
 
     @Autowired
@@ -39,6 +48,16 @@ public class CartRestController {
      * @return JSON 형식의 응답 데이터
      */
     @PostMapping("/api/cart/cart/add")
+    @Operation(summary = "장바구니 추가", description = "상세상품에서 장바구니에 상품을 추가합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "장바구니에 상품 추가 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+        @ApiResponse(responseCode = "400", description = "장바구니에 상품 추가 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
+    @Parameters({
+        @Parameter(name = "memberId", required = true, description = "회원 ID", schema = @Schema(type = "integer")),
+        @Parameter(name = "productId", required = true, description = "상품 ID", schema = @Schema(type = "integer")),
+        @Parameter(name = "productCount", required = true, description = "상품 수량", schema = @Schema(type = "integer"))
+    })
     public Map<String, Object> cartAdd(
         HttpServletRequest request,
         @SessionAttribute("memberInfo") Member memberInfo,
@@ -79,117 +98,23 @@ public class CartRestController {
         return restHelper.sendJson(data);
     }
 
-
-
-    // /**
-    //  * 장바구니 수량(개수) 표시
-    //  * @param memberId - 회원 ID
-    //  * @return JSON 형식의 응답 데이터
-    //  */
-    // @GetMapping("/api/cart/count")
-    // public Map<String, Object> cartCount(
-    //         @RequestParam("memberId") int memberId) {
-    //             // Cart 객체 생성 및 회원 ID 설정
-    //     Cart input = new Cart();
-    //     input.setMemberId(memberId);
-
-    //     // 장바구니 개수를 저장할 변수 초기화
-    //     int cartCount = 0;
-
-    //     try {
-    //         // cartService를 통해 장바구니 개수 조회
-    //         cartCount = cartService.getCount(input);
-    //     } catch (Exception e) {
-    //         return restHelper.serverError(e);
-    //     }
-
-    //     // 응답 데이터 생성
-    //     Map<String, Object> data = new LinkedHashMap<String, Object>();
-    //     data.put("cartCount", cartCount);
-
-    //     // JSON 형식으로 응답 반환
-    //     return restHelper.sendJson(data);
-    // }
-
-    // /**
-    //  * 특정 상품의 장바구니 수량 조회
-    //  * @param request - HTTP 요청 객체
-    //  * @param memberInfo - 세션에 저장된 회원 정보
-    //  * @param productId - 상품 ID
-    //  * @return JSON 형식의 응답 데이터
-    //  */
-    // @GetMapping("/api/cart/unique_count")
-    // public Map<String, Object> uniqueCart(
-    //         HttpServletRequest request,
-    //         @SessionAttribute("memberInfo") Member memberInfo,
-    //         @RequestParam("productId") Integer productId) {
-
-    //     // Cart 객체 생성 및 회원 ID와 상품 ID 설정
-    //     Cart input = new Cart();
-    //     input.setMemberId(memberInfo.getMemberId());
-    //     input.setProductId(productId);
-
-    //     Cart uniqueCart = null;
-
-    //     try {
-    //         // cartService를 이용하여 특정 상품의 장바구니 수량 조회
-    //         uniqueCart = cartService.uniqueCartCount(input);
-    //     } catch (Exception e) {
-    //         return restHelper.serverError(e);
-    //     }
-
-    //     // 응답 데이터 생성
-    //     Map<String, Object> data = new LinkedHashMap<String, Object>();
-    //     data.put("uniqueCart", uniqueCart);
-
-    //     // JSON 형식으로 응답 반환
-    //     return restHelper.sendJson(data);
-    // }
-
-    // /**
-    //  * 특정 상품의 장바구니 수량 수정
-    //  * @param productCount - 수정할 상품 수량
-    //  * @param cartIdTmp - 장바구니 ID (문자열 형태)
-    //  * @param memberInfo - 세션에 저장된 회원 정보
-    //  * @return JSON 형식의 응답 데이터
-    //  */
-    // @PutMapping("/api/cart/unique_edit")
-    // public Map<String, Object> uniqueCartEdit(
-    //         @RequestParam("productCount") String productCount,
-    //         @RequestParam("cartId") String cartIdTmp,
-    //         @SessionAttribute("memberInfo") Member memberInfo) {
-
-    //     // 문자열로 전달된 productCount를 정수형으로 변환
-    //     int productCountTmp = Integer.parseInt(productCount);
-
-    //     // 문자열로 전달된 cartId를 정수형으로 변환
-    //     int cartId = Integer.parseInt(cartIdTmp);
-
-    //     // Cart 객체 생성 및 필요한 정보 설정
-    //     Cart input = new Cart();
-    //     input.setCartId(cartId); // 장바구니 ID 설정
-    //     input.setProductCount(productCountTmp); // 수정할 상품 수량 설정
-    //     input.setMemberId(memberInfo.getMemberId()); // 회원 ID 설정
-
-    //     try {
-    //         // 장바구니 수량 수정 서비스 호출
-    //         cartService.editUniqueCart(input);
-    //     } catch (Exception e) {
-    //         return restHelper.serverError(e);
-    //     }
-
-    //     // 성공 시 JSON 형식의 응답 데이터 반환
-    //     return restHelper.sendJson();
-    // }
-
     /**
-     * 장바구니 수량 수정
+     * 장바구니 수량 변경경
      * @param cartIdTmp - 장바구니 ID (문자열 형태)
-     * @param productCountTmp - 수정할 상품 수량 (문자열 형태)
+     * @param productCountTmp - 변경경할 상품 수량 (문자열 형태)
      * @param memberInfo - 세션에 저장된 회원 정보
      * @return JSON 형식의 응답 데이터
      */
     @PutMapping("/api/cart/cart/edit")
+    @Operation(summary = "장바구니 수량 변경", description = "장바구니에 담긴 상품의 수량을 변경합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "장바구니 상품 수량 변경 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+        @ApiResponse(responseCode = "400", description = "장바구니 상품 수량 변경 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))
+    })
+    @Parameters({
+        @Parameter(name = "cartIdTmp", required = true, description = "장바구니 ID", schema = @Schema(type = "string")),
+        @Parameter(name = "productCountTmp", required = true, description = "변경할 상품 수량", schema = @Schema(type = "string"))
+    })
     public Map<String, Object> cartEdit(
             @RequestParam("cartIdTmp") String cartIdTmp,
             @RequestParam("productCountTmp") String productCountTmp,
@@ -223,38 +148,6 @@ public class CartRestController {
         return restHelper.sendJson(data);
     }
 
-    // /**
-    //  * 장바구니 삭제
-    //  * @param cartIdTmp - 장바구니 ID (문자열 형태)
-    //  * @param memberInfo - 세션에 저장된 회원 정보
-    //  * @return JSON 형식의 응답 데이터
-    //  */
-    // @DeleteMapping("/api/cart/cart/delete")
-    // public Map<String, Object> cartDelete(
-    //         @RequestParam("cartIdTmp") String cartIdTmp,
-    //         @SessionAttribute("memberInfo") Member memberInfo) {
-
-    //             // 문자열 형태의 장바구니 ID를 정수형으로 변환
-    //     int cartId = Integer.parseInt(cartIdTmp);
-
-    //     // 삭제할 장바구니 항목을 나타내는 Cart 객체 생성
-    //     Cart input = new Cart();
-    //     // 변환된 장바구니 ID를 Cart 객체에 설정
-    //     input.setCartId(cartId);
-    //     // 세션에서 가져온 회원 ID를 Cart 객체에 설정
-    //     input.setMemberId(memberInfo.getMemberId());
-
-    //     try {
-    //         // CartService를 이용해 장바구니 항목 삭제
-    //         cartService.deleteItem(input);
-    //     } catch (Exception e) {
-    //         return restHelper.serverError(e);
-    //     }
-
-    //     // 성공적으로 삭제되었음을 나타내는 JSON 응답 반환
-    //     return restHelper.sendJson();
-    // }
-
     /**
      * 장바구니 리스트 삭제
      * @param cartIdTmp - 삭제할 장바구니 ID 리스트
@@ -262,6 +155,14 @@ public class CartRestController {
      * @return JSON 형식의 응답 데이터
      */
     @DeleteMapping("/api/cart/cart/deleteList")
+    @Operation(summary = "장바구니 선택 삭제", description = "장바구니에 담긴 상품을 삭제합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "장바구니 상품 삭제 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+        @ApiResponse(responseCode = "400", description = "장바구니 상품 삭제 실패", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+    })
+    @Parameters({
+        @Parameter(name = "cartIdTmp", required = true, description = "삭제할 장바구니 ID 리스트", schema = @Schema(type = "array", implementation = Integer.class))
+    })
     public Map<String, Object> cartListDelete(
             @RequestParam("cartIdTmp") List<Integer> cartIdTmp,
             @SessionAttribute("memberInfo") Member memberInfo) {
