@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -27,7 +26,7 @@ public interface BestProdMapper {
                         "WHERE oi.reg_date >= NOW() - INTERVAL 1 MONTH " + // 최근 1개월간 주문된 상품만 집계
                         "GROUP BY p.product_id, p.product_name " + // 상품별로 그룹화
                         "ORDER BY order_count DESC ")
-        @Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
+        //@Options(useGeneratedKeys = true, keyProperty = "bestProdId", keyColumn = "best_prod_id")
         public int insert();
 
         // 월간 인기상품

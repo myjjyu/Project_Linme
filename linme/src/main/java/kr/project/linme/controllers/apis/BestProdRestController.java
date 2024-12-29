@@ -24,10 +24,10 @@ public class BestProdRestController {
 
     @Autowired
     private BestProdService bestProdService;
-    
+
     @GetMapping("/api/best_prod")
-    @Operation(summary="인기 상품 조회", description = "월간, 주간 인기 상품 TOP10, TOP5 을(를) 조회합니다")
-   
+    @Operation(summary = "인기 상품 조회", description = "월간, 주간 인기 상품 TOP10, TOP5 을(를) 조회합니다")
+
     public Map<String, Object> getBestProdList() throws Exception {
 
         BestProd input = new BestProd();
@@ -46,6 +46,4 @@ public class BestProdRestController {
         data.put("weekly", output2);
         return restHelper.sendJson(data);
     }
-
-   
 }
