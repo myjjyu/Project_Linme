@@ -52,7 +52,8 @@ public interface NewMemberMapper {
                 "member_count, " + 
                 "reg_date " + 
             "FROM new_member " + 
-            "WHERE DATE(reg_date) BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) AND DATE(NOW())")
+            "ORDER BY reg_date DESC " + 
+            "LIMIT 7")
     @ResultMap("resultMap")
     public List<NewMember> selectWeeklyNew();
 
