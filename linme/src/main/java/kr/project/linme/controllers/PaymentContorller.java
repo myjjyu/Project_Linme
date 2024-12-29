@@ -2,6 +2,7 @@ package kr.project.linme.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -298,6 +299,10 @@ public class PaymentContorller {
                 // 결제 정보에 주문 항목 목록을 설정
                 payment.setOrderItems(items); // Payment 객체에 orderItems 설정
             }
+            
+        // 중복 제거
+        payments = payments.stream().distinct().collect(Collectors.toList());
+
         } catch (Exception e) {
             webHelper.serverError(e);
         }
