@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.project.linme.exceptions.StringFormatException;
@@ -20,6 +27,7 @@ import kr.project.linme.models.Member;
 import kr.project.linme.services.MemberService;
 
 @RestController
+@Tag(name = "Member API", description = "회원가입, 로그인, 로그아웃, 아이디 찾기 API")
 public class MemberRestController {
 
     @Autowired
@@ -39,6 +47,14 @@ public class MemberRestController {
 
     // 아이디 (이메일) 중복검사
     @GetMapping("/api/member/id_unique_check")
+    @Operation(summary = "아이디(이메일) 중복검사", description = "파라미터로 받은 아이디(이메일) 중복검사를 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "사용 가능한 아이디(이메일)입니다."),
+        @ApiResponse(responseCode = "400", description = "이미 사용중인 아이디(이메일)입니다.")
+    })
+    @Parameters({
+        @Parameter(name = "user_id", description = "아이디(이메일)", schema = @Schema(type = "string"), required = true)
+    })
     public Map<String, Object> idUniqueCheck(@RequestParam("user_id") String userId) {
         try {
             memberService.isUniqueUserId(userId);
@@ -51,6 +67,14 @@ public class MemberRestController {
 
     // 닉네임 중복검사
     @GetMapping("/api/member/nickname_unique_check")
+    @Operation(summary = "닉네임 중복검사", description = "파라미터로 받은 닉네임 중복검사를 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "사용 가능한 닉네임입니다."),
+        @ApiResponse(responseCode = "400", description = "이미 사용중인 닉네임입니다.")
+    })
+    @Parameters({
+        @Parameter(name = "nickname", description = "닉네임", schema = @Schema(type = "string"), required = true)
+    })
     public Map<String, Object> nicknameUniqueCheck(@RequestParam("nickname") String nickname) {
         try {
             memberService.isUniqueNickname(nickname);
@@ -63,6 +87,22 @@ public class MemberRestController {
 
     // 회원가입
     @PostMapping("/api/member/join")
+    @Operation(summary = "회원가입", description = "회원가입을 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "회원가입에 성공하였습니다."),
+        @ApiResponse(responseCode = "400", description = "회원가입에 실패하였습니다.")
+    })
+    @Parameters({
+        @Parameter(name = "user_id", description = "아이디(이메일)", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "nickname", description = "닉네임", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "pw", description = "비밀번호", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "pwCheck", description = "비밀번호 확인", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "userName", description = "회원이름", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "tel", description = "전화번호", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "postcode", description = "우편번호", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "addr1", description = "주소", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "addr2", description = "상세주소", schema = @Schema(type = "string"), required = true)
+    })
     public Map<String, Object> join(
         @RequestParam("user_id") String userId,
         @RequestParam("nickname") String nickname,
@@ -147,6 +187,16 @@ public class MemberRestController {
 
     // 로그인
     @PostMapping("/api/member/login")
+    @Operation(summary = "로그인", description = "로그인을 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "로그인에 성공하였습니다."),
+        @ApiResponse(responseCode = "400", description = "로그인에 실패하였습니다.")
+    })
+    @Parameters({
+        @Parameter(name = "userId", description = "아이디(이메일)", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "userPw", description = "비밀번호", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "rememberId", description = "아이디 저장 여부", schema = @Schema(type = "string"), required = false)
+    })
     public Map<String, Object> login(
 
             HttpServletRequest request,
@@ -208,6 +258,10 @@ public class MemberRestController {
 
     // 로그아웃 기능 
     @GetMapping("/api/member/logout")
+    @Operation(summary = "로그아웃", description = "로그아웃을 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "로그아웃에 성공하였습니다.")
+    })
     public Map<String, Object> logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
@@ -216,6 +270,15 @@ public class MemberRestController {
 
     // 아이디 찾기 
     @PostMapping("/api/member/findId")
+    @Operation(summary = "아이디 찾기", description = "회원의 이름과 전화번호를 입력받아 아이디를 찾습니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "아이디 찾기에 성공하였습니다."),
+        @ApiResponse(responseCode = "400", description = "아이디 찾기에 실패하였습니다.")
+    })
+    @Parameters({
+        @Parameter(name = "user_name", description = "회원이름", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "tel", description = "전화번호", schema = @Schema(type = "string"), required = true)
+    })
     public Map<String, Object> findId(
         @RequestParam("user_name") String userName,
         @RequestParam("tel") String tel) {
