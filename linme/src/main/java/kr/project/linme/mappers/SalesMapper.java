@@ -28,7 +28,7 @@ public interface SalesMapper {
             "WHERE DATE(oi.reg_date) = DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) " +
             "GROUP BY dt")
     @Options(useGeneratedKeys = true, keyProperty = "salesId", keyColumn = "sales_id")
-    public int insert();
+    public int insert(Sales input);
 
     @Update("...")
     public int update(Sales input);

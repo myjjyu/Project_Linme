@@ -18,32 +18,15 @@ public class SalesMapperTest {
     
     @Test
     @DisplayName("매출 집계 추가 테스트")
-    void insertSales() {
-        int output = salesMapper.insert();
-        log.debug("output: " + output);
-    }
-
-    @Test
-    @DisplayName("매출 집계 단일 조회 테스트")
-    void selectItemSales() {
-        Sales input = new Sales();
-        input.setSalesId(1);
-
-        Sales output = salesMapper.selectItem(input);
-
-        log.debug("output : ", output);
-    }
-
-    @Test
-    @DisplayName("매출 집계 삭제 테스트")
-    void deleteSales() {
-        int output = salesMapper.delete();
+    public void insertSales() {
+        Sales output = new Sales();
+        salesMapper.insert(output);
         log.debug("output: " + output);
     }
 
     @Test
     @DisplayName("매출 집계 월간 목록 조회 테스트")
-    void selectListSalesW() {
+    public void selectListSalesW() {
 
         List<Sales> output = salesMapper.selectListW();
         
@@ -55,7 +38,7 @@ public class SalesMapperTest {
 
     @Test
     @DisplayName("매출 집계 월간 목록 조회 테스트")
-    void selectListSalesM() {
+    public void selectListSalesM() {
 
         List<Sales> output = salesMapper.selectListM();
         

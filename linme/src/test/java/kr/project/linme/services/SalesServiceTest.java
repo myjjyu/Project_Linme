@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import kr.project.linme.models.Sales;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,10 +17,12 @@ public class SalesServiceTest {
     @Test
     @DisplayName("매출 집계 추가 테스트")
     public void addItemSales() {
+        Sales input = new Sales();
         try {
-            salesService.addItem();
+            salesService.addItem(input);
         } catch (Exception e) {
             log.error("매출 집계 추가 테스트에 실패했습니다.", e);
+            return;
         }
     }
 

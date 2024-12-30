@@ -18,10 +18,10 @@ public class SalesServiceImpl implements SalesService {
     private SalesMapper salesMapper;
 
     @Override
-    public void addItem() throws Exception {
+    public void addItem(Sales input) throws Exception {
 
         try {
-            salesMapper.insert();
+            salesMapper.insert(input);
         } catch (Exception e) {
             log.error("데이터 저장에 실패했습니다.", e);
             throw e;

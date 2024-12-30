@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import kr.project.linme.models.Sales;
 import kr.project.linme.services.SalesService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,20 +27,13 @@ public class SalesScheduler {
     @Scheduled(cron= "0 0 1 * * ?") // 매일 오전 1시에 자동 실행
     public void deleteByCancelOrder() throws InterruptedException {
         log.debug("========= 판매 집계 시작 =========");
+        Sales input = new Sales();
 
         try {
             log.debug("판매 집계 데이터 추가");
-            salesService.addItem();
+            salesService.addItem(input);
         } catch (Exception e) {
             log.error("판매 집계 데이터 추가 실패");
-            return;
-        }
-
-        try {
-            log.debug("30일이 지난 매출 집계 데이터 삭제");
-            salesService.deleteItem();
-        } catch (Exception e) {
-            log.error("30일이 지난 매출 집계 데이터 삭제 실패");
             return;
         }
 

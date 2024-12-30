@@ -5,7 +5,7 @@ import java.util.List;
 import kr.project.linme.models.Sales;
 
 public interface SalesService {
-    public void addItem() throws Exception;
+    public void addItem(Sales input) throws Exception;
 
     public Sales editItem(Sales params) throws Exception;
 
