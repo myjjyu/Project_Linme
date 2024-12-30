@@ -67,11 +67,27 @@ public interface ProfitMapper {
 
 
     // 1개월 판매량 조회
-    @Select("SELECT category_id, SUM(total_count) AS total_count, DATE_FORMAT(reg_date, '%Y-%m') AS reg_date " +
-            "FROM profit " +
-            "WHERE DATE_FORMAT(reg_date, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m') " +
-            "GROUP BY category_id " +
-            "ORDER BY reg_date DESC")
+//     @Select("SELECT " + 
+//                 "category_id, " +
+//                 "SUM(total_count) AS total_count, " +
+//                 "CONCAT(DATE_FORMAT(MIN(reg_date), '%Y-%m-%d'), ' ~ ', DATE_FORMAT(MAX(reg_date), '%Y-%m-%d')) AS reg_date " +
+//         "FROM profit " +
+//         "WHERE reg_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) " + // 최근 한 달 데이터
+//         "GROUP BY category_id, FLOOR(DATEDIFF(CURDATE(), reg_date) / 7) " + // 주 단위 그룹화
+//         "ORDER BY MIN(reg_date) DESC, category_id ASC " + // 최신 날짜 순으로 정렬
+//         "LIMIT 4") // 최신 4주 데이터만 조회
+
+
+    @Select("SELECT " +
+                "p.category_id AS category_id, " +         // 카테고리 ID
+                "SUM(o.order_count) AS total_count, " +    // 총 판매량
+                "DATE_FORMAT(o.reg_date, '%Y-%m') AS reg_date " + // 월 단위 날짜 포맷
+        "FROM order_item o " +
+        "INNER JOIN product p ON o.order_pname = p.product_name " + // 주문 항목과 제품 연결
+        "WHERE DATE_FORMAT(o.reg_date, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " + // 현재 달 데이터 조회
+        "GROUP BY p.category_id, DATE_FORMAT(o.reg_date, '%Y-%m') " + // 카테고리와 월별 그룹화
+        "ORDER BY p.category_id ASC, reg_date DESC " +// 정렬: 카테고리 ID와 날짜
+        "Limit 0, 4 ")
     @Results(id = "MonthlyProfitMap", value = {
     @Result(property = "categoryId", column = "category_id"),
     @Result(property = "totalCount", column = "total_count"),
