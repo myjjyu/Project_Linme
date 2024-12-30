@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.project.linme.helpers.FileHelper;
@@ -28,6 +35,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
+@Tag(name = "MyPage edit API", description = "내 정보 수정 API")
 public class MypageRestController {
 
     @Autowired
@@ -42,6 +50,14 @@ public class MypageRestController {
 
     /* 닉네임 중복*/
     @GetMapping("/api/myPage/nickname_unique_check")
+    @Operation(summary = "닉네임임 중복검사", description = "닉네임임 중복검사를 수행합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "사용 가능한 아이디(이메일)입니다."),
+        @ApiResponse(responseCode = "400", description = "이미 사용중인 아이디(이메일)입니다.")
+    })
+    @Parameters({
+        @Parameter(name = "user_id", description = "아이디(이메일)", schema = @Schema(type = "string"), required = true)
+    })
     public Map<String,Object>nicknameUniqueCheck(@RequestParam("nickname") String nickname) {
         try {
             memberService.isUniqueNickname(nickname);

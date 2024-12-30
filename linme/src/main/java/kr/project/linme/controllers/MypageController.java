@@ -2,6 +2,7 @@ package kr.project.linme.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
 import kr.project.linme.models.Member;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
+@Tag(name = "MyPage API", description = "마이페이지지 API")
 public class MypageController {
 
     @GetMapping("/myPage")

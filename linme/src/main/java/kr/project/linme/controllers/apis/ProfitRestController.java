@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.project.linme.helpers.RestHelper;
 import kr.project.linme.models.Profit;
 import kr.project.linme.services.ProfitService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @RestController
+@Tag(name = "Profit API", description = "판매량량 집계 API")
 public class ProfitRestController {
 
     @Autowired
@@ -28,6 +30,7 @@ public class ProfitRestController {
      * @return JSON 데이터
      */
     @GetMapping("/api/profit")
+    @Operation(summary = "판매량 조회", description = "월간, 주간 판매량을 조회합니다")
     public Map<String, Object> getProfitList() {
         
         List<Profit> selectWeeklyProfit;

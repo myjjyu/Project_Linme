@@ -78,16 +78,15 @@ public interface ProfitMapper {
 //         "LIMIT 4") // 최신 4주 데이터만 조회
 
 
-    @Select("SELECT " +
-                "p.category_id AS category_id, " +         // 카테고리 ID
-                "SUM(o.order_count) AS total_count, " +    // 총 판매량
-                "DATE_FORMAT(o.reg_date, '%Y-%m') AS reg_date " + // 월 단위 날짜 포맷
-        "FROM order_item o " +
-        "INNER JOIN product p ON o.order_pname = p.product_name " + // 주문 항목과 제품 연결
-        "WHERE DATE_FORMAT(o.reg_date, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " + // 현재 달 데이터 조회
-        "GROUP BY p.category_id, DATE_FORMAT(o.reg_date, '%Y-%m') " + // 카테고리와 월별 그룹화
-        "ORDER BY p.category_id ASC, reg_date DESC " +// 정렬: 카테고리 ID와 날짜
-        "Limit 0, 4 ")
+@Select("SELECT " +
+                "category_id AS category_id, " +         // 카테고리 ID
+                "SUM(total_count) AS total_count, " +    // 총 판매량
+                "DATE_FORMAT(reg_date, '%Y-%m') AS reg_date " + // 월 단위 날짜 포맷
+        "FROM profit " +
+        "WHERE DATE_FORMAT(reg_date, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " + // 현재 달 데이터 조회
+        "GROUP BY category_id, DATE_FORMAT(reg_date, '%Y-%m') " + // 카테고리와 월별 그룹화
+        "ORDER BY category_id ASC, reg_date DESC " + // 정렬: 카테고리 ID와 날짜
+        "LIMIT 0, 4")
     @Results(id = "MonthlyProfitMap", value = {
     @Result(property = "categoryId", column = "category_id"),
     @Result(property = "totalCount", column = "total_count"),
