@@ -50,13 +50,13 @@ public class MypageRestController {
 
     /* 닉네임 중복*/
     @GetMapping("/api/myPage/nickname_unique_check")
-    @Operation(summary = "닉네임임 중복검사", description = "닉네임임 중복검사를 수행합니다.")
+    @Operation(summary = "닉네임 중복검사", description = "닉네임 중복검사를 수행합니다.")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "사용 가능한 아이디(이메일)입니다."),
-        @ApiResponse(responseCode = "400", description = "이미 사용중인 아이디(이메일)입니다.")
+        @ApiResponse(responseCode = "200", description = "사용 가능한 닉네임 입니다."),
+        @ApiResponse(responseCode = "400", description = "사용 중인 닉네임입니다.")
     })
     @Parameters({
-        @Parameter(name = "user_id", description = "아이디(이메일)", schema = @Schema(type = "string"), required = true)
+        @Parameter(name = "nickname", description = "닉네임", schema = @Schema(type = "string"), required = true)
     })
     public Map<String,Object>nicknameUniqueCheck(@RequestParam("nickname") String nickname) {
         try {
@@ -69,6 +69,15 @@ public class MypageRestController {
     
     /** 프로필 수정*/
     @PutMapping("/api/myPage/profile-update")
+    @Operation(summary = "프로필 수정", description = "프로필사진과 닉네임을 변경합니다다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "프로필 변경에 성공하였습니다."),
+        @ApiResponse(responseCode = "400", description = "프로필 변경경에 실패하였습니다.")
+    })
+    @Parameters({
+        @Parameter(name = "user_id", description = "프로필사진", schema = @Schema(type = "string"), required = true),
+        @Parameter(name = "nickname", description = "닉네임", schema = @Schema(type = "string"), required = true),
+    })
     public Map<String, Object> updateProfile(
             HttpServletRequest request,
             @SessionAttribute("memberInfo") Member memberInfo,
@@ -161,6 +170,11 @@ public class MypageRestController {
 
     /** 비밀번호 변경 */
     @PutMapping("/api/myPage/password-update")
+    @Operation(summary = "비밀번호 변경", description = "비밀번호를 변경합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "수정되었습니다."),
+        @ApiResponse(responseCode = "400", description = "비밀번호 변경에 실패하였습니다.")
+    })
     public Map<String, Object> updatePassword(
             HttpServletRequest request,
             @SessionAttribute("memberInfo") Member memberInfo,
@@ -187,8 +201,13 @@ public class MypageRestController {
     }
 
 
-   // 배송지 변경
+   // 배송지 변경경
     @PutMapping("/api/myPage/postcode-update")
+    @Operation(summary = "배송지 변경", description = "배송지를 변경합니다.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "수정되었습니다."),
+        @ApiResponse(responseCode = "400", description = "배송지 변경에 실패하였습니다.")
+    })
     public Map<String, Object> updatePostcode(
             HttpServletRequest request, // 세션 갱신용
             @SessionAttribute("memberInfo") Member memberInfo, // 현재 세션 정보 확인용
@@ -224,6 +243,11 @@ public class MypageRestController {
 
         /** 회원 탈퇴 */
         @DeleteMapping("/api/myPage/out")
+        @Operation(summary = "회원탈퇴퇴", description = "회원탈퇴를 수행합니다.")
+        @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "탈퇴되었습니다."),
+            @ApiResponse(responseCode = "400", description = "탈퇴에 실패하였습니다.")
+        })
         public Map<String, Object> out(
             HttpServletRequest request, 
             @SessionAttribute("memberInfo") Member memberInfo) {
