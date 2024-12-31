@@ -35,7 +35,9 @@ public class BestProdRestController {
         List<BestProd> output2 = null;
 
         try {
+            // 월간 인기상품
             output1 = bestProdService.selectMList();
+            // 주간 인기상품
             output2 = bestProdService.selectWList();
         } catch (Exception e) {
             return restHelper.serverError(e);
@@ -47,3 +49,7 @@ public class BestProdRestController {
         return restHelper.sendJson(data);
     }
 }
+
+
+
+

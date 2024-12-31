@@ -25,7 +25,7 @@ public class BestProdScheduler {
             BestProd input = new BestProd();
             bestProdService.insert(input);
         } catch (Exception e) {
-            log.error("====인기상품 집계 실패====", e);
+            log.error("====인기상품 집계 끝====", e);
         }
     }
 }
