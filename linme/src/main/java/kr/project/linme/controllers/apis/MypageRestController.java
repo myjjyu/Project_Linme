@@ -201,7 +201,7 @@ public class MypageRestController {
     }
 
 
-   // 배송지 변경경
+   // 배송지 변경
     @PutMapping("/api/myPage/postcode-update")
     @Operation(summary = "배송지 변경", description = "배송지를 변경합니다.")
     @ApiResponses(value = {

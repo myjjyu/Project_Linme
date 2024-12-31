@@ -16,7 +16,7 @@ import kr.project.linme.services.ProfitService;
 
 
 @RestController
-@Tag(name = "Profit API", description = "판매량량 집계 API")
+@Tag(name = "Profit API", description = "판매량 집계 API")
 public class ProfitRestController {
 
     @Autowired
@@ -47,7 +47,7 @@ public class ProfitRestController {
         
         Map<String, Object> data = new LinkedHashMap<String, Object>();
 
-        // 주간 및 월간 판매량량 집계 데이터를 Map에 추가
+        // 주간 및 월간 판매량 집계 데이터를 Map에 추가
         data.put("weekly", selectWeeklyProfit);
         data.put("monthly", selectMonthlyProfit);
 
