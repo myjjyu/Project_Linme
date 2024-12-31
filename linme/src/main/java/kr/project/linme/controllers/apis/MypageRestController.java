@@ -243,7 +243,7 @@ public class MypageRestController {
 
         /** 회원 탈퇴 */
         @DeleteMapping("/api/myPage/out")
-        @Operation(summary = "회원탈퇴퇴", description = "회원탈퇴를 수행합니다.")
+        @Operation(summary = "회원탈퇴", description = "회원탈퇴를 수행합니다.")
         @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "탈퇴되었습니다."),
             @ApiResponse(responseCode = "400", description = "탈퇴에 실패하였습니다.")
