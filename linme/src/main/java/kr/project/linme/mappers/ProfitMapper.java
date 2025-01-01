@@ -83,7 +83,8 @@ public interface ProfitMapper {
                 "SUM(total_count) AS total_count, " +    // 총 판매량
                 "DATE_FORMAT(reg_date, '%Y-%m') AS reg_date " + // 월 단위 날짜 포맷
         "FROM profit " +
-        "WHERE DATE_FORMAT(reg_date, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " + // 현재 달 데이터 조회
+        "WHERE reg_date >= NOW() - INTERVAL 1 MONTH " + // 최근 1개월 데이터만 조회
+        // "WHERE DATE_FORMAT(reg_date, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " + // 현재 달 데이터 조회
         "GROUP BY category_id, DATE_FORMAT(reg_date, '%Y-%m') " + // 카테고리와 월별 그룹화
         "ORDER BY category_id ASC, reg_date DESC " + // 정렬: 카테고리 ID와 날짜
         "LIMIT 0, 4")
