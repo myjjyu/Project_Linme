@@ -34,8 +34,13 @@ public class Mypage2Controller {
 
     /* /mypage/shopping/order => PaymentController.java 이동 */
     
-    // @GetMapping("/mypage/shopping/claim")
-    // public String claim(Model model) {
-    //     return "mypage/shopping/claim";
-    // }
+    @GetMapping("/mypage/shopping/claim")
+    @Operation(summary = "클레임 페이지", description = "클레임 페이지.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "클레임 페이지에 이동에 성공하였습니다."),
+        @ApiResponse(responseCode = "400", description = "클레임 페이지에 이동에 실패하였습니다.")
+    })
+    public String claim(Model model) {
+        return "mypage/shopping/claim";
+    }
 }
