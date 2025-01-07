@@ -26,7 +26,7 @@ import kr.project.linme.models.Member;
 @Slf4j
 @Controller
 @Tag(name = "User API", description = "회원 관련 및 비밀번호 재생성 API")
-public class UserController {
+public class MemberController {
 
     @Autowired
     private UtilHelper utilHelper;
