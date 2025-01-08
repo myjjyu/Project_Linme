@@ -124,8 +124,8 @@
 }
 
 /* placeholder 글씨 조정 */
-input::placeholder {
-  font-size: 10px;
+.userInput input::placeholder {
+  font-size: 12px;
   color: #aaa;
 }
 
