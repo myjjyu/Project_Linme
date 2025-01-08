@@ -209,7 +209,7 @@
 .list-group {
   border-radius: 0;
   border: 1px solid #f3f3f3;
-  max-height: 600px;
+  max-height: 500px;
   width: 350px;
   overflow-y: auto; /* 스크롤 */
   position: absolute;
@@ -226,17 +226,21 @@
 .list-group-item {
   background-color: #fdfdfd;
   border-style: none;
-  padding: 16px 30px;
   font-size: 15px;
   cursor: pointer;
+  /* padding: 16px 30px; */
 
   a {
+    display: block;
     color: #333;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
+    height: 100%;
+    padding: 16px 30px;
   }
 }
+
 .list-group-item:hover {
   background-color: #f0f0f0;
 }

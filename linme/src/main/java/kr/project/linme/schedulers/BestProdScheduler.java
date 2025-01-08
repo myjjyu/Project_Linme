@@ -26,6 +26,7 @@ public class BestProdScheduler {
             bestProdService.insert(input);
         } catch (Exception e) {
             log.error("====인기상품 집계 끝====", e);
+            return;
         }
     }
 }
