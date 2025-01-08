@@ -170,14 +170,13 @@
             <!-- 로그인 상태 -->
             <!-- **************************** -->
             <div class="btn" th:if="${session.memberInfo != null}">
-              <form id="cartform" th:action="@{/api/cart/cart/add}" method="post">
+              <form id="cartform" th:action="@{/api/cart/add}" method="post">
                 <input type="hidden" name="memberId" th:value="${session.memberInfo.memberId}" />
                 <input type="hidden" name="productId" th:value="${product.productId}" />
                 <!-- 수량▼ -->
                 <input type="hidden" name="productCount" th:value="${product.productCount}" class="quantity-input" />
                 <button type="submit" class="cart-btn">구매하기</button>
               </form>
-
             </div>
 
             <!-- **************************** -->
@@ -191,7 +190,6 @@
                 <input type="hidden" name="productCount" value="1" class="quantity-input" />
                 <button type="submit" class="cart-btn">구매하기</button>
               </form>
-
             </div>
           </div>
         </div>
@@ -314,8 +312,8 @@
     </script>
     <script th:inline="javascript">
       const isLoggedIn = /*[[${session.memberInfo != null}]]*/ false;
-      const addCartApiUrl = /*[[@{/api/cart/cart/add}]]*/ ""; // 장바구니 백엔드
-      const cartUrl = /*[[@{/cart/cart}]]*/ ""; // 장바구니 페이지
+      const addCartApiUrl = /*[[@{/api/cart/add}]]*/ ""; // 장바구니 백엔드
+      const cartUrl = /*[[@{/cart}]]*/ ""; // 장바구니 페이지
     </script>
   </body>
 </html>

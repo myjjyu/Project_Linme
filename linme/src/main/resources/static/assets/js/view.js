@@ -102,7 +102,6 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
   e.preventDefault();
   console.log("isLoggedIn:", isLoggedIn);
 
-
   if (isLoggedIn) {
     /** 로그인 했을때 */
     Swal.fire({
@@ -121,7 +120,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
       if (result.isConfirmed) {
         // AJAX 요청을 통해 장바구니에 아이템을 추가
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/cart/cart/add", true);
+        xhr.open("POST", "/api/cart/add", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         console.log(xhr);
         xhr.onreadystatechange = function () {
@@ -140,7 +139,7 @@ document.querySelector(".cart-btn").addEventListener("click", (e) => {
         var formData = new FormData(form);
         var data = new URLSearchParams(formData).toString();
         console.log("data:", data);
-        //debugger; 
+        //debugger;
         xhr.send(data);
       }
     });
