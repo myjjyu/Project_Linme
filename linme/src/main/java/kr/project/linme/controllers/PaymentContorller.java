@@ -53,7 +53,7 @@ public class PaymentContorller {
     private FileHelper fileHelper;
 
     /** 장바구니에서 주문/결제 폼 */
-    @PostMapping("/payment/payment")
+    @PostMapping("/payment")
     @Operation(summary = "주문/결제 폼", description = "장바구니에서 주문/결제 폼을 불러옵니다.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "주문/결제 폼 불러오기 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Model.class))),

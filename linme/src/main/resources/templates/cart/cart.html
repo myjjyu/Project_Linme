@@ -49,7 +49,7 @@
           </div>
 
           <!-- 장바구니 폼-->
-          <form name="cartForm" id="cartForm" class="cartProductList" method="post" th:action="@{/payment/payment}">
+          <form name="cartForm" id="cartForm" class="cartProductList" method="post" th:action="@{/payment}">
             <!-- 상품 내역 -->
             <section class="ProductInCart">
               <!-- 장바구니 상품 정보 -->
@@ -162,12 +162,12 @@
 
     <script th:src="@{/assets/js/cart.js}"></script>
     <script th:inline="javascript">
-      const cartDeleteLink = /*[[@{/api/cart/cart/delete}]]*/ "";
-      const cartListDeleteLink = /*[[@{/api/cart/cart/deleteList}]]*/ "";
-      const carttList = /*[[@{/cart/cart}]]*/ "";
+      const cartDeleteLink = /*[[@{/api/cart/delete}]]*/ "";
+      const cartListDeleteLink = /*[[@{/api/cart/deleteList}]]*/ "";
+      const carttList = /*[[@{/cart}]]*/ "";
 
-      const paymentFormAdd = /*[[@{/payment/payment/add}]]*/ "";
-      const paymentList = /*[[@{/payment/paymentForm}]]*/ "";
+      const paymentFormAdd = /*[[@{/payment/add}]]*/ "";
+      const paymentList = /*[[@{/paymentForm}]]*/ "";
     </script>
 
     <script>
@@ -213,7 +213,7 @@
           console.log("productCount : ", quantity);
 
           // Ajax
-          const data = await axiosHelper.put(`[[@{/api/cart/cart/edit}]]`, formData);
+          const data = await axiosHelper.put(`[[@{/api/cart/edit}]]`, formData);
           console.log("data : ", data);
           if (data) {
             if (current.querySelector("#cart_id").dataset.cartid == data.cart.cartId) {

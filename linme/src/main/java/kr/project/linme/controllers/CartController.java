@@ -40,7 +40,7 @@ public class CartController {
      * @param memberInfo - 회원 번호
      * @return
      */
-    @GetMapping("/cart/cart")
+    @GetMapping("/cart")
     @Operation(summary = "장바구니 화면 불러오기")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "장바구니 화면 불러오기 성공입니다.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),

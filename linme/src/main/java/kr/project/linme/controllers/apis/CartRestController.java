@@ -47,7 +47,7 @@ public class CartRestController {
      * @param productCount - 상품 수량
      * @return JSON 형식의 응답 데이터
      */
-    @PostMapping("/api/cart/cart/add")
+    @PostMapping("/api/cart/add")
     @Operation(summary = "장바구니 추가", description = "상세상품에서 장바구니에 상품을 추가합니다.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "장바구니에 상품 추가 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
@@ -92,7 +92,7 @@ public class CartRestController {
         // 응답 데이터 맵 생성
         Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("cart", output); // 추가된 장바구니 아이템 정보
-        data.put("redirectUrl", "/cart/cart"); // 리디렉션 URL
+        data.put("redirectUrl", "/cart"); // 리디렉션 URL
 
         // JSON 형식으로 응답 반환
         return restHelper.sendJson(data);
@@ -105,7 +105,7 @@ public class CartRestController {
      * @param memberInfo - 세션에 저장된 회원 정보
      * @return JSON 형식의 응답 데이터
      */
-    @PutMapping("/api/cart/cart/edit")
+    @PutMapping("/api/cart/edit")
     @Operation(summary = "장바구니 수량 변경", description = "장바구니에 담긴 상품의 수량을 변경합니다.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "장바구니 상품 수량 변경 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
@@ -154,7 +154,7 @@ public class CartRestController {
      * @param memberInfo - 세션에 저장된 회원 정보
      * @return JSON 형식의 응답 데이터
      */
-    @DeleteMapping("/api/cart/cart/deleteList")
+    @DeleteMapping("/api/cart/deleteList")
     @Operation(summary = "장바구니 선택 삭제", description = "장바구니에 담긴 상품을 삭제합니다.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "장바구니 상품 삭제 성공", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
