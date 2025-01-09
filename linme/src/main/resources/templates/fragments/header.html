@@ -57,7 +57,7 @@
         <!-- header-main 영역 -->
         <!------------------------------->
         <div class="headerBoxSecond">
-          <a th:href="@{/main/main}">
+          <a th:href="@{/}">
             <img class="hearderLogo" th:src="@{/assets/img/header/logo_top.png}" alt="Logo" />
           </a>
 
@@ -208,7 +208,7 @@
         <!-- header-main 영역 -->
         <!------------------------------->
         <div class="headerBoxSecond">
-          <a th:href="@{/main/main}">
+          <a th:href="@{/}">
             <img class="hearderLogo" th:src="@{/assets/img/header/logo_top.png}" alt="Logo" />
           </a>
 
@@ -325,7 +325,7 @@
 
         if (data) {
           // 로그아웃시 메인페이지로 이동
-          window.location.href = "[[@{/main/main}]]";
+          window.location.href = "[[@{/}]]";
         }
       });
     </script>

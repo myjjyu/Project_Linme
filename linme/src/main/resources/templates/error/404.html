@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404error</title>
     <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/error.css}" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <img class="Linme Icon" th:src="@{/assets/img/error/linme.png}" />
-        <img class="Warning Icon" th:src="@{/assets/img/error/warning.png}" />
-        <h1>잘못된 접근입니다.</h1>
-        <p>오류 사유 : 페이지를 찾을 수 없습니다.</p>
-        <button class="button1" onclick="history.back()">이전 페이지</button>
-        <button class="button2" onclick="location.href='/main/main'">메인으로 이동</button>
+      <img class="Linme Icon" th:src="@{/assets/img/error/linme.png}" />
+      <img class="Warning Icon" th:src="@{/assets/img/error/warning.png}" />
+      <h1>잘못된 접근입니다.</h1>
+      <p>오류 사유 : 페이지를 찾을 수 없습니다.</p>
+      <button class="button1" onclick="history.back()">이전 페이지</button>
+      <button class="button2" onclick="location.href='/'">메인으로 이동</button>
     </div>
-</body>
-
+  </body>
 </html>

@@ -30,7 +30,6 @@ public class BestProdRestController {
 
     public Map<String, Object> getBestProdList() throws Exception {
 
-        BestProd input = new BestProd();
         List<BestProd> output1 = null;
         List<BestProd> output2 = null;
 

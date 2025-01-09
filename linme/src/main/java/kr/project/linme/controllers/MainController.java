@@ -62,7 +62,7 @@ public class MainController {
      * @param model 뷰에 데이터를 전달하기 위한 모델
      * @return 메인페이지의 뷰 이름
      */
-    @GetMapping("/main/main")
+    @GetMapping("/")
      @Operation(summary="전체상품 조회", description = "전체상품 목록을 조회합니다")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
@@ -133,7 +133,7 @@ public class MainController {
         model.addAttribute("omegaProducts", omegaProducts);
         model.addAttribute("kidsProducts", kidsProducts);
         model.addAttribute("products", output);
-        return "main/main";
+        return "index";
     }
 
     // =================================================================================================//

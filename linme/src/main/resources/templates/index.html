@@ -1,13 +1,409 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>린미 - 세상에 없던 H-커머스</title>
+    <th:block th:replace="~{/fragments/header}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
   </head>
   <body>
-    <header th:fragment="my-header">
-      <link rel="stylesheet" th:href=@{/assets/css/common.css} />
-    </header>
+    <main>
+      <div class="mainContent" id="mainContent">
+        <!-- /************************************/ -->
+        <!-- 헤더바로 아래 있는 메인배너 -->
+        <!-- /************************************/ -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a> <img th:src="@{/assets/img/main/mainbaner.jpg}" alt="출석체크" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a> <img th:src="@{/assets/img/main/mainbaner2.jpg}" alt="유산균" /></a>
+            </div>
+            <div class="swiper-slide">
+              <a> <img th:src="@{/assets/img/main/mainbaner3.jpg}" alt="프로폴리스" /></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- /************************************/ -->
+        <!-- icon 컨텐츠 영역 -->
+        <!-- /************************************/ -->
+        <div class="contents">
+          <div class="title">어떤 영양제를 찾으세요?</div>
+          <div class="subtitle">고민을 선택해 주세요</div>
+          <div class="iconContent">
+            <form id="icon">
+              <a th:href="@{'/main/main_ok/' + 1}">
+                <img th:src="@{/assets/img/main/icon-list/면역력.png}" alt="아이콘" />
+                면역력
+              </a>
+              <a th:href="@{'/main/main_ok/' + 2}">
+                <img th:src="@{/assets/img/main/icon-list/피부건강.png}" alt="아이콘" />
+                피부건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 3}">
+                <img th:src="@{/assets/img/main/icon-list/장건강.png}" alt="아이콘" />
+                장건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 4}">
+                <img th:src="@{/assets/img/main/icon-list/피로활력.png}" alt="아이콘" />
+                피로/활력
+              </a>
+              <a th:href="@{'/main/main_ok/' + 5}">
+                <img th:src="@{/assets/img/main/icon-list/혈액순환.png}" alt="아이콘" />
+                혈액순환
+              </a>
+              <a th:href="@{'/main/main_ok/' + 6}">
+                <img th:src="@{/assets/img/main/icon-list/운동근육.png}" alt="아이콘" />
+                운동/근육
+              </a>
+              <a th:href="@{'/main/main_ok/' + 7}">
+                <img th:src="@{/assets/img/main/icon-list/남성건강.png}" alt="아이콘" />
+                남성건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 8}">
+                <img th:src="@{/assets/img/main/icon-list/여성건강.png}" alt="아이콘" />
+                여성건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 9}">
+                <img th:src="@{/assets/img/main/icon-list/혈당.png}" alt="아이콘" />
+                혈당
+              </a>
+              <a th:href="@{'/main/main_ok/' + 10}">
+                <img th:src="@{/assets/img/main/icon-list/눈건강.png}" alt="아이콘" />
+                눈건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 11}">
+                <img th:src="@{/assets/img/main/icon-list/간건강.png}" alt="아이콘" />
+                간건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 12}">
+                <img th:src="@{/assets/img/main/icon-list/뼈건강.png}" alt="아이콘" />
+                뼈건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 13}">
+                <img th:src="@{/assets/img/main/icon-list/다이어트.png}" alt="아이콘" />
+                다이어트
+              </a>
+              <a th:href="@{'/main/main_ok/' + 14}">
+                <img th:src="@{/assets/img/main/icon-list/스트레스.png}" alt="아이콘" />
+                스트레스
+              </a>
+              <a th:href="@{'/main/main_ok/' + 15}">
+                <img th:src="@{/assets/img/main/icon-list/기관지.png}" alt="아이콘" />
+                기관지
+              </a>
+              <a th:href="@{'/main/main_ok/' + 16}">
+                <img th:src="@{/assets/img/main/icon-list/혈관.png}" alt="아이콘" />
+                혈관
+              </a>
+              <a th:href="@{'/main/main_ok/' + 17}">
+                <img th:src="@{/assets/img/main/icon-list/관절.png}" alt="아이콘" />
+                관절
+              </a>
+              <a th:href="@{'/main/main_ok/' + 18}">
+                <img th:src="@{/assets/img/main/icon-list/소화기건강.png}" alt="아이콘" />
+                소화기건강
+              </a>
+              <a th:href="@{'/main/main_ok/' + 19}">
+                <img th:src="@{/assets/img/main/icon-list/갱년기.png}" alt="아이콘" />
+                갱년기
+              </a>
+              <a th:href="@{'/main/main_ok/' + 20}">
+                <img th:src="@{/assets/img/main/icon-list/임산부.png}" alt="아이콘" />
+                임산부
+              </a>
+              <a th:href="@{'/main/main_ok/' + 21}">
+                <img th:src="@{/assets/img/main/icon-list/치아잇몸.png}" alt="아이콘" />
+                치아/잇몸
+              </a>
+              <a th:href="@{'/main/main_ok/' + 22}">
+                <img th:src="@{/assets/img/main/icon-list/빈혈.png}" alt="아이콘" />
+                빈혈
+              </a>
+              <a th:href="@{'/main/main_ok/' + 23}">
+                <img th:src="@{/assets/img/main/icon-list/항산화.png}" alt="아이콘" />
+                항산화
+              </a>
+              <a th:href="@{'/main/main_ok/' + 24}">
+                <img th:src="@{/assets/img/main/icon-list/혈압.png}" alt="아이콘" />
+                혈압
+              </a>
+            </form>
+          </div>
+        </div>
+
+        <!-- /************************************/ -->
+        <!-- text 컨텐츠 영역 -->
+        <!-- /************************************/ -->
+        <div id="productContainer">
+          <div class="contents">
+            <div class="headerMenu">내 몸의 활력을 위한 멀티 비타민</div>
+            <div class="headerMenutitle">
+              💪비타민 충전타임💪
+              <a th:href="@{/main/list_no1}">
+                <button type="submit">
+                  <img th:src="@{/assets/img/main/arrow_showMore.png}" alt="arrow_showMore" />
+                </button>
+              </a>
+            </div>
+
+            <!-- 제품 이미지 리스트 -->
+            <div class="headerMenutitleimg">
+              <div class="boximg" th:each="product : ${vitaminProducts}">
+                <a th:href="@{'/view/view/' + ${product.productId}}">
+                  <img th:src="${product.img}" class="imgbox" />
+                  <p class="productName" th:text="${product.productName}">내용</p>
+                  <div class="priceContainer">
+                    <p class="discountRate" th:text="${product.discountRate + '%'}">할인가</p>
+                    <p class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래가격</p>
+                  </div>
+                  <p class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">세일가격</p>
+                  <p class="shippingInfo">무료배송</p>
+                </a>
+              </div>
+            </div>
+
+            <div class="headerMenu">유산균으로 장 편한 하루를 보내보세요</div>
+            <div class="headerMenutitle">
+              💊온 가족 장 건강 케어💊
+              <a th:href="@{/main/list_no2}">
+                <button type="submit">
+                  <img th:src="@{/assets/img/main/arrow_showMore.png}" alt="arrow_showMore" />
+                </button>
+              </a>
+            </div>
+
+            <!-- 제품 이미지 리스트 -->
+            <div class="headerMenutitleimg">
+              <div class="boximg" th:each="product : ${probioticProducts}">
+                <a th:href="@{'/view/view/' + ${product.productId}}">
+                  <img th:src="${product.img}" class="imgbox" />
+                  <p class="productName" th:text="${product.productName}">내용</p>
+                  <div class="priceContainer">
+                    <p class="discountRate" th:text="${product.discountRate + '%'}">할인가</p>
+                    <p class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래가격</p>
+                  </div>
+                  <p class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">세일가격</p>
+                  <p class="shippingInfo">무료배송</p>
+                </a>
+              </div>
+            </div>
+
+            <div class="headerMenu">건강한 혈행을 위해 필요한 영양소</div>
+            <div class="headerMenutitle">
+              ✔️대체불가 필수 지방산 오메가-3✔️
+              <a th:href="@{/main/list_no3}">
+                <button type="submit">
+                  <img th:src="@{/assets/img/main/arrow_showMore.png}" alt="arrow_showMore" />
+                </button>
+              </a>
+            </div>
+
+            <!-- 제품 이미지 리스트 -->
+            <div class="headerMenutitleimg">
+              <div class="boximg" th:each="product : ${omegaProducts}">
+                <a th:href="@{'/view/view/' + ${product.productId}}">
+                  <img th:src="${product.img}" class="imgbox" />
+                  <p class="productName" th:text="${product.productName}">내용</p>
+                  <div class="priceContainer">
+                    <p class="discountRate" th:text="${product.discountRate + '%'}">할인가</p>
+                    <p class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래가격</p>
+                  </div>
+                  <p class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">세일가격</p>
+                  <p class="shippingInfo">무료배송</p>
+                </a>
+              </div>
+            </div>
+
+            <div class="headerMenu">성장기 우리 아이 맛있게 영양 보충 해주세요.</div>
+            <div class="headerMenutitle">
+              👧우리 아이를 위한 영양 보충제👦
+              <a th:href="@{/main/list_no4}">
+                <button type="submit">
+                  <img th:src="@{/assets/img/main/arrow_showMore.png}" alt="arrow_showMore" />
+                </button>
+              </a>
+            </div>
+
+            <!-- 제품 이미지 리스트 -->
+            <div class="headerMenutitleimg">
+              <div class="boximg" th:each="product : ${kidsProducts}">
+                <a th:href="@{'/view/view/' + ${product.productId}}">
+                  <img th:src="${product.img}" class="imgbox" />
+                  <p class="productName" th:text="${product.productName}">내용</p>
+                  <div class="priceContainer">
+                    <p class="discountRate" th:text="${product.discountRate + '%'}">할인가</p>
+                    <p class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래가격</p>
+                  </div>
+                  <p class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">세일가격</p>
+                  <p class="shippingInfo">무료배송</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 중간 바 -->
+        <div class="topicContainer"></div>
+
+        <!-- /************************************/ -->
+        <!-- 전체상품 영역 -->
+        <!-- /************************************/ -->
+        <div class="contents" id="vitaminSection">
+          <div class="allProductList">전체상품</div>
+          <ul class="productDisplayOrder">
+            <li class="productText">
+              <a th:href="@{#}" class="sort-button sort-recommend" id="recommended">추천순</a>
+            </li>
+            <li class="productText">
+              <a th:href="@{#}" class="sort-button" id="benefit">혜택순</a>
+            </li>
+            <li class="productText">
+              <a th:href="@{#}" class="sort-button" id="low-price">낮은 가격순</a>
+            </li>
+            <li class="productText">
+              <a th:href="@{#}" class="sort-button" id="high-price">높은 가격순</a>
+            </li>
+          </ul>
+
+          <!-- 전체상품 이미지 리스트 -->
+          <div id="productList" class="all-list">
+            <div id="headerMenutitleimg" class="headerMenutitleimg">
+              <div class="boximg" th:each="product : ${products}">
+                <a th:href="@{'/view/view/' + ${product.productId}}">
+                  <img th:src="${product.img}" class="imgbox" />
+                  <p class="productName" th:text="${product.productName}">내용</p>
+                  <div class="priceContainer">
+                    <p class="discountRate" th:text="${product.discountRate + '%'}">할인가</p>
+                    <p class="originalPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}">원래가격</p>
+                  </div>
+                  <p class="salePrice" th:text="${#numbers.formatInteger(product.salePrice, 3, 'COMMA') + '원'}">세일가격</p>
+                  <p class="shippingInfo">무료배송</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <th:block th:replace="~{/fragments/footer}" />
+    </footer>
+
+    <!-- 스크립트 영역 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/assets/js/header.js}"></script>
+    <script>
+      /*****************************************************/
+      /* 메인 배너 영역 라이브러리
+      /*****************************************************/
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        loop: true,
+      });
+
+      /*****************************************************/
+      /* 글자 컬러 변경 및 정렬 기능 
+      /*****************************************************/
+      const productText = document.querySelectorAll(".productText a");
+
+      // 기본 컬러 설정 (추천순 글자컬러)
+      const defaultLink = document.querySelector(".sort-recommend");
+      defaultLink.classList.add("active");
+
+      // 각 정렬 링크에 클릭 이벤트 추가
+      productText.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // 모든 링크에서 activate 클래스 제거하고 기본값 설정
+          productText.forEach((link) => {
+            link.classList.remove("active");
+            link.classList.add("sort-button"); // 기본값
+          });
+
+          // 클릭된 링크에 activate 클래스 추가
+          this.classList.add("active");
+          this.classList.remove("sort-button");
+        });
+      });
+
+      // 정렬 기능 추가
+      // 초기 정렬 상태를 저장할 배열 선언
+      let originalOrder = [];
+
+      // 페이지 로드 시 제품의 초기 순서 저장
+      window.onload = function () {
+        originalOrder = [...document.querySelectorAll("#headerMenutitleimg .boximg")];
+      };
+
+      // 각 정렬 링크에 클릭 이벤트 추가
+      productText.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // 모든 링크에서 active 클래스 제거
+          productText.forEach((link) => link.classList.remove("active"));
+          this.classList.add("active");
+
+          // 정렬 함수 호출
+          const sortType = this.id; // 추천순, 혜택순 등 ID 가져오기
+          sortProducts(sortType);
+        });
+      });
+
+      // 제품 정렬 함수
+      function sortProducts(type) {
+        const productListContainer = document.getElementById("headerMenutitleimg");
+
+        // 추천순 정렬
+        if (type === "recommended") {
+          productListContainer.innerHTML = "";
+          originalOrder.forEach((product) => productListContainer.appendChild(product));
+          return;
+        }
+
+        // 가격, 혜택 순 정렬
+        let products = [...document.querySelectorAll("#headerMenutitleimg .boximg")];
+
+        // 제품 배열 정렬
+        products.sort((a, b) => {
+          // 첫번째 제품 가격을 가져와서 정수로 변환
+          const priceA = parseInt(a.querySelector(".salePrice").textContent.replace(/,/g, ""));
+          // 두번째 제품 가격을 가져와서 정수로 변환
+          const priceB = parseInt(b.querySelector(".salePrice").textContent.replace(/,/g, ""));
+
+          // 첫번째 제품 할인율을 가져와서 정수로 변환 (할인율 없으면 0)
+          const discountA = parseInt(a.querySelector(".discountRate").textContent.replace("%", "")) || 0;
+
+          // 두번째 할인율 가져와서 정수로 변환 (할인율 없으면 0)
+          const discountB = parseInt(b.querySelector(".discountRate").textContent.replace("%", "")) || 0;
+
+          if (type === "low-price") return priceA - priceB; // 낮은 가격순
+          if (type === "high-price") return priceB - priceA; // 높은 가격순
+          if (type === "benefit") return discountB - discountA; // 혜택순
+          return 0;
+        });
+
+        productListContainer.innerHTML = ""; // 기존 제품 목록 초기화
+        products.forEach((product) => productListContainer.appendChild(product));
+      }
+    </script>
   </body>
 </html>
